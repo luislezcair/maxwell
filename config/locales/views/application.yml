@@ -1,0 +1,14 @@
+es-AR:
+  layouts:
+    application:
+      account: 'Cuenta'
+      logout: 'Salir'
+
+      nav:
+        dashboard: 'Tablero'
+        elements: 'Elementos'
+        services: 'Servicios'
+        settings: 'Ajustes'
+        system: 'Sistema'
+        technical_services: 'Servicios Técnicos'
+        users: 'Usuarios y Grupos'

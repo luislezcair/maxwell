@@ -1,0 +1,7 @@
+es-AR:
+  activerecord:
+    models:
+      technical_service: 'Servicio Técnico'
+    attributes:
+      technical_service:
+        work_order_number: 'Número de orden de trabajo'

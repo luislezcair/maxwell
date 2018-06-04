@@ -1,0 +1,2 @@
+class TechnicalService < ApplicationRecord
+end

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sistema de registro de servicios técnicos de Diez Positivo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <%= render 'favicon' %>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'landing', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'landing' %>
+
+    <title>Maxwell</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-offset-4 col-sm-4">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

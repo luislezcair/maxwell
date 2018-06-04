@@ -1,0 +1,17 @@
+Rails:
+  Enabled: true
+
+Rails/DynamicFindBy:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Style/SymbolArray:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
