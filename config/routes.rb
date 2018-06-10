@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' }
 
   devise_scope :user do
     authenticated :user do
@@ -13,5 +13,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :technical_services
+  concern :paginatable do
+    get '(page/:page)', action: :index, on: :collection, as: ''
+  end
+
+  resources :technical_services, concerns: :paginatable
 end

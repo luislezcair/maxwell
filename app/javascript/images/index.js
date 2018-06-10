@@ -18,5 +18,5 @@ import './favicon/favicon.ico';
 import './favicon/mstile-150x150.png';
 import './favicon/safari-pinned-tab.svg';
 
-// import './favicon/site.webmanifest.erb';
-// import './favicon/browserconfig.xml.erb';
+import './favicon/site.webmanifest';
+import './favicon/browserconfig.xml';

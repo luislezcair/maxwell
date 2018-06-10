@@ -56,13 +56,20 @@ group :development do
   # Favicon generator
   gem 'rails_real_favicon'
 
-  gem 'i18n-debug'
+  # gem 'i18n-debug'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15', '< 4.0'
   gem 'selenium-webdriver'
+
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
 
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
@@ -73,6 +80,7 @@ gem 'pry-rails'
 
 # User authentication and authorization
 gem 'devise'
+gem 'devise-i18n'
 gem 'cancancan'
 
 # React helpers

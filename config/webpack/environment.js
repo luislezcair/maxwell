@@ -1,12 +1,8 @@
 const { environment } = require('@rails/webpacker');
+const webmanifest = require('./loaders/webmanifest');
+const browserconfig = require('./loaders/browserconfig');
 
-const xmlErb = require('./loaders/xml_erb');
-const webmanifestErb = require('./loaders/webmanifest_erb');
-const erb = require('./loaders/erb');
-
-environment.loaders.prepend('xmlErb', xmlErb);
-environment.loaders.prepend('webmanifestErb', webmanifestErb);
-
-environment.loaders.append('erb', erb);
+environment.loaders.insert('webmanifest', webmanifest, { before: 'file' });
+environment.loaders.insert('browserconfig', browserconfig, { before: 'file' });
 
 module.exports = environment;

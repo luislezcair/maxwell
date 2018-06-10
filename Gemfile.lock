@@ -54,13 +54,13 @@ GEM
     builder (3.2.3)
     byebug (10.0.2)
     cancancan (2.2.0)
-    capybara (3.1.1)
+    capybara (3.2.1)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
-      xpath (~> 3.0)
+      xpath (~> 3.1)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (1.2.0)
@@ -69,15 +69,24 @@ GEM
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    database_cleaner (1.7.0)
     devise (4.4.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.6.2)
+      devise (>= 4.4)
+    diff-lcs (1.3)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.7.1)
+    factory_bot (4.10.0)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.10.0)
+      factory_bot (~> 4.10.0)
+      railties (>= 3.0.0)
     ffi (1.9.23)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -85,8 +94,6 @@ GEM
       domain_name (~> 0.5)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
-    i18n-debug (1.1.1)
-      i18n (< 2)
     io-like (0.3.0)
     json (2.1.0)
     kaminari (1.1.1)
@@ -190,6 +197,23 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rspec-core (3.7.1)
+      rspec-support (~> 3.7.0)
+    rspec-expectations (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-mocks (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-rails (3.7.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
+      rspec-support (~> 3.7.0)
+    rspec-support (3.7.1)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     selenium-webdriver (3.12.0)
@@ -245,8 +269,10 @@ DEPENDENCIES
   cancancan
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
+  database_cleaner
   devise
-  i18n-debug
+  devise-i18n
+  factory_bot_rails
   kaminari
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
@@ -256,6 +282,7 @@ DEPENDENCIES
   rails-i18n
   rails_real_favicon
   ransack
+  rspec-rails
   selenium-webdriver
   simple_form
   spring

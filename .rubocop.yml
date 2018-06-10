@@ -15,3 +15,6 @@ Style/SymbolArray:
 
 Bundler/OrderedGems:
   Enabled: false
+
+Metrics/MethodLength:
+  Max: 15
