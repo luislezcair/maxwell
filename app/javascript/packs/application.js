@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 
 // Javacript modules //
-import 'jquery';
+import $ from 'jquery';
 import 'popper.js';
 import 'bootstrap';
 import '@coreui/coreui';
@@ -28,3 +28,8 @@ Turbolinks.start();
 Rails.start();
 
 // WebpackerReact.setup({ ReactTest });
+
+document.addEventListener('turbolinks:load', () => {
+  $('.sidebar').sidebar();
+  $('.aside-menu')['aside-menu']();
+});
