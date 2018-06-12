@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_10_185432) do
+ActiveRecord::Schema.define(version: 2018_06_11_163757) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,12 +19,14 @@ ActiveRecord::Schema.define(version: 2018_06_10_185432) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_balancers_on_name", unique: true
   end
 
   create_table "cities", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_cities_on_name", unique: true
   end
 
   create_table "clients", force: :cascade do |t|
@@ -35,18 +37,21 @@ ActiveRecord::Schema.define(version: 2018_06_10_185432) do
     t.integer "contabilium_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["ucrm_id"], name: "index_clients_on_ucrm_id", unique: true
   end
 
   create_table "corporate_cellphones", force: :cascade do |t|
     t.string "phone", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["phone"], name: "index_corporate_cellphones_on_phone", unique: true
   end
 
   create_table "ground_wire_setup_types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_ground_wire_setup_types_on_name", unique: true
   end
 
   create_table "group_permissions", force: :cascade do |t|
@@ -60,6 +65,7 @@ ActiveRecord::Schema.define(version: 2018_06_10_185432) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
+    t.index ["name"], name: "index_groups_on_name", unique: true
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -78,18 +84,22 @@ ActiveRecord::Schema.define(version: 2018_06_10_185432) do
     t.integer "ucrm_plan_service_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_plan_services_on_name", unique: true
+    t.index ["ucrm_plan_service_id"], name: "index_plan_services_on_ucrm_plan_service_id", unique: true
   end
 
   create_table "support_types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_support_types_on_name", unique: true
   end
 
   create_table "surge_protector_setup_types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_surge_protector_setup_types_on_name", unique: true
   end
 
   create_table "technical_service_corporate_cellphones", force: :cascade do |t|
@@ -146,6 +156,7 @@ ActiveRecord::Schema.define(version: 2018_06_10_185432) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_technicians_on_name", unique: true
   end
 
   create_table "towers", force: :cascade do |t|
@@ -153,12 +164,15 @@ ActiveRecord::Schema.define(version: 2018_06_10_185432) do
     t.integer "ucrm_site_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_towers_on_name", unique: true
+    t.index ["ucrm_site_id"], name: "index_towers_on_ucrm_site_id", unique: true
   end
 
   create_table "transmitters", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_transmitters_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -178,6 +192,7 @@ ActiveRecord::Schema.define(version: 2018_06_10_185432) do
     t.boolean "active", default: true, null: false
     t.integer "group_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -185,6 +200,7 @@ ActiveRecord::Schema.define(version: 2018_06_10_185432) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_work_types_on_name", unique: true
   end
 
 end

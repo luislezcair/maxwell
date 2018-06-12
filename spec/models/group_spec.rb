@@ -2,20 +2,20 @@
 
 require 'rails_helper'
 
-describe WorkType do
+describe Group do
   it 'has a valid factory' do
-    b = build(:work_type)
+    b = build(:group)
     expect(b).to be_valid
   end
 
   it 'is invalid without a name' do
-    b = build(:work_type, name: nil)
+    b = build(:group, name: nil)
     expect(b).to_not be_valid
   end
 
   it 'is invalid without a unique name' do
-    b = create(:work_type)
-    b2 = build(:work_type, name: b.name.upcase)
+    b = create(:group)
+    b2 = build(:group, name: b.name.upcase)
     expect(b2).to_not be_valid
   end
 end

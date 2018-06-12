@@ -1,7 +1,17 @@
 es-AR:
   activerecord:
-    models:
-      technical_service: 'Servicio Técnico'
     attributes:
       technical_service:
         work_order_number: 'Número de orden de trabajo'
+
+    errors:
+      models:
+        technical_service:
+          attributes:
+            corporate_cellphones:
+              empty_corporate_cellphones: 'no puede estar vacío'
+            work_types:
+              empty_work_types: 'no puede estar vacío'
+
+    models:
+      technical_service: 'Servicio Técnico'
