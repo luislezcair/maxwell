@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_11_163757) do
+ActiveRecord::Schema.define(version: 2018_06_13_151600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2018_06_11_163757) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["phone"], name: "index_corporate_cellphones_on_phone", unique: true
+  end
+
+  create_table "devices", force: :cascade do |t|
+    t.inet "ip_address"
+    t.string "model", default: "", null: false
+    t.string "serial_number", default: "", null: false
+    t.integer "ucrm_device_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ground_wire_setup_types", force: :cascade do |t|
@@ -122,9 +131,6 @@ ActiveRecord::Schema.define(version: 2018_06_11_163757) do
 
   create_table "technical_services", force: :cascade do |t|
     t.integer "work_order_number", default: 0, null: false
-    t.string "antenna_serial_number"
-    t.string "antenna_model"
-    t.inet "antenna_ip_address"
     t.string "router_model"
     t.string "router_serial_number"
     t.string "wifi_ssid"
@@ -150,6 +156,7 @@ ActiveRecord::Schema.define(version: 2018_06_11_163757) do
     t.integer "surge_protector_setup_type_id"
     t.datetime "datetime", null: false
     t.integer "technician_id", null: false
+    t.integer "device_id"
   end
 
   create_table "technicians", force: :cascade do |t|

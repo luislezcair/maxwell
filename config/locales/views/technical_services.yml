@@ -2,3 +2,13 @@ es-AR:
   technical_services:
     index:
       header: 'Servicios Técnicos'
+    form:
+      submit: 'Guardar'
+      cancel: 'Cancelar'
+    new:
+      form:
+        new_header: 'Registrar Servicio Técnico'
+    edit:
+      form:
+        edit_header: 'Editar Servicio Técnico'
+

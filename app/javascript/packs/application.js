@@ -13,11 +13,15 @@ import '@coreui/coreui';
 import '@coreui/coreui/scss/coreui.scss';
 import 'font-awesome/scss/font-awesome.scss';
 import 'simple-line-icons/scss/simple-line-icons.scss';
+import 'inputmask';
 
 // import WebpackerReact from 'webpacker-react';
 import Turbolinks from 'turbolinks';
 import Rails from 'rails-ujs';
 // import ReactTest from '../components/ReactTest';
+
+// Custom modules
+import '../views';
 
 // Custom assets modules //
 import '../images';
@@ -32,4 +36,10 @@ Rails.start();
 document.addEventListener('turbolinks:load', () => {
   $('.sidebar').sidebar();
   $('.aside-menu')['aside-menu']();
+
+  // Crear y disparar un evento para el controlador y la acción actual
+  const body = document.querySelector('body');
+  const { action, controller } = body.dataset;
+  const loadEvent = new Event(`${controller}:${action}:load`);
+  document.dispatchEvent(loadEvent);
 });

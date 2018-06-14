@@ -22,15 +22,25 @@ class TechnicalServicesController < ApplicationController
   # POST /technical_services
   def create
     @technical_service = TechnicalService.new(technical_service_params)
+    # FIXME: move default values to model
+    @technical_service.datetime = Time.current
     if @technical_service.save
-      redirect_to @technical_service
+      # TODO: redirect to edit page
+      # redirect_to @technical_service
+      redirect_to technical_services_path
     else
       render :new, alert: :error
     end
   end
 
   # PUT/PATCH /technical_services/1
-  def update; end
+  def update
+    if @technical_service.update(technical_service_params)
+      redirect_to technical_services_path
+    else
+      render :edit, alert: :error
+    end
+  end
 
   # DELETE /technical_services/1
   def destroy; end
@@ -43,10 +53,12 @@ class TechnicalServicesController < ApplicationController
 
   def technical_service_params
     params.require(:technical_service)
-          .permit(:work_order_number, :antenna_serial_number, :antenna_model,
-                  :antenna_ip_address, :router_model, :router_serial_number,
+          .permit(:work_order_number, :device_id, :client_id, :plan_service_id,
+                  :router_model, :router_serial_number, :technician_id,
                   :wifi_ssid, :wifi_password, :arrival_time, :departure_time,
                   :cable_length, :plug_adapter_quantity, :google_maps_url,
-                  :labour_cost, :equipment_cost, :observations)
+                  :labour_cost, :equipment_cost, :observations, :city_id,
+                  :ground_wire_setup_type_id, :surge_protector_setup_type_id,
+                  :support_type_id, :balancer_id, :transmitter_id, :tower_id)
   end
 end

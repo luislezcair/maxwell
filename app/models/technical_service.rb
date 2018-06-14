@@ -6,6 +6,7 @@ class TechnicalService < ApplicationRecord
   belongs_to :technician
 
   belongs_to :balancer, optional: true
+  belongs_to :device, optional: true
   belongs_to :plan_service, optional: true
   belongs_to :support_type, optional: true
   belongs_to :tower, optional: true
@@ -24,8 +25,9 @@ class TechnicalService < ApplicationRecord
   validates :arrival_time, :datetime, :departure_time, :work_order_number,
             presence: true
 
-  validate :at_least_one_work_type?
-  validate :at_least_one_corporate_cellphone?
+  # TODO: activate this when you have finished the form
+  # validate :at_least_one_work_type?
+  # validate :at_least_one_corporate_cellphone?
 
   private
 

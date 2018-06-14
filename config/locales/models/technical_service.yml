@@ -2,7 +2,30 @@ es-AR:
   activerecord:
     attributes:
       technical_service:
-        work_order_number: 'Número de orden de trabajo'
+        arrival_time: 'Hora de llegada'
+        balancer: 'Balanceador'
+        cable_length: 'Longitud de cable'
+        city: 'Ciudad'
+        client: 'Cliente'
+        departure_time: 'Hora de salida'
+        device: 'Antena'
+        equipment_cost: 'Costo de equipos'
+        google_maps_url: 'Google Maps'
+        ground_wire_setup_type: 'Cable a tierra'
+        labour_cost: 'Costo de mano de obra'
+        observations: 'Observaciones'
+        plan_service: 'Servicio'
+        plug_adapter_quantity: 'Cantidad de fichas'
+        router_model: 'Modelo de router'
+        router_serial_number: 'Número de serie del router'
+        support_type: 'Tipo de soporte'
+        surge_protector_setup_type: 'Estabilizador de tensión / UPS'
+        technician: 'Técnico'
+        tower: 'Torre'
+        transmitter: 'Emisora'
+        wifi_password: 'Contraseña Wi-Fi'
+        wifi_ssid: 'SSID Wi-Fi'
+        work_order_number: 'Orden de trabajo'
 
     errors:
       models:

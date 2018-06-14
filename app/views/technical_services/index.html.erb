@@ -4,14 +4,16 @@
   </div>
 
   <div class="card-body">
-    <table class="table table-responsive-sm table-striped">
+    <table class="table table-responsive-sm table-striped table-hover">
       <thead>
         <tr>
           <th>#</th>
+          <th>Fecha</th>
           <th>Ciudad</th>
+          <th>Cliente</th>
           <th>Nº de orden de trabajo</th>
-          <th>Nº de serie de antena</th>
-          <th>Tipo de trabajo</th>
+          <th>Plan / Servicio</th>
+          <th></th>
         </tr>
       </thead>
 
@@ -19,10 +21,16 @@
         <% @technical_services.each_with_index do |ts, i| %>
           <tr>
             <td><%= i + 1 %></td>
-            <td>Oberá</td>
+            <td><%= l(ts.datetime, format: :short) %></td>
+            <td><%= ts.city.name %></td>
+            <td><%= ts.client.name %></td>
             <td><%= ts.work_order_number %></td>
-            <td><%= ts.antenna_serial_number %></td>
-            <td>Instalación nuevo cliente</td>
+            <td><%= ts.plan_service.try(:name) %></td>
+            <td>
+              <%= link_to edit_technical_service_path(ts), class: 'btn btn-xs btn-primary' do %>
+                <i class="fa fa-pencil"></i>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

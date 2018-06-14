@@ -1,4 +1,127 @@
-<%= simple_form_for @technical_service do |f| %>
-  <%= f.input :work_order_number %>
-  <%= f.submit %>
+<%= simple_form_for @technical_service, wrapper: :maxwell_horizontal_form, defaults: { grid_wrapper_html: { class: 'col-sm-9' } } do |f| %>
+  <div class="card">
+    <div class="card-header"><%= header %></div>
+
+    <div class="card-body">
+      <legend class="form-section">
+        <i class="fa fa-user"></i> Datos del cliente
+      </legend>
+
+      <%= f.association :city %>
+
+      <%= f.association :client %>
+
+      <%= f.association :plan_service %>
+
+      <legend class="form-section">
+        <i class="fa fa-user"></i> Servicio Técnico
+      </legend>
+
+      <%= f.input :work_order_number, as: :string, input_html: { class: 'mask-numeric' } %>
+      <%= f.association :technician %>
+
+      <div class="form-group row string required">
+        <%= f.input :arrival_time, as: :string, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } do %>
+          <div class="input-group">
+            <%= f.input_field :arrival_time, as: :string, class: 'form-control mask-time', placeholder: 'HH:MM' %>
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fa fa-clock-o"></i>
+              </span>
+            </div>
+            <%= f.full_error :arrival_time, class: 'invalid-feedback' %>
+          </div>
+        <% end %>
+
+        <%= f.input :departure_time, as: :string, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } do %>
+          <div class="input-group">
+            <%= f.input_field :departure_time, as: :string, class: 'form-control mask-time', placeholder: 'HH:MM' %>
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fa fa-clock-o"></i>
+              </span>
+            </div>
+            <%= f.full_error :departure_time, class: 'invalid-feedback' %>
+          </div>
+        <% end %>
+      </div>
+
+      <%= f.input :google_maps_url do %>
+        <div class="input-group">
+          <%= f.input_field :google_maps_url, class: 'form-control' %>
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <i class="fa fa-map-marker"></i>
+            </span>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="form-group row string required">
+        <%= f.input :labour_cost, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } do %>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <%= f.input_field :labour_cost, as: :string, class: 'form-control mask-money' %>
+          </div>
+        <% end %>
+
+        <%= f.input :equipment_cost, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } do %>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <%= f.input_field :equipment_cost, as: :string, class: 'form-control mask-money' %>
+          </div>
+        <% end %>
+      </div>
+
+      <%= f.input :observations, as: :text %>
+
+      <legend class="form-section">
+        <i class="fa fa-user"></i> Equipos de la empresa
+      </legend>
+
+      <%= f.association :tower %>
+      <%= f.association :transmitter %>
+      <%= f.association :device %>
+
+      <legend class="form-section">
+        <i class="fa fa-home"></i> Equipos del cliente
+      </legend>
+
+      <div class="form-group row string required">
+        <%= f.input :router_model, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.input :router_serial_number, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+      </div>
+
+      <div class="form-group row string required">
+        <%= f.input :wifi_ssid, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, input_html: { autocomplete: 'off' } %>
+        <%= f.input :wifi_password, as: :string, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+      </div>
+
+      <div class="form-group row string required">
+        <%= f.input :cable_length, as: :string, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, input_html: { class: 'mask-meters' } %>
+        <%= f.input :plug_adapter_quantity, as: :string, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, input_html: { class: 'mask-numeric' } %>
+      </div>
+
+      <div class="form-group row string required">
+        <%= f.association :balancer, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.association :support_type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+      </div>
+
+      <div class="form-group row string required">
+        <%= f.association :ground_wire_setup_type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.association :surge_protector_setup_type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <div class="float-right">
+        <%= link_to t('.cancel'), technical_services_path, class: 'btn btn-secondary' %>
+        <%= f.button :submit, t('.submit'), class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
 <% end %>
