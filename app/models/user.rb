@@ -5,5 +5,7 @@ class User < ApplicationRecord
 
   belongs_to :group
 
+  belongs_to :technician, optional: true
+
   validates :group, presence: true
 end

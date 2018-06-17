@@ -7,6 +7,7 @@ es-AR:
         cable_length: 'Longitud de cable'
         city: 'Ciudad'
         client: 'Cliente'
+        corporate_cellphones: 'Celulares de la empresa'
         departure_time: 'Hora de salida'
         device: 'Antena'
         equipment_cost: 'Costo de equipos'
@@ -20,12 +21,13 @@ es-AR:
         router_serial_number: 'Número de serie del router'
         support_type: 'Tipo de soporte'
         surge_protector_setup_type: 'Estabilizador de tensión / UPS'
-        technician: 'Técnico'
+        technicians: 'Técnicos'
         tower: 'Torre'
         transmitter: 'Emisora'
         wifi_password: 'Contraseña Wi-Fi'
         wifi_ssid: 'SSID Wi-Fi'
         work_order_number: 'Orden de trabajo'
+        work_types: 'Tipos de trabajo'
 
     errors:
       models:
@@ -33,6 +35,8 @@ es-AR:
           attributes:
             corporate_cellphones:
               empty_corporate_cellphones: 'no puede estar vacío'
+            technicians:
+              empty_technicians: 'no puede estar vacío'
             work_types:
               empty_work_types: 'no puede estar vacío'
 

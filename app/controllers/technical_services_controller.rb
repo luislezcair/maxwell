@@ -22,8 +22,6 @@ class TechnicalServicesController < ApplicationController
   # POST /technical_services
   def create
     @technical_service = TechnicalService.new(technical_service_params)
-    # FIXME: move default values to model
-    @technical_service.datetime = Time.current
     if @technical_service.save
       # TODO: redirect to edit page
       # redirect_to @technical_service
@@ -54,11 +52,13 @@ class TechnicalServicesController < ApplicationController
   def technical_service_params
     params.require(:technical_service)
           .permit(:work_order_number, :device_id, :client_id, :plan_service_id,
-                  :router_model, :router_serial_number, :technician_id,
+                  :router_model, :router_serial_number,
                   :wifi_ssid, :wifi_password, :arrival_time, :departure_time,
                   :cable_length, :plug_adapter_quantity, :google_maps_url,
                   :labour_cost, :equipment_cost, :observations, :city_id,
                   :ground_wire_setup_type_id, :surge_protector_setup_type_id,
-                  :support_type_id, :balancer_id, :transmitter_id, :tower_id)
+                  :support_type_id, :balancer_id, :transmitter_id, :tower_id,
+                  work_type_ids: [], corporate_cellphone_ids: [],
+                  technician_ids: [])
   end
 end

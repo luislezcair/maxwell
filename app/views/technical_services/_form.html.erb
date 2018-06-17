@@ -17,13 +17,14 @@
         <i class="fa fa-user"></i> Servicio Técnico
       </legend>
 
-      <%= f.input :work_order_number, as: :string, input_html: { class: 'mask-numeric' } %>
-      <%= f.association :technician %>
+      <%= f.input :work_order_number, as: :string, input_html: { class: 'mask-numeric', value: f.object.work_order_number&.zero? ? '' : f.object.work_order_number } %>
+
+      <%= two_column_multiple_choice_for(f, :technicians, required: true, default: f.object.new_record? && f.object.technicians.empty? ? current_user.technician : nil) %>
 
       <div class="form-group row string required">
         <%= f.input :arrival_time, as: :string, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } do %>
           <div class="input-group">
-            <%= f.input_field :arrival_time, as: :string, class: 'form-control mask-time', placeholder: 'HH:MM' %>
+            <%= f.input_field :arrival_time, as: :string, class: 'form-control mask-time', placeholder: 'HH:MM', value: l(f.object.arrival_time, format: :short_time, default: '') %>
             <div class="input-group-append">
               <span class="input-group-text">
                 <i class="fa fa-clock-o"></i>
@@ -35,7 +36,7 @@
 
         <%= f.input :departure_time, as: :string, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } do %>
           <div class="input-group">
-            <%= f.input_field :departure_time, as: :string, class: 'form-control mask-time', placeholder: 'HH:MM' %>
+            <%= f.input_field :departure_time, as: :string, class: 'form-control mask-time', placeholder: 'HH:MM', value: l(f.object.departure_time, format: :short_time, default: '') %>
             <div class="input-group-append">
               <span class="input-group-text">
                 <i class="fa fa-clock-o"></i>
@@ -45,6 +46,8 @@
           </div>
         <% end %>
       </div>
+
+      <%= two_column_multiple_choice_for(f, :work_types, required: true) %>
 
       <%= f.input :google_maps_url do %>
         <div class="input-group">
@@ -86,6 +89,8 @@
       <%= f.association :tower %>
       <%= f.association :transmitter %>
       <%= f.association :device %>
+
+      <%= two_column_multiple_choice_for(f, :corporate_cellphones, required: true) %>
 
       <legend class="form-section">
         <i class="fa fa-home"></i> Equipos del cliente

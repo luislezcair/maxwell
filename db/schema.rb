@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_13_151600) do
+ActiveRecord::Schema.define(version: 2018_06_17_030721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,15 +155,15 @@ ActiveRecord::Schema.define(version: 2018_06_13_151600) do
     t.integer "ground_wire_setup_type_id"
     t.integer "surge_protector_setup_type_id"
     t.datetime "datetime", null: false
-    t.integer "technician_id", null: false
     t.integer "device_id"
   end
 
   create_table "technicians", force: :cascade do |t|
-    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_technicians_on_name", unique: true
+    t.string "firstname", default: "", null: false
+    t.string "lastname", default: "", null: false
+    t.index ["firstname", "lastname"], name: "index_technicians_on_firstname_and_lastname", unique: true
   end
 
   create_table "towers", force: :cascade do |t|
@@ -198,6 +198,7 @@ ActiveRecord::Schema.define(version: 2018_06_13_151600) do
     t.datetime "updated_at", null: false
     t.boolean "active", default: true, null: false
     t.integer "group_id"
+    t.integer "technician_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

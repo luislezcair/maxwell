@@ -8,14 +8,21 @@ describe Technician do
     expect(b).to be_valid
   end
 
-  it 'is invalid without a name' do
-    b = build(:technician, name: nil)
+  it 'is invalid without a firstname' do
+    b = build(:technician, firstname: nil)
+    expect(b).to_not be_valid
+  end
+
+  it 'is invalid without a lastname' do
+    b = build(:technician, lastname: nil)
     expect(b).to_not be_valid
   end
 
   it 'is invalid without a unique name' do
     b = create(:technician)
-    b2 = build(:technician, name: b.name.upcase)
+    b2 = build(:technician,
+               firstname: b.firstname.upcase,
+               lastname: b.lastname.upcase)
     expect(b2).to_not be_valid
   end
 end

@@ -3,4 +3,10 @@ class CorporateCellphone < ApplicationRecord
            dependent: :restrict_with_error
 
   validates :phone, presence: true, uniqueness: true
+
+  scope :sorted, -> { order(:phone) }
+
+  def to_label
+    phone
+  end
 end

@@ -224,7 +224,7 @@ SimpleForm.setup do |config|
   end
 
   # horizontal input for inline radio buttons and check boxes
-  config.wrappers :horizontal_collection_inline, item_wrapper_class: 'form-check form-check-inline', tag: 'div', class: 'form-group row', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
+  config.wrappers :horizontal_collection_inline, item_wrapper_class: 'form-check form-check-inline form-check-inline-align', tag: 'div', class: 'form-group row', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.optional :readonly
     b.use :label, class: 'col-sm-3 form-control-label'

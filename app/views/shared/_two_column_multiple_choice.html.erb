@@ -1,0 +1,36 @@
+<div class="form-group row check_boxes required">
+  <%= f.label association, required: required, class: 'col-sm-3 form-control-label check_boxes' %>
+
+  <% field_name = "#{f.object_name}[#{association.to_s.singularize}_ids][]" %>
+  <% is_invalid = f.object.errors.has_key?(association) %>
+
+  <div class="col-sm-9">
+    <div class="row">
+      <input type="hidden" value="" name="<%= field_name  %>">
+
+      <% option_groups.each do |group| %>
+        <div class="col-sm-6">
+          <% group.each do |option| %>
+            <% field_id = "#{f.object_name}_#{association.to_s.singularize}_ids_#{option.id}" %>
+            <% selected = f.object.try(association).include?(option) || option.eql?(default) %>
+
+            <div class="form-check form-check-inline form-check-inline-align">
+              <input type="checkbox"
+                     class="form-check-input check_boxes<%= required ? ' required' : '' %><%= is_invalid ? ' is-invalid' : '' %>"
+                     <%= required ? 'aria-required=true required=required' : '' %>
+                     <%= is_invalid ? 'aria-invalid=true' : '' %>
+                     <%= selected ? 'checked=checked' : '' %>
+                     id="<%= field_id %>"
+                     name="<%= field_name %>"
+                     value="<%= option.id %>">
+
+              <label class="collection_check_boxes" for="<%= field_id %>"><%= display_label_for(option) %></label>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <%= f.full_error(association, class: 'invalid-feedback d-block') if is_invalid %>
+  </div>
+</div>

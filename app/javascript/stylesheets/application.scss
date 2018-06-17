@@ -17,3 +17,13 @@
 input.mask-time {
   text-align: right;
 }
+
+.form-check-inline-align {
+  display: flex;
+  align-items: flex-start;
+
+  input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+  }
+}

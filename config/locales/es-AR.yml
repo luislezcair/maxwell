@@ -1,0 +1,4 @@
+es-AR:
+  time:
+    formats:
+      short_time: '%H:%M'

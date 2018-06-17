@@ -7,6 +7,8 @@ const maskDefaults = {
     radixPoint: ',',
     digits: 2,
     suffix: ' m',
+    removeMaskOnSubmit: true,
+    unmaskAsNumber: true,
   },
   shortTime: { alias: 'datetime', inputFormat: 'HH:MM' },
   currency: {
@@ -14,6 +16,8 @@ const maskDefaults = {
     prefix: '',
     groupSeparator: '.',
     radixPoint: ',',
+    removeMaskOnSubmit: true,
+    unmaskAsNumber: true,
   },
 };
 
