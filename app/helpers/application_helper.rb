@@ -30,4 +30,12 @@ module ApplicationHelper
     return object.name if object.respond_to?(:name)
     object.to_s
   end
+
+  # Produce un script que actualiza el historial de navegación. Se utiliza para
+  # actualizar la URL de la barra de direcciones del navegador cuando el usuario
+  # navega con los enlaces de páginas y ordenamiento de columnas.
+  #
+  def render_turbolinks_update
+    render 'shared/turbolinks_update_history'
+  end
 end

@@ -27,3 +27,41 @@ input.mask-time {
     height: 18px;
   }
 }
+
+ul.pagination {
+  justify-content: center;
+  margin-top: 30px;
+}
+
+a {
+  &.disabled {
+    pointer-events: none;
+    color: rgb(200, 206, 211);
+  }
+}
+
+.card-header {
+  &.data-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .title {
+      text-transform: uppercase;
+      color: rgb(92, 104, 115);
+      font-size: 0.98em;
+    }
+  }
+}
+
+table {
+  &.table-maxwell-data {
+    margin-bottom: 0px;
+
+    .page-entries-info {
+      background-color: rgb(240, 243, 245);
+      color: rgb(92, 104, 115);
+      text-align: right;
+    }
+  }
+}

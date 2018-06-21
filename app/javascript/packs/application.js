@@ -37,9 +37,26 @@ document.addEventListener('turbolinks:load', () => {
   $('.sidebar').sidebar();
   $('.aside-menu')['aside-menu']();
 
+  $('[data-toggle="tooltip"]').tooltip();
+
   // Crear y disparar un evento para el controlador y la acción actual
   const body = document.querySelector('body');
   const { action, controller } = body.dataset;
   const loadEvent = new Event(`${controller}:${action}:load`);
   document.dispatchEvent(loadEvent);
+});
+
+// Ocultamos los tooltips porque al navegar atrás persisten en la página
+document.addEventListener('turbolinks:before-cache', () => {
+  $('[data-toggle="tooltip"]').tooltip('hide');
+});
+
+// Este evento se dispara cuando se termina de cargar una página de una tabla
+// de datos con Kaminari y rails-ujs.
+document.addEventListener('maxwell:page_load', (e) => {
+  Turbolinks
+    .controller
+    .pushHistoryWithLocationAndRestorationIdentifier(e.detail.url, Turbolinks.uuid());
+
+  $('[data-toggle="tooltip"]').tooltip();
 });

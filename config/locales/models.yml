@@ -1,6 +1,12 @@
 es-AR:
   activerecord:
     attributes:
+      city:
+        name: 'Ciudad'
+      client:
+        name: 'Cliente'
+      plan_service:
+        name: 'Servicio'
       technical_service:
         arrival_time: 'Hora de llegada'
         balancer: 'Balanceador'
@@ -8,6 +14,7 @@ es-AR:
         city: 'Ciudad'
         client: 'Cliente'
         corporate_cellphones: 'Celulares de la empresa'
+        datetime: 'Fecha y Hora'
         departure_time: 'Hora de salida'
         device: 'Antena'
         equipment_cost: 'Costo de equipos'
@@ -41,4 +48,6 @@ es-AR:
               empty_work_types: 'no puede estar vacío'
 
     models:
-      technical_service: 'Servicio Técnico'
+      technical_service:
+        one: 'Servicio Técnico'
+        other: 'Servicios Técnicos'

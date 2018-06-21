@@ -2,3 +2,4 @@ es-AR:
   time:
     formats:
       short_time: '%H:%M'
+      short_datetime: '%d de %b - %H:%M'

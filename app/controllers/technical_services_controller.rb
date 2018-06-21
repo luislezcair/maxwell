@@ -5,6 +5,7 @@ class TechnicalServicesController < ApplicationController
   # GET /technical_services
   def index
     @q = TechnicalService.ransack(params[:q])
+    @q.sorts = 'datetime desc' if @q.sorts.empty?
     @technical_services = @q.result.page(params[:page])
   end
 

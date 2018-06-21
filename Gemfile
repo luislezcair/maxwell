@@ -56,7 +56,7 @@ group :development do
   # Favicon generator
   gem 'rails_real_favicon'
 
-  # gem 'i18n-debug'
+  gem 'i18n-debug'
 end
 
 group :development, :test do

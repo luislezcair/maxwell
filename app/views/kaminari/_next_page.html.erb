@@ -1,0 +1,5 @@
+<li class="page-item">
+  <%= link_to url, rel: 'next', remote: remote, class: "page-link#{ current_page.last? ? ' disabled' : '' }" do %>
+    <i class="fa fa-caret-right fa-lg"></i>
+  <% end %>
+</li>

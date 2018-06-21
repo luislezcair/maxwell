@@ -1,5 +1,7 @@
 require_relative 'boot'
 
+ENV['RANSACK_FORM_BUILDER'] = '::SimpleForm::FormBuilder'
+
 require "rails"
 # Pick the frameworks you want:
 require "active_model/railtie"

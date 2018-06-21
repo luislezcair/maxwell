@@ -1,45 +1,17 @@
 <div class="card">
-  <div class="card-header">
-    <%= t('.header') %>
+  <div class="card-header data-header">
+    <div class="title"><%= t('.header') %></div>
+
+    <div>
+      <%= link_to new_technical_service_path, class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.new') } do %>
+        <i class="fa fa-plus"></i>
+      <% end %>
+    </div>
   </div>
 
   <div class="card-body">
-    <table class="table table-responsive-sm table-striped table-hover">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Fecha</th>
-          <th>Ciudad</th>
-          <th>Cliente</th>
-          <th>Nº de orden de trabajo</th>
-          <th>Plan / Servicio</th>
-          <th></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @technical_services.each_with_index do |ts, i| %>
-          <tr>
-            <td><%= i + 1 %></td>
-            <td><%= l(ts.datetime, format: :short) %></td>
-            <td><%= ts.city.name %></td>
-            <td><%= ts.client.name %></td>
-            <td><%= ts.work_order_number %></td>
-            <td><%= ts.plan_service.try(:name) %></td>
-            <td>
-              <%= link_to edit_technical_service_path(ts), class: 'btn btn-xs btn-primary' do %>
-                <i class="fa fa-pencil"></i>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <div class="float-right">
-      <%= link_to new_technical_service_path, class: 'btn btn-primary' do %>
-        <i class="fa fa-plus"></i> Nuevo servicio
-      <% end %>
+    <div id="technical-services-table-container">
+      <%= render 'technical_services_table' %>
     </div>
   </div>
 </div>
