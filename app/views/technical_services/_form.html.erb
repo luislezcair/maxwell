@@ -14,7 +14,7 @@
       <%= f.association :plan_service %>
 
       <legend class="form-section">
-        <i class="fa fa-user"></i> <%= t('.section.technical_service') %>
+        <i class="fa fa-wrench"></i> <%= t('.section.technical_service') %>
       </legend>
 
       <%= f.input :work_order_number, as: :string, input_html: { class: 'mask-numeric', value: f.object.work_order_number&.zero? ? '' : f.object.work_order_number } %>
@@ -83,7 +83,7 @@
       <%= f.input :observations, as: :text %>
 
       <legend class="form-section">
-        <i class="fa fa-user"></i> <%= t('.section.company_equipment') %>
+        <i class="fa fa-server"></i> <%= t('.section.company_equipment') %>
       </legend>
 
       <%= f.association :tower %>

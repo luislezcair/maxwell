@@ -3,6 +3,10 @@
     <div class="title"><%= t('.header') %></div>
 
     <div>
+      <%= link_to technical_services_path, class: 'btn btn-sm btn-secondary', data: { toggle: 'tooltip', title: t('.tooltip.index') } do %>
+        <i class="fa fa-list"></i>
+      <% end %>
+
       <%= link_to edit_technical_service_path(@technical_service), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
         <i class="fa fa-pencil"></i>
       <% end %>
@@ -34,7 +38,7 @@
     </table>
 
     <legend class="form-section">
-      <i class="fa fa-user"></i> <%= t('.section.technical_service') %>
+      <i class="fa fa-wrench"></i> <%= t('.section.technical_service') %>
     </legend>
 
     <table class="table table-sm table-details table-details-lg">
@@ -106,7 +110,7 @@
     </table>
 
     <legend class="form-section">
-      <i class="fa fa-user"></i> <%= t('.section.company_equipment') %>
+      <i class="fa fa-server"></i> <%= t('.section.company_equipment') %>
     </legend>
 
     <table class="table table-sm table-details table-details-sm">
@@ -190,6 +194,10 @@
 
   <div class="card-footer">
     <div class="float-right">
+      <%= link_to technical_services_path, class: 'btn btn-sm btn-secondary', data: { toggle: 'tooltip', title: t('.tooltip.index') } do %>
+        <i class="fa fa-list"></i>
+      <% end %>
+
       <%= link_to edit_technical_service_path(@technical_service), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
         <i class="fa fa-pencil"></i>
       <% end %>

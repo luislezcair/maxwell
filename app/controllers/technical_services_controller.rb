@@ -24,9 +24,7 @@ class TechnicalServicesController < ApplicationController
   def create
     @technical_service = TechnicalService.new(technical_service_params)
     if @technical_service.save
-      # TODO: redirect to edit page
-      # redirect_to @technical_service
-      redirect_to technical_services_path
+      redirect_to @technical_service
     else
       render :new, alert: :error
     end
@@ -35,7 +33,7 @@ class TechnicalServicesController < ApplicationController
   # PUT/PATCH /technical_services/1
   def update
     if @technical_service.update(technical_service_params)
-      redirect_to technical_services_path
+      redirect_to @technical_service
     else
       render :edit, alert: :error
     end

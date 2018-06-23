@@ -23,6 +23,7 @@ es-AR:
       header: 'Servicio Técnico'
       tooltip:
         edit: 'Editar'
+        index: 'Volver'
     technical_services_table:
       tooltip:
         edit: 'Editar servicio'
