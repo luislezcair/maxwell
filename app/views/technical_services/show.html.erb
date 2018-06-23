@@ -1,0 +1,198 @@
+<div class="card">
+  <div class="card-header data-header">
+    <div class="title"><%= t('.header') %></div>
+
+    <div>
+      <%= link_to edit_technical_service_path(@technical_service), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+        <i class="fa fa-pencil"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <legend class="form-section">
+      <i class="fa fa-user"></i> <%= t('.section.client') %>
+    </legend>
+
+    <table class="table table-sm table-details table-details-sm">
+      <tbody>
+        <tr>
+          <th><%= t_model('client') %></th>
+          <td><%= @technical_service.client.name %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('city') %></th>
+          <td><%= @technical_service.city.name %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('plan_service') %></th>
+          <td><%= @technical_service.plan_service&.name || '-' %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <legend class="form-section">
+      <i class="fa fa-user"></i> <%= t('.section.technical_service') %>
+    </legend>
+
+    <table class="table table-sm table-details table-details-lg">
+      <tbody>
+        <tr>
+          <th><%= t_model('work_order_number') %></th>
+          <td><%= @technical_service.work_order_number %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('technicians') %></th>
+          <td>
+            <ul class="simple-list">
+              <% @technical_service.technicians.each do |t| %>
+                <li><%= t.name %></li>
+              <% end %>
+            </ul>
+          </td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('arrival_time') %></th>
+          <td><%= l(@technical_service.arrival_time, format: :short_time) %></td>
+
+          <th><%= t_model('departure_time') %></th>
+          <td><%= l(@technical_service.departure_time, format: :short_time) %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('work_types') %></th>
+          <td>
+            <ul class="simple-list">
+              <% @technical_service.work_types.each do |wt| %>
+                <li><%= wt.name %></li>
+              <% end %>
+            </ul>
+          </td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('labour_cost') %></th>
+          <td><%= number_to_currency(@technical_service.labour_cost) %></td>
+
+          <th><%= t_model('equipment_cost') %></th>
+          <td><%= number_to_currency(@technical_service.equipment_cost) %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('google_maps_url') %></th>
+          <td colspan="3">
+            <% if @technical_service.google_maps_url.present? %>
+              <a href="<%= @technical_service.google_maps_url %>" target="_blank">
+                <%= truncate(@technical_service.google_maps_url, length: 50) %>
+                <sup><i class="fa fa-external-link"></i></sup>
+              </a>
+            <% else %>
+              -
+            <% end %>
+          </td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('observations') %></th>
+          <td colspan="3">
+            <%= @technical_service.observations %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <legend class="form-section">
+      <i class="fa fa-user"></i> <%= t('.section.company_equipment') %>
+    </legend>
+
+    <table class="table table-sm table-details table-details-sm">
+      <tbody>
+        <tr>
+          <th><%= t_model('tower') %></th>
+          <td><%= @technical_service.tower&.name || '-' %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('transmitter') %></th>
+          <td><%= @technical_service.transmitter&.name || '-' %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('device') %></th>
+          <td><%= @technical_service.device&.name || '-' %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('corporate_cellphones') %></th>
+          <td>
+            <ul class="simple-list">
+              <% @technical_service.corporate_cellphones.each do |cc| %>
+                <li><%= cc.phone %></li>
+              <% end %>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <legend class="form-section">
+      <i class="fa fa-home"></i> <%= t('.section.client_equipment') %>
+    </legend>
+
+    <table class="table table-sm table-details">
+      <tbody>
+        <tr>
+          <th><%= t_model('router_model') %></th>
+          <td><%= default_on_blank(@technical_service.router_model) %></td>
+
+          <th><%= t_model('router_serial_number') %></th>
+          <td><%= default_on_blank(@technical_service.router_serial_number) %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('wifi_ssid') %></th>
+          <td><%= default_on_blank(@technical_service.wifi_ssid) %></td>
+
+          <th><%= t_model('wifi_password') %></th>
+          <td><%= default_on_blank(@technical_service.wifi_password) %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('cable_length') %></th>
+          <td><%= number_with_delimiter(@technical_service.cable_length) %> m.</td>
+
+          <th><%= t_model('plug_adapter_quantity') %></th>
+          <td><%= @technical_service.plug_adapter_quantity %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('balancer') %></th>
+          <td><%= default_on_blank(@technical_service.balancer&.name) %></td>
+
+          <th><%= t_model('support_type') %></th>
+          <td><%= default_on_blank(@technical_service.support_type&.name) %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('ground_wire_setup_type') %></th>
+          <td><%= default_on_blank(@technical_service.ground_wire_setup_type&.name) %></td>
+
+          <th><%= t_model('surge_protector_setup_type') %></th>
+          <td><%= default_on_blank(@technical_service.surge_protector_setup_type&.name) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card-footer">
+    <div class="float-right">
+      <%= link_to edit_technical_service_path(@technical_service), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+        <i class="fa fa-pencil"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

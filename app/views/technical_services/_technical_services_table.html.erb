@@ -7,21 +7,26 @@
       <th><%= sort_link(@q, :client_name, {}, remote: true) %></th>
       <th><%= sort_link(@q, :work_order_number, {}, remote: true) %></th>
       <th><%= sort_link(@q, :plan_service_name, {}, remote: true) %></th>
-      <th></th>
+      <th class="action-column"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @technical_services.each_with_index do |ts, i| %>
+    <% @technical_services.each_with_index do |ts, index| %>
       <tr>
-        <td><%= i + 1 %></td>
+        <td><%= @technical_services.offset_value + index + 1 %></td>
         <td><%= l(ts.datetime, format: :short_datetime) %></td>
         <td><%= ts.city.name %></td>
         <td><%= ts.client.name %></td>
         <td><%= ts.work_order_number %></td>
         <td><%= ts.plan_service.try(:name) %></td>
-        <td>
-          <%= link_to edit_technical_service_path(ts), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+
+        <td class="align-right">
+          <%= link_to technical_service_path(ts), class: 'btn btn-sm btn-outline-success', data: { toggle: 'tooltip', title: t('.tooltip.show') } do %>
+            <i class="fa fa-eye"></i>
+          <% end %>
+
+          <%= link_to edit_technical_service_path(ts), class: 'btn btn-sm btn-outline-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
             <i class="fa fa-pencil"></i>
           <% end %>
         </td>

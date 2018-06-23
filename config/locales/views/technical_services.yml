@@ -4,8 +4,13 @@ es-AR:
       form:
         edit_header: 'Editar Servicio Técnico'
     form:
-      submit: 'Guardar'
       cancel: 'Cancelar'
+      submit: 'Guardar'
+      section: &form_sections
+        client: 'Datos del cliente'
+        client_equipment: 'Equipos del cliente'
+        company_equipment: 'Equipos de la empresa'
+        technical_service: 'Servicio Técnico'
     index:
       header: 'Servicios Técnicos'
       tooltip:
@@ -13,6 +18,12 @@ es-AR:
     new:
       form:
         new_header: 'Registrar Servicio Técnico'
+    show:
+      section: *form_sections
+      header: 'Servicio Técnico'
+      tooltip:
+        edit: 'Editar'
     technical_services_table:
       tooltip:
         edit: 'Editar servicio'
+        show: 'Ver detalles'

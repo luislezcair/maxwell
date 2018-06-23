@@ -1,3 +1,23 @@
+@import 'colors';
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 400;
+  font-style: normal;
+  src: local('Lato'), url('../fonts/Lato-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-weight: 700;
+  font-style: normal;
+  src: local('Lato'), url('../fonts/Lato-Bold.ttf') format('truetype');
+}
+
+body {
+  font-family: Lato, sans-serif;
+}
+
 .app-header .nav-item .nav-link > .img-avatar {
   margin: 0 5px;
 }
@@ -7,10 +27,10 @@
   font-size: 0.85em;
   font-weight: bold;
   letter-spacing: 0.1em;
-  color: rgb(32, 168, 216);
+  color: $color-blue;
 
   i.fa {
-    color: rgb(115, 129, 143);
+    color: $color-gray-600;
   }
 }
 
@@ -36,7 +56,7 @@ ul.pagination {
 a {
   &.disabled {
     pointer-events: none;
-    color: rgb(200, 206, 211);
+    color: $color-gray-300;
   }
 }
 
@@ -48,7 +68,7 @@ a {
 
     .title {
       text-transform: uppercase;
-      color: rgb(92, 104, 115);
+      color: $color-gray-700;
       font-size: 0.98em;
     }
   }
@@ -59,9 +79,46 @@ table {
     margin-bottom: 0px;
 
     .page-entries-info {
-      background-color: rgb(240, 243, 245);
-      color: rgb(92, 104, 115);
+      background-color: $color-gray-100;
+      color: $color-gray-700;
       text-align: right;
     }
+
+    th.action-column {
+      width: 10%;
+    }
+  }
+}
+
+.align-right {
+  text-align: right;
+}
+
+.table-details {
+  th {
+    color: $color-gray-600;
+    font-weight: normal;
+  }
+
+  th, td {
+    border-top: none;
+  }
+}
+
+.table-details-sm {
+  width: 30%;
+}
+
+
+.table-details-lg {
+  width: 60%;
+}
+
+ul.simple-list {
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: block;
   }
 }

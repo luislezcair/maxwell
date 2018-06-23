@@ -4,17 +4,17 @@
 
     <div class="card-body">
       <legend class="form-section">
-        <i class="fa fa-user"></i> Datos del cliente
+        <i class="fa fa-user"></i> <%= t('.section.client') %>
       </legend>
 
-      <%= f.association :city %>
-
       <%= f.association :client %>
+
+      <%= f.association :city %>
 
       <%= f.association :plan_service %>
 
       <legend class="form-section">
-        <i class="fa fa-user"></i> Servicio Técnico
+        <i class="fa fa-user"></i> <%= t('.section.technical_service') %>
       </legend>
 
       <%= f.input :work_order_number, as: :string, input_html: { class: 'mask-numeric', value: f.object.work_order_number&.zero? ? '' : f.object.work_order_number } %>
@@ -49,17 +49,6 @@
 
       <%= two_column_multiple_choice_for(f, :work_types, required: true) %>
 
-      <%= f.input :google_maps_url do %>
-        <div class="input-group">
-          <%= f.input_field :google_maps_url, class: 'form-control' %>
-          <div class="input-group-append">
-            <span class="input-group-text">
-              <i class="fa fa-map-marker"></i>
-            </span>
-          </div>
-        </div>
-      <% end %>
-
       <div class="form-group row string required">
         <%= f.input :labour_cost, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } do %>
           <div class="input-group">
@@ -80,10 +69,21 @@
         <% end %>
       </div>
 
+      <%= f.input :google_maps_url do %>
+        <div class="input-group">
+          <%= f.input_field :google_maps_url, class: 'form-control' %>
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <i class="fa fa-map-marker"></i>
+            </span>
+          </div>
+        </div>
+      <% end %>
+
       <%= f.input :observations, as: :text %>
 
       <legend class="form-section">
-        <i class="fa fa-user"></i> Equipos de la empresa
+        <i class="fa fa-user"></i> <%= t('.section.company_equipment') %>
       </legend>
 
       <%= f.association :tower %>
@@ -93,7 +93,7 @@
       <%= two_column_multiple_choice_for(f, :corporate_cellphones, required: true) %>
 
       <legend class="form-section">
-        <i class="fa fa-home"></i> Equipos del cliente
+        <i class="fa fa-home"></i> <%= t('.section.client_equipment') %>
       </legend>
 
       <div class="form-group row string required">

@@ -38,4 +38,19 @@ module ApplicationHelper
   def render_turbolinks_update
     render 'shared/turbolinks_update_history'
   end
+
+  # Crea un scope de forma automática para el modelo actual. Es equivalente a
+  # `t('attrib_key', scope: 'activerecord.attributes.technical_service')
+  #
+  def t_model(key)
+    I18n.t(key, scope: "activerecord.attributes.#{controller_name.singularize}")
+  end
+
+  # Devuelve un caracter por defecto para indicar que el campo es nulo o está
+  # vacío. Para ser utilizado en las vistas.
+  #
+  def default_on_blank(attribute, options = { default: '-' })
+    return options[:default] if attribute.blank?
+    attribute
+  end
 end
