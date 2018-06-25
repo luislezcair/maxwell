@@ -12,7 +12,7 @@ es-AR:
         email: Correo electrónico
         encrypted_password: Contraseña cifrada
         failed_attempts: Intentos fallidos
-        last_sign_in_at: Fecha del último ingreso
+        last_sign_in_at: Útlimo ingreso
         last_sign_in_ip: IP del último ingreso
         locked_at: Fecha de bloqueo
         password: Contraseña

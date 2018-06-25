@@ -1,0 +1,52 @@
+<table class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th><%= sort_link(@q, :name, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :username, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :email, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :active, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :group_name, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :last_sign_in_at, {}, remote: true) %></th>
+      <th class="action-column"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each_with_index do |u, index| %>
+      <tr>
+        <td><%= @users.offset_value + index + 1 %></td>
+        <td><%= u.name %></td>
+        <td><%= u.username %></td>
+        <td><%= u.email %></td>
+        <td><%= boolean_display(u.active) %></td>
+        <td><%= u.group.name %></td>
+        <td><%= l(u.last_sign_in_at, format: :short_datetime, default: '-') %></td>
+
+        <td class="align-right">
+          <%= link_to system_user_path(u), class: 'btn btn-sm btn-outline-success', data: { toggle: 'tooltip', title: t('.tooltip.show') } do %>
+            <i class="fa fa-eye"></i>
+          <% end %>
+
+          <%= link_to edit_system_user_path(u), class: 'btn btn-sm btn-outline-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+            <i class="fa fa-pencil"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td class="page-entries-info" colspan="8"><%= page_entries_info @users %></td>
+    </tr>
+
+    <% if @users.total_pages > 1 %>
+      <tr>
+        <td colspan="8">
+          <%= paginate @users, remote: true %>
+        </td>
+      </tr>
+    <% end %>
+  </tfoot>
+</table>

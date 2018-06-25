@@ -1,0 +1,13 @@
+es-AR:
+  system:
+    groups:
+      edit:
+        form:
+          edit_header: 'Editar grupo'
+      form:
+        cancel: 'Cancelar'
+        submit: 'Guardar'
+      index:
+        header: 'Grupos y permisos'
+        tooltip:
+          new: 'Nuevo grupo'

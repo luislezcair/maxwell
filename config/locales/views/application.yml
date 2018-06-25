@@ -1,4 +1,11 @@
 es-AR:
+  boolean:
+    bno: 'No'
+    byes: 'Sí'
+  common:
+    nav:
+      groups: 'Grupos y Permisos'
+      users: 'Usuarios'
   layouts:
     application:
       account: 'Cuenta'

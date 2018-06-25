@@ -18,6 +18,12 @@ body {
   font-family: Lato, sans-serif;
 }
 
+main {
+  .container-fluid {
+    margin-top: 32px;
+  }
+}
+
 .app-header .nav-item .nav-link > .img-avatar {
   margin: 0 5px;
 }
@@ -46,6 +52,10 @@ input.mask-time {
     width: 18px;
     height: 18px;
   }
+}
+
+.form-check-no-padd {
+  padding-left: 0;
 }
 
 ul.pagination {

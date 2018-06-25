@@ -47,7 +47,7 @@
         <li class="nav-item d-md-down-none">
           <a class="nav-link" href="#">
             <i class="icon-bell"></i>
-            <span class="badge badge-pill badge-danger">5</span>
+            <%# <span class="badge badge-pill badge-danger">5</span> %>
           </a>
         </li>
         <li class="nav-item d-md-down-none">
@@ -62,8 +62,8 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/7.jpg' %>" alt="<%= current_user.name %>">
-            <span><%= current_user.name.split.first %></span>
+            <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/7.jpg' %>" alt="<%= current_user.firstname %>">
+            <span><%= current_user.firstname %></span>
           </a>
 
           <div class="dropdown-menu dropdown-menu-right">
@@ -177,9 +177,9 @@
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" href="#">
+                  <%= link_to system_users_path, class: 'nav-link' do %>
                     <i class="nav-icon fa fa-users"></i> <%= t('.nav.users') %>
-                  </a>
+                  <% end %>
                 </li>
 
                 <%# <li class="nav-item"> %>
@@ -404,28 +404,32 @@
 
       <main class="main">
         <!-- Breadcrumb-->
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">Home</li>
+        <%# <ol class="breadcrumb"> %>
+        <%#   <li class="breadcrumb-item">Home</li> %>
 
-          <li class="breadcrumb-item">
-            <a href="#">Admin</a>
-          </li>
+        <%#   <li class="breadcrumb-item"> %>
+        <%#     <a href="#">Admin</a> %>
+        <%#   </li> %>
 
-          <li class="breadcrumb-item active"><%= t('.nav.dashboard') %></li>
+        <%#   <li class="breadcrumb-item active"><%= t('.nav.dashboard') %1></li> %>
 
-          <!-- Breadcrumb Menu-->
-          <li class="breadcrumb-menu d-md-down-none">
-            <div class="btn-group" role="group" aria-label="Button group">
-              <a class="btn" href="#">
-                <i class="icon-speech"></i>
-              </a>
-              <a class="btn" href="./">
-                <i class="icon-graph"></i>  Dashboard</a>
-              <a class="btn" href="#">
-                <i class="icon-settings"></i>  Settings</a>
-            </div>
-          </li>
-        </ol>
+        <%#   <!-- Breadcrumb Menu--> %>
+        <%#   <li class="breadcrumb-menu d-md-down-none"> %>
+        <%#     <div class="btn-group" role="group" aria-label="Button group"> %>
+        <%#       <a class="btn" href="#"> %>
+        <%#         <i class="icon-speech"></i> %>
+        <%#       </a> %>
+        <%#       <a class="btn" href="./"> %>
+        <%#         <i class="icon-graph"></i>  Dashboard</a> %>
+        <%#       <a class="btn" href="#"> %>
+        <%#         <i class="icon-settings"></i>  Settings</a> %>
+        <%#     </div> %>
+        <%#   </li> %>
+        <%# </ol> %>
+
+        <div>
+          <%= yield :header_tabs %>
+        </div>
 
         <div class="container-fluid">
           <div class="animated fadeIn">

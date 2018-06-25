@@ -1,0 +1,36 @@
+es-AR:
+  ransack:
+    attributes:
+      user:
+        group_name: 'Grupo'
+        name: 'Nombre'
+        technician_name: 'Técnico'
+
+  system:
+    users:
+      edit:
+        form:
+          edit_header: 'Editar usuario'
+      form:
+        cancel: 'Cancelar'
+        submit: 'Guardar'
+        section: &form_sections
+          basic: 'Información básica'
+          security: 'Seguridad'
+      index:
+        header: 'Usuarios'
+        tooltip:
+          new: 'Nuevo usuario'
+      new:
+        form:
+          new_header: 'Nuevo usuario'
+      show:
+        header: 'Detalles de usuario'
+        section: *form_sections
+        tooltip:
+          edit: 'Editar'
+          index: 'Volver'
+      users_table:
+        tooltip:
+          edit: 'Editar usuario'
+          show: 'Ver detalles'

@@ -1,0 +1,76 @@
+<div class="card">
+  <div class="card-header data-header">
+    <div class="title"><%= t('.header') %></div>
+
+    <div>
+      <%= link_to system_users_path, class: 'btn btn-sm btn-secondary', data: { toggle: 'tooltip', title: t('.tooltip.index') } do %>
+        <i class="fa fa-list"></i>
+      <% end %>
+
+      <%= link_to edit_system_user_path(@user), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+        <i class="fa fa-pencil"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <legend class="form-section">
+      <i class="fa fa-user"></i> <%= t('.section.basic') %>
+    </legend>
+
+    <table class="table table-sm table-details table-details-sm">
+      <tbody>
+        <tr>
+          <th><%= t_model('name') %></th>
+          <td><%= @user.name %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('username') %></th>
+          <td><%= @user.username %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('email') %></th>
+          <td><%= @user.email %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <legend class="form-section">
+      <i class="fa fa-shield"></i> <%= t('.section.security') %>
+    </legend>
+
+    <table class="table table-sm table-details table-details-sm">
+      <tbody>
+        <tr>
+          <th><%= t_model('group') %></th>
+          <td><%= @user.group.name %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('technician') %></th>
+          <td><%= default_on_blank(@user.technician&.name) %>
+          </td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('active') %></th>
+          <td><%= boolean_display(@user.active) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card-footer">
+    <div class="float-right">
+      <%= link_to system_users_path, class: 'btn btn-sm btn-secondary', data: { toggle: 'tooltip', title: t('.tooltip.index') } do %>
+        <i class="fa fa-list"></i>
+      <% end %>
+
+      <%= link_to edit_system_user_path(@user), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+        <i class="fa fa-pencil"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -18,4 +18,9 @@ Rails.application.routes.draw do
   end
 
   resources :technical_services, concerns: :paginatable
+
+  namespace :system do
+    resources :groups, concerns: :paginatable
+    resources :users, concerns: :paginatable
+  end
 end

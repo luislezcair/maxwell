@@ -7,11 +7,5 @@ class Technician < ApplicationRecord
 
   scope :sorted, -> { order('lastname, firstname ASC') }
 
-  def name
-    "#{lastname}, #{firstname}"
-  end
-
-  def to_label
-    name
-  end
+  include FullNameSearchable
 end

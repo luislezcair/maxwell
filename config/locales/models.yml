@@ -36,6 +36,16 @@ es-AR:
         work_order_number: 'Orden de trabajo'
         work_types: 'Tipos de trabajo'
 
+      user:
+        active: 'Activo'
+        firstname: 'Nombre'
+        group: 'Grupo'
+        lastname: 'Apellido'
+        login: 'Nombre de usuario o correo electrónico'
+        name: 'Nombre'
+        technician: 'Técnico'
+        username: 'Nombre de usuario'
+
     errors:
       models:
         technical_service:
@@ -51,3 +61,6 @@ es-AR:
       technical_service:
         one: 'Servicio Técnico'
         other: 'Servicios Técnicos'
+      user:
+        one: 'Usuario'
+        other: 'Usuarios'

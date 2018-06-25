@@ -53,4 +53,11 @@ module ApplicationHelper
     return options[:default] if attribute.blank?
     attribute
   end
+
+  # Traduce valores true y false a Sí y No, respectivamente.
+  #
+  def boolean_display(value)
+    return I18n.t('boolean.byes') if value
+    I18n.t('boolean.bno')
+  end
 end
