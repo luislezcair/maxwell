@@ -2,9 +2,11 @@
 
 FactoryBot.define do
   factory :user do
-    email 'admin@admin.net'
-    name 'Administrator'
-    password 'admin-123'
+    username 'luis'
+    firstname 'Administrator'
+    lastname 'Admin'
+    email 'admin@example.com'
+    password 'luis-123'
 
     group
   end

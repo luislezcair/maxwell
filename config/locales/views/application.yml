@@ -3,6 +3,7 @@ es-AR:
     bno: 'No'
     byes: 'Sí'
   common:
+    attention_alert: '¡Atención!'
     nav:
       groups: 'Grupos y Permisos'
       users: 'Usuarios'
@@ -19,3 +20,8 @@ es-AR:
         system: 'Sistema'
         technical_services: 'Servicios Técnicos'
         users: 'Usuarios y Grupos'
+
+  unauthorized:
+    manage:
+      all: 'Usted no tiene permiso para acceder a esta función'
+    message: 'Usted no tiene permiso para realizar esta acción'

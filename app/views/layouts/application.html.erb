@@ -432,6 +432,14 @@
         </div>
 
         <div class="container-fluid">
+          <div id="main-application-alert">
+            <% if alert  %>
+              <div class="alert alert-danger" role="alert">
+                <strong><%= t('common.attention_alert') %></strong> <%= alert %>
+              </div>
+            <% end %>
+          </div>
+
           <div class="animated fadeIn">
             <%= yield %>
           </div>

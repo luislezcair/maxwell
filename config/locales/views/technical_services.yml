@@ -25,6 +25,8 @@ es-AR:
         edit: 'Editar'
         index: 'Volver'
     technical_services_table:
+      delete_confirm: '¿Está seguro que desea eliminar este servicio técnico?'
       tooltip:
+        delete: 'Eliminar'
         edit: 'Editar servicio'
         show: 'Ver detalles'

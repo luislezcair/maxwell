@@ -5,6 +5,8 @@ es-AR:
         name: 'Ciudad'
       client:
         name: 'Cliente'
+      group:
+        name: 'Nombre'
       plan_service:
         name: 'Servicio'
       technical_service:
@@ -56,8 +58,13 @@ es-AR:
               empty_technicians: 'no puede estar vacío'
             work_types:
               empty_work_types: 'no puede estar vacío'
+          delete_error: 'No se pudo eliminar este Servicio Técnico'
+          delete_success: 'Se ha eliminado el Servicio Técnico'
 
     models:
+      group:
+        one: 'Grupo'
+        other: 'Grupos'
       technical_service:
         one: 'Servicio Técnico'
         other: 'Servicios Técnicos'

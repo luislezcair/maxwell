@@ -7,8 +7,10 @@
         <i class="fa fa-list"></i>
       <% end %>
 
-      <%= link_to edit_technical_service_path(@technical_service), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
-        <i class="fa fa-pencil"></i>
+      <% if can? :update, @technical_service %>
+        <%= link_to edit_technical_service_path(@technical_service), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -198,8 +200,10 @@
         <i class="fa fa-list"></i>
       <% end %>
 
-      <%= link_to edit_technical_service_path(@technical_service), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
-        <i class="fa fa-pencil"></i>
+      <% if can? :update, @technical_service %>
+        <%= link_to edit_technical_service_path(@technical_service), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
       <% end %>
     </div>
   </div>

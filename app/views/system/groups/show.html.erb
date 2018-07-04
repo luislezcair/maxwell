@@ -1,0 +1,42 @@
+<div class="card">
+  <div class="card-header data-header">
+    <div class="title"><%= t('.header') %></div>
+
+    <div>
+      <%= link_to system_groups_path, class: 'btn btn-sm btn-secondary', data: { toggle: 'tooltip', title: t('.tooltip.index') } do %>
+        <i class="fa fa-list"></i>
+      <% end %>
+
+      <%= link_to edit_system_group_path(@group), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+        <i class="fa fa-pencil"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <legend class="form-section">
+      <i class="fa fa-user"></i> <%= t('.section.basic') %>
+    </legend>
+
+    <table class="table table-sm table-details table-details-sm">
+      <tbody>
+        <tr>
+          <th><%= t_model('name') %></th>
+          <td><%= @group.name %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card-footer">
+    <div class="float-right">
+      <%= link_to system_groups_path, class: 'btn btn-sm btn-secondary', data: { toggle: 'tooltip', title: t('.tooltip.index') } do %>
+        <i class="fa fa-list"></i>
+      <% end %>
+
+      <%= link_to edit_system_group_path(@group), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+        <i class="fa fa-pencil"></i>
+      <% end %>
+    </div>
+  </div>
+</div>

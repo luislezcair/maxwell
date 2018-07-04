@@ -1,0 +1,44 @@
+<table class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data">
+  <thead>
+    <tr>
+      <th class="number-column">#</th>
+      <th><%= sort_link(@q, :name, {}, remote: true) %></th>
+      <%# <th><%= sort_link(@q, :user_count, {}, remote: true) %1></th> %>
+      <th class="action-column"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groups.each_with_index do |g, index| %>
+      <tr>
+        <td><%= @groups.offset_value + index + 1 %></td>
+        <td><%= g.name %></td>
+        <%# <td><%= g.users.count %1></td> %>
+
+        <td class="align-right">
+          <%= link_to system_group_path(g), class: 'btn btn-sm btn-outline-success', data: { toggle: 'tooltip', title: t('.tooltip.show') } do %>
+            <i class="fa fa-eye"></i>
+          <% end %>
+
+          <%= link_to edit_system_group_path(g), class: 'btn btn-sm btn-outline-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+            <i class="fa fa-pencil"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td class="page-entries-info" colspan="3"><%= page_entries_info @groups %></td>
+    </tr>
+
+    <% if @groups.total_pages > 1 %>
+      <tr>
+        <td colspan="3">
+          <%= paginate @groups, remote: true %>
+        </td>
+      </tr>
+    <% end %>
+  </tfoot>
+</table>

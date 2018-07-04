@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_24_212556) do
+ActiveRecord::Schema.define(version: 2018_07_03_232251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2018_06_24_212556) do
   create_table "group_permissions", force: :cascade do |t|
     t.integer "group_id"
     t.integer "permission_id"
+    t.integer "permission_code", default: 0, null: false
     t.index ["group_id", "permission_id"], name: "index_group_permissions_on_group_id_and_permission_id", unique: true
   end
 
@@ -81,9 +82,6 @@ ActiveRecord::Schema.define(version: 2018_06_24_212556) do
     t.string "title"
     t.string "category"
     t.string "code"
-    t.boolean "view"
-    t.boolean "manage"
-    t.boolean "deny"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

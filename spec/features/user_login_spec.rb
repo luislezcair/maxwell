@@ -14,7 +14,7 @@ feature 'User login' do
     visit '/'
 
     within 'form' do
-      fill_in 'user_email', with: user.email
+      fill_in 'user_login', with: user.email
       fill_in 'user_password', with: user.password
       click_button
     end
@@ -28,7 +28,7 @@ feature 'User login' do
     visit '/'
 
     within 'form' do
-      fill_in 'user_email', with: user.email
+      fill_in 'user_login', with: user.email
       fill_in 'user_password', with: user.password
       click_button
     end

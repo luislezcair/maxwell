@@ -7,7 +7,23 @@ es-AR:
       form:
         cancel: 'Cancelar'
         submit: 'Guardar'
+        section: &form_sections
+          basic: 'Información básica'
+          security: 'Seguridad'
       index:
         header: 'Grupos y permisos'
         tooltip:
           new: 'Nuevo grupo'
+      groups_table:
+        tooltip:
+          edit: 'Editar grupo'
+          show: 'Ver detalles'
+      new:
+        form:
+          new_header: 'Nuevo grupo'
+      show:
+        header: 'Detalles del grupo'
+        section: *form_sections
+        tooltip:
+          edit: 'Editar'
+          index: 'Volver'

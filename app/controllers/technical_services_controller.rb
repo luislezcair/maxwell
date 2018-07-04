@@ -1,12 +1,13 @@
 class TechnicalServicesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_technical_service, only: [:show, :edit, :update, :destroy]
+  authorize_resource
 
   # GET /technical_services
   def index
     @q = TechnicalService.ransack(params[:q])
     @q.sorts = 'datetime desc' if @q.sorts.empty?
-    @technical_services = @q.result.page(params[:page])
+    @technical_services = @q.result.page(params[:page]).per(5)
   end
 
   # GET /technical_services/new
@@ -40,7 +41,13 @@ class TechnicalServicesController < ApplicationController
   end
 
   # DELETE /technical_services/1
-  def destroy; end
+  def destroy
+    return unless @technical_service.destroy
+
+    redirect_to index_path_with_params,
+                status: :see_other,
+                flash: { alert: delete_success_msg }
+  end
 
   private
 

@@ -60,4 +60,14 @@ module ApplicationHelper
     return I18n.t('boolean.byes') if value
     I18n.t('boolean.bno')
   end
+
+  # Llama al URL helper pasado como argumento y le agrega los parámetros de
+  # paginación y búsqueda. Se utiliza para que los botones de eliminar mantengan
+  # la vista de la tabal en la página actual con los filtros actuales.
+  #
+  def path_with_parameters(path, args)
+    page = request.path_parameters[:page]
+    q = request.query_parameters[:q]
+    method(path).call(args, page: page, q: q)
+  end
 end

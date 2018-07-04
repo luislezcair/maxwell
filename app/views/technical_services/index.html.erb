@@ -3,8 +3,10 @@
     <div class="title"><%= t('.header') %></div>
 
     <div>
-      <%= link_to new_technical_service_path, class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.new') } do %>
-        <i class="fa fa-plus"></i>
+      <% if can? :create, :technical_service %>
+        <%= link_to new_technical_service_path, class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.new') } do %>
+          <i class="fa fa-plus"></i>
+        <% end %>
       <% end %>
     </div>
   </div>
