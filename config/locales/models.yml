@@ -7,6 +7,8 @@ es-AR:
         name: 'Cliente'
       group:
         name: 'Nombre'
+        permissions: 'Permisos'
+        users: 'Usuarios'
       plan_service:
         name: 'Servicio'
       technical_service:
@@ -60,6 +62,12 @@ es-AR:
               empty_work_types: 'no puede estar vacío'
           delete_error: 'No se pudo eliminar este Servicio Técnico'
           delete_success: 'Se ha eliminado el Servicio Técnico'
+        user:
+          delete_error: 'No se pudo eliminar este usuario'
+          delete_success: 'Se ha eliminado el usuario'
+        group:
+          delete_error: 'No se pudo eliminar este grupo'
+          delete_success: 'Se ha eliminado el grupo'
 
     models:
       group:

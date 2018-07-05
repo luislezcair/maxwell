@@ -7,6 +7,13 @@ es-AR:
     nav:
       groups: 'Grupos y Permisos'
       users: 'Usuarios'
+  enumerize:
+    group_permission:
+      permission_code:
+        deny: 'Denegar'
+        edit: 'Editar'
+        edit_delete: 'Editar y eliminar'
+        view: 'Ver'
   layouts:
     application:
       account: 'Cuenta'

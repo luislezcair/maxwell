@@ -7,8 +7,10 @@
         <i class="fa fa-list"></i>
       <% end %>
 
-      <%= link_to edit_system_user_path(@user), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
-        <i class="fa fa-pencil"></i>
+      <% if can? :update, @user %>
+        <%= link_to edit_system_user_path(@user), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -68,8 +70,10 @@
         <i class="fa fa-list"></i>
       <% end %>
 
-      <%= link_to edit_system_user_path(@user), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
-        <i class="fa fa-pencil"></i>
+      <% if can? :update, @user %>
+        <%= link_to edit_system_user_path(@user), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
       <% end %>
     </div>
   </div>

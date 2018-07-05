@@ -7,8 +7,10 @@
         <i class="fa fa-list"></i>
       <% end %>
 
-      <%= link_to edit_system_group_path(@group), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
-        <i class="fa fa-pencil"></i>
+      <% if can? :update, @group %>
+        <%= link_to edit_system_group_path(@group), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -26,6 +28,26 @@
         </tr>
       </tbody>
     </table>
+
+    <legend class="form-section">
+      <i class="fa fa-lock"></i> <%= t('.section.security') %>
+    </legend>
+
+    <table class="table table-sm table-details table-details-sm">
+      <tbody>
+        <% permissions_by_category(@group).each do |cat, gp| %>
+          <tr>
+            <th colspan="2"><%= cat %></th>
+          </tr>
+            <% gp.each do |gp| %>
+              <tr>
+                <td class="cell-with-margin"><%= gp.permission.title %></td>
+                <td><%= gp.permission_code_text %></td>
+              </tr>
+            <% end %>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 
   <div class="card-footer">
@@ -34,8 +56,10 @@
         <i class="fa fa-list"></i>
       <% end %>
 
-      <%= link_to edit_system_group_path(@group), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
-        <i class="fa fa-pencil"></i>
+      <% if can? :update, @group %>
+        <%= link_to edit_system_group_path(@group), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+          <i class="fa fa-pencil"></i>
+        <% end %>
       <% end %>
     </div>
   </div>

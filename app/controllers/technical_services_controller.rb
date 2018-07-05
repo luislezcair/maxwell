@@ -7,7 +7,7 @@ class TechnicalServicesController < ApplicationController
   def index
     @q = TechnicalService.ransack(params[:q])
     @q.sorts = 'datetime desc' if @q.sorts.empty?
-    @technical_services = @q.result.page(params[:page]).per(5)
+    @technical_services = @q.result.page(params[:page])
   end
 
   # GET /technical_services/new
@@ -42,11 +42,7 @@ class TechnicalServicesController < ApplicationController
 
   # DELETE /technical_services/1
   def destroy
-    return unless @technical_service.destroy
-
-    redirect_to index_path_with_params,
-                status: :see_other,
-                flash: { alert: delete_success_msg }
+    destroy_model(@technical_service)
   end
 
   private

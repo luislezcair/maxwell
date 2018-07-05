@@ -28,16 +28,29 @@ main {
   margin: 0 5px;
 }
 
-.form-section {
+%section-title {
   text-transform: uppercase;
   font-size: 0.85em;
   font-weight: bold;
   letter-spacing: 0.1em;
+}
+
+.form-section {
+  @extend %section-title;
   color: $color-blue;
 
   i.fa {
     color: $color-gray-600;
   }
+}
+
+.form-category-section {
+  @extend %section-title;
+  color: $color-gray-600;
+}
+
+.left-margin {
+  margin-left: 10px;
 }
 
 input.mask-time {
@@ -56,6 +69,15 @@ input.mask-time {
 
 .form-check-no-padd {
   padding-left: 0;
+}
+
+.form-option-padd {
+  padding-left: 1rem;
+  margin-right: 0;
+
+  input[type=radio] {
+    margin-top: 2px;
+  }
 }
 
 ul.pagination {
@@ -116,6 +138,11 @@ table {
 
   th, td {
     border-top: none;
+  }
+
+  td.cell-with-margin {
+    display: block;
+    margin-left: 10px;
   }
 }
 

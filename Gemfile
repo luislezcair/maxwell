@@ -88,6 +88,7 @@ gem 'webpacker-react'
 
 # Better forms
 gem 'simple_form'
+gem 'enumerize'
 
 # Search forms
 gem 'ransack'

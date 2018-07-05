@@ -41,7 +41,9 @@ class System::GroupsController < ApplicationController
   end
 
   # DELETE /system/groups/1
-  def destroy; end
+  def destroy
+    destroy_model(@group)
+  end
 
   private
 
@@ -51,6 +53,8 @@ class System::GroupsController < ApplicationController
 
   def group_params
     params.require(:group)
-          .permit(:name)
+          .permit(:name, group_permissions_attributes: [:id,
+                                                        :permission_id,
+                                                        :permission_code])
   end
 end

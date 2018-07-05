@@ -1,0 +1,9 @@
+<div class="alert alert-danger" role="alert">
+  <strong><%= t('common.attention_alert') %></strong>
+
+  <% if @object.errors.messages[:base].any? %>
+    <%= @object.errors.messages[:base].first %>
+  <% else %>
+    <%= t('delete_error', scope: "activerecord.errors.models.#{@object.model_name.element}") %>
+  <% end %>
+</div>

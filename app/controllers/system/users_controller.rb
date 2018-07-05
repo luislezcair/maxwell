@@ -44,7 +44,9 @@ class System::UsersController < ApplicationController
   end
 
   # DELETE /system/users/1
-  def destroy; end
+  def destroy
+    destroy_model(@user)
+  end
 
   private
 

@@ -70,4 +70,10 @@ module ApplicationHelper
     q = request.query_parameters[:q]
     method(path).call(args, page: page, q: q)
   end
+
+  # Agrupa los permisos por categoría para mostrarlos en el formulario de Grupos
+  #
+  def permissions_by_category(group)
+    group.group_permissions.group_by { |gp| gp.permission.category }
+  end
 end

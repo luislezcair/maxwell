@@ -9,13 +9,15 @@ es-AR:
         submit: 'Guardar'
         section: &form_sections
           basic: 'Información básica'
-          security: 'Seguridad'
+          security: 'Permisos'
       index:
         header: 'Grupos y permisos'
         tooltip:
           new: 'Nuevo grupo'
       groups_table:
+        delete_confirm: '¿Está seguro que desea eliminar este grupo?'
         tooltip:
+          delete: 'Eliminar grupo'
           edit: 'Editar grupo'
           show: 'Ver detalles'
       new:

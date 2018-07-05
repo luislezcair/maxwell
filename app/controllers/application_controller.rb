@@ -17,12 +17,28 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
+  # Comportamiento común cuando se elimina una entidad. Si se eliminó sin
+  # problemas redirige al index.js correspondiente. Si no, renderiza un alert
+  # con la descripción del error.
+  #
+  def destroy_model(model)
+    unless model.destroy
+      @object = model
+      render 'shared/destroy'
+      return
+    end
+
+    redirect_to index_path_with_params,
+                status: :see_other,
+                flash: { alert: delete_success_msg }
+  end
+
   # Contruye la URL para la acción index con los parámetros que vinieron en el
   # request. Esto se utiliza para redirigir utilizando los mismos parámetros que
   # vinieron en el request original.
   #
   def index_path_with_params
-    path_helper = method("#{controller_name}_path")
+    path_helper = method("#{controller_path.tr('/', '_')}_path")
     path_helper.call(request.query_parameters[:page],
                      q: request.query_parameters[:q])
   end

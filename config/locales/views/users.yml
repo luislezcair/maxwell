@@ -31,6 +31,8 @@ es-AR:
           edit: 'Editar'
           index: 'Volver'
       users_table:
+        delete_confirm: '¿Está seguro que desea eliminar este usuario?'
         tooltip:
+          delete: 'Eliminar usuario'
           edit: 'Editar usuario'
           show: 'Ver detalles'

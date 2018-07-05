@@ -8,6 +8,28 @@
       </legend>
 
       <%= f.input :name %>
+
+      <legend class="form-section">
+        <i class="fa fa-lock"></i> <%= t('.section.security') %>
+      </legend>
+
+      <div class="left-margin">
+        <% permissions_by_category(@group).each do |cat, gp| %>
+          <legend class="form-category-section"><%= cat %></legend>
+
+          <%= f.simple_fields_for :group_permissions, gp  do |ff| %>
+            <div class="form-group row string required">
+              <div class="col-sm-3">
+                <%= ff.object.permission.title %>
+                <abbr title="required">*</abbr>
+              </div>
+
+              <%= ff.hidden_field :permission_id %>
+              <%= ff.input :permission_code, as: :radio_buttons, wrapper: :maxwell_horizontal_collection_inline, label: false, grid_wrapper_html: { class: '' } %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
 
     <div class="card-footer">

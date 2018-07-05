@@ -1,9 +1,16 @@
+<div id="alert-message">
+  <% if flash[:alert] %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+</div>
+
 <table class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data">
   <thead>
     <tr>
       <th class="number-column">#</th>
       <th><%= sort_link(@q, :name, {}, remote: true) %></th>
-      <%# <th><%= sort_link(@q, :user_count, {}, remote: true) %1></th> %>
       <th class="action-column"></th>
     </tr>
   </thead>
@@ -13,15 +20,22 @@
       <tr>
         <td><%= @groups.offset_value + index + 1 %></td>
         <td><%= g.name %></td>
-        <%# <td><%= g.users.count %1></td> %>
 
         <td class="align-right">
           <%= link_to system_group_path(g), class: 'btn btn-sm btn-outline-success', data: { toggle: 'tooltip', title: t('.tooltip.show') } do %>
             <i class="fa fa-eye"></i>
           <% end %>
 
-          <%= link_to edit_system_group_path(g), class: 'btn btn-sm btn-outline-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
-            <i class="fa fa-pencil"></i>
+          <% if can? :update, g %>
+            <%= link_to edit_system_group_path(g), class: 'btn btn-sm btn-outline-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+              <i class="fa fa-pencil"></i>
+            <% end %>
+          <% end %>
+
+          <% if can? :manage, g %>
+            <%= link_to path_with_parameters(:system_group_path, g), remote: true, method: :delete, class: 'btn btn-sm btn-outline-danger', data: { toggle: 'tooltip', trigger: 'hover', title: t('.tooltip.delete'), confirm: t('.delete_confirm') } do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
           <% end %>
         </td>
       </tr>
