@@ -10,7 +10,7 @@
     <div class="title"><%= t('.header') %></div>
 
     <div>
-      <% if can? :create, :user %>
+      <% if can? :create, User %>
         <%= link_to new_system_user_path, class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.new') } do %>
           <i class="fa fa-plus"></i>
         <% end %>
