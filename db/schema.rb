@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_03_232251) do
+ActiveRecord::Schema.define(version: 2018_07_08_004734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -169,6 +169,11 @@ ActiveRecord::Schema.define(version: 2018_07_03_232251) do
     t.integer "ucrm_site_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.string "contact_info"
+    t.text "notes"
+    t.decimal "gps_lat", precision: 15, scale: 12, default: "0.0", null: false
+    t.decimal "gps_lon", precision: 15, scale: 12, default: "0.0", null: false
     t.index ["name"], name: "index_towers_on_name", unique: true
     t.index ["ucrm_site_id"], name: "index_towers_on_ucrm_site_id", unique: true
   end

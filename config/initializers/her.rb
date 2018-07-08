@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'ucrm_token_authentication'
+require 'ucrm_response_parser'
 
 Her::API.setup url: 'https://clientes.diezpositivo.com.ar/api/v1.0' do |config|
   # Request
@@ -8,7 +9,7 @@ Her::API.setup url: 'https://clientes.diezpositivo.com.ar/api/v1.0' do |config|
   config.use UcrmTokenAuthentication
 
   # Response
-  config.use Her::Middleware::DefaultParseJSON
+  config.use UcrmResponseParser
 
   if Rails.env.development?
     config.use Faraday::Response::Logger, ActiveSupport::Logger.new(STDOUT)

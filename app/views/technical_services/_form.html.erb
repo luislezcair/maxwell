@@ -7,11 +7,11 @@
         <i class="fa fa-user"></i> <%= t('.section.client') %>
       </legend>
 
-      <%= f.association :client %>
+      <%= f.association :client, collection: sorted_clients  %>
 
-      <%= f.association :city %>
+      <%= f.association :city, collection: sorted_cities %>
 
-      <%= f.association :plan_service %>
+      <%= f.association :plan_service, collection: sorted_plan_services %>
 
       <legend class="form-section">
         <i class="fa fa-wrench"></i> <%= t('.section.technical_service') %>
@@ -86,9 +86,9 @@
         <i class="fa fa-server"></i> <%= t('.section.company_equipment') %>
       </legend>
 
-      <%= f.association :tower %>
-      <%= f.association :transmitter %>
-      <%= f.association :device %>
+      <%= f.association :tower, collection: sorted_towers %>
+      <%= f.association :transmitter, collection: sorted_transmitters %>
+      <%= f.association :device, collection: sorted_devices %>
 
       <%= two_column_multiple_choice_for(f, :corporate_cellphones, required: true) %>
 
@@ -112,13 +112,13 @@
       </div>
 
       <div class="form-group row string required">
-        <%= f.association :balancer, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
-        <%= f.association :support_type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.association :balancer, collection: sorted_balancers, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.association :support_type, collection: sorted_support_types, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
       </div>
 
       <div class="form-group row string required">
-        <%= f.association :ground_wire_setup_type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
-        <%= f.association :surge_protector_setup_type, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.association :ground_wire_setup_type, collection: sorted_ground_wire_setup_types, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.association :surge_protector_setup_type, collection: sorted_surge_protector_setup_types, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
       </div>
     </div>
 
