@@ -95,3 +95,6 @@ gem 'ransack'
 
 # Pagination
 gem 'kaminari'
+
+# REST client library
+gem 'her'
