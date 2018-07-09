@@ -4,6 +4,7 @@
 #
 class UCRM::UCRMBaseModel
   include Her::Model
+  use_api UCRM_API
 
   # Estos atributos hay que inicializarlos con los valores adecuados en cada
   # subclase. @klass es la clase del modelo local y @ucrm_local_field_id es el

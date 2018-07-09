@@ -5,7 +5,5 @@ class Technician < ApplicationRecord
   validates :firstname, uniqueness: { scope: [:lastname],
                                       case_sensitive: false }
 
-  scope :sorted, -> { order('lastname, firstname ASC') }
-
   include FullNameSearchable
 end
