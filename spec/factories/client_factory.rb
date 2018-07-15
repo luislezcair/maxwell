@@ -6,6 +6,7 @@ FactoryBot.define do
     lastname 'Strange'
     number '987654321'
     document_number 23_360_256_499
-    city
+    country
+    province
   end
 end

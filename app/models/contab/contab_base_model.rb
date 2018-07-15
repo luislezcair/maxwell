@@ -16,6 +16,12 @@ class Contab::ContabBaseModel
   # campo que guarda el ID del modelo de Contabilium.
   attr_reader :klass, :contab_local_id_field, :api_name
 
+  # Devuelve true si Contabilium pagina los resultados de la colección.
+  #
+  def self.pageable?
+    false
+  end
+
   def initialize(args = {})
     super(args)
     @api_name = 'Contabilium'

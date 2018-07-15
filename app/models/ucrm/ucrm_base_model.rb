@@ -11,6 +11,12 @@ class UCRM::UCRMBaseModel
   # campo que guarda el ID del modelo de UCRM.
   attr_reader :klass, :ucrm_local_id_field, :api_name
 
+  # Devuelve true si UCRM pagina los resultados de la colección.
+  #
+  def self.pageable?
+    false
+  end
+
   def initialize(args = {})
     super(args)
     @api_name = 'UCRM'

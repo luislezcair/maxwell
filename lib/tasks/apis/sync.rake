@@ -42,6 +42,41 @@ def update_or_create_all(collection)
   end
 end
 
+def single_request_strategy(collection)
+  ActiveRecord::Base.transaction do
+    update_or_create_all(collection)
+  end
+end
+
+# Consulta la primera página de la colección para obtener los primeros
+# resultados y la información sobre el total de elementos y la cantidad por
+# cada página. Con esto calcula el total de páginas y luego consulta las
+# páginas restantes.
+#
+def multiple_request_strategy(klass)
+  page = 1
+  collection = klass.collection(page)
+
+  total = collection.metadata[:total]
+  per_page = collection.metadata[:count]
+  total_pages = total.fdiv(per_page).ceil
+
+  ActiveRecord::Base.transaction do
+    puts "Creating first #{per_page} #{klass.model_name.collection}. "\
+         "Total pages: #{total_pages}."
+    update_or_create_all(collection)
+
+    while page < total_pages
+      page += 1
+      collection = klass.collection(page)
+
+      puts "Creating #{collection.metadata[:count]} "\
+           "#{klass.model_name.collection} on page #{page}."
+      update_or_create_all(collection)
+    end
+  end
+end
+
 namespace :apis do
   desc 'Sync entities from an API endpoint to Maxwell'
 
@@ -51,15 +86,18 @@ namespace :apis do
     klass = args[:model].constantize
 
     # Los modelos de Contabilium tienen un método especial para obtener la
-    # colección de objetos porque usan parámetros y rutas particulares.
-    collection = if klass.respond_to?(:collection)
-                   klass.collection
-                 else
-                   klass.all
-                 end
-
-    ActiveRecord::Base.transaction do
-      update_or_create_all(collection)
+    # colección de objetos porque usan parámetros y rutas particulares y están
+    # paginados.
+    # Si están paginados se consulta cada página.
+    if klass.pageable?
+      multiple_request_strategy(klass)
+    else
+      collection = if klass.respond_to?(:collection)
+                     klass.collection
+                   else
+                     klass.all
+                   end
+      single_request_strategy(collection)
     end
   end
 end
