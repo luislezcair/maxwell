@@ -12,10 +12,4 @@ describe City do
     b = build(:city, name: nil)
     expect(b).to_not be_valid
   end
-
-  it 'is invalid without a unique case-insensitive name' do
-    c = create(:city)
-    b2 = build(:city, name: c.name.upcase)
-    expect(b2).to_not be_valid
-  end
 end

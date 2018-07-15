@@ -9,7 +9,12 @@ class UCRM::UCRMBaseModel
   # Estos atributos hay que inicializarlos con los valores adecuados en cada
   # subclase. @klass es la clase del modelo local y @ucrm_local_field_id es el
   # campo que guarda el ID del modelo de UCRM.
-  attr_reader :klass, :ucrm_local_id_field
+  attr_reader :klass, :ucrm_local_id_field, :api_name
+
+  def initialize(args = {})
+    super(args)
+    @api_name = 'UCRM'
+  end
 
   # Método que debe devolver un modelo del sistema que se corresponda con el de
   # UCRM, rellenando los valores de atributos.

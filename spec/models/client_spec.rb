@@ -8,15 +8,8 @@ describe Client do
     expect(b).to be_valid
   end
 
-  it 'is invalid without a first name' do
-    b = build(:client, firstname: nil)
-    expect(b).to_not be_valid
-  end
-
-  it 'is invalid without a last name' do
-    b = build(:client, lastname: nil)
-    expect(b).to_not be_valid
-  end
+  # TODO: validate that firstname and lastname are present when it is a physical
+  # person, and that company name is present when it is a company.
 
   it 'is invalid without a number' do
     b = build(:client, number: nil)

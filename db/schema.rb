@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_08_004734) do
+ActiveRecord::Schema.define(version: 2018_07_14_215826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "auth_tokens", force: :cascade do |t|
+    t.text "token"
+    t.datetime "expiration_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "balancers", force: :cascade do |t|
     t.string "name", null: false
@@ -26,7 +33,9 @@ ActiveRecord::Schema.define(version: 2018_07_08_004734) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_cities_on_name", unique: true
+    t.integer "province_id"
+    t.integer "ucrm_id"
+    t.integer "contabilium_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -37,6 +46,19 @@ ActiveRecord::Schema.define(version: 2018_07_08_004734) do
     t.integer "contabilium_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "company_name"
+    t.integer "iva_condition", default: 0, null: false
+    t.integer "client_type", default: 0, null: false
+    t.integer "document_type", default: 0, null: false
+    t.bigint "document_number"
+    t.string "phone"
+    t.string "email"
+    t.integer "country_id"
+    t.integer "province_id"
+    t.integer "city_id"
+    t.string "address"
+    t.string "floor_dept"
+    t.text "notes"
     t.index ["ucrm_id"], name: "index_clients_on_ucrm_id", unique: true
   end
 
@@ -45,6 +67,16 @@ ActiveRecord::Schema.define(version: 2018_07_08_004734) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["phone"], name: "index_corporate_cellphones_on_phone", unique: true
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.integer "contabilium_id"
+    t.integer "ucrm_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_countries_on_name", unique: true
   end
 
   create_table "devices", force: :cascade do |t|
@@ -93,6 +125,15 @@ ActiveRecord::Schema.define(version: 2018_07_08_004734) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_plan_services_on_name", unique: true
     t.index ["ucrm_plan_service_id"], name: "index_plan_services_on_ucrm_plan_service_id", unique: true
+  end
+
+  create_table "provinces", force: :cascade do |t|
+    t.integer "country_id"
+    t.string "name"
+    t.integer "contabilium_id"
+    t.integer "ucrm_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "support_types", force: :cascade do |t|

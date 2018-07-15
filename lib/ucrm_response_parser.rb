@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-# Parser para suprimir de la respuesta cualquier atributo que se llame
-# 'attributes' porque rompe la gema Her. TODO: si alguna vez se necesita este
-# atributo hay que procesarlo para cambiarle el nombre en vez de eliminarlo.
+# Parser para renombrar cualquier atributo que se llame 'attributes' de la
+# respuesta de UCRM porque rompe la gema Her.
 #
 # TODO: esto pordría mejorarse incorporando comportamiento para el manejo de
 # errores de https://github.com/remiprev/her/blob/master/lib/her/middleware/parse_json.rb
@@ -15,10 +14,12 @@ class UcrmResponseParser < Faraday::Response::Middleware
     # un solo elemento la respuesta es directamente un Hash.
     if json.is_a?(Array)
       json.each do |item|
-        item.delete(:attributes)
+        if item.include?(:attributes)
+          item[:custom_attributes] = item.delete(:attributes)
+        end
       end
-    else
-      json.delete(:attributes)
+    elsif json.include?(:attributes)
+      json[:custom_attributes] = json.delete(:attributes)
     end
 
     # Devolvemos el body en el formato que espera Her.

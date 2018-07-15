@@ -1,0 +1,1034 @@
+[
+  {
+    "name": "Afghanistan",
+    "code": "AF",
+    "contabilium_id": 1,
+    "ucrm_id": 19
+  },
+  {
+    "name": "Albania",
+    "code": "AL",
+    "contabilium_id": 3,
+    "ucrm_id": 22
+  },
+  {
+    "name": "Algeria",
+    "code": "DZ",
+    "contabilium_id": 9,
+    "ucrm_id": 78
+  },
+  {
+    "name": "American Samoa",
+    "code": "AS",
+    "contabilium_id": 140,
+    "ucrm_id": 27
+  },
+  {
+    "name": "Andorra",
+    "code": "AD",
+    "contabilium_id": 5,
+    "ucrm_id": 17
+  },
+  {
+    "name": "Angola",
+    "code": "AO",
+    "contabilium_id": 6,
+    "ucrm_id": 24
+  },
+  {
+    "name": "Antigua and Barbuda",
+    "code": "AG",
+    "contabilium_id": 7,
+    "ucrm_id": 20
+  },
+  {
+    "name": "Argentina",
+    "code": "AR",
+    "contabilium_id": 10,
+    "ucrm_id": 26
+  },
+  {
+    "name": "Armenia",
+    "code": "AM",
+    "contabilium_id": 11,
+    "ucrm_id": 23
+  },
+  {
+    "name": "Aruba",
+    "code": "AW",
+    "contabilium_id": 12,
+    "ucrm_id": 30
+  },
+  {
+    "name": "Australia",
+    "code": "AU",
+    "contabilium_id": 13,
+    "ucrm_id": 29
+  },
+  {
+    "name": "Austria",
+    "code": "AT",
+    "contabilium_id": 14,
+    "ucrm_id": 28
+  },
+  {
+    "name": "Azerbaijan",
+    "code": "AZ",
+    "contabilium_id": 15,
+    "ucrm_id": 32
+  },
+  {
+    "name": "Bahamas",
+    "code": "BS",
+    "contabilium_id": 16,
+    "ucrm_id": 48
+  },
+  {
+    "name": "Bahrain",
+    "code": "BH",
+    "contabilium_id": 17,
+    "ucrm_id": 39
+  },
+  {
+    "name": "Barbados",
+    "code": "BB",
+    "contabilium_id": 18,
+    "ucrm_id": 34
+  },
+  {
+    "name": "Belgium",
+    "code": "BE",
+    "contabilium_id": 19,
+    "ucrm_id": 36
+  },
+  {
+    "name": "Belize",
+    "code": "BZ",
+    "contabilium_id": 20,
+    "ucrm_id": 53
+  },
+  {
+    "name": "Bermuda",
+    "code": "BM",
+    "contabilium_id": 21,
+    "ucrm_id": 43
+  },
+  {
+    "name": "Bhutan",
+    "code": "BT",
+    "contabilium_id": 29,
+    "ucrm_id": 49
+  },
+  {
+    "name": "Bolivia",
+    "code": "BO",
+    "contabilium_id": 22,
+    "ucrm_id": 45
+  },
+  {
+    "name": "Bosnia and Herzegovina",
+    "code": "BA",
+    "contabilium_id": 23,
+    "ucrm_id": 33
+  },
+  {
+    "name": "Botswana",
+    "code": "BW",
+    "contabilium_id": 24,
+    "ucrm_id": 51
+  },
+  {
+    "name": "Brazil",
+    "code": "BR",
+    "contabilium_id": 25,
+    "ucrm_id": 47
+  },
+  {
+    "name": "Bulgaria",
+    "code": "BG",
+    "contabilium_id": 26,
+    "ucrm_id": 38
+  },
+  {
+    "name": "Burkina Faso",
+    "code": "BF",
+    "contabilium_id": 27,
+    "ucrm_id": 37
+  },
+  {
+    "name": "Burundi",
+    "code": "BI",
+    "contabilium_id": 28,
+    "ucrm_id": 40
+  },
+  {
+    "name": "Cameroon",
+    "code": "CM",
+    "contabilium_id": 31,
+    "ucrm_id": 63
+  },
+  {
+    "name": "Canada",
+    "code": "CA",
+    "contabilium_id": 32,
+    "ucrm_id": 54
+  },
+  {
+    "name": "Central African Republic",
+    "code": "CF",
+    "contabilium_id": 131,
+    "ucrm_id": 57
+  },
+  {
+    "name": "Chile",
+    "code": "CL",
+    "contabilium_id": 33,
+    "ucrm_id": 62
+  },
+  {
+    "name": "China",
+    "code": "CN",
+    "contabilium_id": 34,
+    "ucrm_id": 64
+  },
+  {
+    "name": "Colombia",
+    "code": "CO",
+    "contabilium_id": 36,
+    "ucrm_id": 65
+  },
+  {
+    "name": "Congo",
+    "code": "CG",
+    "contabilium_id": 37,
+    "ucrm_id": 58
+  },
+  {
+    "name": "Congo, Democratic Republic of",
+    "code": "CD",
+    "contabilium_id": 133,
+    "ucrm_id": 56
+  },
+  {
+    "name": "Costa Rica",
+    "code": "CR",
+    "contabilium_id": 41,
+    "ucrm_id": 66
+  },
+  {
+    "name": "Côte d'Ivoire",
+    "code": "CI",
+    "contabilium_id": 40,
+    "ucrm_id": 60
+  },
+  {
+    "name": "Croatia",
+    "code": "HR",
+    "contabilium_id": 42,
+    "ucrm_id": 114
+  },
+  {
+    "name": "Cuba",
+    "code": "CU",
+    "contabilium_id": 43,
+    "ucrm_id": 67
+  },
+  {
+    "name": "Cyprus",
+    "code": "CY",
+    "contabilium_id": 35,
+    "ucrm_id": 71
+  },
+  {
+    "name": "Czech Republic",
+    "code": "CZ",
+    "contabilium_id": 132,
+    "ucrm_id": 72
+  },
+  {
+    "name": "Denmark",
+    "code": "DK",
+    "contabilium_id": 44,
+    "ucrm_id": 75
+  },
+  {
+    "name": "Dominica",
+    "code": "DM",
+    "contabilium_id": 45,
+    "ucrm_id": 76
+  },
+  {
+    "name": "Dominican Republic",
+    "code": "DO",
+    "contabilium_id": 134,
+    "ucrm_id": 77
+  },
+  {
+    "name": "Ecuador",
+    "code": "EC",
+    "contabilium_id": 46,
+    "ucrm_id": 79
+  },
+  {
+    "name": "Egypt",
+    "code": "EG",
+    "contabilium_id": 47,
+    "ucrm_id": 81
+  },
+  {
+    "name": "El Salvador",
+    "code": "SV",
+    "contabilium_id": 48,
+    "ucrm_id": 226
+  },
+  {
+    "name": "Equatorial Guinea",
+    "code": "GQ",
+    "contabilium_id": 70,
+    "ucrm_id": 104
+  },
+  {
+    "name": "Estonia",
+    "code": "EE",
+    "contabilium_id": 53,
+    "ucrm_id": 80
+  },
+  {
+    "name": "Ethiopia",
+    "code": "ET",
+    "contabilium_id": 54,
+    "ucrm_id": 85
+  },
+  {
+    "name": "Fiji",
+    "code": "FJ",
+    "contabilium_id": 55,
+    "ucrm_id": 87
+  },
+  {
+    "name": "Finland",
+    "code": "FI",
+    "contabilium_id": 57,
+    "ucrm_id": 86
+  },
+  {
+    "name": "France",
+    "code": "FR",
+    "contabilium_id": 58,
+    "ucrm_id": 91
+  },
+  {
+    "name": "French Guiana",
+    "code": "GF",
+    "contabilium_id": 71,
+    "ucrm_id": 96
+  },
+  {
+    "name": "Gabon",
+    "code": "GA",
+    "contabilium_id": 59,
+    "ucrm_id": 92
+  },
+  {
+    "name": "Gambia",
+    "code": "GM",
+    "contabilium_id": 60,
+    "ucrm_id": 101
+  },
+  {
+    "name": "Georgia",
+    "code": "GE",
+    "contabilium_id": 61,
+    "ucrm_id": 95
+  },
+  {
+    "name": "Germany",
+    "code": "DE",
+    "contabilium_id": 4,
+    "ucrm_id": 73
+  },
+  {
+    "name": "Ghana",
+    "code": "GH",
+    "contabilium_id": 62,
+    "ucrm_id": 98
+  },
+  {
+    "name": "Greece",
+    "code": "GR",
+    "contabilium_id": 64,
+    "ucrm_id": 105
+  },
+  {
+    "name": "Greenland",
+    "code": "GL",
+    "contabilium_id": 65,
+    "ucrm_id": 100
+  },
+  {
+    "name": "Grenada",
+    "code": "GD",
+    "contabilium_id": 63,
+    "ucrm_id": 94
+  },
+  {
+    "name": "Guadeloupe",
+    "code": "GP",
+    "contabilium_id": 66,
+    "ucrm_id": 103
+  },
+  {
+    "name": "Guatemala",
+    "code": "GT",
+    "contabilium_id": 67,
+    "ucrm_id": 107
+  },
+  {
+    "name": "Guernsey",
+    "code": "GG",
+    "contabilium_id": 69,
+    "ucrm_id": 97
+  },
+  {
+    "name": "Guinea",
+    "code": "GN",
+    "contabilium_id": 70,
+    "ucrm_id": 102
+  },
+  {
+    "name": "Guyana",
+    "code": "GY",
+    "contabilium_id": 71,
+    "ucrm_id": 110
+  },
+  {
+    "name": "Haiti",
+    "code": "HT",
+    "contabilium_id": 72,
+    "ucrm_id": 115
+  },
+  {
+    "name": "Honduras",
+    "code": "HN",
+    "contabilium_id": 74,
+    "ucrm_id": 113
+  },
+  {
+    "name": "Hong Kong",
+    "code": "HK",
+    "contabilium_id": 75,
+    "ucrm_id": 111
+  },
+  {
+    "name": "Hungary",
+    "code": "HU",
+    "contabilium_id": 76,
+    "ucrm_id": 116
+  },
+  {
+    "name": "Iceland",
+    "code": "IS",
+    "contabilium_id": 82,
+    "ucrm_id": 125
+  },
+  {
+    "name": "India",
+    "code": "IN",
+    "contabilium_id": 77,
+    "ucrm_id": 121
+  },
+  {
+    "name": "Indonesia",
+    "code": "ID",
+    "contabilium_id": 78,
+    "ucrm_id": 117
+  },
+  {
+    "name": "Iran",
+    "code": "IR",
+    "contabilium_id": 80,
+    "ucrm_id": 124
+  },
+  {
+    "name": "Iraq",
+    "code": "IQ",
+    "contabilium_id": 79,
+    "ucrm_id": 123
+  },
+  {
+    "name": "Ireland",
+    "code": "IE",
+    "contabilium_id": 81,
+    "ucrm_id": 118
+  },
+  {
+    "name": "Israel",
+    "code": "IL",
+    "contabilium_id": 83,
+    "ucrm_id": 119
+  },
+  {
+    "name": "Italy",
+    "code": "IT",
+    "contabilium_id": 84,
+    "ucrm_id": 126
+  },
+  {
+    "name": "Jamaica",
+    "code": "JM",
+    "contabilium_id": 85,
+    "ucrm_id": 128
+  },
+  {
+    "name": "Japan",
+    "code": "JP",
+    "contabilium_id": 86,
+    "ucrm_id": 130
+  },
+  {
+    "name": "Jersey",
+    "code": "JE",
+    "contabilium_id": 87,
+    "ucrm_id": 127
+  },
+  {
+    "name": "Jordan",
+    "code": "JO",
+    "contabilium_id": 88,
+    "ucrm_id": 129
+  },
+  {
+    "name": "Kazakhstan",
+    "code": "KZ",
+    "contabilium_id": 89,
+    "ucrm_id": 141
+  },
+  {
+    "name": "Kenya",
+    "code": "KE",
+    "contabilium_id": 90,
+    "ucrm_id": 131
+  },
+  {
+    "name": "Kuwait",
+    "code": "KW",
+    "contabilium_id": 91,
+    "ucrm_id": 139
+  },
+  {
+    "name": "Lebanon",
+    "code": "LB",
+    "contabilium_id": 92,
+    "ucrm_id": 143
+  },
+  {
+    "name": "Liberia",
+    "code": "LR",
+    "contabilium_id": 93,
+    "ucrm_id": 147
+  },
+  {
+    "name": "Libya",
+    "code": "LY",
+    "contabilium_id": 94,
+    "ucrm_id": 152
+  },
+  {
+    "name": "Liechtenstein",
+    "code": "LI",
+    "contabilium_id": 95,
+    "ucrm_id": 145
+  },
+  {
+    "name": "Lithuania",
+    "code": "LT",
+    "contabilium_id": 96,
+    "ucrm_id": 149
+  },
+  {
+    "name": "Luxembourg",
+    "code": "LU",
+    "contabilium_id": 97,
+    "ucrm_id": 150
+  },
+  {
+    "name": "Macau",
+    "code": "MO",
+    "contabilium_id": 98,
+    "ucrm_id": 164
+  },
+  {
+    "name": "Macedonia",
+    "code": "MK",
+    "contabilium_id": 99,
+    "ucrm_id": 160
+  },
+  {
+    "name": "Madagascar",
+    "code": "MG",
+    "contabilium_id": 100,
+    "ucrm_id": 158
+  },
+  {
+    "name": "Malawi",
+    "code": "MW",
+    "contabilium_id": 102,
+    "ucrm_id": 172
+  },
+  {
+    "name": "Malaysia",
+    "code": "MY",
+    "contabilium_id": 101,
+    "ucrm_id": 174
+  },
+  {
+    "name": "Maldives",
+    "code": "MV",
+    "contabilium_id": 103,
+    "ucrm_id": 171
+  },
+  {
+    "name": "Mali",
+    "code": "ML",
+    "contabilium_id": 104,
+    "ucrm_id": 161
+  },
+  {
+    "name": "Malta",
+    "code": "MT",
+    "contabilium_id": 105,
+    "ucrm_id": 169
+  },
+  {
+    "name": "Mexico",
+    "code": "MX",
+    "contabilium_id": 107,
+    "ucrm_id": 173
+  },
+  {
+    "name": "Micronesia, Federated States of",
+    "code": "FM",
+    "contabilium_id": 108,
+    "ucrm_id": 89
+  },
+  {
+    "name": "Moldova",
+    "code": "MD",
+    "contabilium_id": 109,
+    "ucrm_id": 155
+  },
+  {
+    "name": "Monaco",
+    "code": "MC",
+    "contabilium_id": 110,
+    "ucrm_id": 154
+  },
+  {
+    "name": "Mongolia",
+    "code": "MN",
+    "contabilium_id": 111,
+    "ucrm_id": 163
+  },
+  {
+    "name": "Morocco",
+    "code": "MA",
+    "contabilium_id": 106,
+    "ucrm_id": 153
+  },
+  {
+    "name": "Mozambique",
+    "code": "MZ",
+    "contabilium_id": 112,
+    "ucrm_id": 175
+  },
+  {
+    "name": "Namibia",
+    "code": "NA",
+    "contabilium_id": 113,
+    "ucrm_id": 176
+  },
+  {
+    "name": "Nepal",
+    "code": "NP",
+    "contabilium_id": 114,
+    "ucrm_id": 184
+  },
+  {
+    "name": "New Zealand",
+    "code": "NZ",
+    "contabilium_id": 118,
+    "ucrm_id": 187
+  },
+  {
+    "name": "Nicaragua",
+    "code": "NI",
+    "contabilium_id": 115,
+    "ucrm_id": 181
+  },
+  {
+    "name": "Niger",
+    "code": "NE",
+    "contabilium_id": 116,
+    "ucrm_id": 178
+  },
+  {
+    "name": "Nigeria",
+    "code": "NG",
+    "contabilium_id": 116,
+    "ucrm_id": 180
+  },
+  {
+    "name": "North Korea",
+    "code": "KP",
+    "contabilium_id": 38,
+    "ucrm_id": 137
+  },
+  {
+    "name": "Norway",
+    "code": "NO",
+    "contabilium_id": 117,
+    "ucrm_id": 183
+  },
+  {
+    "name": "Oman",
+    "code": "OM",
+    "contabilium_id": 119,
+    "ucrm_id": 188
+  },
+  {
+    "name": "Pakistan",
+    "code": "PK",
+    "contabilium_id": 120,
+    "ucrm_id": 194
+  },
+  {
+    "name": "Palestine, State of",
+    "code": "PS",
+    "contabilium_id": 121,
+    "ucrm_id": 199
+  },
+  {
+    "name": "Panama",
+    "code": "PA",
+    "contabilium_id": 122,
+    "ucrm_id": 189
+  },
+  {
+    "name": "Paraguay",
+    "code": "PY",
+    "contabilium_id": 123,
+    "ucrm_id": 202
+  },
+  {
+    "name": "Peru",
+    "code": "PE",
+    "contabilium_id": 124,
+    "ucrm_id": 190
+  },
+  {
+    "name": "Philippines",
+    "code": "PH",
+    "contabilium_id": 56,
+    "ucrm_id": 193
+  },
+  {
+    "name": "Poland",
+    "code": "PL",
+    "contabilium_id": 126,
+    "ucrm_id": 195
+  },
+  {
+    "name": "Portugal",
+    "code": "PT",
+    "contabilium_id": 127,
+    "ucrm_id": 200
+  },
+  {
+    "name": "Puerto Rico",
+    "code": "PR",
+    "contabilium_id": 128,
+    "ucrm_id": 198
+  },
+  {
+    "name": "Qatar",
+    "code": "QA",
+    "contabilium_id": 129,
+    "ucrm_id": 203
+  },
+  {
+    "name": "Russian Federation",
+    "code": "RU",
+    "contabilium_id": 138,
+    "ucrm_id": 207
+  },
+  {
+    "name": "Rwanda",
+    "code": "RW",
+    "contabilium_id": 136,
+    "ucrm_id": 208
+  },
+  {
+    "name": "Saint Helena",
+    "code": "SH",
+    "contabilium_id": 141,
+    "ucrm_id": 215
+  },
+  {
+    "name": "Saint Lucia",
+    "code": "LC",
+    "contabilium_id": 142,
+    "ucrm_id": 144
+  },
+  {
+    "name": "Samoa",
+    "code": "WS",
+    "contabilium_id": 140,
+    "ucrm_id": 260
+  },
+  {
+    "name": "Saudi Arabia",
+    "code": "SA",
+    "contabilium_id": 8,
+    "ucrm_id": 209
+  },
+  {
+    "name": "Senegal",
+    "code": "SN",
+    "contabilium_id": 143,
+    "ucrm_id": 221
+  },
+  {
+    "name": "Seychelles",
+    "code": "SC",
+    "contabilium_id": 144,
+    "ucrm_id": 211
+  },
+  {
+    "name": "Sierra Leone",
+    "code": "SL",
+    "contabilium_id": 145,
+    "ucrm_id": 219
+  },
+  {
+    "name": "Singapore",
+    "code": "SG",
+    "contabilium_id": 146,
+    "ucrm_id": 214
+  },
+  {
+    "name": "Slovakia",
+    "code": "SK",
+    "contabilium_id": 135,
+    "ucrm_id": 218
+  },
+  {
+    "name": "Slovenia",
+    "code": "SI",
+    "contabilium_id": 50,
+    "ucrm_id": 216
+  },
+  {
+    "name": "Somalia",
+    "code": "SO",
+    "contabilium_id": 148,
+    "ucrm_id": 222
+  },
+  {
+    "name": "South Africa",
+    "code": "ZA",
+    "contabilium_id": 2,
+    "ucrm_id": 263
+  },
+  {
+    "name": "South Korea",
+    "code": "KR",
+    "contabilium_id": 39,
+    "ucrm_id": 138
+  },
+  {
+    "name": "South Sudan",
+    "code": "SS",
+    "contabilium_id": 149,
+    "ucrm_id": 224
+  },
+  {
+    "name": "Spain",
+    "code": "ES",
+    "contabilium_id": 51,
+    "ucrm_id": 84
+  },
+  {
+    "name": "Sudan",
+    "code": "SD",
+    "contabilium_id": 149,
+    "ucrm_id": 212
+  },
+  {
+    "name": "Sweden",
+    "code": "SE",
+    "contabilium_id": 151,
+    "ucrm_id": 213
+  },
+  {
+    "name": "Switzerland",
+    "code": "CH",
+    "contabilium_id": 152,
+    "ucrm_id": 59
+  },
+  {
+    "name": "Syria",
+    "code": "SY",
+    "contabilium_id": 147,
+    "ucrm_id": 228
+  },
+  {
+    "name": "Taiwan",
+    "code": "TW",
+    "contabilium_id": 154,
+    "ucrm_id": 244
+  },
+  {
+    "name": "Tajikistan",
+    "code": "TJ",
+    "contabilium_id": 155,
+    "ucrm_id": 235
+  },
+  {
+    "name": "Tanzania",
+    "code": "TZ",
+    "contabilium_id": 156,
+    "ucrm_id": 245
+  },
+  {
+    "name": "Thailand",
+    "code": "TH",
+    "contabilium_id": 153,
+    "ucrm_id": 234
+  },
+  {
+    "name": "The Netherlands",
+    "code": "NL",
+    "contabilium_id": 73,
+    "ucrm_id": 182
+  },
+  {
+    "name": "Togo",
+    "code": "TG",
+    "contabilium_id": 157,
+    "ucrm_id": 233
+  },
+  {
+    "name": "Tonga",
+    "code": "TO",
+    "contabilium_id": 158,
+    "ucrm_id": 240
+  },
+  {
+    "name": "Trinidad and Tobago",
+    "code": "TT",
+    "contabilium_id": 159,
+    "ucrm_id": 242
+  },
+  {
+    "name": "Tunisia",
+    "code": "TN",
+    "contabilium_id": 160,
+    "ucrm_id": 239
+  },
+  {
+    "name": "Turkey",
+    "code": "TR",
+    "contabilium_id": 162,
+    "ucrm_id": 241
+  },
+  {
+    "name": "Turkmenistan",
+    "code": "TM",
+    "contabilium_id": 161,
+    "ucrm_id": 238
+  },
+  {
+    "name": "Uganda",
+    "code": "UG",
+    "contabilium_id": 164,
+    "ucrm_id": 247
+  },
+  {
+    "name": "Ukraine",
+    "code": "UA",
+    "contabilium_id": 163,
+    "ucrm_id": 246
+  },
+  {
+    "name": "United Arab Emirates",
+    "code": "AE",
+    "contabilium_id": 49,
+    "ucrm_id": 18
+  },
+  {
+    "name": "United Kingdom",
+    "code": "GB",
+    "contabilium_id": 130,
+    "ucrm_id": 93
+  },
+  {
+    "name": "United States",
+    "code": "US",
+    "contabilium_id": 52,
+    "ucrm_id": 249
+  },
+  {
+    "name": "Uruguay",
+    "code": "UY",
+    "contabilium_id": 165,
+    "ucrm_id": 250
+  },
+  {
+    "name": "Uzbekistan",
+    "code": "UZ",
+    "contabilium_id": 166,
+    "ucrm_id": 251
+  },
+  {
+    "name": "Vanuatu",
+    "code": "VU",
+    "contabilium_id": 167,
+    "ucrm_id": 258
+  },
+  {
+    "name": "Venezuela",
+    "code": "VE",
+    "contabilium_id": 168,
+    "ucrm_id": 254
+  },
+  {
+    "name": "Vietnam",
+    "code": "VN",
+    "contabilium_id": 169,
+    "ucrm_id": 257
+  },
+  {
+    "name": "Western Sahara",
+    "code": "EH",
+    "contabilium_id": 139,
+    "ucrm_id": 82
+  },
+  {
+    "name": "Yemen",
+    "code": "YE",
+    "contabilium_id": 170,
+    "ucrm_id": 261
+  },
+  {
+    "name": "Zambia",
+    "code": "ZM",
+    "contabilium_id": 171,
+    "ucrm_id": 264
+  },
+  {
+    "name": "Zimbabwe",
+    "code": "ZW",
+    "contabilium_id": 172,
+    "ucrm_id": 265
+  }
+]
