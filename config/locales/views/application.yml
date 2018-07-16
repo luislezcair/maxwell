@@ -10,9 +10,10 @@ es-AR:
   enumerize:
     group_permission:
       permission_code:
-        deny: 'Denegar'
-        edit: 'Editar'
+        create: 'Crear'
+        edit: 'Crear y editar'
         edit_delete: 'Editar y eliminar'
+        deny: 'Denegar'
         view: 'Ver'
   layouts:
     application:

@@ -235,7 +235,7 @@ SimpleForm.setup do |config|
     end
   end
 
-  config.wrappers :maxwell_horizontal_collection_inline, item_wrapper_class: 'col-sm-3 form-check-inline form-check-inline-align form-option-padd', tag: 'div', class: 'col-sm-9 form-group', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
+  config.wrappers :maxwell_horizontal_collection_inline, item_wrapper_class: 'col-sm-2 col-sm-2-5 form-check-inline form-check-inline-align form-option-padd', tag: 'div', class: 'col-sm-9 form-group', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5
     b.optional :readonly
     b.use :label, class: 'col-sm-3 form-control-label'

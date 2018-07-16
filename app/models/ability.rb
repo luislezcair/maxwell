@@ -15,6 +15,8 @@ class Ability
   def set_perms_for(model, perm)
     if perm.view?
       can :read, model
+    elsif perm.create?
+      can [:read, :create], model
     elsif perm.edit?
       can [:read, :create, :update], model
     elsif perm.edit_delete?

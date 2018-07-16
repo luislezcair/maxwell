@@ -24,6 +24,11 @@ main {
   }
 }
 
+.col-sm-2-5 {
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+
 .app-header .nav-item .nav-link > .img-avatar {
   margin: 0 5px;
 }
