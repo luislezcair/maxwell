@@ -151,7 +151,7 @@ class Contab::Client < Contab::ContabBaseModel
   # F -> Física -> :person
   #
   def client_type
-    CLIENT_TYPES[:self.Personeria.to_sym]
+    CLIENT_TYPES[self.Personeria.to_sym]
   end
 
   # Buscar el país que corresponde al idPais de Contabilium
