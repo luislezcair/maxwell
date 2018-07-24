@@ -18,8 +18,9 @@ class ApplicationController < ActionController::Base
   end
 
   # Comportamiento común cuando se elimina una entidad. Si se eliminó sin
-  # problemas redirige al index.js correspondiente. Si no, renderiza un alert
-  # con la descripción del error.
+  # problemas redirige al index.js correspondiente o a la dirección indicada en
+  # el parámetro `redirect_to`. Si hubo un error, renderiza un alert con la
+  # descripción del error.
   #
   def destroy_model(model)
     unless model.destroy
@@ -28,7 +29,7 @@ class ApplicationController < ActionController::Base
       return
     end
 
-    redirect_to index_path_with_params,
+    redirect_to params[:return_to] || index_path_with_params,
                 status: :see_other,
                 flash: { alert: delete_success_msg }
   end

@@ -128,7 +128,37 @@ table {
     th.number-column {
       width: 5%;
     }
+
+    td.numeric {
+      text-align: right;
+    }
+
+    td.currency {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    &.with-checkboxes tbody > tr > td:first-child {
+      text-align: center;
+    }
+
+    &.with-checkboxes thead > tr > th:first-child {
+      text-align: center;
+
+      .form-check {
+        padding-left: 1.20rem;
+      }
+
+      input[type="checkbox"] {
+        position: relative;
+        margin-top: 0;
+      }
+    }
   }
+}
+
+.align-center {
+  text-align: center;
 }
 
 .align-right {
@@ -167,4 +197,14 @@ ul.simple-list {
   li {
     display: block;
   }
+}
+
+.margin-top {
+  margin-top: 20px;
+}
+
+.flexible {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

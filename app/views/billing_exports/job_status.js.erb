@@ -1,0 +1,14 @@
+document.getElementById('job-status-text').innerHTML = '<%= j render 'job_status' %>';
+
+<% unless @job.finished? || @job.error? %>
+    setTimeout(() => {
+      document.dispatchEvent(
+        new CustomEvent('billing_exports:perform_loop', { detail: { id: <%= @billing_export.id %> } })
+      );
+    }, 500);
+<% end %>
+
+<% if @job.finished? %>
+    document.getElementById('alert-message').innerHTML = '';
+    document.dispatchEvent(new CustomEvent('billing_exports:perform_finished'));
+<% end %>

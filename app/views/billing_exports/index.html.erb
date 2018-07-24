@@ -1,0 +1,53 @@
+<div class="card">
+  <div class="card-body">
+    <%= search_form_for @q, url: billing_exports_path, remote: true do |f| %>
+      <div class="row">
+        <div class="col-sm-4">
+          <%= f.input :datetime_lteq, label: t('.search_form.period'), required: true do %>
+            <div class="input-group input-daterange">
+              <%= f.input_field :datetime_gteq, as: :string, class: 'form-control align-right mask-date', value: short_date(@q.datetime_gteq), autocomplete: 'off', required: true %>
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="fa fa-arrows-h"></i>
+                </span>
+              </div>
+              <%= f.input_field :datetime_lteq, as: :string, class: 'form-control align-right mask-date', value: short_date(@q.datetime_lteq), autocomplete: 'off', required: true %>
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit" data-toggle="tooltip" data-trigger="hover" title="<%= t('.search_form.tooltip.submit') %>">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= simple_form_for @billing_export, remote: true do |f| %>
+  <div class="card">
+    <div class="card-header data-header">
+      <div class="title"><%= t('.header.technical_services') %></div>
+    </div>
+
+    <div class="card-body">
+      <div id="technical-services-table-container">
+        <%= render 'technical_services_table' %>
+      </div>
+    </div>
+
+    <div class="card-footer flexible">
+      <div id="job-status-container">
+        <div style="display: none" class="flexible">
+          <i class="fa fa-refresh fa-spin fa-2x fa-fw"></i>
+          <span id="job-status-text" class="status-text">Iniciando...</span>
+        </div>
+      </div>
+
+      <div id="action-container">
+        <button id="btn-export" class="btn btn-primary" type="submit" data-disable-with="<%= t('.export.title_disabled') %>"><%= t('.export.title') %></button>
+      </div>
+    </div>
+  </div>
+<% end %>

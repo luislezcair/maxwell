@@ -14,7 +14,7 @@ module ApplicationHelper
 
     collection = klass.sorted
     half = collection.count.fdiv(2).ceil
-    option_groups = collection.in_groups_of(half, false)
+    option_groups = half.positive? ? collection.in_groups_of(half, false) : []
 
     render 'shared/two_column_multiple_choice', f: builder,
                                                 association: association,
@@ -63,12 +63,21 @@ module ApplicationHelper
 
   # Llama al URL helper pasado como argumento y le agrega los parámetros de
   # paginación y búsqueda. Se utiliza para que los botones de eliminar mantengan
-  # la vista de la tabal en la página actual con los filtros actuales.
+  # la vista de la tabla en la página actual con los filtros actuales.
   #
   def path_with_parameters(path, args)
     page = request.path_parameters[:page]
     q = request.query_parameters[:q]
     method(path).call(args, page: page, q: q)
+  end
+
+  # Construye una ruta llamando al helper `path` con los argumentos `args` y
+  # le agrega un parámetro `return_to` para que la acción que lo reciba redirija
+  # a la URL `return_url` con los parámetros de Ransack actuales.
+  #
+  def path_with_return_to(path, args, return_url)
+    return_to = method(return_url).call(q: request.query_parameters[:q])
+    method(path).call(args, return_to: return_to)
   end
 
   # Agrupa los permisos por categoría para mostrarlos en el formulario de Grupos

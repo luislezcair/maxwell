@@ -21,6 +21,7 @@ es-AR:
       logout: 'Salir'
 
       nav:
+        billing_exports: 'Facturación'
         dashboard: 'Tablero'
         elements: 'Elementos'
         services: 'Servicios'

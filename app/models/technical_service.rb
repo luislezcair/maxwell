@@ -1,3 +1,9 @@
+# frozen_string_literal: true
+
+# Representa un servicio técnico realizado a un cliente. Los costos de mano de
+# obra (labour_cost) y de equipos (equipment_cost) se utilizan para facturar a
+# los clientes.
+#
 class TechnicalService < ApplicationRecord
   belongs_to :city
   belongs_to :client
@@ -10,6 +16,11 @@ class TechnicalService < ApplicationRecord
   belongs_to :support_type, optional: true
   belongs_to :tower, optional: true
   belongs_to :transmitter, optional: true
+
+  # Invoicing:
+  belongs_to :billing_export, optional: true
+  belongs_to :invoice, optional: true
+  belongs_to :invoice_item, optional: true
 
   has_many :technical_service_technicians, dependent: :destroy
   has_many :technicians, through: :technical_service_technicians
@@ -32,6 +43,24 @@ class TechnicalService < ApplicationRecord
   validate :at_least_one_corporate_cellphone?
   validate :at_least_one_technician?
   validate :at_least_one_work_type?
+  validate :client_is_synced
+
+  before_save :compute_total_cost
+
+  # Los servicios técnicos no facturados son aquellos que no tienen una factura
+  # asociada.
+  #
+  def self.not_billed
+    where(invoice: nil)
+  end
+
+  # Devuelve una descripción de este servicio técnico para utilizarse en la
+  # facturación.
+  #
+  def description
+    date = I18n.l(datetime, format: :short_date)
+    I18n.t('invoicing.technical_service', date: date, count: 1)
+  end
 
   private
 
@@ -48,5 +77,17 @@ class TechnicalService < ApplicationRecord
   def at_least_one_work_type?
     return unless work_types.empty?
     errors.add(:work_types, :empty_work_types)
+  end
+
+  def client_is_synced
+    return if client&.synced?
+    errors.add(:client, :not_synced)
+  end
+
+  # Suma los costos de mano de obra y equipos y los guarda en el campo de costo
+  # total
+  #
+  def compute_total_cost
+    self.total_cost = labour_cost + equipment_cost
   end
 end

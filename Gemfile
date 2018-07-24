@@ -101,5 +101,6 @@ gem 'her'
 gem 'faraday_middleware'
 gem 'simple_oauth'
 
-# TODO: switch to original oauth when they add faraday 0.16 as a dep.
-gem 'oauth2', github: 'raimondasv/oauth2', branch: 'faraday_0_16'
+gem 'oauth2', github: 'oauth-xx/oauth2', branch: 'master'
+
+gem 'sidekiq'

@@ -7,8 +7,9 @@
 #
 class UcrmTokenAuthentication < Faraday::Middleware
   def call(env)
+    rails_env = :development # Rails.env
     env[:request_headers]['X-Auth-App-Key'] =
-      Rails.application.credentials[:ucrm_api_key]
+      Rails.application.credentials[:ucrm][rails_env][:api_key]
     @app.call(env)
   end
 end

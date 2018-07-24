@@ -17,13 +17,14 @@ class ContabAPI
   def api
     Her::API.new url: API_ENDPOINT do |config|
       # Request
+      config.use Faraday::Request::UrlEncoded
       config.use FaradayMiddleware::OAuth2, read_token, token_type: :bearer
 
       # Response
       config.use ContabResponseParser
 
       if Rails.env.development?
-        config.use Faraday::Response::Logger, ActiveSupport::Logger.new(STDOUT), bodies: true
+        config.use Faraday::Response::Logger, ActiveSupport::Logger.new(STDOUT)
       end
 
       # Adapter
@@ -46,13 +47,22 @@ class ContabAPI
   end
 
   # Realiza una llamada OAuth2 a Contabilium para obtener un nuevo token.
-  # TODO: handle Faraday::ConnectionFailed
+  # TODO: handle Faraday::ConnectionFailed, change env to actual env
   #
   def new_token
-    client_id = Rails.application.credentials[:contabilium][:client_id]
-    client_secret = Rails.application.credentials[:contabilium][:client_secret]
+    env = :development # Rails.env
+    credentials = Rails.application.credentials[:contabilium][env]
 
-    options = {
+    client_id = credentials[:client_id]
+    client_secret = credentials[:client_secret]
+
+    client = OAuth2::Client.new(client_id, client_secret, oauth_options)
+    token = client.client_credentials.get_token
+    AuthToken.create_from_response(token.token, token.expires_at)
+  end
+
+  def oauth_options
+    {
       site: SITE,
       token_url: TOKEN_ENDPOINT,
       auth_scheme: :request_body,
@@ -61,9 +71,5 @@ class ContabAPI
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     }
-
-    client = OAuth2::Client.new(client_id, client_secret, options)
-    token = client.client_credentials.get_token
-    AuthToken.create_from_response(token.token, token.expires_at)
   end
 end

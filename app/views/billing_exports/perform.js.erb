@@ -1,0 +1,7 @@
+document.getElementById('alert-message').innerHTML = '<%= j render 'perform' %>';
+
+document.dispatchEvent(new CustomEvent('billing_exports:perform_disable'));
+
+document.dispatchEvent(
+  new CustomEvent('billing_exports:perform_loop', { detail: { id: <%= @billing_export.id %> } })
+);

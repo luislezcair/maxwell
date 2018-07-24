@@ -33,6 +33,7 @@ es-AR:
         support_type: 'Tipo de soporte'
         surge_protector_setup_type: 'Estabilizador de tensión / UPS'
         technicians: 'Técnicos'
+        total_cost: 'Costo total'
         tower: 'Torre'
         transmitter: 'Emisora'
         wifi_password: 'Contraseña Wi-Fi'
@@ -52,8 +53,17 @@ es-AR:
 
     errors:
       models:
+        billing_export:
+          attributes:
+            export_type:
+              inclusion: 'El tipo de exportación no está disponible'
+            technical_services:
+              billed: 'Hay servicios técnicos que ya fueron facturados o están cerrados'
+              empty: 'Debe seleccionar al menos un servicio técnico'
         technical_service:
           attributes:
+            client:
+              not_synced: 'no se encuentra sincronizado con UCRM o Contabilium'
             corporate_cellphones:
               empty_corporate_cellphones: 'no puede estar vacío'
             technicians:
@@ -79,3 +89,9 @@ es-AR:
       user:
         one: 'Usuario'
         other: 'Usuarios'
+
+  invoicing:
+    ucrm_admin_note: 'Creado por Maxwell el %{date}'
+    technical_service:
+      one: 'Servicio técnico del %{date}'
+      other: 'Servicios técnicos varios'

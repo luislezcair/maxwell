@@ -19,6 +19,14 @@ Rails.application.routes.draw do
 
   resources :technical_services, concerns: :paginatable
 
+  resources :billing_exports do
+    member do
+      get 'download_csv'
+      get 'job_status'
+      post 'perform'
+    end
+  end
+
   namespace :system do
     resources :groups, concerns: :paginatable
     resources :users, concerns: :paginatable

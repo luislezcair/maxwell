@@ -16,7 +16,7 @@ module FullNameSearchable
                                       parent.table[:firstname])
     end
 
-    scope :sorted, -> { order('"lastname", "firstname" ASC') }
+    scope :sorted, -> { order(Arel.sql('"lastname", "firstname" ASC')) }
 
     def name
       "#{lastname}, #{firstname}"

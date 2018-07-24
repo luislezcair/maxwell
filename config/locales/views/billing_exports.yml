@@ -1,0 +1,34 @@
+es-AR:
+  billing_exports:
+    create_success:
+      message: 'Se han creado los comprobantes. Puede presionar el botón <strong>Enviar a Facturación</strong> para enviarlos a Contabilium y UCRM.'
+    export_actions:
+      download_csv: 'Descargar CSV'
+      perform: 'Enviar a Facturación'
+    index:
+      export:
+        title: 'Crear comprobantes'
+        title_disabled: 'Creando comprobantes...'
+      header:
+        search_form: 'Buscar'
+        technical_services: 'Servicios Técnicos'
+      search_form:
+        period: 'Período'
+        tooltip:
+          submit: 'Buscar'
+    job_status:
+      enqueued: 'Preparando para enviar %{total} comprobantes...'
+      error: 'Ha ocurrido un error: %{error}'
+      finished_contabilium: 'Terminado Contabilium'
+      finished_ucrm: 'Terminado UCRM'
+      finished: 'Listo. Enviados %{total} comprobantes a UCRM y Contabilium.'
+      syncing_contabilium: 'Sincronizando comprobante %{progress} de %{total} con Contabilium...'
+      syncing_ucrm: 'Sincronizando comprobante %{progress} de %{total} con UCRM...'
+    perform:
+      message: 'Se ha iniciado el proceso de sincronización. Esto puede demorar unos minutos dependiendo de la cantidad de servicios seleccionados.'
+    technical_services_table:
+      delete_confirm: '¿Está seguro que desea eliminar este servicio técnico?'
+      tooltip:
+        delete: 'Eliminar'
+        edit: 'Editar'
+        show: 'Ver detalles'

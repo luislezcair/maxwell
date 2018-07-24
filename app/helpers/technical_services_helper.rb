@@ -3,8 +3,10 @@
 # Helpers utilizados en las vistas de Technical Services.
 #
 module TechnicalServicesHelper
+  # Mostrar solamente los clientes que estén en Contabilium y UCRM ordenados.
+  #
   def sorted_clients
-    Client.sorted
+    Client.synced.sorted
   end
 
   def sorted_cities

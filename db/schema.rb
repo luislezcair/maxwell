@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_15_193236) do
+ActiveRecord::Schema.define(version: 2018_07_23_224615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,11 +22,33 @@ ActiveRecord::Schema.define(version: 2018_07_15_193236) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "background_jobs", force: :cascade do |t|
+    t.string "job_id"
+    t.string "detailed_status"
+    t.string "error_msg"
+    t.integer "status", default: 0, null: false
+    t.integer "progress", default: 0
+    t.string "job_item_type"
+    t.bigint "job_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_item_type", "job_item_id"], name: "index_background_jobs_on_job_item_type_and_job_item_id"
+  end
+
   create_table "balancers", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_balancers_on_name", unique: true
+  end
+
+  create_table "billing_exports", force: :cascade do |t|
+    t.integer "export_type", default: 0, null: false
+    t.datetime "datetime"
+    t.decimal "total_amount", precision: 15, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "background_job_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -41,7 +63,7 @@ ActiveRecord::Schema.define(version: 2018_07_15_193236) do
   create_table "clients", force: :cascade do |t|
     t.string "firstname", default: "", null: false
     t.string "lastname", default: "", null: false
-    t.string "number", default: "", null: false
+    t.integer "number", null: false
     t.integer "ucrm_id"
     t.integer "contabilium_id"
     t.datetime "created_at", null: false
@@ -109,6 +131,34 @@ ActiveRecord::Schema.define(version: 2018_07_15_193236) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
     t.index ["name"], name: "index_groups_on_name", unique: true
+  end
+
+  create_table "invoice_items", force: :cascade do |t|
+    t.integer "invoice_id"
+    t.integer "quantity", default: 1, null: false
+    t.decimal "iva", default: "0.0", null: false
+    t.decimal "amount", precision: 15, scale: 2, default: "0.0", null: false
+    t.decimal "discount", precision: 15, scale: 2, default: "0.0", null: false
+    t.string "description", default: "", null: false
+    t.integer "contaibilium_id"
+    t.integer "ucrm_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "invoices", force: :cascade do |t|
+    t.integer "client_id"
+    t.integer "billing_export_id"
+    t.integer "voucher_type", default: 9, null: false
+    t.integer "sale_condition", default: 0, null: false
+    t.integer "sale_point", default: 4, null: false
+    t.datetime "emission_date"
+    t.datetime "expiry_date"
+    t.text "notes", default: ""
+    t.integer "contabilium_id"
+    t.integer "ucrm_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -196,6 +246,10 @@ ActiveRecord::Schema.define(version: 2018_07_15_193236) do
     t.integer "surge_protector_setup_type_id"
     t.datetime "datetime", null: false
     t.integer "device_id"
+    t.decimal "total_cost", precision: 15, scale: 2, default: "0.0", null: false
+    t.integer "billing_export_id"
+    t.integer "invoice_item_id"
+    t.integer "invoice_id"
   end
 
   create_table "technicians", force: :cascade do |t|

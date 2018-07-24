@@ -27,8 +27,20 @@ class Client < ApplicationRecord
                             default: :consumidor_final,
                             predicates: true
 
-  validates :number, presence: true, uniqueness: true
+  validates :number, presence: true,
+                     uniqueness: true,
+                     numericality: { greater_than: 0 }
   validates :document_number, presence: true, uniqueness: true
 
   include ClientNameSearchable
+
+  scope :synced, -> { where.not(contabilium_id: nil, ucrm_id: nil) }
+
+  # Devuelve true si tenemos un ID de UCRM y uno de Contabilium. Esto no
+  # garantiza que el cliente exista en ambos sistemas pero reduce la
+  # probabilidad de error.
+  #
+  def synced?
+    contabilium_id.present? && ucrm_id.present?
+  end
 end

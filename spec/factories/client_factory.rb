@@ -8,5 +8,7 @@ FactoryBot.define do
     document_number 23_360_256_499
     country
     province
+    ucrm_id 1
+    contabilium_id 2
   end
 end

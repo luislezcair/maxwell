@@ -19,6 +19,7 @@ const maskDefaults = {
     removeMaskOnSubmit: true,
     unmaskAsNumber: true,
   },
+  date: { alias: 'datetime', inputFormat: 'dd/mm/yyyy' },
 };
 
 const MaskElementByClass = (selector, mask) => {

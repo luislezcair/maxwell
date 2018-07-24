@@ -1,0 +1,3 @@
+document.getElementById('technical-services-table-container').innerHTML = '<%= j render 'technical_services_table' %>'
+document.getElementById('check-all').dispatchEvent(new Event('change', { view: window, bubbles: true }));
+<%= render_turbolinks_update %>

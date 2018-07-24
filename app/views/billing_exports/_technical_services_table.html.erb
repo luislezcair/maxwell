@@ -1,0 +1,68 @@
+<input type="hidden" name="billing_export[technical_service_ids][]" value="">
+
+<table id="billing-exports-table" class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data with-checkboxes">
+  <thead>
+    <tr>
+      <th>
+        <div class="form-check">
+          <input class="form-check-input table-checkbox" type="checkbox" id="check-all">
+        </div>
+      </th>
+      <th>#</th>
+      <th><%= sort_link(@q, :datetime, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :client_name, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :plan_service_name, {}, remote: true) %></th>
+      <th class="align-right"><%= sort_link(@q, :work_order_number, {}, remote: true) %></th>
+      <th class="align-right"><%= sort_link(@q, :labour_cost, {}, remote: true) %></th>
+      <th class="align-right"><%= sort_link(@q, :equipment_cost, {}, remote: true) %></th>
+      <th class="align-right"><%= sort_link(@q, :total_cost, {}, remote: true) %></th>
+      <th class="action-column"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @technical_services.each_with_index do |ts, index| %>
+      <tr>
+        <td>
+          <div class="form-check">
+            <input class="form-check-input table-checkbox" type="checkbox" name="billing_export[technical_service_ids][]" value="<%= ts.id %>">
+          </div>
+        </td>
+        <td><%= index + 1 %></td>
+        <td><%= l(ts.datetime, format: :short_datetime) %></td>
+        <td><%= ts.client.name %></td>
+        <td><%= ts.plan_service.try(:name) %></td>
+        <td class="numeric"><%= ts.work_order_number %></td>
+        <td class="currency"><%= number_to_currency(ts.labour_cost) %></td>
+        <td class="currency"><%= number_to_currency(ts.equipment_cost) %></td>
+        <td class="currency"><%= number_to_currency(ts.total_cost) %></td>
+
+        <td class="align-right">
+          <%= link_to technical_service_path(ts), class: 'btn btn-sm btn-outline-success', data: { toggle: 'tooltip', title: t('.tooltip.show') } do %>
+            <i class="fa fa-eye"></i>
+          <% end %>
+
+          <% if can? :update, ts %>
+            <%= link_to edit_technical_service_path(ts), class: 'btn btn-sm btn-outline-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+              <i class="fa fa-pencil"></i>
+            <% end %>
+          <% end %>
+
+          <% if can? :manage, ts %>
+            <%= link_to path_with_return_to(:technical_service_path, ts, :billing_exports_path), remote: true, method: :delete, class: 'btn btn-sm btn-outline-danger', data: { toggle: 'tooltip', trigger: 'hover', title: t('.tooltip.delete'), confirm: t('.delete_confirm') } do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td class="page-entries-info" colspan="10"><%= page_entries_info @technical_services %></td>
+    </tr>
+  </tfoot>
+</table>
+
+<div id="alert-message"></div>

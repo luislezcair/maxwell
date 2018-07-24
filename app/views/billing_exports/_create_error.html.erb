@@ -1,0 +1,9 @@
+<div class="alert alert-danger margin-top" role="alert">
+  <strong><%= t('common.attention_alert') %></strong>
+
+  <ul>
+    <% @billing_export.errors.messages.values.flatten.each do |e| %>
+      <li><%= e %></li>
+    <% end %>
+  </ul>
+</div>

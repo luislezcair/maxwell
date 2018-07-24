@@ -1,7 +1,7 @@
 GIT
-  remote: https://github.com/raimondasv/oauth2.git
-  revision: b3edbbc2b71c444e88321b1c9f229a99d2c6772e
-  branch: faraday_0_16
+  remote: https://github.com/oauth-xx/oauth2.git
+  revision: 5972a99246681e1efb72ba99527f6913bce57e89
+  branch: master
   specs:
     oauth2 (1.4.0)
       faraday (>= 0.8, < 0.16.0)
@@ -66,7 +66,7 @@ GEM
     builder (3.2.3)
     byebug (10.0.2)
     cancancan (2.2.0)
-    capybara (3.3.1)
+    capybara (3.4.1)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -80,6 +80,7 @@ GEM
       nokogiri (~> 1.8)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.2)
     crass (1.0.4)
     database_cleaner (1.7.0)
     devise (4.4.3)
@@ -170,9 +171,11 @@ GEM
     public_suffix (3.0.2)
     puma (3.12.0)
     rack (2.0.5)
+    rack-protection (2.0.3)
+      rack
     rack-proxy (0.6.4)
       rack
-    rack-test (1.0.0)
+    rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.0)
       actioncable (= 5.2.0)
@@ -216,6 +219,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    redis (4.0.1)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
@@ -242,9 +246,14 @@ GEM
     rspec-support (3.7.1)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
-    selenium-webdriver (3.13.0)
+    selenium-webdriver (3.13.1)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
+    sidekiq (5.1.3)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     simple_form (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -315,6 +324,7 @@ DEPENDENCIES
   ransack
   rspec-rails
   selenium-webdriver
+  sidekiq
   simple_form
   simple_oauth
   spring

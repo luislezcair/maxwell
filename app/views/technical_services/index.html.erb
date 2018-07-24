@@ -4,7 +4,7 @@
 
     <div>
       <% if can? :create, TechnicalService %>
-        <%= link_to new_technical_service_path, class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.new') } do %>
+        <%= link_to new_technical_service_path, id: 'button_new', class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.new') } do %>
           <i class="fa fa-plus"></i>
         <% end %>
       <% end %>

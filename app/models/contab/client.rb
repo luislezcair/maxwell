@@ -4,6 +4,7 @@
 #
 class Contab::Client < Contab::ContabBaseModel
   collection_path 'clientes'
+  primary_key :Id
 
   # Mapa entre las condiciones de IVA de Contabilium y Maxwell
   IVA_CONDITIONS = {
@@ -17,6 +18,11 @@ class Contab::Client < Contab::ContabBaseModel
   DOC_TYPES = {
     'DNI': :dni,
     'CUIT': :cuit
+  }.freeze
+
+  CLIENT_TYPES = {
+    'F': :person,
+    'J': :company
   }.freeze
 
   # Sobreescribe el método de Contab::ContabBaseModel para indicar que esta
@@ -34,6 +40,51 @@ class Contab::Client < Contab::ContabBaseModel
     get("#{collection_path}/search?filtro=#{filter}&page=#{page}")
   end
 
+  # Mapeo inverso de los atributos de un Client a un Contab::Client.
+  #
+  def self.contab_attributes(client)
+    { RazonSocial: client.name,
+      NroDoc: client.document_number,
+      Telefono: client.phone,
+      Email: client.email,
+      Domicilio: client.address,
+      PisoDepto: client.floor_dept,
+      Cp: client.postal_code,
+      Observaciones: client.notes,
+      Codigo: client.number,
+      Personeria: CLIENT_TYPES.invert[client.client_type.to_sym].to_s,
+      CondicionIva: IVA_CONDITIONS.invert[client.iva_condition.to_sym].to_s,
+      TipoDoc: DOC_TYPES.invert[client.document_type.to_sym].to_s,
+      IdPais: client.country.contabilium_id,
+      IdProvincia: client.province.contabilium_id,
+      IdCiudad: client.city&.contabilium_id }
+  end
+
+  # Construye un Cliente de Contabilium con los datos de un cliente de Maxwell.
+  #
+  def self.from_model(client)
+    new(contab_attributes(client))
+  end
+
+  # Devuelve un arreglo con los atributos necesarios para exportar un cliente a
+  # CSV ordenados según los requerimientos de Contabilium.
+  #
+  def self.csv_attributes(client)
+    attrs = contab_attributes(client).merge(csv_extra_attributes(client))
+    attrs.fetch_values(:RazonSocial, :fantasy_name, :Email, :TipoDoc, :NroDoc,
+                       :CondicionIva, :province, :city, :Domicilio, :web)
+  end
+
+  # Devuelve un Hash con los atributos extra que se necesitan para exportar un
+  # cliente a CSV y que no están en `contab_attributes`.
+  #
+  def self.csv_extra_attributes(client)
+    { fantasy_name: '',
+      province: client.province.name,
+      city: client.city&.name,
+      web: '' }
+  end
+
   def initialize(args)
     super(args)
     @klass = ::Client
@@ -41,7 +92,7 @@ class Contab::Client < Contab::ContabBaseModel
     @pageable = true
   end
 
-  # Cargar los atributos con los valores de la entidad de UCRM.
+  # Cargar los atributos con los valores de la entidad de Contabilium.
   #
   def maxwell_model_attributes
     attrs = basic_attributes
@@ -100,11 +151,7 @@ class Contab::Client < Contab::ContabBaseModel
   # F -> Física -> :person
   #
   def client_type
-    if self.Personeria == 'J'
-      :company
-    else
-      :person
-    end
+    CLIENT_TYPES[:self.Personeria.to_sym]
   end
 
   # Buscar el país que corresponde al idPais de Contabilium

@@ -5,18 +5,18 @@ require 'ucrm_response_parser'
 
 UCRM_API = Her::API.new
 
-UCRM_API.setup url: 'https://clientes.diezpositivo.com.ar/api/v1.0' do |config|
+UCRM_API.setup url: 'https://ucrm-testing.diezpositivo.com.ar/api/v1.0' do |c|
   # Request
-  config.use Faraday::Request::UrlEncoded
-  config.use UcrmTokenAuthentication
+  c.use FaradayMiddleware::EncodeJson
+  c.use UcrmTokenAuthentication
 
   # Response
-  config.use UcrmResponseParser
+  c.use UcrmResponseParser
 
   if Rails.env.development?
-    config.use Faraday::Response::Logger, ActiveSupport::Logger.new(STDOUT)
+    c.use Faraday::Response::Logger, ActiveSupport::Logger.new(STDOUT)
   end
 
   # Adapter
-  config.use Faraday::Adapter::NetHttp
+  c.use Faraday::Adapter::NetHttp
 end
