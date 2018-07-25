@@ -5,5 +5,9 @@
 <% elsif @job.enqueued? %>
   <%= t('.enqueued', total: @billing_export.invoices.size) %>
 <% else %>
-  <%= t(".#{@job.detailed_status}", progress: @job.progress, total: @billing_export.invoices.size) %>
+  <% if @job.progress.zero? %>
+    <%= t(".connecting_#{@job.detailed_status}") %>
+  <% else %>
+    <%= t(".#{@job.detailed_status}", progress: @job.progress, total: @billing_export.invoices.size) %>
+  <% end %>
 <% end %>

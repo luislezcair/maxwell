@@ -154,6 +154,11 @@ table {
         margin-top: 0;
       }
     }
+
+    &.with-checkboxes tbody > tr.billing-export-done {
+      background-color: rgba(99, 194, 222, .3);
+      color: rgb(92, 104, 115);
+    }
   }
 }
 
@@ -207,4 +212,8 @@ ul.simple-list {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  .status-text {
+    margin-left: 10px;
+  }
 }

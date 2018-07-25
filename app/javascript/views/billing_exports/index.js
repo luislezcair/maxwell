@@ -26,10 +26,18 @@ function setupCheckboxes() {
       state = qty > 0;
     }
 
-    $('#btn-export').prop('disabled', !state);
+    $('#btn-save-invoices').prop('disabled', !state);
   });
 
   $('#check-all').change();
+}
+
+function setupEvents() {
+  $(document).on('click', '[data-toggle-replace]', (e) => {
+    const selector = e.target.dataset.target;
+    const html = e.target.dataset.toggleReplace;
+    $(selector).html(html);
+  });
 }
 
 function disablePerformButton() {
@@ -38,20 +46,36 @@ function disablePerformButton() {
   $('#job-status-container .flexible').fadeIn();
 }
 
-function performFinished() {
-  $('#job-status-container i.fa').replaceWith('<i class="fa fa-check fa-2x"></i>');
-}
-
-function performBillingExport({ detail: { id } }) {
+function performBillingExport({ detail: { url } }) {
   Rails.ajax({
     type: 'GET',
     dataType: 'script',
-    url: `/billing_exports/${id}/job_status`,
+    url,
+  });
+}
+
+// Cuando termina una facturación, se dispara este evento. El parámetro `ids`
+// contiene un arreglo con los IDs de los servicios técnicos. Usamos estos IDs
+// para buscar en la tabla la fila correspondiente y eliminar el checkbox,
+// estilizar la file y eliminar las acciones Editar y Eliminar.
+function performFinished({ detail: { ids } }) {
+  const table = $('#billing-exports-table > tbody');
+
+  ids.forEach((id) => {
+    const checkbox = table.find(`input[type="checkbox"][value="${id}"]`);
+    const row = checkbox.parents('tr');
+    const actionButtons = row.find('td:last-child > a');
+
+    checkbox.remove();
+    row.addClass('billing-export-done');
+    actionButtons[1].remove();
+    actionButtons[2].remove();
   });
 }
 
 document.addEventListener('billing_exports:index:load', maskSearchFormElements);
 document.addEventListener('billing_exports:index:load', setupCheckboxes);
+document.addEventListener('billing_exports:index:load', setupEvents);
 
 // Evento que se dispara al obtener la respuesta de Enviar a Facturación:
 document.addEventListener('billing_exports:perform_disable', disablePerformButton);

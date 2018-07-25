@@ -16,12 +16,12 @@ class InvoiceSyncJob
   def perform(billing_export_id)
     setup_job(billing_export_id)
 
-    @job.set_status_and_save(:working, 'syncing_contabilium')
+    @job.set_status_and_save(:working, 'contabilium')
     perform_contabilium_sync
     @job.set_status_and_save(:finished, 'finished_contabilium')
 
     # Reboot status and set progress to 0
-    @job.set_status_and_save(:working, 'syncing_ucrm', 0)
+    @job.set_status_and_save(:working, 'ucrm', 0)
     perform_ucrm_sync
     @job.set_status_and_save(:finished, 'finished_ucrm')
   end

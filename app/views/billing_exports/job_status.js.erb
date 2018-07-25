@@ -1,14 +1,40 @@
-document.getElementById('job-status-text').innerHTML = '<%= j render 'job_status' %>';
+document.getElementById('job-status-text').innerHTML = ' <%= j render 'job_status' %>';
 
 <% unless @job.finished? || @job.error? %>
     setTimeout(() => {
       document.dispatchEvent(
-        new CustomEvent('billing_exports:perform_loop', { detail: { id: <%= @billing_export.id %> } })
+        new CustomEvent('billing_exports:perform_loop',
+          {
+            detail: {
+              url: '<%= job_status_billing_export_path(@billing_export) %>',
+            }
+          })
       );
     }, 500);
 <% end %>
 
 <% if @job.finished? %>
-    document.getElementById('alert-message').innerHTML = '';
-    document.dispatchEvent(new CustomEvent('billing_exports:perform_finished'));
+document.getElementById('alert-message').innerHTML = '';
+
+// Cambiar el ícono de notificación a un check para indicar que terminó el
+// proceso.
+(function changeNotificationIcon() {
+  const new_i = document.createElement('i');
+  new_i.className = 'fa fa-check fa-2x';
+
+  const parent = document.getElementById('job-status-container').children[0];
+  const child = parent.children[0];
+  parent.replaceChild(new_i, child);
+})();
+
+document.getElementById('action-container').innerHTML = '<button class="btn btn-secondary" type="submit" data-target=".card-footer.flexible" data-toggle-replace="<%= (render 'save_invoices_actions').gsub(/\n/, '') %>"><%= t('.back') %></button>';
+
+document.dispatchEvent(
+  new CustomEvent('billing_exports:perform_finished',
+    {
+      detail: {
+        ids: <%= @billing_export.technical_services.pluck(:id).to_s %>,
+      }
+    })
+);
 <% end %>
