@@ -3,6 +3,7 @@ class BillingExportsController < ApplicationController
   before_action :set_billing_export, only: [:perform, :download_csv,
                                             :job_status]
   authorize_resource
+  authorize_resource TechnicalService
 
   include DateRansacker
   date_param :datetime

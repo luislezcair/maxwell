@@ -21,6 +21,7 @@ class BillingExport < ApplicationRecord
 
   validate :at_least_one_technical_service?
   validate :billed_technical_services?, on: :create
+  validate :technical_service_valid_amount?, on: :create
 
   after_create :create_invoices
 
@@ -75,5 +76,13 @@ class BillingExport < ApplicationRecord
   def billed_technical_services?
     return if technical_services.all? { |ts| ts.invoice.blank? }
     errors.add(:technical_services, :billed)
+  end
+
+  # Comprueba que los servicios técnicos tengan un monto total mayor a $0.
+  # Contabilium no permite facturar $0. UCRM sí.
+  #
+  def technical_service_valid_amount?
+    return if technical_services.all? { |ts| ts.total_cost.positive? }
+    errors.add(:technical_services, :amount_zero)
   end
 end

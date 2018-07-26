@@ -77,6 +77,7 @@ class Contab::Invoice < Contab::ContabBaseModel
       arr[index.to_s] = {
         Cantidad: item.quantity,
         Concepto: item.description,
+        # IdConcepto: 892_599,
         PrecioUnitario: item.amount.to_f,
         Iva: (item.iva_value * 100),
         Bonificacion: item.discount

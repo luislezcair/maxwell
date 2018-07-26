@@ -32,6 +32,9 @@ function setupCheckboxes() {
   $('#check-all').change();
 }
 
+// Cuando un elemento tiene establecida la propiedad 'data-toggle-replace', al
+// hacer click, al elemento indicado en 'data-target' se le coloca como
+// contenido HTML el valor de la propiedad 'data-toggle-replace'.
 function setupEvents() {
   $(document).on('click', '[data-toggle-replace]', (e) => {
     const selector = e.target.dataset.target;

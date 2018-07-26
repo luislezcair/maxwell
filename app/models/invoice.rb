@@ -40,7 +40,7 @@ class Invoice < ApplicationRecord
 
       s.invoice = self
       s.invoice_item = item
-      s.save!
+      s.save!(context: :invoicing)
     end
   end
 

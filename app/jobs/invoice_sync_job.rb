@@ -37,16 +37,18 @@ class InvoiceSyncJob
       ci = Contab::Invoice.from_model(invoice)
       response = ci.save!
 
-      if response.response_id
+      if response.respond_to?(:response_id)
         logger.info("DID IT!!!! CONTAB ID IS #{response.response_id}")
         invoice.contabilium_id = response.response_id
         invoice.save!
-      else
-        logger.info('DAMN!!!, SOME ERROR')
-      end
 
-      @job.progress += 1
-      @job.save!
+        @job.progress += 1
+        @job.save!
+      else
+        error = response.response_errors.first
+        logger.info("DAMN!!!, SOME ERROR: #{error}")
+        @job.set_status_and_save(:error, nil, nil, error)
+      end
     end
   end
 
@@ -63,12 +65,12 @@ class InvoiceSyncJob
         logger.info("DID IT!!!! UCRM ID IS #{response.id}")
         invoice.ucrm_id = response.id
         invoice.save!
+
+        @job.progress += 1
+        @job.save!
       else
         logger.info('DAMN!!!, SOME ERROR')
       end
-
-      @job.progress += 1
-      @job.save!
     end
   end
 

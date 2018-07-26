@@ -58,10 +58,13 @@ es-AR:
             export_type:
               inclusion: 'El tipo de exportación no está disponible'
             technical_services:
+              amount_zero: 'No se pueden facturar servicios técnicos cuyo monto sea $0'
               billed: 'Hay servicios técnicos que ya fueron facturados o están cerrados'
               empty: 'Debe seleccionar al menos un servicio técnico'
         technical_service:
           attributes:
+            base:
+              billed: 'No se puede modificar un servicio técnico que ya ha sido facturado'
             client:
               not_synced: 'no se encuentra sincronizado con UCRM o Contabilium'
             corporate_cellphones:

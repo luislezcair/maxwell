@@ -1,3 +1,9 @@
+<% if @technical_service.errors[:base].any? %>
+  <div class="alert alert-danger">
+    <strong><%= t('common.attention_alert') %></strong> <%= @technical_service.errors[:base].first %>
+  </div>
+<% end %>
+
 <%= simple_form_for @technical_service, wrapper: :maxwell_horizontal_form, defaults: { grid_wrapper_html: { class: 'col-sm-9' } } do |f| %>
   <div class="card">
     <div class="card-header"><%= header %></div>

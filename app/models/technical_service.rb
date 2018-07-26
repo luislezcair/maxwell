@@ -44,6 +44,7 @@ class TechnicalService < ApplicationRecord
   validate :at_least_one_technician?
   validate :at_least_one_work_type?
   validate :client_is_synced
+  validate :not_billed?, on: :update
 
   before_save :compute_total_cost
 
@@ -89,5 +90,13 @@ class TechnicalService < ApplicationRecord
   #
   def compute_total_cost
     self.total_cost = labour_cost + equipment_cost
+  end
+
+  # Comprueba que este servicio técnico no haya sido enviado a facturación, es
+  # decir, que no tenga un Invoice asociado.
+  #
+  def not_billed?
+    return if invoice.blank?
+    errors.add(:base, :billed)
   end
 end

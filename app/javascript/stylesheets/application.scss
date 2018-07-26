@@ -156,8 +156,8 @@ table {
     }
 
     &.with-checkboxes tbody > tr.billing-export-done {
-      background-color: rgba(99, 194, 222, .3);
-      color: rgb(92, 104, 115);
+      background-color: $color-light-blue-alpha;
+      color: $color-gray-700;
     }
   }
 }

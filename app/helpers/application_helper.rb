@@ -81,8 +81,13 @@ module ApplicationHelper
   end
 
   # Agrupa los permisos por categoría para mostrarlos en el formulario de Grupos
+  # y ordena alfabéticamente las categorías y los permisos dentro de cada
+  # categoría.
   #
   def permissions_by_category(group)
-    group.group_permissions.group_by { |gp| gp.permission.category }.sort
+    group.group_permissions
+         .group_by { |gp| gp.permission.category }
+         .sort
+         .map { |cat, perms| [cat, perms.sort_by { |p| p.permission.title }] }
   end
 end
