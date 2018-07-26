@@ -50,8 +50,7 @@ class ContabAPI
   # TODO: handle Faraday::ConnectionFailed, change env to actual env
   #
   def new_token
-    env = :development # Rails.env
-    credentials = Rails.application.credentials[:contabilium][env]
+    credentials = Rails.application.credentials[:contabilium][CONTABILIUM_ENV]
 
     client_id = credentials[:client_id]
     client_secret = credentials[:client_secret]

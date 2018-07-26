@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
+require 'ucrm_api'
+
 # Clase base para los modelos que se sincronizan con UCRM.
 #
 class UCRM::UCRMBaseModel
   include Her::Model
-  use_api UCRM_API
+  use_api(proc { ::UCRMAPI.new.api })
 
   # Estos atributos hay que inicializarlos con los valores adecuados en cada
   # subclase. @klass es la clase del modelo local y @ucrm_local_field_id es el
