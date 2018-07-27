@@ -15,10 +15,11 @@ import 'font-awesome/scss/font-awesome.scss';
 import 'simple-line-icons/scss/simple-line-icons.scss';
 import 'inputmask';
 
-// import WebpackerReact from 'webpacker-react';
 import Turbolinks from 'turbolinks';
 import Rails from 'rails-ujs';
-// import ReactTest from '../components/ReactTest';
+
+import { Application } from 'stimulus';
+import { definitionsFromContext } from 'stimulus/webpack-helpers';
 
 // Custom modules
 import '../views';
@@ -31,7 +32,10 @@ import '../stylesheets/application.scss';
 Turbolinks.start();
 Rails.start();
 
-// WebpackerReact.setup({ ReactTest });
+// Stimulus setup
+const application = Application.start();
+const context = require.context('../controllers', true, /\.js$/);
+application.load(definitionsFromContext(context));
 
 document.addEventListener('turbolinks:load', () => {
   $('.sidebar').sidebar();

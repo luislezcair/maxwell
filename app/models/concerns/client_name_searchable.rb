@@ -15,9 +15,21 @@ module ClientNameSearchable
              '"clients"."company_name" END'
 
   included do
-    ransacker :name do |_parent|
+    ransacker :name do
       Arel.sql(SORT_SQL)
     end
+
+    # Convierte a string el númeró de cliente y el documento para poder usarlo
+    # en las búsquedas.
+    ransacker :document_number_s do
+      Arel.sql('"document_number"::varchar')
+    end
+
+    ransacker :number_s do
+      Arel.sql('"number"::varchar')
+    end
+
+    ransack_alias :identification, :name_or_document_number_s_or_number_s
 
     scope :sorted, -> { order(Arel.sql("#{SORT_SQL} ASC")) }
 

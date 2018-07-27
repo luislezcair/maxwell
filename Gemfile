@@ -83,9 +83,6 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'cancancan'
 
-# React helpers
-gem 'webpacker-react'
-
 # Better forms
 gem 'simple_form'
 gem 'enumerize'

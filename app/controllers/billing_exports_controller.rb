@@ -63,10 +63,6 @@ class BillingExportsController < ApplicationController
     @billing_export = BillingExport.find(params[:id])
   end
 
-  def search_params?
-    params[:q] && params[:q].reject { |_, v| v.blank? }.present?
-  end
-
   def default_dates
     @q.datetime_gteq = Time.current.beginning_of_month
     @q.datetime_lteq = Time.current.end_of_month

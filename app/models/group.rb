@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+# Representa un grupo de usuarios. Los permisos del sistema están definidos en
+# los grupos.
+#
 class Group < ApplicationRecord
   has_many :users, dependent: :restrict_with_error
 

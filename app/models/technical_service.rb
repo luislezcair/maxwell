@@ -81,7 +81,7 @@ class TechnicalService < ApplicationRecord
   end
 
   def client_is_synced
-    return if client&.synced?
+    return if !client || client.synced?
     errors.add(:client, :not_synced)
   end
 

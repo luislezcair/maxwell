@@ -1,0 +1,10 @@
+es-AR:
+  clients:
+    search:
+      find_client: 'Buscar'
+      modal:
+        close: 'Cerrar'
+        title: 'Buscar cliente'
+      placeholder: 'Nombre, número de cliente o DNI...'
+      tooltip:
+        select: 'Seleccionar'

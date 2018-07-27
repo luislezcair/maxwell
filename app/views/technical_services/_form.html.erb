@@ -13,7 +13,18 @@
         <i class="fa fa-user"></i> <%= t('.section.client') %>
       </legend>
 
-      <%= f.association :client, collection: sorted_clients  %>
+      <%= f.input :client do %>
+        <div data-controller="client-search" data-client-search-url="<%= search_clients_path %>" class="input-group">
+          <%= f.input_field :client, class: 'form-control normal', readonly: true, value: client_label(f.object.client) %>
+          <%= f.hidden_field :client_id %>
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" data-action="client-search#show" data-toggle="tooltip" data-trigger="hover" title="<%= t('.find_client') %>">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+          <%= f.full_error :client, class: 'invalid-feedback' %>
+        </div>
+      <% end %>
 
       <%= f.association :city, collection: sorted_cities %>
 
@@ -136,3 +147,6 @@
     </div>
   </div>
 <% end %>
+
+<div id="client-search-modal" class="modal" tabindex="-1" role="dialog">
+</div>

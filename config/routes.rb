@@ -17,8 +17,6 @@ Rails.application.routes.draw do
     get '(page/:page)', action: :index, on: :collection, as: ''
   end
 
-  resources :technical_services, concerns: :paginatable
-
   resources :billing_exports do
     member do
       get 'download_csv'
@@ -26,6 +24,14 @@ Rails.application.routes.draw do
       post 'perform'
     end
   end
+
+  resources :clients, concerns: :paginatable do
+    collection do
+      get 'search'
+    end
+  end
+
+  resources :technical_services, concerns: :paginatable
 
   namespace :system do
     resources :groups, concerns: :paginatable

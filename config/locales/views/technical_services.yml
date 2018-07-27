@@ -5,12 +5,13 @@ es-AR:
         edit_header: 'Editar Servicio Técnico'
     form:
       cancel: 'Cancelar'
-      submit: 'Guardar'
+      find_client: 'Buscar cliente'
       section: &form_sections
         client: 'Datos del cliente'
         client_equipment: 'Equipos del cliente'
         company_equipment: 'Equipos de la empresa'
         technical_service: 'Servicio Técnico'
+      submit: 'Guardar'
     index:
       header: 'Servicios Técnicos'
       tooltip:

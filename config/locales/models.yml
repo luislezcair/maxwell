@@ -4,7 +4,9 @@ es-AR:
       city:
         name: 'Ciudad'
       client:
+        document_number: 'DNI / CUIT'
         name: 'Cliente'
+        number: 'Número'
       group:
         name: 'Nombre'
         permissions: 'Permisos'
@@ -83,6 +85,9 @@ es-AR:
           delete_success: 'Se ha eliminado el grupo'
 
     models:
+      client:
+        one: 'Cliente'
+        other: 'Clientes'
       group:
         one: 'Grupo'
         other: 'Grupos'

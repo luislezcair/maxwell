@@ -217,3 +217,7 @@ ul.simple-list {
     margin-left: 10px;
   }
 }
+
+input[readonly].form-control.normal {
+  background-color: $color-gray-100;
+}

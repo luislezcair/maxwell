@@ -17,6 +17,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
+  # Devuelve true si hay parámetros de búsqueda definidos, false si no hay
+  # parámetros o están vacíos.
+  #
+  def search_params?
+    params[:q] && params[:q].reject { |_, v| v.blank? }.present?
+  end
+
   # Comportamiento común cuando se elimina una entidad. Si se eliminó sin
   # problemas redirige al index.js correspondiente o a la dirección indicada en
   # el parámetro `redirect_to`. Si hubo un error, renderiza un alert con la

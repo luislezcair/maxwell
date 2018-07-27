@@ -1,0 +1,74 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title"><%= t('.modal.title') %></h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="<%= t('.modal.close') %>">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <%= search_form_for @q, url: search_clients_path, remote: true do |f| %>
+        <%= f.input :identification_cont, label: false do %>
+          <div class="input-group" data-controller="client-search">
+            <%= f.input_field :identification_cont, class: 'form-control', placeholder: t('.placeholder'), value: @identification_cont, data: { target: 'client-search.input', action: 'input->client-search#change' } %>
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="submit" disabled="disabled" data-target="client-search.button" data-toggle="tooltip" data-trigger="hover" title="<%= t('.find_client') %>">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
+      <table id="billing-exports-table" class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data with-checkboxes">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th><%= sort_link(@q, :name, {}, remote: true) %></th>
+            <th class="align-right"><%= sort_link(@q, :number, {}, remote: true) %></th>
+            <th class="align-right"><%= sort_link(@q, :document_number, {}, remote: true) %></th>
+            <th class="action-column"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @clients.each_with_index do |c, index| %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= c.name %></td>
+              <td class="numeric"><%= c.number %></td>
+              <td class="numeric"><%= cuit_dni(c) %></td>
+
+              <td class="align-right">
+                <div data-controller="client-search" data-client-search-id="<%= c.id %>" data-client-search-label="<%= client_label(c) %>">
+                  <button class="btn btn-sm btn-outline-info" type="button" data-action="client-search#select" data-toggle="tooltip" data-title="<%= t('.tooltip.select') %>">
+                    <i class="fa fa-arrow-right"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+
+        <tfoot>
+          <tr>
+            <td class="page-entries-info" colspan="5"><%= page_entries_info @clients %></td>
+          </tr>
+
+          <% if @clients.total_pages > 1 %>
+            <tr>
+              <td colspan="5">
+                <%= paginate @clients, remote: true %>
+              </td>
+            </tr>
+          <% end %>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" data-dismiss="modal"><%= t('.modal.close') %></button>
+    </div>
+  </div>
+</div>
