@@ -17,9 +17,21 @@ class InvoiceItem < ApplicationRecord
                   default: :iva_21,
                   scope: true
 
+  before_save :compute_amounts
+
   # Shorthand para consultar el monto de IVA correspondiente para el token iva.
   #
   def self.iva_value_for(iva)
     iva.find_value(iva).value
+  end
+
+  private
+
+  # Calcula los campos monto neto y monto IVA y los guarda para no tener que
+  # calcularlos cada vez que se necesiten.
+  #
+  def compute_amounts
+    self.net_amount = amount / (1 + iva_value)
+    self.iva_amount = net_amount * iva_value
   end
 end

@@ -23,10 +23,11 @@ class UCRM::Invoice < UCRM::UCRMBaseModel
   # un Invoice de Maxwell.
   #
   def self.ucrm_attributes(invoice)
+    days = SystemConfiguration.get_api_config('invoice.expiry_days').to_i
     {
       clientId: invoice.client.ucrm_id,
       createdDate: invoice.emission_date.iso8601,
-      maturityDays: 30, # FIXME: to config vars,
+      maturityDays: days,
       notes: invoice.notes,
       items: build_invoice_items(invoice.invoice_items),
       adminNotes: admin_note

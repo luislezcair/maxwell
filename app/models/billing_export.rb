@@ -47,21 +47,36 @@ class BillingExport < ApplicationRecord
 
   # Una vez guradado el BillingExport se pueden crear las facturas para los
   # servicios técnicos asociados a este BillingExport.
-  # FIXME: default parameters for invoice should be set in config files.
   #
   def create_invoices
     clients_with_ts = technical_services.group_by(&:client)
+    days = SystemConfiguration.get_api_config('invoice.expiry_days').to_i
 
     clients_with_ts.each do |client, services|
       invoice = invoices.build(client: client,
                                emission_date: Time.current,
-                               expiry_date: Time.current.advance(days: 30))
+                               expiry_date: Time.current.advance(days: days),
+                               notes: invoice_notes(services))
       invoice.create_invoice_items(services)
       invoice.save!
     end
 
     self.total_amount = invoices.includes(:invoice_items).sum(:amount)
     save!
+  end
+
+  # El campo observaciones de un invoice debe tener Nº de orden, fechas y tipos
+  # de trabajos realizados.
+  #
+  def invoice_notes(services)
+    note = ''
+    services.each do |s|
+      work_types = s.work_types.pluck(:name).join(', ')
+      date = I18n.l(s.datetime, format: :short_date)
+      opts = { date: date, number: s.work_order_number, work_types: work_types }
+      note += I18n.t('invoicing.technical_service.notes', opts) + "\n"
+    end
+    note
   end
 
   def at_least_one_technical_service?

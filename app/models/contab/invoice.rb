@@ -32,6 +32,12 @@ class Contab::Invoice < Contab::ContabBaseModel
     'Otro': :otro
   }.freeze
 
+  MODES = {
+    'O': :other,
+    'E': :electronic,
+    'T': :checkbook
+  }.freeze
+
   # Esta colección usa paginación
   #
   def self.pageable?
@@ -55,11 +61,16 @@ class Contab::Invoice < Contab::ContabBaseModel
   # Invoice de Maxwell `invoice`.
   #
   def self.contab_attributes(invoice)
+    voucher_type = VOUCHER_TYPES.invert[invoice.voucher_type.to_sym].to_s
+    sale_point = SystemConfiguration.get_api_config('invoice.point_of_sale_id')
+    mode = MODES.invert[invoice.mode.to_sym].to_s
+    sale_condition = SALE_CONDITIONS.invert[invoice.sale_condition.to_sym].to_s
+
     { IdCliente: invoice.client.contabilium_id,
-      TipoFc: VOUCHER_TYPES.invert[invoice.voucher_type.to_sym].to_s,
-      PuntoVenta: 7921, # invoice.sale_point, # FIXME: move to config vars.
-      Modo: 'O',
-      CondicionVenta: SALE_CONDITIONS.invert[invoice.sale_condition.to_sym].to_s,
+      TipoFc: voucher_type,
+      PuntoVenta: sale_point,
+      Modo: mode,
+      CondicionVenta: sale_condition,
       FechaEmision: invoice.emission_date.iso8601,
       FechaVencimiento: invoice.expiry_date.iso8601,
       Observaciones: invoice.notes,
@@ -69,17 +80,17 @@ class Contab::Invoice < Contab::ContabBaseModel
   # El arreglo de items en realidad debe ser un Hash con la forma:
   # { 0 => { att1: val1, att2: val2 }, 1 => { att1: val1, att2: val2 } }
   # El PrecioUnitario debe ser el monto neto (sin IVA).
-  # FIXME: por ahora está por defecto en IVA 0%, después hay que poner el neto.
   #
   def self.build_invoice_items(items)
     arr = {}
+    concept_id = SystemConfiguration.get_api_config('invoice.concept_id')
     items.each_with_index do |item, index|
       arr[index.to_s] = {
         Cantidad: item.quantity,
         Concepto: item.description,
-        # IdConcepto: 892_599,
-        PrecioUnitario: item.amount.to_f,
-        Iva: (item.iva_value * 100),
+        IdConcepto: concept_id,
+        PrecioUnitario: item.net_amount.to_f,
+        Iva: item.iva_value * 100,
         Bonificacion: item.discount
       }
     end

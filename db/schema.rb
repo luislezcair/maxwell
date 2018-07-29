@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_23_224615) do
+ActiveRecord::Schema.define(version: 2018_07_29_021715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 2018_07_23_224615) do
   create_table "invoice_items", force: :cascade do |t|
     t.integer "invoice_id"
     t.integer "quantity", default: 1, null: false
-    t.decimal "iva", default: "0.0", null: false
+    t.decimal "iva", default: "0.21", null: false
     t.decimal "amount", precision: 15, scale: 2, default: "0.0", null: false
     t.decimal "discount", precision: 15, scale: 2, default: "0.0", null: false
     t.string "description", default: "", null: false
@@ -144,6 +144,8 @@ ActiveRecord::Schema.define(version: 2018_07_23_224615) do
     t.integer "ucrm_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "net_amount", precision: 15, scale: 2, default: "0.0", null: false
+    t.decimal "iva_amount", precision: 15, scale: 2, default: "0.0", null: false
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -159,6 +161,7 @@ ActiveRecord::Schema.define(version: 2018_07_23_224615) do
     t.integer "ucrm_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "mode", default: 0, null: false
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -199,6 +202,15 @@ ActiveRecord::Schema.define(version: 2018_07_23_224615) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_surge_protector_setup_types_on_name", unique: true
+  end
+
+  create_table "system_configurations", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "development_value", default: "", null: false
+    t.string "production_value", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_system_configurations_on_name", unique: true
   end
 
   create_table "technical_service_corporate_cellphones", force: :cascade do |t|

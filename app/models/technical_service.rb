@@ -59,8 +59,7 @@ class TechnicalService < ApplicationRecord
   # facturación.
   #
   def description
-    date = I18n.l(datetime, format: :short_date)
-    I18n.t('invoicing.technical_service', date: date, count: 1)
+    I18n.t('invoicing.technical_service', count: 1)
   end
 
   private

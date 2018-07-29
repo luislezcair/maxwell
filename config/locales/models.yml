@@ -101,5 +101,6 @@ es-AR:
   invoicing:
     ucrm_admin_note: 'Creado por Maxwell el %{date}'
     technical_service:
-      one: 'Servicio técnico del %{date}'
-      other: 'Servicios técnicos varios'
+      one: 'Servicio técnico'
+      other: 'Servicios técnicos'
+      notes: 'Servicio técnico del %{date} - Nº de orden de trabajo: %{number} - Trabajos realizados: %{work_types}'

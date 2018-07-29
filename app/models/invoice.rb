@@ -25,6 +25,9 @@ class Invoice < ApplicationRecord
                              default: :efectivo,
                              predicates: true
 
+  enumerize :mode, in: { other: 0, electronic: 1, checkbook: 2 },
+                   default: :other
+
   scope :not_synced_contabilium, -> { where(contabilium_id: nil) }
   scope :not_synced_ucrm, -> { where(ucrm_id: nil) }
 
@@ -42,26 +45,5 @@ class Invoice < ApplicationRecord
       s.invoice_item = item
       s.save!(context: :invoicing)
     end
-  end
-
-  # Devuelve el monto neto de la factura para los ítems con IVA de 21%
-  #
-  def net_21
-    net_amount_for_iva(:iva_21)
-  end
-
-  # Devuelve el monto que corresponde al 21% del IVA.
-  #
-  def iva_21
-    net_21 * InvoiceItem.iva_value_for(iva)
-  end
-
-  private
-
-  # Devuelve el monto neto para el porcentaje de IVA pasado como parámetro.
-  #
-  def net_amount_for_iva(iva)
-    divider = InvoiceItem.iva_value_for(iva) + 1
-    invoice_items.with_iva(iva).sum(:amount) / divider
   end
 end
