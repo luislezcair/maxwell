@@ -87,13 +87,23 @@
       </div>
 
       <%= f.input :google_maps_url do %>
-        <div class="input-group">
-          <%= f.input_field :google_maps_url, class: 'form-control' %>
-          <div class="input-group-append">
-            <span class="input-group-text">
-              <i class="fa fa-map-marker"></i>
-            </span>
+        <div data-controller="location" data-location-perform="<%= @technical_service.new_record? %>">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="fa fa-map-marker"></i>
+              </span>
+            </div>
+
+            <%= f.input_field :google_maps_url, class: 'form-control', data: { target: 'location.input' } %>
+
+            <div class="input-group-append">
+              <a class="btn btn-primary" href="https://maps.google.com.ar" target="_blank" data-target="location.link" data-toggle="tooltip" data-trigger="hover" title="<%= t('.open_location') %>">
+                <i class="fa fa-location-arrow"></i>
+              </a>
+            </div>
           </div>
+          <div class="invalid-feedback d-block" data-target="location.error"></div>
         </div>
       <% end %>
 

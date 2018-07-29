@@ -6,6 +6,7 @@ es-AR:
     form:
       cancel: 'Cancelar'
       find_client: 'Buscar cliente'
+      open_location: 'Ir a Google Maps'
       section: &form_sections
         client: 'Datos del cliente'
         client_equipment: 'Equipos del cliente'
