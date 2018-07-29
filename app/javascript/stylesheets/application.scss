@@ -221,3 +221,8 @@ ul.simple-list {
 input[readonly].form-control.normal {
   background-color: $color-gray-100;
 }
+
+.input-daterange .input-group-addon {
+  padding: 0;
+  margin: 0;
+}

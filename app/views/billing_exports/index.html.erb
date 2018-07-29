@@ -6,7 +6,7 @@
           <%= f.input :datetime_lteq, label: t('.search_form.period'), required: true do %>
             <div class="input-group input-daterange">
               <%= f.input_field :datetime_gteq, as: :string, class: 'form-control align-right mask-date', value: short_date(@q.datetime_gteq), autocomplete: 'off', required: true %>
-              <div class="input-group-append">
+              <div class="input-group-append input-group-addon">
                 <span class="input-group-text">
                   <i class="fa fa-arrows-h"></i>
                 </span>
