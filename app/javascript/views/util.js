@@ -21,7 +21,7 @@ const maskDefaults = {
   },
   date: { alias: 'datetime', inputFormat: 'dd/mm/yyyy' },
   phone: {
-    mask: '(999) 999 9999',
+    mask: '(9999) 999 999',
     removeMaskOnSubmit: true,
     unmaskAsNumber: true,
   },

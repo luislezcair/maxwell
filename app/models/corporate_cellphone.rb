@@ -13,7 +13,9 @@ class CorporateCellphone < ApplicationRecord
 
   scope :sorted, -> { order(:phone) }
 
+  # (1234) 567 890
   def to_label
-    number_to_phone(phone, area_code: true, delimiter: ' ')
+    number_to_phone(phone, area_code: true, delimiter: ' ',
+                           pattern: /(\d{4})(\d{3})(\d{3})$/)
   end
 end
