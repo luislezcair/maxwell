@@ -1,0 +1,23 @@
+<%= simple_form_for [:elements, @technician], wrapper: :maxwell_horizontal_form, defaults: { grid_wrapper_html: { class: 'col-sm-9' } } do |f| %>
+  <div class="card">
+    <div class="card-header"><%= header %></div>
+
+    <div class="card-body">
+      <legend class="form-section">
+        <i class="fa fa-user"></i> <%= t('.section.basic') %>
+      </legend>
+
+      <div class="form-group row string required">
+        <%= f.input :firstname, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.input :lastname, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <div class="float-right">
+        <%= link_to t('.cancel'), elements_technicians_path, class: 'btn btn-secondary' %>
+        <%= f.button :submit, t('.submit'), class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>

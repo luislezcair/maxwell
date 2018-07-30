@@ -43,6 +43,12 @@ es-AR:
         work_order_number: 'Orden de trabajo'
         work_types: 'Tipos de trabajo'
 
+      technician:
+        firstname: 'Nombre'
+        lastname: 'Apellido'
+        name: 'Nombre'
+        technical_service_technicians: 'Servicios Técnicos'
+
       user:
         active: 'Activo'
         firstname: 'Nombre'
@@ -77,6 +83,9 @@ es-AR:
               empty_work_types: 'no puede estar vacío'
           delete_error: 'No se pudo eliminar este Servicio Técnico'
           delete_success: 'Se ha eliminado el Servicio Técnico'
+        technician:
+          delete_error: 'No se puede eliminar este técnico'
+          delete_success: 'Se ha eliminado el técnico'
         user:
           delete_error: 'No se pudo eliminar este usuario'
           delete_success: 'Se ha eliminado el usuario'
@@ -94,6 +103,12 @@ es-AR:
       technical_service:
         one: 'Servicio Técnico'
         other: 'Servicios Técnicos'
+      technical_service_technician:
+        one: 'Servicios Técnicos'
+        other: 'Servicios Técnicos'
+      technician:
+        one: 'Técnico'
+        other: 'Técnicos'
       user:
         one: 'Usuario'
         other: 'Usuarios'

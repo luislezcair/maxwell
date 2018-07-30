@@ -37,4 +37,9 @@ Rails.application.routes.draw do
     resources :groups, concerns: :paginatable
     resources :users, concerns: :paginatable
   end
+
+  namespace :elements do
+    resources :corporate_cellphones, concerns: :paginatable, except: [:show]
+    resources :technicians, concerns: :paginatable, except: [:show]
+  end
 end

@@ -1,0 +1,22 @@
+es-AR:
+  elements:
+    technicians:
+      edit:
+        header: 'Editar Técnico'
+      form:
+        cancel: 'Cancelar'
+        section:
+          basic: 'Información básica'
+        submit: 'Guardar'
+      index:
+        header: 'Técnicos'
+        tooltip:
+          new: 'Nuevo técnico'
+      new:
+        header: 'Nuevo Técnico'
+      technicians_table:
+        delete_confirm: '¿Está seguro que desea eliminar este técnico?'
+        tooltip:
+          edit: 'Editar técnico'
+          delete: 'Eliminar técnico'
+

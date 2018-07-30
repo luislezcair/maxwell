@@ -1,0 +1,7 @@
+es-AR:
+  elements:
+    corporate_cellphones:
+      index:
+        header: 'Técnicos'
+        tooltip:
+          new: 'Nuevo técnico'

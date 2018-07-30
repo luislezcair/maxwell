@@ -1,0 +1,54 @@
+<div id="alert-message">
+  <% if flash[:alert] %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+</div>
+
+<table class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data">
+  <thead>
+    <tr>
+      <th class="number-column">#</th>
+      <th><%= sort_link(@q, :name, {}, remote: true) %></th>
+      <th class="action-column"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @technicians.each_with_index do |t, index| %>
+      <tr>
+        <td><%= @technicians.offset_value + index + 1 %></td>
+        <td><%= t.name %></td>
+
+        <td class="align-right">
+          <% if can? :update, t %>
+            <%= link_to edit_elements_technician_path(t), class: 'btn btn-sm btn-outline-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+              <i class="fa fa-pencil"></i>
+            <% end %>
+          <% end %>
+
+          <% if can? :manage, t %>
+            <%= link_to path_with_parameters(:elements_technician_path, t), remote: true, method: :delete, class: 'btn btn-sm btn-outline-danger', data: { toggle: 'tooltip', trigger: 'hover', title: t('.tooltip.delete'), confirm: t('.delete_confirm') } do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td class="page-entries-info" colspan="3"><%= page_entries_info @technicians %></td>
+    </tr>
+
+    <% if @technicians.total_pages > 1 %>
+      <tr>
+        <td colspan="8">
+          <%= paginate @technicians, remote: true %>
+        </td>
+      </tr>
+    <% end %>
+  </tfoot>
+</table>

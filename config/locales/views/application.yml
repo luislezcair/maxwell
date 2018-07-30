@@ -5,6 +5,9 @@ es-AR:
   common:
     attention_alert: '¡Atención!'
     nav:
+      elements:
+        corporate_cellphones: 'Teléfonos Celulares'
+        technicians: 'Técnicos'
       groups: 'Grupos y Permisos'
       users: 'Usuarios'
   enumerize:

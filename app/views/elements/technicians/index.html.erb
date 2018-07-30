@@ -1,0 +1,26 @@
+<%= content_for :header_tabs do %>
+  <nav class="nav nav-pills flex-column flex-sm-row">
+    <%= link_to t('common.nav.elements.technicians'), elements_technicians_path, class: 'flex-sm-fill text-sm-center nav-link active' %>
+    <%= link_to t('common.nav.elements.corporate_cellphones'), elements_corporate_cellphones_path, class: 'flex-sm-fill text-sm-center nav-link' %>
+  </nav>
+<% end %>
+
+<div class="card">
+  <div class="card-header data-header">
+    <div class="title"><%= t('.header') %></div>
+
+    <div>
+      <% if can? :create, Technician %>
+        <%= link_to new_elements_technician_path, class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.new') } do %>
+          <i class="fa fa-plus"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div id="technicians-table-container">
+      <%= render 'technicians_table' %>
+    </div>
+  </div>
+</div>
