@@ -11,6 +11,14 @@
         <%= f.input :firstname, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
         <%= f.input :lastname, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
       </div>
+
+      <%= f.input :active, label: false, wrapper: :horizontal_boolean, grid_wrapper_html: { class: '' }, form_check_wrapper_html: { class: 'form-check-no-padd' } do %>
+        <%= f.input_field :active, as: :hidden %>
+        <label class="switch switch-label switch-pill switch-primary">
+          <%= f.input_field :active, class: 'switch-input' %>
+          <span class="switch-slider" data-checked="<%= t('boolean.byes') %>" data-unchecked="<%= t('boolean.bno') %>"></span>
+        </label>
+      <% end %>
     </div>
 
     <div class="card-footer">

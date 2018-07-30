@@ -10,9 +10,10 @@ module ApplicationHelper
   #
   def two_column_multiple_choice_for(builder, association, options = {})
     klass = association.to_s.classify.constantize
-    options = { required: false, default: nil }.merge(options)
+    options = { required: false, default: nil, collection: klass.sorted }
+              .merge(options)
 
-    collection = klass.sorted
+    collection = options[:collection]
     half = collection.count.fdiv(2).ceil
     option_groups = half.positive? ? collection.in_groups_of(half, false) : []
 

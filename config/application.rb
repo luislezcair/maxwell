@@ -31,6 +31,7 @@ module Maxwell
     config.i18n.available_locales = ['es-AR', :es, :en]
     config.i18n.default_locale = 'es-AR'
     config.time_zone = 'Buenos Aires'
+    config.active_storage.service = nil
     # config.active_job.queue_adapter = :sidekiq
 
     # Settings in config/environments/* take precedence over those specified

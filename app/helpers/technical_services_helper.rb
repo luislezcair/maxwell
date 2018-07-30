@@ -3,6 +3,12 @@
 # Helpers utilizados en las vistas de Technical Services.
 #
 module TechnicalServicesHelper
+  # Mostrar solamente los técnicos que estén activos.
+  #
+  def sorted_active_technicians
+    Technician.active.sorted
+  end
+
   # Mostrar solamente los clientes que estén en Contabilium y UCRM ordenados.
   #
   def sorted_clients

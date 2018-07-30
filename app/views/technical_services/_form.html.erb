@@ -36,7 +36,7 @@
 
       <%= f.input :work_order_number, as: :string, input_html: { class: 'mask-numeric', value: f.object.work_order_number&.zero? ? '' : f.object.work_order_number } %>
 
-      <%= two_column_multiple_choice_for(f, :technicians, required: true, default: f.object.new_record? && f.object.technicians.empty? ? current_user.technician : nil) %>
+      <%= two_column_multiple_choice_for(f, :technicians, required: true, default: f.object.new_record? && f.object.technicians.empty? ? current_user.technician : nil, collection: sorted_active_technicians) %>
 
       <div class="form-group row string required">
         <%= f.input :arrival_time, as: :string, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } do %>

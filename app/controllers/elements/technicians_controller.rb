@@ -48,6 +48,6 @@ class Elements::TechniciansController < ApplicationController
   end
 
   def technician_params
-    params.require(:technician).permit(:firstname, :lastname)
+    params.require(:technician).permit(:firstname, :lastname, :active)
   end
 end

@@ -11,6 +11,7 @@
     <tr>
       <th class="number-column">#</th>
       <th><%= sort_link(@q, :name, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :active, {}, remote: true) %></th>
       <th class="action-column"></th>
     </tr>
   </thead>
@@ -20,6 +21,7 @@
       <tr>
         <td><%= @technicians.offset_value + index + 1 %></td>
         <td><%= t.name %></td>
+        <td><%= boolean_display(t.active) %></td>
 
         <td class="align-right">
           <% if can? :update, t %>
@@ -40,12 +42,12 @@
 
   <tfoot>
     <tr>
-      <td class="page-entries-info" colspan="3"><%= page_entries_info @technicians %></td>
+      <td class="page-entries-info" colspan="4"><%= page_entries_info @technicians %></td>
     </tr>
 
     <% if @technicians.total_pages > 1 %>
       <tr>
-        <td colspan="3">
+        <td colspan="4">
           <%= paginate @technicians, remote: true %>
         </td>
       </tr>

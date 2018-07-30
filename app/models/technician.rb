@@ -11,5 +11,7 @@ class Technician < ApplicationRecord
   validates :lastname, uniqueness: { scope: [:firstname],
                                      case_sensitive: false }
 
+  scope :active, -> { where(active: true) }
+
   include FullNameSearchable
 end

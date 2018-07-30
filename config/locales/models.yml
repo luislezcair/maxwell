@@ -47,6 +47,7 @@ es-AR:
         work_types: 'Tipos de trabajo'
 
       technician:
+        active: 'Activo'
         firstname: 'Nombre'
         lastname: 'Apellido'
         name: 'Nombre'
