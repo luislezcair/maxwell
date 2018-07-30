@@ -7,6 +7,9 @@ es-AR:
         document_number: 'DNI / CUIT'
         name: 'Cliente'
         number: 'Número'
+      corporate_cellphone:
+        phone: 'Teléfono'
+        technical_service_corporate_cellphones: 'Servicios Técnicos'
       group:
         name: 'Nombre'
         permissions: 'Permisos'
@@ -69,6 +72,9 @@ es-AR:
               amount_zero: 'No se pueden facturar servicios técnicos cuyo monto sea $0'
               billed: 'Hay servicios técnicos que ya fueron facturados o están cerrados'
               empty: 'Debe seleccionar al menos un servicio técnico'
+        corporate_cellphone:
+          delete_error: 'No se puede eliminar este teléfono'
+          delete_success: 'Se ha eliminado el teléfono'
         technical_service:
           attributes:
             base:
@@ -97,6 +103,9 @@ es-AR:
       client:
         one: 'Cliente'
         other: 'Clientes'
+      corporate_cellphone:
+        one: 'Celular'
+        other: 'Celulares'
       group:
         one: 'Grupo'
         other: 'Grupos'

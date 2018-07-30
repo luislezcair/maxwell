@@ -20,6 +20,11 @@ const maskDefaults = {
     unmaskAsNumber: true,
   },
   date: { alias: 'datetime', inputFormat: 'dd/mm/yyyy' },
+  phone: {
+    mask: '(999) 999 9999',
+    removeMaskOnSubmit: true,
+    unmaskAsNumber: true,
+  },
 };
 
 const MaskElementByClass = (selector, mask) => {

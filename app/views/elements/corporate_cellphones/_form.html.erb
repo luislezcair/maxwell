@@ -1,0 +1,22 @@
+<%= simple_form_for [:elements, @cellphone], wrapper: :maxwell_horizontal_form, defaults: { grid_wrapper_html: { class: 'col-sm-9' } } do |f| %>
+  <div class="card">
+    <div class="card-header"><%= header %></div>
+
+    <div class="card-body">
+      <legend class="form-section">
+        <i class="fa fa-mobile"></i> <%= t('.section.basic') %>
+      </legend>
+
+      <div class="form-group row string required">
+        <%= f.input :phone, as: :tel, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, input_html: { class: 'mask-phone align-right' } %>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <div class="float-right">
+        <%= link_to t('.cancel'), elements_corporate_cellphones_path, class: 'btn btn-secondary' %>
+        <%= f.button :submit, t('.submit'), class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>

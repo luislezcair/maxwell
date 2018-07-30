@@ -1,7 +1,21 @@
 es-AR:
   elements:
     corporate_cellphones:
+      edit:
+        header: 'Editar Teléfono'
+      form:
+        cancel: 'Cancelar'
+        section:
+          basic: 'Información básica'
+        submit: 'Guardar'
       index:
-        header: 'Técnicos'
+        header: 'Teléfonos de la empresa'
         tooltip:
-          new: 'Nuevo técnico'
+          new: 'Nuevo teléfono'
+      new:
+        header: 'Nuevo Teléfono'
+      corporate_cellphones_table:
+        delete_confirm: '¿Está seguro que desea eliminar este teléfono?'
+        tooltip:
+          edit: 'Editar teléfono'
+          delete: 'Eliminar teléfono'

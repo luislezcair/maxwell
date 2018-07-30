@@ -3,6 +3,7 @@ class Elements::TechniciansController < ApplicationController
   before_action :set_technician, only: [:edit, :update, :destroy]
   authorize_resource
 
+  # GET /elements/technicians
   def index
     @q = Technician.ransack(params[:q])
     @q.sorts = 'name asc' if @q.sorts.empty?
