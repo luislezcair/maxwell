@@ -22,7 +22,7 @@ class Invoice < ApplicationRecord
   enumerize :sale_condition, in: { efectivo: 0, cheque: 1, cta_cte: 2, pay_u: 3,
                                    mercado_pago: 4, debito: 5, credito: 6,
                                    ticket: 7, otro: 8 },
-                             default: :efectivo,
+                             default: :cta_cte,
                              predicates: true
 
   enumerize :mode, in: { other: 0, electronic: 1, checkbook: 2 },

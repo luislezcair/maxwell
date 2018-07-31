@@ -51,11 +51,13 @@ class BillingExport < ApplicationRecord
   def create_invoices
     clients_with_ts = technical_services.group_by(&:client)
     days = SystemConfiguration.get_api_config('invoice.expiry_days').to_i
+    condition = SystemConfiguration.get('invoice.sale_condition').to_sym
 
     clients_with_ts.each do |client, services|
       invoice = invoices.build(client: client,
                                emission_date: Time.current,
                                expiry_date: Time.current.advance(days: days),
+                               sale_condition: condition,
                                notes: invoice_notes(services))
       invoice.create_invoice_items(services)
       invoice.save!
