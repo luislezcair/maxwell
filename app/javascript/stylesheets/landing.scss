@@ -17,19 +17,7 @@ body {
 }
 
 img.brand-logo-full {
-  width: 250px;
+  width: 100%;
   height: auto;
   margin-bottom: 30px;
-}
-
-@media (min-width: 465px) {
-  img.brand-logo-full {
-    width: 350px;
-  }
-}
-
-@media (min-width: 768px) {
-  img.brand-logo-full {
-    width: 450px;
-  }
 }
