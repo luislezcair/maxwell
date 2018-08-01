@@ -1,0 +1,21 @@
+es-AR:
+  elements:
+    work_types:
+      edit:
+        header: 'Editar Trabajo'
+      form:
+        cancel: 'Cancelar'
+        section:
+          basic: 'Información básica'
+        submit: 'Guardar'
+      index:
+        header: 'Tipos de trabajo'
+        tooltip:
+          new: 'Nuevo trabajo'
+      new:
+        header: 'Nuevo Trabajo'
+      work_types_table:
+        delete_confirm: '¿Está seguro que desea eliminar este tipo de trabajo?'
+        tooltip:
+          edit: 'Editar'
+          delete: 'Eliminar'

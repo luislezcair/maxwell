@@ -8,6 +8,7 @@ es-AR:
       elements:
         corporate_cellphones: 'Teléfonos Celulares'
         technicians: 'Técnicos'
+        work_types: 'Tipos de trabajo'
       groups: 'Grupos y Permisos'
       users: 'Usuarios'
   enumerize:

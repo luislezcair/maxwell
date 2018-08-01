@@ -62,6 +62,9 @@ es-AR:
         name: 'Nombre'
         technician: 'Técnico'
         username: 'Nombre de usuario'
+      work_type:
+        name: 'Nombre'
+
 
     errors:
       models:
@@ -76,6 +79,9 @@ es-AR:
         corporate_cellphone:
           delete_error: 'No se puede eliminar este teléfono'
           delete_success: 'Se ha eliminado el teléfono'
+        group:
+          delete_error: 'No se pudo eliminar este grupo'
+          delete_success: 'Se ha eliminado el grupo'
         technical_service:
           attributes:
             base:
@@ -96,9 +102,9 @@ es-AR:
         user:
           delete_error: 'No se pudo eliminar este usuario'
           delete_success: 'Se ha eliminado el usuario'
-        group:
-          delete_error: 'No se pudo eliminar este grupo'
-          delete_success: 'Se ha eliminado el grupo'
+        work_type:
+          delete_error: 'No se puede eliminar este tipo de trabajo'
+          delete_success: 'Se ha eliminado el tipo de trabajo'
 
     models:
       client:
@@ -122,6 +128,9 @@ es-AR:
       user:
         one: 'Usuario'
         other: 'Usuarios'
+      work_type:
+        one: 'Tipo de trabajo'
+        other: 'Tipos de trabajo'
 
   invoicing:
     ucrm_admin_note: 'Creado por sistema 10+ el %{date}'
