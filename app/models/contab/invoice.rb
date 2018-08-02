@@ -84,11 +84,14 @@ class Contab::Invoice < Contab::ContabBaseModel
   def self.build_invoice_items(items)
     arr = {}
     concept_id = SystemConfiguration.get_api_config('invoice.concept_id')
+    account_id = SystemConfiguration.get_api_config('invoice.account_code')
+
     items.each_with_index do |item, index|
       arr[index.to_s] = {
         Cantidad: item.quantity,
         Concepto: item.description,
         IdConcepto: concept_id,
+        IdPlanDeCuenta: account_id,
         PrecioUnitario: item.net_amount.to_f,
         Iva: item.iva_value * 100,
         Bonificacion: item.discount
