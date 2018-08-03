@@ -59,8 +59,8 @@ class BillingExport < ApplicationRecord
                                expiry_date: Time.current.advance(days: days),
                                sale_condition: condition,
                                notes: invoice_notes(services))
-      invoice.create_invoice_items(services)
       invoice.save!
+      invoice.create_invoice_items(services)
     end
 
     self.total_amount = invoices.includes(:invoice_items).sum(:amount)

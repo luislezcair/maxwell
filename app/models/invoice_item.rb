@@ -17,7 +17,7 @@ class InvoiceItem < ApplicationRecord
                   default: :iva_21,
                   scope: true
 
-  before_save :compute_amounts
+  before_create :compute_amounts
 
   # Shorthand para consultar el monto de IVA correspondiente para el token iva.
   #
@@ -28,7 +28,9 @@ class InvoiceItem < ApplicationRecord
   private
 
   # Calcula los campos monto neto y monto IVA y los guarda para no tener que
-  # calcularlos cada vez que se necesiten.
+  # calcularlos cada vez que se necesiten. Contabilium requiere 4 decimales de
+  # precisión para calcular correctamente el net y el IVA, así que estos campos
+  # tienen 4 decimales de precisión
   #
   def compute_amounts
     self.net_amount = amount / (1 + iva_value)

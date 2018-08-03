@@ -80,6 +80,7 @@ class Contab::Invoice < Contab::ContabBaseModel
   # El arreglo de items en realidad debe ser un Hash con la forma:
   # { 0 => { att1: val1, att2: val2 }, 1 => { att1: val1, att2: val2 } }
   # El PrecioUnitario debe ser el monto neto (sin IVA).
+  # El IdPlanDeCuenta es el código de la cuenta en el plan de cuentas, no el Id.
   #
   def self.build_invoice_items(items)
     arr = {}

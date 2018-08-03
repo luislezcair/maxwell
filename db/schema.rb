@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_30_192620) do
+ActiveRecord::Schema.define(version: 2018_08_03_034638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -144,8 +144,8 @@ ActiveRecord::Schema.define(version: 2018_07_30_192620) do
     t.integer "ucrm_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "net_amount", precision: 15, scale: 2, default: "0.0", null: false
-    t.decimal "iva_amount", precision: 15, scale: 2, default: "0.0", null: false
+    t.decimal "net_amount", precision: 17, scale: 4, default: "0.0", null: false
+    t.decimal "iva_amount", precision: 17, scale: 4, default: "0.0", null: false
   end
 
   create_table "invoices", force: :cascade do |t|
