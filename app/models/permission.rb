@@ -18,11 +18,11 @@ class Permission < ApplicationRecord
 
   after_create :add_to_groups
 
-  # Cada vez que se crea un nuevo permiso hay que agregarlo a todos los grupos
-  # con la habilidad `deny` por defecto.
+  # Cada vez que se crea un nuevo permiso hay que agregarlo a todos los grupos,
+  # excepto a los administradores, con la habilidad `deny` por defecto.
   #
   def add_to_groups
-    Group.find_each do |g|
+    Group.where(admin: false).find_each do |g|
       gp = g.group_permissions.build(permission: self, permission_code: :deny)
       gp.save!
     end

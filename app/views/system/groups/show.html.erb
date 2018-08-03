@@ -29,25 +29,27 @@
       </tbody>
     </table>
 
-    <legend class="form-section">
-      <i class="fa fa-lock"></i> <%= t('.section.security') %>
-    </legend>
+    <% if @group.group_permissions.any? %>
+      <legend class="form-section">
+        <i class="fa fa-lock"></i> <%= t('.section.security') %>
+      </legend>
 
-    <table class="table table-sm table-details table-details-sm">
-      <tbody>
-        <% permissions_by_category(@group).each do |cat, gp| %>
-          <tr>
-            <th colspan="2"><%= cat %></th>
-          </tr>
+      <table class="table table-sm table-details table-details-sm">
+        <tbody>
+          <% permissions_by_category(@group).each do |cat, gp| %>
+            <tr>
+              <th colspan="2"><%= cat %></th>
+            </tr>
             <% gp.each do |gp| %>
               <tr>
                 <td class="cell-with-margin"><%= gp.permission.title %></td>
                 <td><%= gp.permission_code_text %></td>
               </tr>
             <% end %>
-        <% end %>
-      </tbody>
-    </table>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
   </div>
 
   <div class="card-footer">
