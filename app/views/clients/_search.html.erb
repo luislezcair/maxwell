@@ -21,32 +21,23 @@
         <% end %>
       <% end %>
 
-      <table id="billing-exports-table" class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data with-checkboxes">
+      <table id="billing-exports-table" class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data row-clickable">
         <thead>
           <tr>
             <th>#</th>
             <th><%= sort_link(@q, :name, {}, remote: true) %></th>
             <th class="align-right"><%= sort_link(@q, :number, {}, remote: true) %></th>
             <th class="align-right"><%= sort_link(@q, :document_number, {}, remote: true) %></th>
-            <th class="action-column"></th>
           </tr>
         </thead>
 
         <tbody>
           <% @clients.each_with_index do |c, index| %>
-            <tr>
+            <tr data-controller="client-search" data-client-search-id="<%= c.id %>" data-client-search-label="<%= client_label(c) %>" data-action="click->client-search#select">
               <td><%= index + 1 %></td>
               <td><%= c.name %></td>
               <td class="numeric"><%= c.number %></td>
               <td class="numeric"><%= cuit_dni(c) %></td>
-
-              <td class="align-right">
-                <div data-controller="client-search" data-client-search-id="<%= c.id %>" data-client-search-label="<%= client_label(c) %>">
-                  <button class="btn btn-sm btn-outline-info" type="button" data-action="client-search#select" data-toggle="tooltip" data-title="<%= t('.tooltip.select') %>">
-                    <i class="fa fa-arrow-right"></i>
-                  </button>
-                </div>
-              </td>
             </tr>
           <% end %>
         </tbody>

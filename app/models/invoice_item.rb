@@ -29,8 +29,9 @@ class InvoiceItem < ApplicationRecord
 
   # Calcula los campos monto neto y monto IVA y los guarda para no tener que
   # calcularlos cada vez que se necesiten. Contabilium requiere 4 decimales de
-  # precisión para calcular correctamente el net y el IVA, así que estos campos
-  # tienen 4 decimales de precisión
+  # precisión para calcular correctamente el neto y el IVA. Estos campos tienen
+  # 4 decimales de presición. ActiveRecord redondea a 4 decimales antes de
+  # guardar el número, así que no es necesario hacerlo acá.
   #
   def compute_amounts
     self.net_amount = amount / (1 + iva_value)

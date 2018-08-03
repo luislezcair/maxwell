@@ -155,6 +155,10 @@ table {
       }
     }
 
+    &.row-clickable tbody > tr > td:hover {
+      cursor: pointer;
+    }
+
     &.with-checkboxes tbody > tr.billing-export-done {
       background-color: $color-light-blue-alpha;
       color: $color-gray-700;
