@@ -33,6 +33,8 @@ es-AR:
         system: 'Sistema'
         technical_services: 'Servicios Técnicos'
         users: 'Usuarios y Grupos'
+  search_form:
+    any: '-- Todos --'
 
   unauthorized:
     manage:

@@ -31,7 +31,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :technical_services, concerns: :paginatable
+  resources :technical_services, concerns: :paginatable do
+    collection do
+      get 'download'
+    end
+  end
 
   namespace :system do
     resources :groups, concerns: :paginatable

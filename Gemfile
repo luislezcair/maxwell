@@ -101,3 +101,6 @@ gem 'simple_oauth'
 gem 'oauth2', github: 'oauth-xx/oauth2', branch: 'master'
 
 gem 'sidekiq'
+
+# Generate XLSX documents
+gem 'axlsx', '3.0.0.pre'

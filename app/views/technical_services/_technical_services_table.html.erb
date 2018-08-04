@@ -64,3 +64,10 @@
     <% end %>
   </tfoot>
 </table>
+
+<%= search_form_for @q, url: download_technical_services_path, id: 'export_form' do |f| %>
+  <%= f.hidden_field :datetime_gteq %>
+  <%= f.hidden_field :datetime_lteq %>
+  <%= f.hidden_field :technical_service_technicians_technician_id_eq %>
+  <%= f.hidden_field :total_cost_eq, value: total_cost_type_value(@q) %>
+<% end %>

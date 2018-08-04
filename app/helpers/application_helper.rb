@@ -47,6 +47,13 @@ module ApplicationHelper
     I18n.t(key, scope: "activerecord.attributes.#{controller_name.singularize}")
   end
 
+  # Crea un scope de forma automática para la vista actual. Es equivalente a
+  # `t('attrib_key', scope: 'technical_services.index')
+  #
+  def t_view(key)
+    I18n.t(key, scope: "#{controller_name}.#{action_name}")
+  end
+
   # Devuelve un caracter por defecto para indicar que el campo es nulo o está
   # vacío. Para ser utilizado en las vistas.
   #

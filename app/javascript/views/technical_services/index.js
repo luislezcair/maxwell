@@ -1,15 +1,16 @@
-// import $ from 'jquery';
+import $ from 'jquery';
+import 'bootstrap-datepicker';
+import 'bootstrap-datepicker/js/locales/bootstrap-datepicker.es';
+import 'bootstrap-datepicker/dist/css/bootstrap-datepicker3.css';
+import MaskElementByClass from '../util';
 
-// function setupDeleteButtons() {
-//   const buttons = document.querySelectorAll('[data-confirm]');
+function maskSearchFormElements() {
+  $('.input-group.input-daterange').datepicker({
+    todayBtn: 'linked',
+    language: 'es',
+    autoclose: true,
+  });
+  MaskElementByClass('mask-date', 'date');
+}
 
-//   buttons.forEach((button) => {
-//     button.addEventListener('ajax:success', (e) => {
-//       console.log(e.target);
-//       console.log('success!!!!');
-//     });
-//   });
-// }
-
-// document.addEventListener('technical_services:index:load', setupDeleteButtons);
-// document.addEventListener('maxwell:page_load', setupDeleteButtons);
+document.addEventListener('technical_services:index:load', maskSearchFormElements);

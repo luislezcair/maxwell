@@ -16,7 +16,17 @@ es-AR:
     index:
       header: 'Servicios Técnicos'
       tooltip:
+        export: 'Exportar a Excel'
         new: 'Nuevo servicio técnico'
+      search_form:
+        period: 'Período'
+        technician: 'Técnico'
+        tooltip:
+          submit: 'Buscar'
+        total_cost_type: 'Costo'
+        total_cost_types:
+          free: 'Bonificado'
+          nonfree: 'No bonificado'
     new:
       form:
         new_header: 'Registrar Servicio Técnico'

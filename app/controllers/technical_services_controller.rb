@@ -1,12 +1,18 @@
+# frozen_string_literal: true
+
+# Controlador para Servicios Técnicos
+#
 class TechnicalServicesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_technical_service, only: [:show, :edit, :update, :destroy]
   authorize_resource
 
+  include DateRansacker
+  date_param :datetime
+
   # GET /technical_services
   def index
-    @q = TechnicalService.ransack(params[:q])
-    @q.sorts = 'datetime desc' if @q.sorts.empty?
+    setup_search
     @technical_services = @q.result.page(params[:page])
   end
 
@@ -45,7 +51,58 @@ class TechnicalServicesController < ApplicationController
     destroy_model(@technical_service)
   end
 
+  # GET /technical_services/download
+  def download
+    setup_search
+    @technical_services = @q.result
+
+    exp = TechnicalServiceExporter.new(@technical_services)
+
+    send_data exp.to_excel_workbook.read,
+              filename: "#{exp.filename}.xlsx",
+              type: TechnicalServiceExporter::EXCEL_MIME_TYPE
+  end
+
   private
+
+  # Configura los parámetros de búsqueda para Ransack. Las fechas de inicio y
+  # fin se tienen que transformar a DateTime en el inicio del día y el final del
+  # día. El campo tipo de costo es especial y se tiene que trasformar a una
+  # condicón == 0 o >= 0
+  #
+  def setup_search
+    if search_params?
+      datetimes_for_day if dates_present?
+      setup_cost_types if total_cost_type_present?
+    end
+
+    @q = TechnicalService.ransack(params[:q])
+    @q.sorts = 'datetime desc' if @q.sorts.empty?
+  end
+
+  def dates_present?
+    q = params[:q]
+    q[:datetime_gteq].present? && q[:datetime_lteq].present?
+  end
+
+  def total_cost_type_present?
+    params[:q][:total_cost_eq].present?
+  end
+
+  # total_cost_eq == 1 => Bonificados => total_cost_eq = 0.0
+  # total_cost_eq == 2 => No Bonificados => total_cost_gt = 0.0
+  #
+  def setup_cost_types
+    q = params[:q]
+    t = q[:total_cost_eq].to_i
+
+    if t == TechnicalServicesHelper::COST_TYPE_FREE
+      q[:total_cost_eq] = '0.0'
+    elsif t == TechnicalServicesHelper::COST_TYPE_NONFREE
+      q[:total_cost_gt] = '0.0'
+      q.delete(:total_cost_eq)
+    end
+  end
 
   def set_technical_service
     @technical_service = TechnicalService.find(params[:id])
