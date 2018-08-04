@@ -19,8 +19,12 @@ es-AR:
         export: 'Exportar a Excel'
         new: 'Nuevo servicio técnico'
       search_form:
+        invoice: 'Facturación'
         period: 'Período'
         technician: 'Técnico'
+        invoice_types:
+          invoiced: 'Facturado'
+          not_invoiced: 'No facturado'
         tooltip:
           submit: 'Buscar'
         total_cost_type: 'Costo'

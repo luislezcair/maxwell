@@ -29,6 +29,15 @@ main {
   max-width: 20%;
 }
 
+.col-sm-2-5,
+.col-sm-3-5 {
+  position: relative;
+  width: 100%;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
 .app-header .nav-item .nav-link > .img-avatar {
   margin: 0 5px;
 }

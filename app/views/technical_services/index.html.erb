@@ -21,10 +21,14 @@
             <%= f.input :technical_service_technicians_technician_id_eq, as: :select, collection: sorted_active_technicians, label: t('.search_form.technician'), include_blank: t('search_form.any') %>
           </div>
 
+          <div class="col-sm-2">
+            <%= f.input :total_cost_eq, label: t('.search_form.total_cost_type'), as: :select, collection: total_cost_types, include_blank: t('search_form.any'), selected: total_cost_type_value(@q) %>
+          </div>
+
           <div class="col-sm-3">
-            <%= f.input :total_cost_eq, label: t('.search_form.total_cost_type') do %>
+            <%= f.input :invoice_id_not_null, label: t('.search_form.invoice') do %>
               <div class="input-group">
-                <%= f.input_field :total_cost_eq, as: :select, collection: total_cost_types, include_blank: t('search_form.any'), selected: total_cost_type_value(@q), class: 'form-control' %>
+                <%= f.input_field :invoice_id_not_null, as: :select, collection: invoice_types, include_blank: t('search_form.any'), class: 'form-control' %>
                 <div class="input-group-append">
                   <button class="btn btn-primary" type="submit" data-toggle="tooltip" data-trigger="hover" title="<%= t('.search_form.tooltip.submit') %>">
                     <i class="fa fa-search"></i>
@@ -33,7 +37,6 @@
               </div>
             <% end %>
           </div>
-
         </div>
       <% end %>
     </div>

@@ -6,6 +6,9 @@ module TechnicalServicesHelper
   COST_TYPE_FREE = 1
   COST_TYPE_NONFREE = 2
 
+  NOT_INVOICED = 0
+  INVOICED = 1
+
   # Mostrar solamente los técnicos que estén activos.
   #
   def sorted_active_technicians
@@ -52,6 +55,13 @@ module TechnicalServicesHelper
 
   def sorted_surge_protector_setup_types
     SurgeProtectorSetupType.sorted
+  end
+
+  def invoice_types
+    [
+      [t_view('.search_form.invoice_types.invoiced'), INVOICED],
+      [t_view('.search_form.invoice_types.not_invoiced'), NOT_INVOICED]
+    ]
   end
 
   # Devuelve un arreglo con [nombre, id] de los tipos de costos (bonificado y
