@@ -1,4 +1,4 @@
-import MaskElementByClass from '../util';
+import { MaskElementByClass } from '../util';
 
 function maskPhoneElement() {
   MaskElementByClass('mask-phone', 'phone');

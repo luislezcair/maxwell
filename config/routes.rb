@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 
   resources :billing_exports do
     member do
-      get 'download_csv'
       get 'job_status'
       post 'perform'
     end
@@ -28,6 +27,17 @@ Rails.application.routes.draw do
   resources :clients, concerns: :paginatable do
     collection do
       get 'search'
+    end
+  end
+
+  resources :invoices, concerns: :paginatable, only: [:index, :show] do
+    collection do
+      get 'download'
+    end
+
+    member do
+      post 'perform_sync'
+      get 'job_status'
     end
   end
 

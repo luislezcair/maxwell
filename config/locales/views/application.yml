@@ -5,6 +5,8 @@ es-AR:
   common:
     attention_alert: '¡Atención!'
     nav:
+      billing_exports: 'Facturación'
+      invoices: 'Comprobantes'
       elements:
         corporate_cellphones: 'Teléfonos Celulares'
         technicians: 'Técnicos'
@@ -19,6 +21,36 @@ es-AR:
         edit_delete: 'Editar y eliminar'
         deny: 'Denegar'
         view: 'Ver'
+    invoice:
+      model:
+        checkbook: 'Talonario'
+        electronic: 'Electrónico'
+        other: 'Otro'
+      sale_condition:
+        cheque: 'Cheque'
+        credito: 'Crédito'
+        cta_cte: 'Cuenta Corriente'
+        debito: 'Débito'
+        efectivo: 'Efectivo'
+        mercado_pago: 'Mercado Pago'
+        otro: 'Otro'
+        pay_u: 'PayU'
+        ticket: 'Ticket'
+    invoice_item:
+      iva:
+        iva_21: '21 %'
+      voucher_type:
+        cotizacion: 'Cotización'
+        factura_a: 'Factura A'
+        factura_b: 'Factura B'
+        factura_c: 'Factura C'
+        ndebito_a: 'Nota de débito A'
+        ndebito_b: 'Nota de débito B'
+        ndebito_c: 'Nota de débito C'
+        ncredito_a: 'Nota de crédito A'
+        ncredito_b: 'Nota de crédito B'
+        ncredito_c: 'Nota de crédito C'
+
   layouts:
     application:
       account: 'Cuenta'

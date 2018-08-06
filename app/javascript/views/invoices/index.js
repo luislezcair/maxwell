@@ -5,4 +5,4 @@ function maskSearchFormElements() {
   MaskElementByClass('mask-date', 'date');
 }
 
-document.addEventListener('technical_services:index:load', maskSearchFormElements);
+document.addEventListener('invoices:index:load', maskSearchFormElements);

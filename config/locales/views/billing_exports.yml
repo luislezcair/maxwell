@@ -32,6 +32,10 @@ es-AR:
         title_disabled: 'Creando comprobantes...'
     technical_services_table:
       delete_confirm: '¿Está seguro que desea eliminar este servicio técnico?'
+      header:
+        labour_cost: 'Mano de obra'
+        equipment_cost: 'Equipos'
+        total_cost: 'Total'
       tooltip:
         delete: 'Eliminar'
         edit: 'Editar'

@@ -76,7 +76,7 @@ class TechnicalServiceExporter
   #
   def formats
     [
-      'DD \d\e mmm - HH:MM', # datetime
+      'DD/MM/YYYY', # datetime
       nil, nil, nil, nil, nil,
       'HH:MM', # arrival_time
       'HH:MM', # departure_time

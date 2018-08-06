@@ -1,0 +1,61 @@
+<table class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th><%= sort_link(@q, :emission_date, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :client_name, {}, remote: true) %></th>
+      <th class="align-right"><%= sort_link(@q, :total_amount, {}, remote: true) %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invoices.each_with_index do |i, index| %>
+      <tr>
+        <td><%= @invoices.offset_value + index + 1 %></td>
+        <td><%= l(i.emission_date, format: :short_datetime) %></td>
+        <td><%= i.client.name %></td>
+        <td class="currency"><%= number_to_currency(i.total_amount) %></td>
+
+        <td class="align-right">
+          <% if i.ucrm_id.present? %>
+            <%= link_to ucrm_link(i), class: 'btn btn-sm btn-outline-primary', target: '_blank', data: { toggle: 'tooltip', title: t('.tooltip.ucrm'), trigger: 'hover' } do %>
+              <i class="fa fa-file-text-o"></i>
+            <% end %>
+          <% end %>
+
+          <% if i.contabilium_id.present? %>
+            <%= link_to contabilium_link(i), class: 'btn btn-sm btn-outline-warning', target: '_blank', data: { toggle: 'tooltip', title: t('.tooltip.contabilium'), trigger: 'hover' } do %>
+              <i class="fa fa-file-text-o"></i>
+            <% end %>
+          <% end %>
+
+          <div class="action-separator"></div>
+
+          <%= link_to invoice_path(i), class: 'btn btn-sm btn-outline-success', data: { toggle: 'tooltip', title: t('.tooltip.show') } do %>
+            <i class="fa fa-eye"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td class="page-entries-info" colspan="7"><%= page_entries_info @invoices %></td>
+    </tr>
+
+    <% if @invoices.total_pages > 1 %>
+      <tr>
+        <td colspan="7">
+          <%= paginate @invoices, remote: true %>
+        </td>
+      </tr>
+    <% end %>
+  </tfoot>
+</table>
+
+<%= search_form_for @q, url: download_invoices_path, id: 'export_form' do |f| %>
+  <%= f.hidden_field :emission_date_gteq %>
+  <%= f.hidden_field :emission_date_lteq %>
+<% end %>

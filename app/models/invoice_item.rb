@@ -19,11 +19,8 @@ class InvoiceItem < ApplicationRecord
 
   before_create :compute_amounts
 
-  # Shorthand para consultar el monto de IVA correspondiente para el token iva.
-  #
-  def self.iva_value_for(iva)
-    iva.find_value(iva).value
-  end
+  after_save :update_invoice_amount
+  after_destroy :update_invoice_amount
 
   private
 
@@ -36,5 +33,11 @@ class InvoiceItem < ApplicationRecord
   def compute_amounts
     self.net_amount = amount / (1 + iva_value)
     self.iva_amount = net_amount * iva_value
+  end
+
+  # Actualiza el monto total en el Invoice padre.
+  #
+  def update_invoice_amount
+    invoice.update_amount
   end
 end

@@ -1,0 +1,109 @@
+<div class="card">
+  <div class="card-header data-header">
+    <div class="title"><%= t('.header') %></div>
+
+    <div>
+      <%= link_to invoices_path, class: 'btn btn-sm btn-secondary', data: { toggle: 'tooltip', title: t('.tooltip.index') } do %>
+        <i class="fa fa-list"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <legend class="form-section">
+      <i class="fa fa-file-text"></i> <%= t('.section.basic') %>
+    </legend>
+
+    <table class="table table-sm table-details">
+      <tbody>
+        <tr>
+          <th><%= t_model('client') %></th>
+          <td><%= @invoice.client.name %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('voucher_type') %></th>
+          <td><%= @invoice.voucher_type_text %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('sale_condition') %></th>
+          <td><%= @invoice.sale_condition_text %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('emission_date') %></th>
+          <td><%= l(@invoice.emission_date, format: :short_date) %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('expiry_date') %></th>
+          <td><%= l(@invoice.expiry_date, format: :short_date) %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('notes') %></th>
+          <td><%= @invoice.notes.gsub(/\n/, '<br>').html_safe %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <legend class="form-section">
+      <i class="fa fa-cog"></i> <%= t('.section.items') %>
+    </legend>
+
+    <table class="table table-sm table-details table-maxwell-data body-border-bottom">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th><%= t_attrib('invoice_item.description') %></th>
+          <th class="align-right"><%= t_attrib('invoice_item.iva') %></th>
+          <th class="align-right"><%= t_attrib('invoice_item.net_amount') %></th>
+          <th class="align-right"><%= t_attrib('invoice_item.iva_amount') %></th>
+          <th class="align-right"><%= t_attrib('invoice_item.amount') %></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @invoice.invoice_items.each_with_index do |item, index| %>
+          <tr>
+            <td><%= index + 1 %></td>
+            <td>
+              <%= item.description %>
+              <%= link_to technical_service_path(item.technical_service), target: '_blank' do %>
+                <i class="fa fa-external-link"></i>
+              <% end %>
+            </td>
+            <td class="currency"><%= item.iva_text %></td>
+            <td class="currency"><%= number_to_currency(item.net_amount) %></td>
+            <td class="currency"><%= number_to_currency(item.iva_amount) %></td>
+            <td class="currency"><%= number_to_currency(item.amount) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <td colspan="2"></td>
+          <td class="align-right"><%= t_model('total_amount') %></td>
+          <td class="currency currency-total"><%= number_to_currency(@invoice.net_amount) %></td>
+          <td class="currency currency-total"><%= number_to_currency(@invoice.iva_amount) %></td>
+          <td class="currency currency-total"><%= number_to_currency(@invoice.total_amount) %></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <div class="card-footer flexible" data-controller="invoice-sync">
+    <div>
+      <div style="display: none" class="flexible" data-target="invoice-sync.status">
+        <i class="fa fa-refresh fa-spin fa-2x fa-fw" data-target="invoice-sync.statusIcon"></i>
+        <span data-target="invoice-sync.statusText" class="status-text"> Iniciando...</span>
+      </div>
+    </div>
+
+    <div data-target="invoice-sync.actions">
+      <%= render 'invoice_actions' %>
+    </div>
+  </div>
+</div>

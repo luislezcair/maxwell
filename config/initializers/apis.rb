@@ -7,13 +7,16 @@
 # Esta variable sólo debería definirse en producción.
 #
 if ENV['APIS_ENV'] == 'production'
-  UCRM_API_URL = 'https://clientes.diezpositivo.com.ar/api/v1.0'
+  UCRM_URL = 'https://clientes.diezpositivo.com.ar'
   UCRM_ENV = :production
 
   CONTABILIUM_ENV = :production
 else
-  UCRM_API_URL = 'https://ucrm-testing.diezpositivo.com.ar/api/v1.0'
+  UCRM_URL = 'https://ucrm-testing.diezpositivo.com.ar'
   UCRM_ENV = :development
 
   CONTABILIUM_ENV = :development
 end
+
+UCRM_API_URL = "#{UCRM_URL}/api/v1.0"
+CONTABILIUM_APP_URL = 'https://app.contabilium.com'

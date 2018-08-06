@@ -13,10 +13,10 @@
       <th><%= sort_link(@q, :client_name, {}, remote: true) %></th>
       <th><%= sort_link(@q, :plan_service_name, {}, remote: true) %></th>
       <th class="align-right"><%= sort_link(@q, :work_order_number, {}, remote: true) %></th>
-      <th class="align-right"><%= sort_link(@q, :labour_cost, {}, remote: true) %></th>
-      <th class="align-right"><%= sort_link(@q, :equipment_cost, {}, remote: true) %></th>
-      <th class="align-right"><%= sort_link(@q, :total_cost, {}, remote: true) %></th>
-      <th class="action-column"></th>
+      <th class="align-right"><%= sort_link(@q, :labour_cost, t('.header.labour_cost'), {}, remote: true) %></th>
+      <th class="align-right"><%= sort_link(@q, :equipment_cost, t('.header.equipment_cost'), {}, remote: true) %></th>
+      <th class="align-right"><%= sort_link(@q, :total_cost, t('.header.total_cost'), {}, remote: true) %></th>
+      <th></th>
     </tr>
   </thead>
 

@@ -1,4 +1,8 @@
 import Inputmask from 'inputmask';
+import $ from 'jquery';
+import 'bootstrap-datepicker';
+import 'bootstrap-datepicker/js/locales/bootstrap-datepicker.es';
+import 'bootstrap-datepicker/dist/css/bootstrap-datepicker3.css';
 
 const maskDefaults = {
   integer: { alias: 'integer' },
@@ -37,4 +41,12 @@ const MaskElementByClass = (selector, mask) => {
   m.mask(elements);
 };
 
-export default MaskElementByClass;
+const MakeDateRangePicker = (selector) => {
+  $(selector).datepicker({
+    todayBtn: 'linked',
+    language: 'es',
+    autoclose: true,
+  });
+};
+
+export { MaskElementByClass, MakeDateRangePicker };

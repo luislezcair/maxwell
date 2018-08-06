@@ -1,0 +1,38 @@
+es-AR:
+  invoices:
+    index:
+      header: 'Comprobantes'
+      search_form:
+        period: 'Período'
+        tooltip:
+          submit: 'Buscar'
+      tooltip:
+        export: 'Exportar a Excel'
+    invoice_actions:
+      tooltip:
+        contabilium: 'Ver en Contabilium'
+        index: 'Volver'
+        perform_sync: 'Enviar a facturación'
+        ucrm: 'Ver en UCRM'
+    invoices_table:
+      tooltip:
+        contabilium: 'Ver en Contabilium'
+        show: 'Ver detalles'
+        ucrm: 'Ver en UCRM'
+    job_status:
+      connecting_contabilium: 'Conectando con Contabilium...'
+      connecting_ucrm: 'Conectando con UCRM...'
+      enqueued: 'Preparando para enviar comprobante...'
+      error: 'Ha ocurrido un error'
+      finished_contabilium: 'Terminado Contabilium'
+      finished_ucrm: 'Terminado UCRM'
+      finished: 'Listo. Comprobante enviado a UCRM y Contabilium.'
+      contabilium: 'Sincronizando comprobante con Contabilium...'
+      ucrm: 'Sincronizando comprobante con UCRM...'
+    show:
+      header: 'Comprobante'
+      tooltip:
+        index: 'Volver'
+      section:
+        basic: 'Información básica'
+        items: 'Servicios'

@@ -40,6 +40,7 @@ es-AR:
       tooltip:
         edit: 'Editar'
         index: 'Volver'
+      view_invoice: 'Ver comprobante'
     technical_services_table:
       delete_confirm: '¿Está seguro que desea eliminar este servicio técnico?'
       tooltip:

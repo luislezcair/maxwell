@@ -25,20 +25,10 @@ class BillingExport < ApplicationRecord
 
   after_create :create_invoices
 
-  # Construye un nombre de archvio con el rango de fechas y la cantidad de
-  # Invoices exportados.
-  # TODO: La exportación mediante CSV es para comprobantes ya emitidos por
-  # talonario o electrónicamente. Nosotros tenemos que emitir comprobantes del
-  # tipo "cotización" que luego se van a emitir realmente en Contabilium.
-  #
-  def filename
-    "billing_export_X.#{export_type}"
-  end
-
   # Crea un BackgroundJob y lo encola para ejecutarse en Sidekiq.
   #
   def perform_sync
-    job_id = InvoiceSyncJob.perform_in(2.seconds, id)
+    job_id = BillingExportJob.perform_in(2.seconds, id)
     self.background_job = BackgroundJob.create(job_id: job_id, job_item: self)
     save!
   end

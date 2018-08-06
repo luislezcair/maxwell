@@ -1,0 +1,51 @@
+<%= content_for :header_tabs do %>
+  <nav class="nav nav-pills flex-column flex-sm-row">
+    <%= link_to t('common.nav.billing_exports'), billing_exports_path, class: 'flex-sm-fill text-sm-center nav-link' %>
+    <%= link_to t('common.nav.invoices'), invoices_path, class: 'flex-sm-fill text-sm-center nav-link active' %>
+  </nav>
+<% end %>
+
+<div class="card">
+  <div class="card-body">
+    <%= search_form_for @q, url: invoices_path, remote: true do |f| %>
+      <div class="row">
+        <div class="col-sm-4">
+          <%= f.input :emission_date_lteq, label: t('.search_form.period') do %>
+            <div class="input-group input-daterange">
+              <%= f.input_field :emission_date_gteq, as: :string, class: 'form-control align-right mask-date', value: short_date(@q.emission_date_gteq), autocomplete: 'off' %>
+              <div class="input-group-append input-group-addon">
+                <span class="input-group-text">
+                  <i class="fa fa-arrows-h"></i>
+                </span>
+              </div>
+              <%= f.input_field :emission_date_lteq, as: :string, class: 'form-control align-right mask-date', value: short_date(@q.emission_date_lteq), autocomplete: 'off' %>
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit" data-toggle="tooltip" data-trigger="hover" title="<%= t('.search_form.tooltip.submit') %>">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header data-header">
+    <div class="title"><%= t('.header') %></div>
+
+    <div>
+      <button type="submit" form="export_form" class="btn btn-sm btn-success" data-toggle="tooltip" data-trigger="hover" data-title="<%= t('.tooltip.export') %>">
+        <i class="fa fa-table"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div id="invoices-table-container">
+      <%= render 'invoices_table' %>
+    </div>
+  </div>
+</div>

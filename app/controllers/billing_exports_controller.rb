@@ -1,7 +1,7 @@
 class BillingExportsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_billing_export, only: [:perform, :download_csv,
-                                            :job_status]
+  before_action :set_billing_export, only: [:perform, :job_status]
+
   authorize_resource
   authorize_resource TechnicalService
 
@@ -46,15 +46,6 @@ class BillingExportsController < ApplicationController
   # GET /billing_exports/1/job_status
   def job_status
     @job = @billing_export.background_job
-  end
-
-  # TODO: La exportación mediante CSV es para comprobantes ya emitidos por
-  # talonario o electrónicamente. Nosotros tenemos que emitir comprobantes del
-  # tipo "cotización" que luego se van a emitir realmente en Contabilium.
-  #
-  # GET /billing_exports/1/download_csv
-  def download_csv
-    send_data('pending...', filename: @billing_export.filename)
   end
 
   private

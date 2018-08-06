@@ -5,7 +5,8 @@ require 'rails_helper'
 feature 'User login' do
   scenario 'Show login form' do
     visit '/'
-    expect(page).to have_content I18n.t('.devise.sessions.new.sign_in')
+    remember_me_key = 'activerecord.attributes.user.remember_me'
+    expect(page).to have_content I18n.t(remember_me_key)
   end
 
   scenario 'Invalid user tries to login to the site' do

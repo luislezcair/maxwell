@@ -9,6 +9,8 @@ class Invoice < ApplicationRecord
   belongs_to :billing_export
   belongs_to :client
 
+  has_one :background_job, as: :job_item, dependent: :nullify
+
   has_many :invoice_items, dependent: :destroy
   has_many :technical_services, dependent: :nullify
 
@@ -31,6 +33,13 @@ class Invoice < ApplicationRecord
   scope :not_synced_contabilium, -> { where(contabilium_id: nil) }
   scope :not_synced_ucrm, -> { where(ucrm_id: nil) }
 
+  # Devuelve true solamente si este Invoice se sincronizó con ambos sistemas
+  # externos.
+  #
+  def synced?
+    contabilium_id.present? && ucrm_id.present?
+  end
+
   # Crea los InvoiceItems para esta factura con los datos de cada servicio
   # técnico en `services` y asigna al servicio este Invoice para indicar que ya
   # está facturado.
@@ -45,5 +54,36 @@ class Invoice < ApplicationRecord
       s.invoice_item = item
       s.save!(context: :invoicing)
     end
+  end
+
+  # Este método es llamado por InvoiceItem en `after_save` para actualizar el
+  # monto total de la factura con la suma de los ítems. Se lo llama cada vez
+  # que se crea y se destruye un ítem. Se lo guarda acá para evitar calcularlo
+  # cada vez que se necesite.
+  #
+  def update_amount
+    self.total_amount = invoice_items.sum(:amount)
+    save!
+  end
+
+  # Devuelve el monto neto total de este comprobante sumando los netos de los
+  # ítems.
+  #
+  def net_amount
+    invoice_items.sum(:net_amount)
+  end
+
+  # Devuelve el monto de IVA total de este comprobante. Por ahora es siempre
+  # el IVA 21%.
+  #
+  def iva_amount
+    invoice_items.sum(:iva_amount)
+  end
+
+  # Crea un BackgroundJob y lo encola para ejecutarse en Sidekiq.
+  #
+  def perform_sync
+    job_id = InvoiceSyncJob.perform_in(2.seconds, id)
+    BackgroundJob.create(job_id: job_id, job_item: self)
   end
 end

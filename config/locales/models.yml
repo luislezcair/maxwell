@@ -14,6 +14,26 @@ es-AR:
         name: 'Nombre'
         permissions: 'Permisos'
         users: 'Usuarios'
+      invoice:
+        client: 'Cliente'
+        contabilium: 'Contabilium'
+        emission_date: 'Fecha'
+        expiry_date: 'Vencimiento'
+        iva_amount: 'Monto IVA'
+        net_amount: 'Monto neto'
+        notes: 'Observaciones'
+        sale_condition: 'Condición de venta'
+        total_amount: 'Total'
+        ucrm: 'UCRM'
+        voucher_type: 'Tipo de comprobante'
+      invoice_item:
+        amount: 'Subtotal'
+        description: 'Descripción'
+        discount: 'Bonificación'
+        iva: '% IVA'
+        iva_amount: 'IVA'
+        net_amount: 'Neto'
+        quantity: 'Cantidad'
       plan_service:
         name: 'Servicio'
       technical_service:
@@ -116,6 +136,9 @@ es-AR:
       group:
         one: 'Grupo'
         other: 'Grupos'
+      invoice:
+        one: 'Comprobante'
+        other: 'Comprobantes'
       technical_service:
         one: 'Servicio Técnico'
         other: 'Servicios Técnicos'

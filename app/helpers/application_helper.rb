@@ -47,6 +47,13 @@ module ApplicationHelper
     I18n.t(key, scope: "activerecord.attributes.#{controller_name.singularize}")
   end
 
+  # YOLO: Crea un scope para no tener que escribirlo cada vez que hay que
+  # traducir un atributo, cuando t_model no sirve.
+  #
+  def t_attrib(key)
+    I18n.t(key, scope: 'activerecord.attributes')
+  end
+
   # Crea un scope de forma automática para la vista actual. Es equivalente a
   # `t('attrib_key', scope: 'technical_services.index')
   #

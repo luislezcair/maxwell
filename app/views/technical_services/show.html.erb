@@ -93,6 +93,14 @@
         <tr>
           <th><%= t_model('total_cost') %></th>
           <td><%= number_to_currency(@technical_service.total_cost) %></td>
+
+          <% if @technical_service.invoice.present? %>
+            <td>
+              <%= link_to invoice_path(@technical_service.invoice), target: '_blank' do %>
+                <%= t('.view_invoice') %> <sup><i class="fa fa-external-link"></i></sup>
+              <% end %>
+            </td>
+          <% end %>
         </tr>
 
         <tr>
@@ -144,7 +152,7 @@
           <td>
             <ul class="simple-list">
               <% @technical_service.corporate_cellphones.each do |cc| %>
-                <li><%= cc.phone %></li>
+                <li><%= cc.to_label %></li>
               <% end %>
             </ul>
           </td>

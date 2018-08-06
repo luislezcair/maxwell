@@ -1,16 +1,9 @@
 import $ from 'jquery';
 import Rails from 'rails-ujs';
-import 'bootstrap-datepicker';
-import 'bootstrap-datepicker/js/locales/bootstrap-datepicker.es';
-import 'bootstrap-datepicker/dist/css/bootstrap-datepicker3.css';
-import MaskElementByClass from '../util';
+import { MaskElementByClass, MakeDateRangePicker } from '../util';
 
 function maskSearchFormElements() {
-  $('.input-group.input-daterange').datepicker({
-    todayBtn: 'linked',
-    language: 'es',
-    autoclose: true,
-  });
+  MakeDateRangePicker('.input-group.input-daterange');
   MaskElementByClass('mask-date', 'date');
 }
 

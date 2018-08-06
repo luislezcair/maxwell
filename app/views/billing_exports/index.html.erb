@@ -1,3 +1,10 @@
+<%= content_for :header_tabs do %>
+  <nav class="nav nav-pills flex-column flex-sm-row">
+    <%= link_to t('common.nav.billing_exports'), billing_exports_path, class: 'flex-sm-fill text-sm-center nav-link active' %>
+    <%= link_to t('common.nav.invoices'), invoices_path, class: 'flex-sm-fill text-sm-center nav-link' %>
+  </nav>
+<% end %>
+
 <div class="card">
   <div class="card-body">
     <%= search_form_for @q, url: billing_exports_path, remote: true do |f| %>
