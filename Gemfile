@@ -30,9 +30,6 @@ gem 'jbuilder'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
@@ -57,6 +54,13 @@ group :development do
   gem 'rails_real_favicon'
 
   # gem 'i18n-debug'
+
+  # Use Capistrano for deployment
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-sidekiq'
+  gem 'capistrano-yarn'
 end
 
 group :development, :test do

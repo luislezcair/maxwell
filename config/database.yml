@@ -80,9 +80,9 @@ test: &test
 #
 production:
   <<: *default
-  database: maxwell_production
-  username: maxwell
-  password: <%= ENV['MAXWELL_DATABASE_PASSWORD'] %>
+  database: <%= Rails.application.credentials.dig(:database, :database) %>
+  username: <%= Rails.application.credentials.dig(:database, :username) %>
+  password: <%= Rails.application.credentials.dig(:database, :password) %>
 
 cucumber:
   <<: *test
