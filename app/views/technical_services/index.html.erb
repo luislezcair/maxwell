@@ -1,47 +1,65 @@
-<% if can? :manage, TechnicalService %>
-  <div class="card">
-    <div class="card-body">
-      <%= search_form_for @q, url: technical_services_path, remote: true do |f| %>
-        <div class="row">
-          <div class="col-sm-4">
-            <%= f.input :datetime_lteq, label: t('.search_form.period') do %>
-              <div class="input-group input-daterange">
-                <%= f.input_field :datetime_gteq, as: :string, class: 'form-control align-right mask-date', value: short_date(@q.datetime_gteq), autocomplete: 'off' %>
-                <div class="input-group-append input-group-addon">
-                  <span class="input-group-text">
-                    <i class="fa fa-arrows-h"></i>
-                  </span>
-                </div>
-                <%= f.input_field :datetime_lteq, as: :string, class: 'form-control align-right mask-date', value: short_date(@q.datetime_lteq), autocomplete: 'off' %>
+<div class="card">
+  <div class="card-body">
+    <%= search_form_for @q, url: technical_services_path, remote: true do |f| %>
+      <div class="row">
+        <div class="col-sm-4">
+          <%= f.input :datetime_lteq, label: t('.search_form.period') do %>
+            <div class="input-group input-daterange">
+              <%= f.input_field :datetime_gteq, as: :string, class: 'form-control align-right mask-date', value: short_date(@q.datetime_gteq), autocomplete: 'off' %>
+              <div class="input-group-append input-group-addon">
+                <span class="input-group-text">
+                  <i class="fa fa-arrows-h"></i>
+                </span>
               </div>
-            <% end %>
-          </div>
-
-          <div class="col-sm-3">
-            <%= f.input :technical_service_technicians_technician_id_eq, as: :select, collection: sorted_active_technicians, label: t('.search_form.technician'), include_blank: t('search_form.any') %>
-          </div>
-
-          <div class="col-sm-2">
-            <%= f.input :total_cost_eq, label: t('.search_form.total_cost_type'), as: :select, collection: total_cost_types, include_blank: t('search_form.any'), selected: total_cost_type_value(@q) %>
-          </div>
-
-          <div class="col-sm-3">
-            <%= f.input :invoice_id_not_null, label: t('.search_form.invoice') do %>
-              <div class="input-group">
-                <%= f.input_field :invoice_id_not_null, as: :select, collection: invoice_types, include_blank: t('search_form.any'), class: 'form-control' %>
-                <div class="input-group-append">
-                  <button class="btn btn-primary" type="submit" data-toggle="tooltip" data-trigger="hover" title="<%= t('.search_form.tooltip.submit') %>">
-                    <i class="fa fa-search"></i>
-                  </button>
-                </div>
-              </div>
-            <% end %>
-          </div>
+              <%= f.input_field :datetime_lteq, as: :string, class: 'form-control align-right mask-date', value: short_date(@q.datetime_lteq), autocomplete: 'off' %>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
+
+        <div class="col-sm-2-5">
+          <%= f.input :technical_service_technicians_technician_id_eq, as: :select, collection: sorted_active_technicians, label: t('.search_form.technician'), include_blank: t('search_form.any') %>
+        </div>
+
+        <div class="col-sm-2-5">
+          <%= f.input :technical_service_work_types_work_type_id_eq, as: :select, collection: sorted_work_types, label: t('.search_form.work_type'), include_blank: t('search_form.any') %>
+        </div>
+
+        <div class="col-sm-3">
+          <%= f.input :work_order_number_s_cont, label: t('.search_form.work_order_number') do %>
+            <div class="input-group">
+              <%= f.input_field :work_order_number_s_cont, as: :string, class: 'form-control mask-numeric' %>
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit" data-toggle="tooltip" data-trigger="hover" title="<%= t('.search_form.tooltip.submit') %>">
+                  <i class="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <a class="show-more-link collapsed" href="#show-more" data-toggle="collapse" role="button" aria-expanded="false" role="button" aria-controls="show-more">
+            <i class="fa fa-caret-down"></i> <%= t('.show_more') %>
+          </a>
+        </div>
+      </div>
+
+      <div id="show-more" class="row collapse">
+        <div class="col-sm-2">
+          <%= f.input :total_cost_eq, label: t('.search_form.total_cost_type'), as: :select, collection: total_cost_types, include_blank: t('search_form.any'), selected: total_cost_type_value(@q) %>
+        </div>
+
+        <div class="col-sm-2">
+          <%= f.input :invoice_id_not_null, label: t('.search_form.invoice') do %>
+            <%= f.input_field :invoice_id_not_null, as: :select, collection: invoice_types, include_blank: t('search_form.any'), class: 'form-control' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
 
 <div class="card">
   <div class="card-header data-header">

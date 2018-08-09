@@ -11,8 +11,8 @@
     <tr>
       <th>#</th>
       <th><%= sort_link(@q, :datetime, {}, remote: true) %></th>
-      <th><%= sort_link(@q, :city_name, {}, remote: true) %></th>
       <th><%= sort_link(@q, :client_name, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :city_name, {}, remote: true) %></th>
       <th><%= sort_link(@q, :work_order_number, {}, remote: true) %></th>
       <th><%= sort_link(@q, :plan_service_name, {}, remote: true) %></th>
       <th class="action-column"></th>
@@ -23,9 +23,9 @@
     <% @technical_services.each_with_index do |ts, index| %>
       <tr>
         <td><%= @technical_services.offset_value + index + 1 %></td>
-        <td><%= l(ts.datetime, format: :short_datetime) %></td>
-        <td><%= ts.city.name %></td>
+        <td><%= l(ts.datetime, format: :short_date_show) %></td>
         <td><%= ts.client.name %></td>
+        <td><%= ts.city.name %></td>
         <td><%= ts.work_order_number %></td>
         <td><%= ts.plan_service.try(:name) %></td>
 
@@ -69,6 +69,8 @@
   <%= f.hidden_field :datetime_gteq %>
   <%= f.hidden_field :datetime_lteq %>
   <%= f.hidden_field :technical_service_technicians_technician_id_eq %>
+  <%= f.hidden_field :technical_service_work_types_work_type_id_eq %>
   <%= f.hidden_field :total_cost_eq, value: total_cost_type_value(@q) %>
   <%= f.hidden_field :invoice_id_not_null %>
+  <%= f.hidden_field :work_order_number_s_cont %>
 <% end %>

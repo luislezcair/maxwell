@@ -29,6 +29,16 @@ append :linked_files, '.rbenv-vars'
 # Default value for linked_dirs is []
 # append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets',
 #                      'public/system'
+remove :linked_dirs, 'public/assets'
+
+append :linked_dirs,
+       'public/packs',
+       'public/system',
+       'public/files',
+       'tmp/pids',
+       'tmp/cache',
+       'tmp/sockets',
+       'log'
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }

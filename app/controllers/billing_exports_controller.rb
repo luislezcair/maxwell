@@ -8,7 +8,7 @@ class BillingExportsController < ApplicationController
   include DateRansacker
   date_param :datetime
 
-  # GET /technical_services
+  # GET /billing_exports
   def index
     search_params = search_params?
     datetimes_for_day if search_params

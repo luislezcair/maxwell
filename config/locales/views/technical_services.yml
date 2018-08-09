@@ -25,12 +25,15 @@ es-AR:
         invoice_types:
           invoiced: 'Facturado'
           not_invoiced: 'No facturado'
+        work_order_number: 'Orden de trabajo'
+        work_type: 'Tipo de trabajo'
         tooltip:
           submit: 'Buscar'
         total_cost_type: 'Costo'
         total_cost_types:
           free: 'Bonificado'
           nonfree: 'No bonificado'
+      show_more: 'Más filtros'
     new:
       form:
         new_header: 'Registrar Servicio Técnico'

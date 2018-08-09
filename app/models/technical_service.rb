@@ -7,13 +7,13 @@
 class TechnicalService < ApplicationRecord
   belongs_to :city
   belongs_to :client
-  belongs_to :ground_wire_setup_type
-  belongs_to :surge_protector_setup_type
 
   belongs_to :balancer, optional: true
   belongs_to :device, optional: true
+  belongs_to :ground_wire_setup_type, optional: true
   belongs_to :plan_service, optional: true
   belongs_to :support_type, optional: true
+  belongs_to :surge_protector_setup_type, optional: true
   belongs_to :tower, optional: true
   belongs_to :transmitter, optional: true
 
@@ -47,6 +47,12 @@ class TechnicalService < ApplicationRecord
   validate :not_billed?, on: :update
 
   before_save :compute_total_cost
+
+  # Convierte el número de orden a string para poder buscar por coincidencias
+  # parciales.
+  ransacker :work_order_number_s do
+    Arel.sql('"work_order_number"::varchar')
+  end
 
   # Los servicios técnicos no facturados son aquellos que no tienen una factura
   # asociada.

@@ -65,10 +65,10 @@ class TechnicalServicesController < ApplicationController
 
   private
 
-  # Configura los parámetros de búsqueda para Ransack. Las fechas de inicio y
-  # fin se tienen que transformar a DateTime en el inicio del día y el final del
-  # día. El campo tipo de costo es especial y se tiene que trasformar a una
-  # condicón == 0 o >= 0
+  # Configura los parámetros de búsqueda para Ransack. El campo tipo de costo
+  # es especial y se tiene que trasformar a una condicón == 0 o >= 0.
+  # Las fechas vienen en formato dd/mm/yyyy. Para utilizarlas en la consulta a
+  # la BD hay que agregarles la hora de principio del día y fin del día.
   #
   def setup_search
     if search_params?
@@ -109,15 +109,17 @@ class TechnicalServicesController < ApplicationController
   end
 
   def technical_service_params
-    params.require(:technical_service)
-          .permit(:work_order_number, :device_id, :client_id, :plan_service_id,
-                  :router_model, :router_serial_number,
-                  :wifi_ssid, :wifi_password, :arrival_time, :departure_time,
-                  :cable_length, :plug_adapter_quantity, :google_maps_url,
-                  :labour_cost, :equipment_cost, :observations, :city_id,
-                  :ground_wire_setup_type_id, :surge_protector_setup_type_id,
-                  :support_type_id, :balancer_id, :transmitter_id, :tower_id,
-                  work_type_ids: [], corporate_cellphone_ids: [],
-                  technician_ids: [])
+    attrs = [:work_order_number, :device_id, :client_id, :plan_service_id,
+             :router_model, :router_serial_number, :transmitter_id, :tower_id,
+             :wifi_ssid, :wifi_password, :arrival_time, :departure_time,
+             :cable_length, :plug_adapter_quantity, :google_maps_url,
+             :labour_cost, :equipment_cost, :observations, :city_id,
+             :ground_wire_setup_type_id, :surge_protector_setup_type_id,
+             :support_type_id, :balancer_id,
+             work_type_ids: [], corporate_cellphone_ids: [], technician_ids: []]
+
+    # Permitir modificar la fecha solamente si tiene permisio de edición
+    attrs << :datetime if can? :edit, TechnicalService
+    params.require(:technical_service).permit(attrs)
   end
 end

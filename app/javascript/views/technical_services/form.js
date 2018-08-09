@@ -1,9 +1,12 @@
-import { MaskElementByClass } from '../util';
+import { MaskElementByClass, MakeDateRangePicker } from '../util';
 
 function maskTechnicalServiceFormElements() {
+  MakeDateRangePicker('.input-group.date');
+
   MaskElementByClass('mask-numeric', 'integer');
   MaskElementByClass('mask-meters', 'meters');
   MaskElementByClass('mask-time', 'shortTime');
+  MaskElementByClass('mask-date', 'date');
   MaskElementByClass('mask-money', 'currency');
 }
 

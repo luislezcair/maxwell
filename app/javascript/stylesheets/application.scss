@@ -253,3 +253,17 @@ input[readonly].form-control.normal {
   color: $color-blue;
   font-weight: 700;
 }
+
+.show-more-link {
+  color: $color-gray-600;
+  font-size: 0.9em;
+
+  &:hover {
+    color: $color-gray-700;
+    text-decoration: none;
+  }
+
+  &.collapsed > i.fa::before {
+    content: "\F0DA";
+  }
+}

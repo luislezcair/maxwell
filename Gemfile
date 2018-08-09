@@ -56,11 +56,12 @@ group :development do
   # gem 'i18n-debug'
 
   # Use Capistrano for deployment
+  gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  gem 'capistrano-bundler'
   gem 'capistrano-sidekiq'
   gem 'capistrano-yarn'
+  gem 'capistrano3-puma'
 end
 
 group :development, :test do

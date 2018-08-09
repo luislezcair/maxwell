@@ -43,7 +43,7 @@ es-AR:
         city: 'Ciudad'
         client: 'Cliente'
         corporate_cellphones: 'Celulares de la empresa'
-        datetime: 'Fecha y Hora'
+        datetime: 'Fecha'
         departure_time: 'Hora de salida'
         device: 'Antena'
         equipment_cost: 'Costo de equipos'

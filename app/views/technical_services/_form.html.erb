@@ -15,7 +15,7 @@
 
       <%= f.input :client do %>
         <div data-controller="client-search" data-client-search-url="<%= search_clients_path %>" class="input-group">
-          <%= f.input_field :client, class: 'form-control normal', readonly: true, value: client_label(f.object.client) %>
+          <%= f.input_field :client, class: 'form-control normal', readonly: true, value: client_label(f.object.client), name: '' %>
           <%= f.hidden_field :client_id %>
           <div class="input-group-append">
             <button class="btn btn-primary" type="button" data-action="client-search#show" data-toggle="tooltip" data-trigger="hover" title="<%= t('.find_client') %>">
@@ -33,6 +33,22 @@
       <legend class="form-section">
         <i class="fa fa-wrench"></i> <%= t('.section.technical_service') %>
       </legend>
+
+      <% if can? :edit, TechnicalService %>
+        <div class="form-group row string required">
+          <%= f.input :datetime, as: :string, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } do %>
+            <div class="input-group date">
+              <%= f.input_field :datetime, as: :string, class: 'form-control mask-date align-right', placeholder: 'dd/mm/aaaa', value: short_date(f.object.datetime.utc) %>
+              <div class="input-group-append input-group-addon">
+                <span class="input-group-text">
+                  <i class="fa fa-calendar"></i>
+                </span>
+              </div>
+              <%= f.full_error :datetime, class: 'invalid-feedback' %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
 
       <%= f.input :work_order_number, as: :string, input_html: { class: 'mask-numeric', value: f.object.work_order_number&.zero? ? '' : f.object.work_order_number } %>
 

@@ -57,6 +57,10 @@ module TechnicalServicesHelper
     SurgeProtectorSetupType.sorted
   end
 
+  def sorted_work_types
+    WorkType.sorted
+  end
+
   def invoice_types
     [
       [t_view('.search_form.invoice_types.invoiced'), INVOICED],
