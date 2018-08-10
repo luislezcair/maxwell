@@ -28,8 +28,12 @@ export default class extends Controller {
   select() {
     const id = this.data.get('id');
     const label = this.data.get('label');
-    document.getElementById('technical_service_client').value = label;
-    document.getElementById('technical_service_client_id').value = id;
+
+    const idInput = document.getElementById('client-search-id-target').value;
+    const labelInput = document.getElementById('client-search-label-target').value;
+
+    document.getElementById(idInput).value = id;
+    document.getElementById(labelInput).value = label;
     $('#client-search-modal').modal('hide');
   }
 }

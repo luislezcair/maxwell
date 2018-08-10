@@ -19,6 +19,8 @@ es-AR:
         export: 'Exportar a Excel'
         new: 'Nuevo servicio técnico'
       search_form:
+        client: 'Cliente'
+        find_client: 'Buscar cliente'
         invoice: 'Facturación'
         period: 'Período'
         technician: 'Técnico'

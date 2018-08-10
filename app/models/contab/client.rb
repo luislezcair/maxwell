@@ -119,7 +119,7 @@ class Contab::Client < Contab::ContabBaseModel
       floor_dept: self.PisoDepto,
       postal_code: self.Cp,
       notes: self.Observaciones,
-      number: self.Codigo,
+      number: self.Codigo.to_i,
       country: country,
       province: province,
       city: city }
