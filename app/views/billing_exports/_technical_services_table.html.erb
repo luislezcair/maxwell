@@ -30,7 +30,7 @@
         </td>
         <td><%= index + 1 %></td>
         <td><%= l(ts.datetime, format: :short_date_show) %></td>
-        <td><%= ts.client.name %></td>
+        <td><%= ts.client.to_label %></td>
         <td><%= ts.plan_service.try(:name) %></td>
         <td class="numeric"><%= ts.work_order_number %></td>
         <td class="currency"><%= number_to_currency(ts.labour_cost) %></td>

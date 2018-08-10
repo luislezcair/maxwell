@@ -14,7 +14,7 @@
       <tr>
         <td><%= @invoices.offset_value + index + 1 %></td>
         <td><%= l(i.emission_date, format: :short_datetime) %></td>
-        <td><%= i.client.name %></td>
+        <td><%= i.client.to_label %></td>
         <td class="currency"><%= number_to_currency(i.total_amount) %></td>
 
         <td class="align-right">

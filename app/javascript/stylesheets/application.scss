@@ -24,9 +24,11 @@ main {
   }
 }
 
-.col-sm-2-5 {
-  flex: 0 0 20%;
-  max-width: 20%;
+@media(min-width: 576px) {
+  .col-sm-2-5 {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
 }
 
 .col-sm-2-5,

@@ -45,7 +45,7 @@ module ClientNameSearchable
     end
 
     def to_label
-      name
+      "#{name} (#{number})"
     end
   end
 end
