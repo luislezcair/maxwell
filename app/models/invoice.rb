@@ -46,8 +46,11 @@ class Invoice < ApplicationRecord
   #
   def create_invoice_items(services)
     services.each do |s|
-      item = invoice_items.build(description: s.description,
-                                 amount: s.total_cost)
+      org = s.organization
+      item = invoice_items.build(account_code: org.account_code,
+                                 amount: s.total_cost,
+                                 concept_id: org.concept_id,
+                                 description: s.description)
       item.save!
 
       s.invoice = self

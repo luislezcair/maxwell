@@ -26,6 +26,13 @@
           <th><%= t_model('name') %></th>
           <td><%= @group.name %></td>
         </tr>
+
+        <% unless @group.admin? %>
+          <tr>
+            <th><%= t_model('organization') %></th>
+            <td><%= @group.organization&.name %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
 

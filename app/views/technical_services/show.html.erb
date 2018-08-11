@@ -20,7 +20,7 @@
       <i class="fa fa-user"></i> <%= t('.section.client') %>
     </legend>
 
-    <table class="table table-sm table-details table-details-sm">
+    <table class="table table-sm table-details table-details-lg">
       <tbody>
         <tr>
           <th><%= t_model('client') %></th>
@@ -46,8 +46,13 @@
     <table class="table table-sm table-details table-details-lg">
       <tbody>
         <tr>
+          <th><%= t_model('organization') %></th>
+          <td><%= @technical_service.organization.name %></td>
+        </tr>
+
+        <tr>
           <th><%= t_model('datetime') %></th>
-          <td><%= l(@technical_service.datetime, format: :short_datetime) %></td>
+          <td><%= l(@technical_service.datetime, format: :short_date_show) %></td>
         </tr>
 
         <tr>

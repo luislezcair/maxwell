@@ -118,6 +118,10 @@ a {
       text-transform: uppercase;
       color: $color-gray-700;
       font-size: 0.98em;
+
+      sub {
+        color: $color-blue;
+      }
     }
   }
 }

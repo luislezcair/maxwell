@@ -12,6 +12,7 @@ es-AR:
         technical_service_corporate_cellphones: 'Servicios Técnicos'
       group:
         name: 'Nombre'
+        organization: 'Organización'
         permissions: 'Permisos'
         users: 'Usuarios'
       invoice:
@@ -43,6 +44,7 @@ es-AR:
         city: 'Ciudad'
         client: 'Cliente'
         corporate_cellphones: 'Celulares de la empresa'
+        date: 'Fecha'
         datetime: 'Fecha'
         departure_time: 'Hora de salida'
         device: 'Antena'
@@ -51,6 +53,7 @@ es-AR:
         ground_wire_setup_type: 'Cable a tierra'
         labour_cost: 'Costo de mano de obra'
         observations: 'Observaciones'
+        organization: 'Organización'
         plan_service: 'Servicio'
         plug_adapter_quantity: 'Cantidad de fichas'
         router_model: 'Modelo de router'

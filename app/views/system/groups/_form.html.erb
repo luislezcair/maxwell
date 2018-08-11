@@ -9,6 +9,8 @@
 
       <%= f.input :name %>
 
+      <%= f.association :organization, collection: sorted_organizations %>
+
       <% if @group.group_permissions.any? %>
         <legend class="form-section">
           <i class="fa fa-lock"></i> <%= t('.section.security') %>

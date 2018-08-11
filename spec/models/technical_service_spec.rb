@@ -48,16 +48,6 @@ describe TechnicalService do
     expect(b).to_not be_valid
   end
 
-  it 'is invalid without a ground wire setup type' do
-    b = build(:technical_service, ground_wire_setup_type: nil)
-    expect(b).to_not be_valid
-  end
-
-  it 'is invalid without a surge protector setup type' do
-    b = build(:technical_service, surge_protector_setup_type: nil)
-    expect(b).to_not be_valid
-  end
-
   it 'is invalid without at least one work type' do
     ts = build(:technical_service, work_types_count: 0)
     expect(ts).to_not be_valid

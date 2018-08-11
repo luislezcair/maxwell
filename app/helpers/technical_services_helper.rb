@@ -25,6 +25,18 @@ module TechnicalServicesHelper
     City.sorted
   end
 
+  # Si el usuario actual está asociado a una organización, devuelve solamente
+  # esa organización. De lo contrario, devuelve todas.
+  #
+  def sorted_organizations
+    group_org = current_user.group.organization
+    if group_org
+      Organization.where(id: group_org.id)
+    else
+      Organization.sorted
+    end
+  end
+
   def sorted_plan_services
     PlanService.sorted
   end

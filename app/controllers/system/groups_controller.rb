@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# Controlador para grupos de usuarios
+#
 class System::GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_group, only: [:show, :edit, :update, :destroy]
@@ -53,8 +57,8 @@ class System::GroupsController < ApplicationController
 
   def group_params
     params.require(:group)
-          .permit(:name, group_permissions_attributes: [:id,
-                                                        :permission_id,
-                                                        :permission_code])
+          .permit(:name, :organization_id,
+                  group_permissions_attributes: [:id, :permission_id,
+                                                 :permission_code])
   end
 end

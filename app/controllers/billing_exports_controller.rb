@@ -14,7 +14,7 @@ class BillingExportsController < ApplicationController
     datetimes_for_day if search_params
 
     @q = TechnicalService.not_billed.ransack(params[:q])
-    @q.sorts = 'datetime desc' if @q.sorts.empty?
+    @q.sorts = ['date desc', 'client_name asc'] if @q.sorts.empty?
     @billing_export = BillingExport.new
 
     # Si no hay parámetros de búsqueda muestra la tabla vacía. Si hay parámetros

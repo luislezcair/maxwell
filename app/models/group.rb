@@ -4,6 +4,8 @@
 # los grupos.
 #
 class Group < ApplicationRecord
+  belongs_to :organization, optional: true
+
   has_many :users, dependent: :restrict_with_error
 
   has_many :group_permissions, dependent: :destroy

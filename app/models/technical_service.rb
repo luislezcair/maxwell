@@ -7,6 +7,7 @@
 class TechnicalService < ApplicationRecord
   belongs_to :city
   belongs_to :client
+  belongs_to :organization
 
   belongs_to :balancer, optional: true
   belongs_to :device, optional: true
@@ -33,6 +34,7 @@ class TechnicalService < ApplicationRecord
   has_many :work_types, through: :technical_service_work_types
 
   attribute :datetime, :datetime, default: -> { Time.current }
+  attribute :organization_id, :integer, default: -> { Organization.first.id }
 
   validates :arrival_time, :datetime, :departure_time, :work_order_number,
             presence: true
@@ -52,6 +54,10 @@ class TechnicalService < ApplicationRecord
   # parciales.
   ransacker :work_order_number_s do
     Arel.sql('"work_order_number"::varchar')
+  end
+
+  ransacker :date do
+    Arel.sql('"datetime"::date')
   end
 
   # Los servicios técnicos no facturados son aquellos que no tienen una factura

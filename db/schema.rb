@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_04_234438) do
+ActiveRecord::Schema.define(version: 2018_08_11_184908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 2018_08_04_234438) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
+    t.integer "organization_id"
     t.index ["name"], name: "index_groups_on_name", unique: true
   end
 
@@ -146,6 +147,8 @@ ActiveRecord::Schema.define(version: 2018_08_04_234438) do
     t.datetime "updated_at", null: false
     t.decimal "net_amount", precision: 17, scale: 4, default: "0.0", null: false
     t.decimal "iva_amount", precision: 17, scale: 4, default: "0.0", null: false
+    t.integer "concept_id", default: 902253, null: false
+    t.string "account_code", default: "", null: false
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -165,12 +168,21 @@ ActiveRecord::Schema.define(version: 2018_08_04_234438) do
     t.decimal "total_amount", precision: 15, scale: 2, default: "0.0", null: false
   end
 
+  create_table "organizations", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "account_code", default: "", null: false
+    t.integer "concept_id", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "permissions", force: :cascade do |t|
     t.string "title"
     t.string "category"
     t.string "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "organization_filter", default: false, null: false
   end
 
   create_table "plan_services", force: :cascade do |t|
@@ -263,6 +275,7 @@ ActiveRecord::Schema.define(version: 2018_08_04_234438) do
     t.integer "billing_export_id"
     t.integer "invoice_item_id"
     t.integer "invoice_id"
+    t.integer "organization_id", default: 1
   end
 
   create_table "technicians", force: :cascade do |t|

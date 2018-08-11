@@ -78,7 +78,12 @@
 
 <div class="card">
   <div class="card-header data-header">
-    <div class="title"><%= t('.header') %></div>
+    <div class="title">
+      <%= t('.header') %>
+      <% if current_user.group.organization %>
+        <sub> (<%= current_user.group.organization.name %>)</sub>
+      <% end %>
+    </div>
 
     <div>
       <% if can? :manage, TechnicalService %>

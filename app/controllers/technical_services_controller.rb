@@ -76,8 +76,8 @@ class TechnicalServicesController < ApplicationController
       setup_cost_types if total_cost_type_present?
     end
 
-    @q = TechnicalService.ransack(params[:q])
-    @q.sorts = 'datetime desc' if @q.sorts.empty?
+    @q = TechnicalService.accessible_by(current_ability).ransack(params[:q])
+    @q.sorts = ['date desc', 'client_name asc'] if @q.sorts.empty?
   end
 
   def dates_present?
@@ -105,7 +105,8 @@ class TechnicalServicesController < ApplicationController
   end
 
   def set_technical_service
-    @technical_service = TechnicalService.find(params[:id])
+    @technical_service =
+      TechnicalService.accessible_by(current_ability).find(params[:id])
   end
 
   def technical_service_params
@@ -115,11 +116,18 @@ class TechnicalServicesController < ApplicationController
              :cable_length, :plug_adapter_quantity, :google_maps_url,
              :labour_cost, :equipment_cost, :observations, :city_id,
              :ground_wire_setup_type_id, :surge_protector_setup_type_id,
-             :support_type_id, :balancer_id,
+             :support_type_id, :balancer_id, :organization_id,
              work_type_ids: [], corporate_cellphone_ids: [], technician_ids: []]
 
     # Permitir modificar la fecha solamente si tiene permisio de edición
     attrs << :datetime if can? :edit, TechnicalService
-    params.require(:technical_service).permit(attrs)
+    p = params.require(:technical_service).permit(attrs)
+
+    # Si el grupo del usuario pertenece a una organización, el ST debe estar
+    # asociado a esa organización y no otra
+    group_org = current_user.group.organization
+    p[:organization_id] = group_org.id if group_org
+
+    p
   end
 end
