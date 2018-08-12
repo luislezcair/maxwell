@@ -72,6 +72,11 @@
         </tr>
 
         <tr>
+          <th><%= t_model('user_show') %></th>
+          <td><%= @technical_service.user&.name %></td>
+        </tr>
+
+        <tr>
           <th><%= t_model('arrival_time') %></th>
           <td><%= l(@technical_service.arrival_time, format: :short_time) %></td>
 

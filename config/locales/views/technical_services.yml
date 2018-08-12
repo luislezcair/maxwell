@@ -35,6 +35,7 @@ es-AR:
         total_cost_types:
           free: 'Bonificado'
           nonfree: 'No bonificado'
+        user: 'Usuario'
       show_more: 'Más filtros'
     new:
       form:

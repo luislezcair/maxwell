@@ -57,7 +57,11 @@
           <% end %>
         </div>
 
-        <div class="col-sm-5">
+        <div class="col-sm-2">
+          <%= f.input :user_id_eq, label: t('.search_form.user'), as: :select, collection: sorted_users, include_blank: t('search_form.any') %>
+        </div>
+
+        <div class="col-sm-6">
           <%= f.input :client_id, label: t('.search_form.client') do %>
             <div data-controller="client-search" data-client-search-url="<%= search_clients_path %>" data-client-search-label-input="technical_service_client" data-client-search-id-input="technical_service_client_id" class="input-group">
               <%= f.input_field :client_id, class: 'form-control normal', readonly: true, name: '' %>

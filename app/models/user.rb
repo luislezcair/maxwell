@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+# Representa un usuario del sistema. Pertenece a un Grupo donde están definidos
+# los permisos.
+#
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

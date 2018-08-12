@@ -73,6 +73,10 @@ module TechnicalServicesHelper
     WorkType.sorted
   end
 
+  def sorted_users
+    User.sorted
+  end
+
   def invoice_types
     [
       [t_view('.search_form.invoice_types.invoiced'), INVOICED],

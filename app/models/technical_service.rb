@@ -17,6 +17,7 @@ class TechnicalService < ApplicationRecord
   belongs_to :surge_protector_setup_type, optional: true
   belongs_to :tower, optional: true
   belongs_to :transmitter, optional: true
+  belongs_to :user, optional: true
 
   # Invoicing:
   belongs_to :billing_export, optional: true

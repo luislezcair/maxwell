@@ -64,6 +64,8 @@ es-AR:
         total_cost: 'Costo total'
         tower: 'Torre'
         transmitter: 'Emisora'
+        user: 'Usuario'
+        user_show: 'Registrado por'
         wifi_password: 'Contraseña Wi-Fi'
         wifi_ssid: 'SSID Wi-Fi'
         work_order_number: 'Orden de trabajo'

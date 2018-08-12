@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_11_224717) do
+ActiveRecord::Schema.define(version: 2018_08_12_033754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -277,6 +277,7 @@ ActiveRecord::Schema.define(version: 2018_08_11_224717) do
     t.integer "invoice_item_id"
     t.integer "invoice_id"
     t.integer "organization_id", default: 1
+    t.integer "user_id"
   end
 
   create_table "technicians", force: :cascade do |t|

@@ -16,11 +16,11 @@ class TechnicalServiceExporter
   #
   def attributes
     attrs = %w[organization datetime client city work_order_number plan_service
-               technicians arrival_time departure_time work_types labour_cost
-               equipment_cost total_cost google_maps_url observations tower
-               transmitter device corporate_cellphones router_model
-               router_serial_number wifi_ssid wifi_password cable_length
-               plug_adapter_quantity balancer support_type
+               technicians user arrival_time departure_time work_types
+               labour_cost equipment_cost total_cost google_maps_url
+               observations tower transmitter device corporate_cellphones
+               router_model router_serial_number wifi_ssid wifi_password
+               cable_length plug_adapter_quantity balancer support_type
                ground_wire_setup_type surge_protector_setup_type]
 
     attrs.map do |a|
@@ -45,6 +45,7 @@ class TechnicalServiceExporter
         s.work_order_number,
         s.plan_service.try(:name),
         technicians,
+        s.user&.name,
         s.arrival_time,
         s.departure_time,
         work_types,
@@ -112,7 +113,7 @@ class TechnicalServiceExporter
         sheet.add_row v, style: styles
       end
 
-      sheet.auto_filter = 'A1:AC1'
+      sheet.auto_filter = 'A1:AD1'
     end
 
     p.to_stream

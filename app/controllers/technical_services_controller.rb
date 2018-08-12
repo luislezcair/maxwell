@@ -30,6 +30,7 @@ class TechnicalServicesController < ApplicationController
   # POST /technical_services
   def create
     @technical_service = TechnicalService.new(technical_service_params)
+    @technical_service.user = current_user
     if @technical_service.save
       redirect_to @technical_service
     else
