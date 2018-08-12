@@ -86,7 +86,7 @@
     </div>
 
     <div>
-      <% if can? :manage, TechnicalService %>
+      <% if can? :download, TechnicalService %>
         <button type="submit" form="export_form" class="btn btn-sm btn-success" data-toggle="tooltip" data-trigger="hover" data-title="<%= t('.tooltip.export') %>">
           <i class="fa fa-table"></i>
         </button>

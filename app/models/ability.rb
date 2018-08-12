@@ -27,35 +27,34 @@ class Ability
       perm = gp.permission
       model = perm.code.classify.constantize
 
-      if perm.organization_filter && group_org.present?
-        set_perms_for_organization(model, gp, group_org)
-      else
-        set_perms_for(model, gp)
-      end
+      custom_actions = perm.special_actions
+      custom_attrs = custom_attributes(perm, group_org)
+
+      set_perms_for(model, gp, custom_attrs, custom_actions)
     end
   end
 
-  def set_perms_for(model, perm)
+  def set_perms_for(model, perm, custom_attrs, custom_actions)
     if perm.view?
-      can :read, model
+      can :read, model, custom_attrs
     elsif perm.create?
-      can [:read, :create], model
+      can [:read, :create], model, custom_attrs
     elsif perm.edit?
-      can [:read, :create, :update], model
+      can [:read, :create, :update], model, custom_attrs
     elsif perm.edit_delete?
-      can :manage, model
+      can :manage, model, custom_attrs
+    end
+
+    custom_actions.each do |action, permission|
+      custom_value = GroupPermission.permission_value(permission)
+      perm_value = perm.permission_code_value
+
+      can action, model, custom_attrs if custom_value <= perm_value
     end
   end
 
-  def set_perms_for_organization(model, perm, org)
-    if perm.view?
-      can :read, model, organization_id: org.id
-    elsif perm.create?
-      can [:read, :create], model, organization_id: org.id
-    elsif perm.edit?
-      can [:read, :create, :update], model, organization_id: org.id
-    elsif perm.edit_delete?
-      can :manage, model, organization_id: org.id
-    end
+  def custom_attributes(perm, group_org)
+    return {} unless perm.organization_filter && group_org
+    { organization_id: group_org.id }
   end
 end

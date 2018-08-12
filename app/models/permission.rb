@@ -10,6 +10,14 @@
 # del modelo TechnicalService y en GroupPermission se le asigna las acciones
 # que puede realizar un grupo sobre ese modelo, como : deny, view, create, etc.
 #
+# El campo custom_actions se utiliza para asignar permisos a las acciones
+# especiales de un controlador (aquellas acciones no-REST). Este campo se guarda
+# como JSON con el formato `{ special_action: <permission_code> }`.
+#
+# Por ejemplo: la acción `download` de TechnicalServices puede ser realizada
+# por aquellos Grupos que tengan el permiso `view` asignando el siguiente valor
+# a custom_actions: '{ "download": "view" }'.
+#
 class Permission < ApplicationRecord
   has_many :group_permissions, dependent: :destroy
   has_many :groups, through: :group_permissions
@@ -26,5 +34,12 @@ class Permission < ApplicationRecord
       gp = g.group_permissions.build(permission: self, permission_code: :deny)
       gp.save!
     end
+  end
+
+  # Transforma el campo custom_actions desde JSON a un Hash
+  #
+  def special_actions
+    return {} unless custom_actions
+    MultiJson.load(custom_actions, symbolize_keys: true)
   end
 end

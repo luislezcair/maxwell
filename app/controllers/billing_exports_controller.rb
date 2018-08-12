@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# Controlador para BillingExports
+#
 class BillingExportsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_billing_export, only: [:perform, :job_status]
@@ -13,7 +17,9 @@ class BillingExportsController < ApplicationController
     search_params = search_params?
     datetimes_for_day if search_params
 
-    @q = TechnicalService.not_billed.ransack(params[:q])
+    @q = TechnicalService.not_billed
+                         .accessible_by(current_ability)
+                         .ransack(params[:q])
     @q.sorts = ['date desc', 'client_name asc'] if @q.sorts.empty?
     @billing_export = BillingExport.new
 
@@ -60,6 +66,8 @@ class BillingExportsController < ApplicationController
   end
 
   def billing_export_params
+    # TODO: deberíamos controlar que el usuario tenga permiso de organization a
+    # los servicios técnicos que vienen por acá.
     params.require(:billing_export)
           .permit(:export_type, technical_service_ids: [])
   end

@@ -35,7 +35,12 @@
 <%= simple_form_for @billing_export, remote: true do |f| %>
   <div class="card">
     <div class="card-header data-header">
-      <div class="title"><%= t('.header.technical_services') %></div>
+      <div class="title">
+        <%= t('.header.technical_services') %>
+        <% if current_user.group.organization %>
+          <sub> (<%= current_user.group.organization.name %>)</sub>
+        <% end %>
+      </div>
     </div>
 
     <div class="card-body">

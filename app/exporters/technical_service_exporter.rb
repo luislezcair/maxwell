@@ -15,8 +15,8 @@ class TechnicalServiceExporter
   # encabezado.
   #
   def attributes
-    attrs = %w[datetime client city work_order_number plan_service technicians
-               arrival_time departure_time work_types labour_cost
+    attrs = %w[organization datetime client city work_order_number plan_service
+               technicians arrival_time departure_time work_types labour_cost
                equipment_cost total_cost google_maps_url observations tower
                transmitter device corporate_cellphones router_model
                router_serial_number wifi_ssid wifi_password cable_length
@@ -38,6 +38,7 @@ class TechnicalServiceExporter
       technicians = s.technicians.map(&:name).join('; ')
       work_types = s.work_types.pluck(:name).join('; ')
       [
+        s.organization.name,
         s.datetime,
         s.client.name,
         s.city.name,
@@ -76,6 +77,7 @@ class TechnicalServiceExporter
   #
   def formats
     [
+      nil,
       'DD/MM/YYYY', # datetime
       nil, nil, nil, nil, nil,
       'HH:MM', # arrival_time
@@ -110,7 +112,7 @@ class TechnicalServiceExporter
         sheet.add_row v, style: styles
       end
 
-      sheet.auto_filter = 'A1:AB1'
+      sheet.auto_filter = 'A1:AC1'
     end
 
     p.to_stream
