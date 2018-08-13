@@ -111,3 +111,5 @@ gem 'sidekiq'
 
 # Generate XLSX documents
 gem 'axlsx', '3.0.0.pre'
+
+gem 'whenever', require: false
