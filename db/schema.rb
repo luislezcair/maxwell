@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_12_033754) do
+ActiveRecord::Schema.define(version: 2018_08_13_170510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2018_08_12_033754) do
     t.string "floor_dept"
     t.text "notes"
     t.string "postal_code"
+    t.integer "organization_id"
     t.index ["ucrm_id"], name: "index_clients_on_ucrm_id", unique: true
   end
 
@@ -174,6 +175,7 @@ ActiveRecord::Schema.define(version: 2018_08_12_033754) do
     t.integer "concept_id", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ucrm_id"
   end
 
   create_table "permissions", force: :cascade do |t|

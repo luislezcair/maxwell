@@ -34,10 +34,8 @@
         <i class="fa fa-wrench"></i> <%= t('.section.technical_service') %>
       </legend>
 
-      <div class="form-group row string required">
-        <%= f.association :organization, collection: sorted_organizations, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, include_blank: false %>
-
-        <% if can? :edit, TechnicalService %>
+      <% if can? :edit, TechnicalService %>
+        <div class="form-group row string required">
           <%= f.input :datetime, as: :string, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } do %>
             <div class="input-group date">
               <%= f.input_field :datetime, as: :string, class: 'form-control mask-date align-right', placeholder: 'dd/mm/aaaa', value: short_date(f.object.datetime.utc) %>
@@ -49,8 +47,8 @@
               <%= f.full_error :datetime, class: 'invalid-feedback' %>
             </div>
           <% end %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
 
       <%= f.input :work_order_number, as: :string, input_html: { class: 'mask-numeric', value: f.object.work_order_number&.zero? ? '' : f.object.work_order_number } %>
 

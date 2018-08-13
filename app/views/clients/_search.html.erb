@@ -1,7 +1,12 @@
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title"><%= t('.modal.title') %></h5>
+      <h5 class="modal-title">
+        <%= t('.modal.title') %>
+        <% if current_user.group.organization %>
+          <sub> (<%= current_user.group.organization.name %>)</sub>
+        <% end %>
+      </h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="<%= t('.modal.close') %>">
         <span aria-hidden="true">&times;</span>
       </button>

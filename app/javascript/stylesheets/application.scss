@@ -126,6 +126,13 @@ a {
   }
 }
 
+.modal-title {
+  sub {
+    color: $color-blue;
+    font-size: 0.7em;
+  }
+}
+
 table {
   &.table-maxwell-data {
     margin-bottom: 0px;

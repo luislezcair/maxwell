@@ -12,6 +12,17 @@ class UCRM::Client < UCRM::UCRMBaseModel
   # Cargar los atributos con los valores de la entidad de UCRM.
   #
   def maxwell_model_attributes
-    { firstname: firstName, lastname: lastName, number: userIdent.to_i }
+    {
+      firstname: firstName,
+      lastname: lastName,
+      number: userIdent.to_i,
+      organization_id: organization
+    }
+  end
+
+  private
+
+  def organization
+    Organization.find_by(ucrm_id: organizationId).id
   end
 end

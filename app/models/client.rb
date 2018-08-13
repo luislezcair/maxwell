@@ -8,6 +8,7 @@ class Client < ApplicationRecord
   extend Enumerize
 
   belongs_to :country
+  belongs_to :organization
   belongs_to :province
 
   belongs_to :city, optional: true

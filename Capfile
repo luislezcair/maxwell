@@ -38,6 +38,8 @@ require 'capistrano/yarn'
 require 'capistrano/sidekiq'
 require 'capistrano/sidekiq/monit'
 
+require 'whenever/capistrano'
+
 install_plugin Capistrano::Puma
 install_plugin Capistrano::Puma::Monit
 install_plugin Capistrano::Puma::Nginx, load_hooks: false

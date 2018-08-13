@@ -40,6 +40,15 @@ append :linked_dirs,
        'tmp/sockets',
        'log'
 
+set :rbenv_ruby, File.read('.ruby-version').strip
+
+# Whenever config
+set :whenever_environment, fetch(:stage)
+set :whenever_variables, lambda {
+  "'environment=#{fetch :whenever_environment}" \
+  "&rbenv_root=#{fetch :rbenv_path}'"
+}
+
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 

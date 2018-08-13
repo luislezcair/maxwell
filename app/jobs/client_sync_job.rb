@@ -37,18 +37,21 @@ class ClientSyncJob
   # Tomamos los datos de Contabilium y buscamos el cliente correspondiente en
   # UCRM usando el código de cliente. Si hay clientes con el mismo código se
   # usa el primero y el otro se descarta.
-  # Devuelve un arreglo con los clientes que coincidieron.
+  # Establece el campo ucrm_id y organization_id que son atributos propios de
+  # UCRM. Devuelve un arreglo con los clientes que coincidieron.
   #
   def match_with(clients_c, clients_u)
     clients = []
 
     clients_c.each do |c|
-      uc = clients_u.select { |u| u.number == c.number }.first
+      next if c.number.zero?
 
-      if uc
-        c.ucrm_id = uc.ucrm_id
-        clients << c
-      end
+      uc = clients_u.select { |u| u.number == c.number }.first
+      next unless uc
+
+      c.ucrm_id = uc.ucrm_id
+      c.organization_id = uc.organization_id
+      clients << c
     end
 
     clients

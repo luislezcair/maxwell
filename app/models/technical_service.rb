@@ -35,7 +35,6 @@ class TechnicalService < ApplicationRecord
   has_many :work_types, through: :technical_service_work_types
 
   attribute :datetime, :datetime, default: -> { Time.current }
-  attribute :organization_id, :integer, default: -> { Organization.first.id }
 
   validates :arrival_time, :datetime, :departure_time, :work_order_number,
             presence: true
@@ -50,6 +49,7 @@ class TechnicalService < ApplicationRecord
   validate :not_billed?, on: :update
 
   before_save :compute_total_cost
+  before_save :set_organization
 
   # Convierte el número de orden a string para poder buscar por coincidencias
   # parciales.
@@ -110,5 +110,12 @@ class TechnicalService < ApplicationRecord
   def not_billed?
     return if invoice.blank?
     errors.add(:base, :billed)
+  end
+
+  # Establece la Organización en nombre de la cual se hizo este servico técnico
+  # tomando la información del cliente.
+  #
+  def set_organization
+    self.organization = client.organization
   end
 end
