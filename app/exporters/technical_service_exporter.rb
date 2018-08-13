@@ -80,7 +80,7 @@ class TechnicalServiceExporter
     [
       nil,
       'DD/MM/YYYY', # datetime
-      nil, nil, nil, nil, nil,
+      nil, nil, nil, nil, nil, nil,
       'HH:MM', # arrival_time
       'HH:MM', # departure_time
       nil,
