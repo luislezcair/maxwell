@@ -1,4 +1,10 @@
+# frozen_string_literal: true
+
+# Controlador padre de todos los controladores. Define la configuración de
+# Devise, Sentry y algunos métodos utilizados por varios controladores.
+#
 class ApplicationController < ActionController::Base
+  before_action :set_raven_context
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from CanCan::AccessDenied do |e|
@@ -9,6 +15,13 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def set_raven_context
+    return unless ENV['SENTRY_ACTIVE'] == 'true'
+
+    Raven.user_context(id: session[:current_user_id])
+    Raven.extra_context(params: params.to_unsafe_h, url: request.url)
+  end
 
   def configure_permitted_parameters
     added_attrs = [:username, :email, :password, :password_confirmation,
