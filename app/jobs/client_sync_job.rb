@@ -13,6 +13,8 @@
 class ClientSyncJob
   include Sidekiq::Worker
 
+  EXCEPT_ATTRS = %w[id number created_at updated_at].freeze
+
   def perform
     # Convertimos todos los clientes de Contabilium y UCRM a una representación
     # común: clientes de Maxwell.
@@ -22,11 +24,15 @@ class ClientSyncJob
     clients = match_with(clients_c, clients_u)
 
     # Ahora clients es una lista de clientes con contabilium_id y ucrm_id
+    # Si el cliente ya existe, actualizamos los atributos por si hubo cambios.
     # Si el cliente no se encuentra en el sistema, guardamos el cliente que
-    # viene de Contabilium
+    # viene de Contabilium porque es uno nuevo.
     clients.each do |c|
-      unless Client.find_by(number: c.number)
-        c.save
+      client = Client.find_by(number: c.number)
+
+      if client
+        client.update(c.attributes.except(*EXCEPT_ATTRS))
+      elsif c.save
         logger.info("Saving client with ID: #{c.id}")
       end
     end

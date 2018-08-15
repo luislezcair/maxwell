@@ -49,13 +49,13 @@
 
         <tfoot>
           <tr>
-            <td class="page-entries-info" colspan="5"><%= page_entries_info @clients %></td>
+            <td class="page-entries-info" colspan="4"><%= page_entries_info @clients %></td>
           </tr>
 
           <% if @clients.total_pages > 1 %>
             <tr>
-              <td colspan="5">
-                <%= paginate @clients, remote: true %>
+              <td colspan="4">
+                <%= paginate @clients, remote: true, window: 2 %>
               </td>
             </tr>
           <% end %>

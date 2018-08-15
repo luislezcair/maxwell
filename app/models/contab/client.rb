@@ -128,7 +128,7 @@ class Contab::Client < Contab::ContabBaseModel
   # Dividir la razón social en dos nombres cuando `personeria` es F (Física).
   #
   def names_from_social_reason
-    names = self.RazonSocial.strip.split(' ', 2)
+    names = self.RazonSocial.strip.delete(',').split(' ', 2)
     lastname = names.one? ? 'SIN APELLIDO' : names.second
 
     { firstname: names.first, lastname: lastname }
