@@ -69,6 +69,8 @@ class ClientSyncJob
   # páginas restantes.
   #
   def contabilium_clients
+    Contab::Client.reload_api
+
     logger.info('Fetching first page of results...')
     page = 1
     collection = Contab::Client.collection(page)

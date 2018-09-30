@@ -75,16 +75,6 @@ class Contab::Client < Contab::ContabBaseModel
                        :CondicionIva, :province, :city, :Domicilio, :web)
   end
 
-  # Devuelve un Hash con los atributos extra que se necesitan para exportar un
-  # cliente a CSV y que no están en `contab_attributes`.
-  #
-  def self.csv_extra_attributes(client)
-    { fantasy_name: '',
-      province: client.province.name,
-      city: client.city&.name,
-      web: '' }
-  end
-
   def initialize(args)
     super(args)
     @klass = ::Client

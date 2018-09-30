@@ -32,6 +32,11 @@ class ContabAPI
     end
   end
 
+  # @return [Boolean] true si el token de autenticación actual todavía es válido
+  def still_valid?
+    AuthToken.last_token&.still_valid?
+  end
+
   private
 
   # Obtiene el último token de la base de datos. Si es válido lo devuelve. Si
@@ -47,7 +52,7 @@ class ContabAPI
   end
 
   # Realiza una llamada OAuth2 a Contabilium para obtener un nuevo token.
-  # TODO: handle Faraday::ConnectionFailed, change env to actual env
+  # TODO: handle Faraday::ConnectionFailed
   #
   def new_token
     credentials = Rails.application.credentials[:contabilium][CONTABILIUM_ENV]

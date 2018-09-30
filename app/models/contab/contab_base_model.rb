@@ -22,6 +22,11 @@ class Contab::ContabBaseModel
     false
   end
 
+  def self.reload_api
+    @api = ContabAPI.new unless @api&.still_valid?
+    use_api @api.api
+  end
+
   def initialize(args = {})
     super(args)
     @api_name = 'Contabilium'

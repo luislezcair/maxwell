@@ -10,5 +10,6 @@ FactoryBot.define do
     province
     ucrm_id 1
     contabilium_id 2
+    organization
   end
 end
