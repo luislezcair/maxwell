@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :device do
-    model 'NanoLoco Lookaa'
+    model { 'NanoLoco Lookaa' }
   end
 end

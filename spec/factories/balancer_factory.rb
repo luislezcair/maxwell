@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :balancer do
-    name 'Balanceador X'
+    name { 'Balanceador X' }
   end
 end

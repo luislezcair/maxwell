@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :ground_wire_setup_type do
-    name 'Sin cable a tierra'
+    name { 'Sin cable a tierra' }
   end
 end

@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :province do
-    name 'Corrientes'
+    name { 'Corrientes' }
     country
   end
 end

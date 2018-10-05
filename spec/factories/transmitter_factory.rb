@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :transmitter do
-    name 'Torre X'
+    name { 'Torre X' }
   end
 end

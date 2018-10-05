@@ -15,16 +15,16 @@
 FactoryBot.define do
   factory :technical_service do
     transient do
-      work_types_count 2
-      cellphones_count 2
-      technicians_count 2
+      work_types_count { 2 }
+      cellphones_count { 2 }
+      technicians_count { 2 }
     end
 
-    arrival_time Time.new(2018, 6, 11, 15, 0, 0).in_time_zone
-    datetime Time.new(2018, 6, 11, 22, 0, 0).in_time_zone
-    departure_time Time.new(2018, 6, 11, 16, 0, 0).in_time_zone
-    plug_adapter_quantity 10
-    work_order_number 666
+    arrival_time { Time.new(2018, 6, 11, 15, 0, 0).in_time_zone }
+    datetime { Time.new(2018, 6, 11, 22, 0, 0).in_time_zone }
+    departure_time { Time.new(2018, 6, 11, 16, 0, 0).in_time_zone }
+    plug_adapter_quantity { 10 }
+    work_order_number { 666 }
 
     # Relaciones requeridas de acuerdo al formulario de GDocs:
     city

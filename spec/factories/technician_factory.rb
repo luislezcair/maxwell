@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :technician do
-    firstname 'Técnico X'
-    lastname 'Y Z'
+    firstname { 'Técnico X' }
+    lastname { 'Y Z' }
 
     factory :technician_with_sequence do
       sequence(:firstname) { |n| "Técnico X#{n}" }

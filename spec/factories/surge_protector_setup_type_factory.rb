@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :surge_protector_setup_type do
-    name 'UPS infinitas horas de duración'
+    name { 'UPS infinitas horas de duración' }
   end
 end

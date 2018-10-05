@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :city do
-    name 'Corrientes'
+    name { 'Corrientes' }
     province
   end
 end
