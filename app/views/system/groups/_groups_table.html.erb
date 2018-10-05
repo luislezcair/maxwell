@@ -21,7 +21,7 @@
         <td><%= @groups.offset_value + index + 1 %></td>
         <td><%= g.name %></td>
 
-        <td class="align-right">
+        <td class="action-buttons">
           <%= link_to system_group_path(g), class: 'btn btn-sm btn-outline-success', data: { toggle: 'tooltip', title: t('.tooltip.show') } do %>
             <i class="fa fa-eye"></i>
           <% end %>

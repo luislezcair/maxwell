@@ -29,7 +29,7 @@
         <td><%= ts.work_order_number %></td>
         <td><%= ts.plan_service.try(:name) %></td>
 
-        <td class="align-right">
+        <td class="action-buttons">
           <%= link_to technical_service_path(ts), class: 'btn btn-sm btn-outline-success', data: { toggle: 'tooltip', title: t('.tooltip.show') } do %>
             <i class="fa fa-eye"></i>
           <% end %>

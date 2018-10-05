@@ -31,7 +31,7 @@
         <td><%= u.group.name %></td>
         <td><%= l(u.last_sign_in_at, format: :short_datetime, default: '-') %></td>
 
-        <td class="align-right">
+        <td class="action-buttons">
           <%= link_to system_user_path(u), class: 'btn btn-sm btn-outline-success', data: { toggle: 'tooltip', title: t('.tooltip.show') } do %>
             <i class="fa fa-eye"></i>
           <% end %>

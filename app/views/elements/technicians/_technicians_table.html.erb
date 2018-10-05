@@ -23,7 +23,7 @@
         <td><%= t.name %></td>
         <td><%= boolean_display(t.active) %></td>
 
-        <td class="align-right">
+        <td class="action-buttons">
           <% if can? :update, t %>
             <%= link_to edit_elements_technician_path(t), class: 'btn btn-sm btn-outline-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
               <i class="fa fa-pencil"></i>

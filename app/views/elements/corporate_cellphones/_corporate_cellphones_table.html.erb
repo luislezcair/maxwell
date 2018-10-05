@@ -21,7 +21,7 @@
         <td><%= @cellphones.offset_value + index + 1 %></td>
         <td><%= cc.to_label %></td>
 
-        <td class="align-right">
+        <td class="action-buttons">
           <% if can? :update, cc %>
             <%= link_to edit_elements_corporate_cellphone_path(cc), class: 'btn btn-sm btn-outline-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
               <i class="fa fa-pencil"></i>

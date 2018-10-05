@@ -37,7 +37,7 @@
         <td class="currency"><%= number_to_currency(ts.equipment_cost) %></td>
         <td class="currency"><%= number_to_currency(ts.total_cost) %></td>
 
-        <td class="align-right">
+        <td class="action-buttons">
           <%= link_to technical_service_path(ts), class: 'btn btn-sm btn-outline-success', data: { toggle: 'tooltip', title: t('.tooltip.show') } do %>
             <i class="fa fa-eye"></i>
           <% end %>

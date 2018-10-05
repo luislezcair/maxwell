@@ -17,7 +17,7 @@
         <td><%= i.client.to_label %></td>
         <td class="currency"><%= number_to_currency(i.total_amount) %></td>
 
-        <td class="align-right">
+        <td class="action-buttons">
           <% if i.ucrm_id.present? %>
             <%= link_to ucrm_link(i), class: 'btn btn-sm btn-outline-primary', target: '_blank', data: { toggle: 'tooltip', title: t('.tooltip.ucrm'), trigger: 'hover' } do %>
               <i class="fa fa-file-text-o"></i>
