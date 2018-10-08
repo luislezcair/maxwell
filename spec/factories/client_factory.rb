@@ -4,7 +4,8 @@ FactoryBot.define do
   factory :client do
     firstname { 'Stephen' }
     lastname { 'Strange' }
-    number { '987654321' }
+    number { 654_321 }
+    document_type { :cuit }
     document_number { 23_360_256_499 }
     country
     province

@@ -22,7 +22,9 @@ module ClientsHelper
   def client_label(cli)
     return unless cli
     id = cli.dni? ? 'DNI' : 'CUIT'
-    number = t('activerecord.attributes.client.number')
+    number = I18n.t('activerecord.attributes.client.number')
     "#{cli.name} - (#{number}: #{cli.number}) - (#{id}: #{cuit_dni(cli)})"
   end
+
+  module_function :client_label, :cuit_dni
 end
