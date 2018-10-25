@@ -1,0 +1,13 @@
+(function updateFormModal() {
+  const modal = document.getElementById('account-form-modal');
+  modal.innerHTML = '<%= j render 'form' %>';
+
+  modal.dispatchEvent(
+    new CustomEvent('accounts:create_error',
+      {
+        detail: {
+          accountId: '<%= @account.id %>',
+        },
+      })
+  );
+})();

@@ -33,6 +33,9 @@ const maskDefaults = {
     removeMaskOnSubmit: true,
     unmaskAsNumber: true,
   },
+  accountCode: {
+    mask: '9[9][.9[9]][.9[9]][.9[9]][.9[9]][.9[9]][.9[9]][.9[9]]',
+  },
 };
 
 const MaskElementByClass = (selector, mask) => {

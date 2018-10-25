@@ -105,11 +105,15 @@ gem 'her'
 gem 'faraday_middleware'
 gem 'simple_oauth'
 
-gem 'oauth2', github: 'oauth-xx/oauth2', branch: 'master'
+gem 'oauth2'
 
 gem 'sidekiq'
 
 # Generate XLSX documents
 gem 'axlsx', '3.0.0.pre'
 
+# Define crontab jobs from rails scripts
 gem 'whenever', require: false
+
+# Models with tree structure using the materialized path pattern
+gem 'ancestry'

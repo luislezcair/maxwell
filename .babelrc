@@ -6,9 +6,9 @@
         "modules": false,
         "targets": {
           "browsers": "> 1%",
-          "uglify": true
         },
-        "useBuiltIns": "entry"
+        "useBuiltIns": "entry",
+        "forceAllTransforms": true,
       }
     ],
   ],

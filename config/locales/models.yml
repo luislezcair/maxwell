@@ -1,6 +1,11 @@
 es-AR:
   activerecord:
     attributes:
+      account:
+        code: 'Código'
+        imputable: 'Imputable'
+        name: 'Nombre'
+        parent_id: 'Cuenta madre'
       city:
         name: 'Ciudad'
       client:
@@ -93,6 +98,14 @@ es-AR:
 
     errors:
       models:
+        account:
+          attributes:
+            base:
+              children: 'No se puede eliminar esta cuenta porque es madre de otras cuentas'
+            imputable:
+              children: 'no puede cambiarse porque esta cuenta tiene descendientes'
+            parent_id:
+              imputable: 'no puede ser una cuenta imputable'
         billing_export:
           attributes:
             export_type:

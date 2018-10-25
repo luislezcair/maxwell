@@ -1,0 +1,34 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <%= simple_form_for @account, remote: true do |f| %>
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <% if @account.new_record? %>
+            <%= t('.new.modal.title') %>
+          <% else %>
+            <%= t('.edit.modal.title') %>
+          <% end %>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="<%= t('.modal.close') %>">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <legend class="form-section">
+          <i class="fa fa-book"></i> <%= t('.section.basic') %>
+        </legend>
+
+        <%= f.input :name %>
+        <%= f.input :code, input_html: { class: 'mask-account-code' } %>
+        <%= f.input :parent_id, as: :select, collection: @accounts %>
+        <%= f.input :imputable %>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-dismiss="modal"><%= t('.modal.close') %></button>
+        <%= f.button :submit, t('.submit'), class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

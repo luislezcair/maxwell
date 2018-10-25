@@ -8,12 +8,14 @@ import $ from 'jquery';
 import 'popper.js';
 import 'bootstrap';
 import '@coreui/coreui';
+import 'inputmask';
+import 'jstree';
 
 // SASS stylesheets modules //
 import '@coreui/coreui/scss/coreui.scss';
 import 'font-awesome/scss/font-awesome.scss';
 import 'simple-line-icons/scss/simple-line-icons.scss';
-import 'inputmask';
+import 'jstree/dist/themes/default/style.min.css';
 
 import Turbolinks from 'turbolinks';
 import Rails from 'rails-ujs';

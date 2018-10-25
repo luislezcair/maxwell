@@ -148,14 +148,22 @@
             <li class="nav-title"><%= t('.nav.services') %></li>
 
             <li class="nav-item">
+              <%= link_to technical_services_path, class: 'nav-link' do %>
+                <i class="nav-icon fa fa-wrench"></i> <%= t('.nav.technical_services') %>
+              <% end %>
+            </li>
+
+            <li class="nav-title"><%= t('.nav.accounting') %></li>
+
+            <li class="nav-item">
               <%= link_to billing_exports_path, class: 'nav-link' do %>
                 <i class="nav-icon fa fa-money"></i> <%= t('.nav.billing_exports') %>
               <% end %>
             </li>
 
             <li class="nav-item">
-              <%= link_to technical_services_path, class: 'nav-link' do %>
-                <i class="nav-icon fa fa-wrench"></i> <%= t('.nav.technical_services') %>
+              <%= link_to accounts_path, class: 'nav-link' do %>
+                <i class="nav-icon fa fa-book"></i> <%= t('.nav.accounts_chart') %>
               <% end %>
             </li>
 

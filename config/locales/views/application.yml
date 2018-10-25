@@ -57,6 +57,8 @@ es-AR:
       logout: 'Salir'
 
       nav:
+        accounting: 'Contabilidad'
+        accounts_chart: 'Plan de Cuentas'
         billing_exports: 'Facturación'
         dashboard: 'Tablero'
         elements: 'Elementos'

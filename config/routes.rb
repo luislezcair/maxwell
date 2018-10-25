@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     get '(page/:page)', action: :index, on: :collection, as: ''
   end
 
+  resources :accounts
+
   resources :billing_exports do
     member do
       get 'job_status'

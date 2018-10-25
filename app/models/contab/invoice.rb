@@ -106,14 +106,6 @@ class Contab::Invoice < Contab::ContabBaseModel
     new(contab_attributes(invoice))
   end
 
-  # Devuelve un arreglo con los atributos necesarios para exportar un cliente a
-  # CSV ordenados según los requerimientos de Contabilium.
-  #
-  # TODO: La importación mediante CSV a Contabilium es solamente para facturas
-  # ya emitidas (por talonario o electrónicas).
-  #
-  def self.csv_attributes(_invoice); end
-
   def initialize(args)
     super(args)
     @klass = ::Invoice

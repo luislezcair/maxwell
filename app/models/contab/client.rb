@@ -66,15 +66,6 @@ class Contab::Client < Contab::ContabBaseModel
     new(contab_attributes(client))
   end
 
-  # Devuelve un arreglo con los atributos necesarios para exportar un cliente a
-  # CSV ordenados según los requerimientos de Contabilium.
-  #
-  def self.csv_attributes(client)
-    attrs = contab_attributes(client).merge(csv_extra_attributes(client))
-    attrs.fetch_values(:RazonSocial, :fantasy_name, :Email, :TipoDoc, :NroDoc,
-                       :CondicionIva, :province, :city, :Domicilio, :web)
-  end
-
   def initialize(args)
     super(args)
     @klass = ::Client

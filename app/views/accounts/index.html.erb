@@ -1,0 +1,62 @@
+<div class="card" data-controller="accounts-chart" data-accounts-chart-url="<%= accounts_path(format: :json) %>" data-accounts-chart-new-url="<%= new_account_path %>">
+  <div class="card-header data-header">
+    <div class="title">
+      <%= t('.header') %>
+    </div>
+
+    <div>
+      <% if can? :create, Account %>
+        <button class="btn btn-sm btn-primary" data-target="accounts-chart.new" data-action="accounts-chart#newClick" data-toggle="tooltip" data-title="<%= t('.tooltip.new') %>">
+          <i class="fa fa-plus"></i>
+        </button>
+      <% end %>
+
+      <% if can? :update, Account %>
+        <button class="btn btn-sm btn-info" disabled="disabled" data-target="accounts-chart.edit" data-action="accounts-chart#editClick" data-toggle="tooltip" data-title="<%= t('.tooltip.edit') %>">
+          <i class="fa fa-pencil"></i>
+        </button>
+      <% end %>
+
+      <% if can? :manage, Account %>
+        <button class="btn btn-sm btn-danger" disabled="disabled" data-target="accounts-chart.delete" data-action="accounts-chart#deleteClick" data-toggle="tooltip" data-title="<%= t('.tooltip.delete') %>">
+          <i class="fa fa-trash"></i>
+        </button>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div id="accounts-table-container">
+      <div data-target="accounts-chart.tree">
+      </div>
+    </div>
+  </div>
+
+  <div id="account-form-modal" class="modal fade" data-target="accounts-chart.formModal" tabindex="-1" role="dialog">
+  </div>
+
+  <div id="account-delete-modal" class="modal fade" data-target="accounts-chart.deleteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><%= t('.modal.title') %></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="<%= t('.modal.close') %>">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <span data-target="accounts-chart.deleteMessage"><%= t('.modal.delete_message') %></span>
+
+          <div data-target="accounts-chart.deleteErrorDiv" class="alert alert-danger modal-error" role="alert">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-dismiss="modal"><%= t('.modal.close') %></button>
+          <button class="btn btn-danger" data-target="accounts-chart.deleteConfirm" data-action="accounts-chart#deleteConfirmClick"><%= t('.modal.delete') %></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

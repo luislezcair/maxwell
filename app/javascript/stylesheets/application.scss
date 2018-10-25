@@ -280,3 +280,18 @@ input[readonly].form-control.normal {
     content: "\F0DA";
   }
 }
+
+.modal-error {
+  display: none;
+  margin-top: 10px;
+}
+
+.jstree i.fa {
+  &.fa-book {
+    color: $color-blue-account;
+  }
+
+  &.fa-file-text {
+    color: $color-gray-account;
+  }
+}

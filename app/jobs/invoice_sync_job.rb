@@ -33,6 +33,7 @@ class InvoiceSyncJob
   def perform_contabilium_sync
     logger.info("EXPORTING INVOICE #{@invoice.id} TO CONTABILIUM!!!!")
 
+    Contab::Invoice.reload_api
     ci = Contab::Invoice.from_model(@invoice)
     response = ci.save!
 

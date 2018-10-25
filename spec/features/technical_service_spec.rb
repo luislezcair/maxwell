@@ -45,8 +45,6 @@ feature 'Technical services' do
 
     last_ts_path = technical_service_path(TechnicalService.last)
     expect(page).to have_current_path(last_ts_path)
-
-    sleep(5)
   end
 end
 

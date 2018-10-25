@@ -1,0 +1,30 @@
+es-AR:
+  accounts:
+    edit:
+      header: 'Editar Cuenta'
+    form:
+      cancel: 'Cancelar'
+      new:
+        modal:
+          title: 'Agregar nueva cuenta'
+      edit:
+        modal:
+          title: 'Editar cuenta'
+      modal:
+        close: 'Cerrar'
+      section:
+        basic: 'Información básica'
+      submit: 'Guardar'
+    index:
+      header: 'Plan de cuentas'
+      modal:
+        close: 'Cerrar'
+        delete: 'Eliminar'
+        delete_message: '¿Está seguro que desea eliminar esta cuenta del Plan de Cuentas?'
+        title: 'Confirmar eliminación'
+      tooltip:
+        delete: 'Eliminar cuenta'
+        edit: 'Editar cuenta'
+        new: 'Agregar cuenta'
+    new:
+      header: 'Agregar cuenta'
