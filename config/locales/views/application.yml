@@ -14,6 +14,12 @@ es-AR:
       groups: 'Grupos y Permisos'
       users: 'Usuarios'
   enumerize:
+    account:
+      nature:
+        order: 'Orden'
+        patrimonial: 'Patrimonial'
+        regulator: 'Regularizadora'
+        result: 'Resultado'
     group_permission:
       permission_code:
         create: 'Crear'

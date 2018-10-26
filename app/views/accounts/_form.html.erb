@@ -22,6 +22,7 @@
         <%= f.input :name %>
         <%= f.input :code, input_html: { class: 'mask-account-code' } %>
         <%= f.input :parent_id, as: :select, collection: @accounts %>
+        <%= f.input :nature, include_blank: false %>
         <%= f.input :imputable %>
       </div>
 

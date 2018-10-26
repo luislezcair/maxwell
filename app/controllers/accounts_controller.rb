@@ -17,8 +17,7 @@ class AccountsController < ApplicationController
   # GET /accounts/new?parent_id=:id
   def new
     parent = params[:parent_id]
-    @account = if parent
-                 parent_acc = Account.find(parent)
+    @account = if parent && (parent_acc = Account.find_by(id: parent))
                  @account = parent_acc.children.new
                else
                  Account.new
@@ -61,12 +60,13 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:name, :code, :imputable, :parent_id)
+    params.require(:account)
+          .permit(:name, :code, :imputable, :parent_id, :nature)
   end
 
   def account_collection
     @accounts = Account.order(:names_depth_cache).map do |a|
-      ['-' * a.depth + ' ' + a.name, a.id]
+      ['-' * a.depth + ' ' + a.to_label, a.id]
     end
   end
 end

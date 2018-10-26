@@ -1,4 +1,3 @@
-import './accounts';
 import './billing_exports';
 import './corporate_cellphones/form';
 import './invoices';

@@ -5,7 +5,13 @@
 # Ancestry.
 #
 class Account < ApplicationRecord
+  extend Enumerize
+
+  ORDER = Arel.sql('REPLACE("code", \'.\', \'\')::INTEGER')
+
   has_ancestry orphan_strategy: :restrict
+
+  enumerize :nature, in: [:patrimonial, :regulator, :result, :order]
 
   validates :name, :code, presence: true
   validates :code, uniqueness: true,
@@ -16,6 +22,10 @@ class Account < ApplicationRecord
   validate :imputable_with_children, if: :imputable_changed?, on: :update
 
   before_save :cache_ancestry
+
+  def to_label
+    "#{code} - #{name}"
+  end
 
   private
 
