@@ -7,14 +7,8 @@
 class AddConceptAndAccountToInvoiceItem < ActiveRecord::Migration[5.2]
   def change
     change_table :invoice_items, bulk: true do |t|
-      concept = SystemConfiguration.get_api_config('invoice.concept_id').to_i
-      code = SystemConfiguration.get_api_config('invoice.account_code')
-
-      t.integer :concept_id, default: concept, null: false
-      t.string :account_code, default: code, null: false
-
-      SystemConfiguration.find_by(name: 'invoice.concept_id').destroy
-      SystemConfiguration.find_by(name: 'invoice.account_code').destroy
+      t.integer :concept_id, default: 902_253, null: false
+      t.string :account_code, default: '1.1.1', null: false
     end
   end
 end
