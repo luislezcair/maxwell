@@ -40,9 +40,6 @@ const context = require.context('../controllers', true, /\.js$/);
 application.load(definitionsFromContext(context));
 
 document.addEventListener('turbolinks:load', () => {
-  $('.sidebar').sidebar();
-  $('.aside-menu')['aside-menu']();
-
   $('[data-toggle="tooltip"]').tooltip();
 
   // Crear y disparar un evento para el controlador y la acción actual
