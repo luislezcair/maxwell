@@ -15,6 +15,7 @@ export default class extends Controller {
         data: {
           url: this.data.get('url'),
         },
+        worker: false,
       },
     });
 
