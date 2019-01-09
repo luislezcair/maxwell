@@ -24,7 +24,7 @@
     <% @technical_services.each_with_index do |ts, index| %>
       <tr>
         <td>
-          <button class="btn btn-ghost-info btn-sm btn-show-detail" data-action="table-detail#collapse">
+          <button class="btn btn-ghost-info btn-sm" data-action="table-detail#collapse">
             <i class="fa fa-caret-right"></i>
           </button>
         </td>
@@ -67,12 +67,12 @@
 
   <tfoot>
     <tr>
-      <td class="page-entries-info" colspan="7"><%= page_entries_info @technical_services %></td>
+      <td class="page-entries-info" colspan="8"><%= page_entries_info @technical_services %></td>
     </tr>
 
     <% if @technical_services.total_pages > 1 %>
       <tr>
-        <td colspan="7">
+        <td colspan="8">
           <%= paginate @technical_services, remote: true %>
         </td>
       </tr>

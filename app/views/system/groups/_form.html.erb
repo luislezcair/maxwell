@@ -38,7 +38,7 @@
 
     <div class="card-footer">
       <div class="float-right">
-        <%= link_to t('.cancel'), system_groups_path, class: 'btn btn-secondary' %>
+        <%= link_to t('.cancel'), back_link_for(system_groups_url), class: 'btn btn-secondary' %>
         <%= f.button :submit, t('.submit'), class: 'btn btn-primary' %>
       </div>
     </div>

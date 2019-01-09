@@ -3,7 +3,7 @@
     <div class="title"><%= t('.header') %></div>
 
     <div>
-      <%= link_to invoices_path, class: 'btn btn-sm btn-secondary', data: { toggle: 'tooltip', title: t('.tooltip.index') } do %>
+      <%= link_to back_link_for(invoices_url), class: 'btn btn-sm btn-secondary', data: { toggle: 'tooltip', title: t('.tooltip.index') } do %>
         <i class="fa fa-list"></i>
       <% end %>
     </div>

@@ -105,4 +105,14 @@ module ApplicationHelper
          .sort
          .map { |cat, perms| [cat, perms.sort_by { |p| p.permission.title }] }
   end
+
+  # Devuelve una URL para volver atrás en la vista de detalles de una entidad
+  # manteniendo los parámetros de búsqueda si es que existen en el referer
+  # cuando la visita viene desde la vista index.
+  # Si la visita no viene desde index o no hay referer, se devuelve la URL al
+  # index sin ningún parámetro.
+  #
+  def back_link_for(helper_url)
+    request.referer&.starts_with?(helper_url) ? request.referer : helper_url
+  end
 end

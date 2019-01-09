@@ -167,7 +167,7 @@
 
     <div class="card-footer">
       <div class="float-right">
-        <%= link_to t('.cancel'), technical_services_path, class: 'btn btn-secondary' %>
+        <%= link_to t('.cancel'), back_link_for(technical_services_url), class: 'btn btn-secondary' %>
         <%= f.button :submit, t('.submit'), class: 'btn btn-primary' %>
       </div>
     </div>

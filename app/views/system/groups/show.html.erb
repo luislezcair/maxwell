@@ -3,7 +3,7 @@
     <div class="title"><%= t('.header') %></div>
 
     <div>
-      <%= link_to system_groups_path, class: 'btn btn-sm btn-secondary', data: { toggle: 'tooltip', title: t('.tooltip.index') } do %>
+      <%= link_to back_link_for(system_groups_url), class: 'btn btn-sm btn-secondary', data: { toggle: 'tooltip', title: t('.tooltip.index') } do %>
         <i class="fa fa-list"></i>
       <% end %>
 
@@ -61,7 +61,7 @@
 
   <div class="card-footer">
     <div class="float-right">
-      <%= link_to system_groups_path, class: 'btn btn-sm btn-secondary', data: { toggle: 'tooltip', title: t('.tooltip.index') } do %>
+      <%= link_to back_link_for(system_groups_url), class: 'btn btn-sm btn-secondary', data: { toggle: 'tooltip', title: t('.tooltip.index') } do %>
         <i class="fa fa-list"></i>
       <% end %>
 
