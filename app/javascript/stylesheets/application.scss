@@ -185,6 +185,30 @@ table {
       background-color: $color-light-blue-alpha;
       color: $color-gray-700;
     }
+
+    &.maxwell-detail-striped {
+      tbody > tr:nth-of-type(4n+1) {
+        background-color: $color-table-strips;
+      }
+    }
+
+    tr > td.detail-row {
+      padding: 0;
+      border-top: none;
+
+      &.expanded {
+        padding: 0.3rem;
+        border-top: 1px solid #c8ced3;
+      }
+
+      .detail-row-content {
+        display: none;
+
+        .title {
+          color: $color-gray-600;
+        }
+      }
+    }
   }
 }
 

@@ -6,9 +6,10 @@
   <% end %>
 </div>
 
-<table class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data">
+<table class="table table-responsive-sm table-hover table-sm table-maxwell-data maxwell-detail-striped" data-controller="table-detail">
   <thead>
     <tr>
+      <th></th>
       <th>#</th>
       <th><%= sort_link(@q, :date, {}, remote: true) %></th>
       <th><%= sort_link(@q, :client_name, {}, remote: true) %></th>
@@ -22,6 +23,12 @@
   <tbody>
     <% @technical_services.each_with_index do |ts, index| %>
       <tr>
+        <td>
+          <button class="btn btn-ghost-info btn-sm btn-show-detail" data-action="table-detail#collapse">
+            <i class="fa fa-caret-right"></i>
+          </button>
+        </td>
+
         <td><%= @technical_services.offset_value + index + 1 %></td>
         <td><%= l(ts.datetime, format: :short_date_show) %></td>
         <td><%= ts.client.to_label %></td>
@@ -45,6 +52,14 @@
               <i class="fa fa-trash"></i>
             <% end %>
           <% end %>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="8" class="detail-row collapsed">
+          <div class="detail-row-content">
+            <span class="title"><%= t_model('observations') %>:</span> <%= ts.observations %>
+          </div>
         </td>
       </tr>
     <% end %>
