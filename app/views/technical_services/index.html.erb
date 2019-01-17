@@ -62,18 +62,20 @@
         </div>
 
         <div class="col-sm-6">
-          <%= f.input :client_id, label: t('.search_form.client') do %>
-            <div data-controller="client-search" data-client-search-url="<%= search_clients_path %>" data-client-search-label-input="technical_service_client" data-client-search-id-input="technical_service_client_id" class="input-group">
-              <%= f.input_field :client_id, class: 'form-control normal', readonly: true, name: '' %>
-              <%= f.hidden_field :client_id_eq %>
-              <div class="input-group-append">
-                <button class="btn btn-secondary" type="button" data-action="client-search#show" data-toggle="tooltip" data-trigger="hover" title="<%= t('.search_form.find_client') %>">
-                  <i class="fa fa-users"></i>
-                </button>
+          <div data-controller="client-search" data-client-search-url="<%= search_clients_path %>">
+            <%= f.input :client_id, label: t('.search_form.client') do %>
+              <div class="input-group">
+                <%= f.input_field :client_id, class: 'form-control normal', name: '', placeholder: t('.search_form.client_placeholder'), data: { target: 'client-search.valueInput' } %>
+                <%= f.hidden_field :client_id_eq, data: { target: 'client-search.idInput' } %>
+                <div class="input-group-append">
+                  <button class="btn btn-secondary" type="button" data-action="client-search#reset" data-toggle="tooltip" data-trigger="hover" title="<%= t('.search_form.reset_client') %>">
+                    <i class="fa fa-eraser"></i>
+                  </button>
+                </div>
               </div>
               <%= f.full_error :client, class: 'invalid-feedback' %>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     <% end %>
@@ -110,9 +112,3 @@
     </div>
   </div>
 </div>
-
-<div id="client-search-modal" class="modal" tabindex="-1" role="dialog">
-</div>
-
-<input id="client-search-id-target" type="hidden" value="q_client_id_eq">
-<input id="client-search-label-target" type="hidden" value="q_client_id">

@@ -319,3 +319,9 @@ input[readonly].form-control.normal {
     color: $color-gray-account;
   }
 }
+
+.ui-autocomplete {
+  max-height: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

@@ -18,6 +18,11 @@ feature 'Technical services' do
     visit new_technical_service_path
     expect(page).to have_content t_string('new.form.new_header')
 
+    fill_in('technical_service_client', with: 'steph')
+
+    # Click en la primera sugerencia de la lista de clientes
+    find('.ui-autocomplete > .ui-menu-item:first-child').click
+
     within('form') do
       fill_in('technical_service_work_order_number',
               with: @ts.work_order_number)
@@ -35,8 +40,6 @@ feature 'Technical services' do
       check(@ccs.first.to_label)
     end
 
-    select_client(@client)
-
     client_input = find('#technical_service_client')
     expect(client_input.value).to eq(ClientsHelper.client_label(@client))
 
@@ -46,24 +49,6 @@ feature 'Technical services' do
     last_ts_path = technical_service_path(TechnicalService.last)
     expect(page).to have_current_path(last_ts_path)
   end
-end
-
-def select_client(client)
-  find('.technical_service_client button').click
-  expect(page).to have_css('#client_search')
-
-  within('#client_search') do
-    fill_in('q_identification_cont', with: 'steph')
-    find('.q_identification_cont button').click
-  end
-
-  table = find('#clients-table')
-  cell_selector = 'tbody > tr > td:nth-child(2)'
-  expect(table).to have_selector(cell_selector)
-
-  cell = find(cell_selector)
-  expect(cell).to have_content(client.name)
-  cell.click
 end
 
 def t_string(scope)

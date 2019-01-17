@@ -8,6 +8,8 @@ class UCRM::UCRMBaseModel
   include Her::Model
   use_api(proc { ::UCRMAPI.new.api })
 
+  method_for :update, :patch
+
   # Estos atributos hay que inicializarlos con los valores adecuados en cada
   # subclase. @klass es la clase del modelo local y @ucrm_local_field_id es el
   # campo que guarda el ID del modelo de UCRM.

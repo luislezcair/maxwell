@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   resources :clients, concerns: :paginatable do
     collection do
-      get 'search'
+      get 'search', defaults: { format: :json }
     end
   end
 

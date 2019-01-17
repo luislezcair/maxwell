@@ -1,39 +1,62 @@
-import Rails from 'rails-ujs';
+/* eslint no-underscore-dangle: 0 */
+
 import $ from 'jquery';
 import { Controller } from 'stimulus';
 
+import 'jquery-ui/themes/base/core.css';
+import 'jquery-ui/themes/base/menu.css';
+import 'jquery-ui/themes/base/theme.css';
+import 'jquery-ui/themes/base/autocomplete.css';
+import 'jquery-ui/ui/widgets/autocomplete';
+
 export default class extends Controller {
-  static targets = ['input', 'button'];
+  static targets = ['valueInput', 'idInput'];
 
-  // Evento cuando se hace click en Buscar cliente
-  show() {
-    const url = this.data.get('url');
+  connect() {
+    const element = $(this.valueInputTarget);
 
-    Rails.ajax({
-      type: 'GET',
-      dataType: 'script',
-      url,
-      success: () => {
-        $('#client-search-modal').modal('show');
+    // Configurar autocomplete en el input. Al seleccionar un valor, cambia el
+    // idInput al ID del cliente seleccionado.
+    element.autocomplete({
+      source: this.data.get('url'),
+      minLength: 3,
+      select: (_event, ui) => {
+        this.idInputTarget.value = ui.item.id;
       },
     });
+
+    // Redefinimos la función renderItem para resaltar el término de búsqueda
+    // en la lista de resultados.
+    element.data('ui-autocomplete')._renderItem = (ul, item) => {
+      const newText = String(item.value).replace(
+        new RegExp(this.valueInputTarget.value, 'gi'),
+        '<span class="ui-state-highlight">$&</span>',
+      );
+
+      return $('<li></li>')
+        .data('ui-autocomplete-item', item)
+        .append(`<div>${newText}</div>`)
+        .appendTo(ul);
+    };
+
+    // Seleccionar el input al hacer click
+    this.valueInputTarget.onclick = () => {
+      this.valueInputTarget.select();
+    };
+
+    // Cuando se borra todo el contenido del input, borrar también el idInput
+    this.valueInputTarget.oninput = () => {
+      if (this.valueInputTarget.value.length === 0) {
+        this.idInputTarget.value = '';
+      }
+    };
   }
 
-  // Evento cuando cambia el input de búsqueda
-  change() {
-    this.buttonTarget.disabled = this.inputTarget.value.length < 3
-  }
-
-  // Evento cuando se selecciona un cliente de la tabla
-  select() {
-    const id = this.data.get('id');
-    const label = this.data.get('label');
-
-    const idInput = document.getElementById('client-search-id-target').value;
-    const labelInput = document.getElementById('client-search-label-target').value;
-
-    document.getElementById(idInput).value = id;
-    document.getElementById(labelInput).value = label;
-    $('#client-search-modal').modal('hide');
+  /**
+   * Evento cuando se hace click en el botón "limpiar"
+   */
+  reset() {
+    this.valueInputTarget.value = '';
+    this.idInputTarget.value = '';
   }
 }

@@ -5,6 +5,7 @@ es-AR:
         edit_header: 'Editar Servicio Técnico'
     form:
       cancel: 'Cancelar'
+      client_placeholder: 'Ingrese parte del nombre, CUIT o número de cliente...'
       find_client: 'Buscar cliente'
       open_location: 'Ir a Google Maps'
       section: &form_sections
@@ -20,13 +21,14 @@ es-AR:
         new: 'Nuevo servicio técnico'
       search_form:
         client: 'Cliente'
-        find_client: 'Buscar cliente'
+        client_placeholder: 'Ingrese parte del nombre, CUIT o número de cliente...'
         invoice: 'Facturación'
         period: 'Período'
         technician: 'Técnico'
         invoice_types:
           invoiced: 'Facturado'
           not_invoiced: 'No facturado'
+        reset_client: 'Limpiar'
         work_order_number: 'Orden de trabajo'
         work_type: 'Tipo de trabajo'
         tooltip:

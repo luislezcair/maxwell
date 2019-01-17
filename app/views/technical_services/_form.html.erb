@@ -13,18 +13,10 @@
         <i class="fa fa-user"></i> <%= t('.section.client') %>
       </legend>
 
-      <%= f.input :client do %>
-        <div data-controller="client-search" data-client-search-url="<%= search_clients_path %>" class="input-group">
-          <%= f.input_field :client, class: 'form-control normal', readonly: true, value: client_label(f.object.client), name: '' %>
-          <%= f.hidden_field :client_id %>
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button" data-action="client-search#show" data-toggle="tooltip" data-trigger="hover" title="<%= t('.find_client') %>">
-              <i class="fa fa-search"></i>
-            </button>
-          </div>
-          <%= f.full_error :client, class: 'invalid-feedback' %>
-        </div>
-      <% end %>
+      <div data-controller="client-search" data-client-search-url="<%= search_clients_path %>">
+        <%= f.input :client, input_html: { value: client_label(f.object.client), placeholder: t('.client_placeholder'), name: '', data: { target: 'client-search.valueInput' } } %>
+        <%= f.hidden_field :client_id, data: { target: 'client-search.idInput' } %>
+      </div>
 
       <%= f.association :city, collection: sorted_cities %>
 
@@ -173,9 +165,3 @@
     </div>
   </div>
 <% end %>
-
-<div id="client-search-modal" class="modal" tabindex="-1" role="dialog">
-</div>
-
-<input id="client-search-id-target" type="hidden" value="technical_service_client_id">
-<input id="client-search-label-target" type="hidden" value="technical_service_client">
