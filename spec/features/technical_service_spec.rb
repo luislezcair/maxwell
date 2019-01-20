@@ -23,6 +23,9 @@ feature 'Technical services' do
     # Click en la primera sugerencia de la lista de clientes
     find('.ui-autocomplete > .ui-menu-item:first-child').click
 
+    client_input = find('#technical_service_client')
+    expect(client_input.value).to eq(ClientsHelper.client_label(@client))
+
     within('form') do
       fill_in('technical_service_work_order_number',
               with: @ts.work_order_number)
@@ -40,14 +43,26 @@ feature 'Technical services' do
       check(@ccs.first.to_label)
     end
 
-    client_input = find('#technical_service_client')
-    expect(client_input.value).to eq(ClientsHelper.client_label(@client))
-
     click_button(t_string('form.submit'))
     expect(page).to have_content(t_string('show.section.client').upcase)
 
     last_ts_path = technical_service_path(TechnicalService.last)
     expect(page).to have_current_path(last_ts_path)
+
+    # Comprobar los datos cargados en la interfaz show
+    within('.card-body') do
+      expect(page).to have_content(@ts.client.to_label)
+      expect(page).to have_content(@ts.city.name)
+      expect(page).to have_content(@ts.work_order_number)
+
+      expect(page).to have_content(@techs.first.name)
+      expect(page).to have_content(@wss.first.name)
+      expect(page).to have_content(@wss.last.name)
+      expect(page).to have_content(@ccs.first.to_label)
+
+      expect(page).to have_content(@ts.arrival_time.strftime('%H:%m'))
+      expect(page).to have_content(@ts.departure_time.strftime('%H:%m'))
+    end
   end
 end
 
