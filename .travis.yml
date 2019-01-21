@@ -1,0 +1,26 @@
+dist: xenial
+
+language: ruby
+
+services:
+- postgresql
+
+addons:
+  chrome: beta
+
+before_script:
+- export RAILS_ENV=test
+- bundle exec rake db:create
+- bundle exec rake db:schema:load
+- bundle exec rake assets:precompile
+
+deploy:
+  provider: heroku
+
+  app: diezpositivo-s
+
+  run:
+    - bundle exec rake db:migrate
+
+  api_key:
+    secure: O7BcGq6A7PR/Ro0fhBe7BqQcalfHmjCQFVjPQYLeSda2IS+djdgnxt38rXSXh+8Ejh0huvjj141PXeylqfm2MfBqE2Zvc7SFHSIzq4ePqKs1SBXKQophdr2kexgcdEQLpaYFaH3eKQStuuAdifsLbNWit9hl3f364AVFwaBfZaJ9DfiiXGQIYZXlgUgIzosVIsnm1IFVTSDHSuH/baN3DJYb0Z0F6obzQf0u7KdxcHeH28ERtiYHd1J5QbdxPPynt3IzfDZOYj/mnXL+NiQbsTaXVD1qk6J8l1CUSv3WXNM50BesMk3T3szFVzwPJY/olZHGCvvk+h2HOuVzpNizpwixveLQ6+MejNUdwX5IWPaS15+X/0pBRbMP/Ytaed5G3bdA6xut8tWwDvqRqWR3M0dDeMbI8FvvGhDmyvKS5KtK4Ajm86/jQSWDVfpcDyq9dVQonEjbUPI38wNTH7pnmIZjzOZ24uXBY8Tc4Lk5gZeJMQpgzncJoym4DA1ZNcVeUHsy8SeEgEGJmY8IuDLlMO/vOOQOc/qYNYBQn8XQY4Nm5urhVKiX/mg7lMb8ol0NanA5/lNjDplQ+ICxAtHLnIhT21AKtDZ3qoc0hzVRRYqGTCR0OLVL7KoyrV8dOkY7S3dC5dooOXa/2Ew3mBWJuOSoXtrZCT1BZcMiYAsIsO0=

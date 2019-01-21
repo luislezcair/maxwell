@@ -157,6 +157,8 @@ GEM
       activerecord
       kaminari-core (= 1.1.1)
     kaminari-core (1.1.1)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -359,6 +361,7 @@ DEPENDENCIES
   her
   jbuilder
   kaminari
+  launchy
   listen (>= 3.0.5, < 3.2)
   oauth2
   pg (>= 0.18, < 2.0)

@@ -29,6 +29,7 @@ FactoryBot.define do
     # Relaciones requeridas de acuerdo al formulario de GDocs:
     city
     client
+    organization
     ground_wire_setup_type
     surge_protector_setup_type
 

@@ -21,6 +21,7 @@ feature 'Accounts Chart' do
 
   scenario 'User visits the index page' do
     visit accounts_path
+
     expect(page).to have_content t_string_a('index.header').upcase
 
     expect(find('div[data-controller]')['data-accounts-chart-url']).to(
