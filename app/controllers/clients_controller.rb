@@ -71,9 +71,9 @@ class ClientsController < ApplicationController
   def client_params
     params.require(:client)
           .permit(:address, :city_id, :client_type, :company_name, :country_id,
-                  :document_number, :document_type, :email, :firstname,
-                  :floor_dept, :iva_condition, :lastname, :notes, :number,
-                  :organization_id, :phone, :postal_code, :province_id)
+                  :date_of_birth, :document_number, :document_type, :email,
+                  :firstname, :floor_dept, :iva_condition, :lastname, :notes,
+                  :number, :organization_id, :phone, :postal_code, :province_id)
   end
 
   # Seleccionamos una provincia por defecto más conveniente para la alta de

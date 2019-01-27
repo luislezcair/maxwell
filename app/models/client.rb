@@ -42,6 +42,7 @@ class Client < ApplicationRecord
 
   validate :client_type_information
   validate :company_has_cuit
+  validate :date_of_birth_not_in_future
 
   include ClientNameSearchable
 
@@ -75,5 +76,11 @@ class Client < ApplicationRecord
     return unless company? && !cuit?
 
     errors.add(:document_type, :client_type_company)
+  end
+
+  def date_of_birth_not_in_future
+    return unless date_of_birth && date_of_birth > Date.current
+
+    errors.add(:date_of_birth, :not_in_the_future)
   end
 end

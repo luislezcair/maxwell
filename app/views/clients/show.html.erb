@@ -45,6 +45,11 @@
           <th><%= t_model('postal_code') %></th>
           <td><%= default_on_blank(@client.postal_code) %></td>
         </tr>
+
+        <tr>
+          <th><%= t_model('date_of_birth') %></th>
+          <td><%= l(@client.date_of_birth, format: :short_date, default: '-') %></td>
+        </tr>
       </tbody>
     </table>
 

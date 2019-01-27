@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import { Controller } from 'stimulus';
-import { MaskElementByClass, MaskElement } from '../views/util';
+import { MaskElementByClass, MaskElement, MakeDateRangePicker } from '../views/util';
 
 export default class extends Controller {
   static targets = ['inputType', 'personFieldset', 'companyFieldset', 'docType',
@@ -15,6 +15,9 @@ export default class extends Controller {
 
     MaskElementByClass('mask-phone', 'phone');
     MaskElement(this.docNumberTarget, this.docTypeTarget.value);
+
+    MakeDateRangePicker('.input-group.date');
+    MaskElementByClass('mask-date', 'date');
   }
 
   changeType() {

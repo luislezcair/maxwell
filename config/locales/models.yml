@@ -15,6 +15,7 @@ es-AR:
         client_type: 'Tipo de cliente'
         company_name: 'Razón Social'
         country: 'País'
+        date_of_birth: 'Fecha de nacimiento'
         document_number: 'Número de documento'
         document_number_s: 'DNI / CUIT'
         document_type: 'Tipo de documento'
@@ -141,6 +142,8 @@ es-AR:
           attributes:
             company_name:
               client_type_company: 'es requerido cuando el cliente es una empresa u organización'
+            date_of_birth:
+              not_in_the_future: 'no puede estar en el futuro'
             document_type:
               client_type_company: 'debe ser CUIT para empresas u organizaciones'
             firstname:

@@ -85,4 +85,12 @@ describe Client do
     expect(contab).to be_valid
     expect(contab2).to be_valid
   end
+
+  it 'is invalid when birthdate is in the future' do
+    b = build(:client, date_of_birth: Date.current.advance(days: 1))
+    b2 = build(:client, date_of_birth: 1.month.ago)
+
+    expect(b).to_not be_valid
+    expect(b2).to be_valid
+  end
 end
