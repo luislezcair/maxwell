@@ -2,17 +2,21 @@ dist: xenial
 
 language: ruby
 
+branches:
+  only:
+    - master
+
 services:
-- postgresql
+  - postgresql
 
 addons:
   chrome: beta
 
 before_script:
-- export RAILS_ENV=test
-- bundle exec rake db:create
-- bundle exec rake db:schema:load
-- bundle exec rake assets:precompile
+  - export RAILS_ENV=test
+  - bundle exec rake db:create
+  - bundle exec rake db:schema:load
+  - bundle exec rake assets:precompile
 
 deploy:
   provider: heroku

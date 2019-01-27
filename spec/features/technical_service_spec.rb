@@ -24,7 +24,7 @@ feature 'Technical services' do
     find('.ui-autocomplete > .ui-menu-item:first-child').click
 
     client_input = find('#technical_service_client')
-    expect(client_input.value).to eq(ClientsHelper.client_label(@client))
+    expect(client_input.value).to eq(client_label(@client))
 
     within('form') do
       fill_in('technical_service_work_order_number',
