@@ -19,7 +19,7 @@ export default class extends Controller {
     // idInput al ID del cliente seleccionado.
     element.autocomplete({
       source: this.data.get('url'),
-      minLength: 3,
+      minLength: 1,
       select: (_event, ui) => {
         this.idInputTarget.value = ui.item.id;
       },
@@ -28,8 +28,13 @@ export default class extends Controller {
     // Redefinimos la función renderItem para resaltar el término de búsqueda
     // en la lista de resultados.
     element.data('ui-autocomplete')._renderItem = (ul, item) => {
+      // Interpretar espacios como separación entre nombre y apellido. Hacer
+      // match con cualquier caracter para casos como "karg, luis" (match en
+      // coma y espacio).
+      const pattern = this.valueInputTarget.value.replace(' ', '.?.?');
+
       const newText = String(item.value).replace(
-        new RegExp(this.valueInputTarget.value, 'gi'),
+        new RegExp(pattern, 'gi'),
         '<span class="ui-state-highlight">$&</span>',
       );
 

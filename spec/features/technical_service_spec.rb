@@ -11,7 +11,7 @@ feature 'Technical services' do
     @techs = create_list(:technician_with_sequence, 2)
     @wss = create_list(:work_type_with_sequence, 2)
     @ccs = create_list(:cellphone_with_sequence, 2)
-    @client = Client.first
+    @client = @ts.client
   end
 
   scenario 'User creates a new Technical Service' do
@@ -44,7 +44,9 @@ feature 'Technical services' do
     end
 
     click_button(t_string_ts('form.submit'))
-    expect(page).to have_content(t_string_ts('show.section.client').upcase)
+
+    header = find('.card-header > .title')
+    expect(header).to have_content(t_string_ts('show.header').upcase)
 
     last_ts_path = technical_service_path(TechnicalService.last)
     expect(page).to have_current_path(last_ts_path)

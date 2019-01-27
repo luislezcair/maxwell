@@ -48,8 +48,8 @@ class TechnicalService < ApplicationRecord
   validate :client_is_synced
   validate :not_billed?, on: :update
 
+  before_validation :set_organization
   before_save :compute_total_cost
-  before_save :set_organization
 
   # Convierte el número de orden a string para poder buscar por coincidencias
   # parciales.
@@ -79,21 +79,25 @@ class TechnicalService < ApplicationRecord
 
   def at_least_one_corporate_cellphone?
     return unless corporate_cellphones.empty?
+
     errors.add(:corporate_cellphones, :empty_corporate_cellphones)
   end
 
   def at_least_one_technician?
     return unless technicians.empty?
+
     errors.add(:technicians, :empty_technicians)
   end
 
   def at_least_one_work_type?
     return unless work_types.empty?
+
     errors.add(:work_types, :empty_work_types)
   end
 
   def client_is_synced
     return if !client || client.synced?
+
     errors.add(:client, :not_synced)
   end
 
@@ -109,6 +113,7 @@ class TechnicalService < ApplicationRecord
   #
   def not_billed?
     return if invoice.blank?
+
     errors.add(:base, :billed)
   end
 
@@ -116,6 +121,8 @@ class TechnicalService < ApplicationRecord
   # tomando la información del cliente.
   #
   def set_organization
+    return unless client
+
     self.organization = client.organization
   end
 end

@@ -16,12 +16,13 @@ class ClientsController < ApplicationController
 
   # GET /clients/search
   def search
-    @q = Client.synced.accessible_by(current_ability)
-               .ransack(identification_cont: params[:term])
-    @q.sorts = 'name asc' if @q.sorts.empty?
-    @clients = @q.result
+    term = params[:term]
+    return Client.where('1=0') unless term&.size&.positive?
 
-    @clients = @clients.where('1=0') unless valid_params?
+    @q = Client.synced.accessible_by(current_ability)
+               .ransack(identification_cont: term)
+    @q.sorts = 'name asc' if @q.sorts.empty?
+    @clients = @q.result.limit(50)
   end
 
   # GET /clients/1
@@ -62,14 +63,6 @@ class ClientsController < ApplicationController
   end
 
   private
-
-  # Buscar solamente si el usuario ingresó 3 o más caracteres para limitar la
-  # cantidad de resultados.
-  #
-  def valid_params?
-    id = params[:term]
-    id && id.size > 2
-  end
 
   def set_client
     @client = Client.find(params[:id])

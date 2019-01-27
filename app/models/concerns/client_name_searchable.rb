@@ -11,7 +11,7 @@ module ClientNameSearchable
   extend ActiveSupport::Concern
 
   SORT_SQL = 'CASE WHEN "clients"."client_type" = 0 THEN '\
-             '"clients"."lastname" || "clients"."firstname" ELSE '\
+             '"clients"."lastname" || \' \' || "clients"."firstname" ELSE '\
              '"clients"."company_name" END'
 
   included do
