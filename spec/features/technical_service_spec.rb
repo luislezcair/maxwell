@@ -16,7 +16,7 @@ feature 'Technical services' do
 
   scenario 'User creates a new Technical Service' do
     visit new_technical_service_path
-    expect(page).to have_content t_string('new.form.new_header')
+    expect(page).to have_content t_string_ts('new.form.new_header')
 
     fill_in('technical_service_client', with: 'steph')
 
@@ -43,8 +43,8 @@ feature 'Technical services' do
       check(@ccs.first.to_label)
     end
 
-    click_button(t_string('form.submit'))
-    expect(page).to have_content(t_string('show.section.client').upcase)
+    click_button(t_string_ts('form.submit'))
+    expect(page).to have_content(t_string_ts('show.section.client').upcase)
 
     last_ts_path = technical_service_path(TechnicalService.last)
     expect(page).to have_current_path(last_ts_path)
@@ -66,6 +66,39 @@ feature 'Technical services' do
   end
 end
 
-def t_string(scope)
+feature 'Technical Services from another organization' do
+  before do
+    # Nos loqueamos con un usuario perteneciente a otra empresa
+    @user = create(:foreign_user)
+    login_as(@user)
+
+    # Creamos un cliente perteneciente a otra empresa y un servicio técnico
+    # para ese cliente también en nombre de esta otra empresa.
+    @client = create(:foreign_client, organization: @user.group.organization)
+    @ts = create(:foreign_technical_service,
+                 organization: @user.group.organization,
+                 client: @client)
+
+    # Creamos un servicio técnico que no pertenece a esa empresa
+    @ts_other = create(:technical_service)
+  end
+
+  scenario 'Foreign user sees only TS from his/her organization' do
+    # El usuario logueado perteneciente a otra emepresa solamente debería ver
+    # los servicios técnicos realizados para su empresa.
+    visit technical_services_path
+
+    org_header = find('.card-header > .title')
+    expect(org_header).to have_content t_string_ts('index.header').upcase
+    expect(org_header).to have_content @user.group.organization.name.upcase
+
+    table = find('.card-body table')
+    expect(table).to have_content @ts.client.name
+    expect(table).to have_content @ts.work_order_number
+    expect(table).to_not have_content @ts_other.client.name
+  end
+end
+
+def t_string_ts(scope)
   I18n.t("technical_services.#{scope}")
 end

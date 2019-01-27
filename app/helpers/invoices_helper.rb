@@ -3,13 +3,19 @@
 # Helpers para la vista de invoices
 #
 module InvoicesHelper
-  def contabilium_link(invoice)
-    return '' if invoice.contabilium_id.blank?
-    "#{CONTABILIUM_APP_URL}/comprobantese.aspx?ID=#{invoice.contabilium_id}"
+  # Devuelve la URL para ver los detalles de un comprobante en contabilium.
+  #
+  def contabilium_invoice_link(id)
+    return '' if id.blank?
+
+    "#{CONTABILIUM_APP_URL}/comprobantese.aspx?ID=#{id}"
   end
 
-  def ucrm_link(invoice)
-    return '' if invoice.ucrm_id.blank?
-    "#{UCRM_URL}/billing/invoice/#{invoice.ucrm_id}"
+  # Devuelve una URL para ver los detalles de un comprobante en UCRM.
+  #
+  def ucrm_invoice_link(id)
+    return '' if id.blank?
+
+    "#{UCRM_URL}/billing/invoice/#{id}"
   end
 end

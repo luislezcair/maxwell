@@ -21,10 +21,45 @@ module ClientsHelper
   #
   def client_label(cli)
     return unless cli
+
     id = cli.dni? ? 'DNI' : 'CUIT'
-    number = I18n.t('activerecord.attributes.client.number')
+    number = I18n.t('activerecord.attributes.client.number_short')
     "#{cli.name} - (#{number}: #{cli.number}) - (#{id}: #{cuit_dni(cli)})"
   end
 
-  module_function :client_label, :cuit_dni
+  # Da formato de teléfono al número pasado como parámetro: (xxxx) xxx xxx
+  #
+  def phone_format(phone)
+    number_to_phone(phone, area_code: true, delimiter: ' ',
+                           pattern: /(\d{4})(\d{3})(\d{3})$/)
+  end
+
+  # Devuelve la URL para ver los detalles de un cliente en contabilium.
+  #
+  def contabilium_client_link(id)
+    return '' if id.blank?
+
+    "#{CONTABILIUM_APP_URL}/personase.aspx?ID=#{id}&tipo=c"
+  end
+
+  # Devuelve una URL para ver los detalles de un cliente en UCRM.
+  #
+  def ucrm_client_link(id)
+    return '' if id.blank?
+
+    "#{UCRM_URL}/client/#{id}"
+  end
+
+  # Si el usuario pertenece a una organización, devuelve una colección con una
+  # única Organization como elemento, que es la organización del usuario actual.
+  # Si no pertenece a ninguna, se devuelve una colección con todas las
+  # organizaciones
+  #
+  def accessible_organizations
+    if current_user.group.organization
+      Organization.where(id: current_user.group.organization_id)
+    else
+      sorted_organizations
+    end
+  end
 end

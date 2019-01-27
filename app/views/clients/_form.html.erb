@@ -1,0 +1,79 @@
+<% if @client.errors[:base].any? %>
+  <div class="alert alert-danger">
+    <strong><%= t('common.attention_alert') %></strong> <%= @client.errors[:base].first %>
+  </div>
+<% end %>
+
+<%= simple_form_for @client, wrapper: :maxwell_horizontal_form, defaults: { grid_wrapper_html: { class: 'col-sm-9' } } do |f| %>
+  <div class="card">
+    <div class="card-header"><%= header %></div>
+
+    <div class="card-body" data-controller="client-form">
+      <legend class="form-section">
+        <i class="fa fa-user"></i> <%= t('.section.basic') %>
+      </legend>
+
+      <%= f.input :client_type, include_blank: false, input_html: { data: { target: 'client-form.inputType', action: 'client-form#changeType' } } %>
+
+      <div data-target="client-form.personFieldset">
+        <div class="form-group row string required">
+          <%= f.input :firstname, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+          <%= f.input :lastname, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        </div>
+      </div>
+
+      <div data-target="client-form.companyFieldset">
+        <%= f.input :company_name %>
+      </div>
+
+      <div class="form-group row string required">
+        <%= f.association :country, include_blank: false, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.association :province, include_blank: false, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+      </div>
+
+      <div class="form-group row string required">
+        <%= f.association :city, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.input :postal_code, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+      </div>
+
+      <legend class="form-section">
+        <i class="fa fa-address-book-o"></i> <%= t('.section.contact') %>
+      </legend>
+
+      <div class="form-group row string required">
+        <%= f.input :address, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.input :floor_dept, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+      </div>
+
+      <div class="form-group row string required">
+        <%= f.input :phone, as: :tel, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' }, input_html: { class: 'mask-phone align-right' } %>
+        <%= f.input :email, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+      </div>
+
+      <legend class="form-section">
+        <i class="fa fa-money"></i> <%= t('.section.billing') %>
+      </legend>
+
+      <%= f.association :organization, include_blank: false, collection: accessible_organizations %>
+
+      <div class="form-group row string required">
+        <%= f.input :document_type, include_blank: false, input_html: { data: { target: 'client-form.docType', action: 'client-form#docTypeChange' } }, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.input :document_number, as: :string, input_html: { class: 'align-right', data: { target: 'client-form.docNumber' } }, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+      </div>
+
+      <div class="form-group row string required">
+        <%= f.input :iva_condition, include_blank: false, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+        <%= f.input :number, input_html: { class: 'align-right' }, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
+      </div>
+
+      <%= f.input :notes %>
+    </div>
+
+    <div class="card-footer">
+      <div class="float-right">
+        <%= link_to t('.cancel'), back_link_for(clients_url), class: 'btn btn-secondary' %>
+        <%= f.button :submit, t('.submit'), class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>

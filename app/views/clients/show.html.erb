@@ -1,0 +1,107 @@
+<div class="card">
+  <div class="card-header data-header">
+    <div class="title"><%= t('.header') %></div>
+
+    <div>
+      <%= render 'show_actions' %>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <h3>
+      <% if @client.person? %>
+        <i class="fa fa-user small-text right-margin"></i>
+      <% else %>
+        <i class="fa fa-building-o small-text right-margin"></i>
+      <% end %>
+
+      <%= @client.name %>
+    </h3>
+
+    <h6><%= @client.organization.name %> - <%= t_model('number_short') %>: <%= @client.number %></h6>
+
+    <legend class="form-section margin-top">
+      <i class="fa fa-user"></i> <%= t('.section.basic') %>
+    </legend>
+
+    <table class="table table-sm table-details table-details-lg">
+      <tbody>
+        <tr>
+          <th><%= t_model('country') %></th>
+          <td><%= @client.country.name %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('province') %></th>
+          <td><%= @client.province.name %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('city') %></th>
+          <td><%= @client.city&.name || '-' %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('postal_code') %></th>
+          <td><%= default_on_blank(@client.postal_code) %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <legend class="form-section">
+      <i class="fa fa-address-book-o"></i> <%= t('.section.contact') %>
+    </legend>
+
+    <table class="table table-sm table-details table-details-lg">
+      <tbody>
+        <tr>
+          <th><%= t_model('address') %></th>
+          <td><%= @client.address %></td>
+
+          <th><%= t_model('floor_dept') %></th>
+          <td><%= default_on_blank(@client.floor_dept) %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('phone') %></th>
+          <td><%= default_on_blank(phone_format(@client.phone)) %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('email') %></th>
+          <td><%= default_on_blank(@client.email) %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <legend class="form-section">
+      <i class="fa fa-money"></i> <%= t('.section.billing') %>
+    </legend>
+
+    <table class="table table-sm table-details table-details-lg">
+      <tbody>
+        <tr>
+          <th><%= @client.document_type_text %></th>
+          <td><%= cuit_dni(@client) %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('iva_condition') %></th>
+          <td><%= @client.iva_condition_text %></td>
+        </tr>
+
+        <tr>
+          <th><%= t_model('notes') %></th>
+          <td><%= default_on_blank(@client.notes) %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card-footer">
+    <div class="float-right">
+      <%= render 'show_actions' %>
+    </div>
+  </div>
+</div>
+

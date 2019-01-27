@@ -36,6 +36,21 @@ const maskDefaults = {
   accountCode: {
     mask: '9[9][.9[9]][.9[9]][.9[9]][.9[9]][.9[9]][.9[9]][.9[9]]',
   },
+  dni: {
+    mask: '[99].999.999',
+    removeMaskOnSubmit: true,
+    unmaskAsNumber: true,
+  },
+  cuit: {
+    mask: '99 - 99999999 - 9',
+    removeMaskOnSubmit: true,
+    unmaskAsNumber: true,
+  },
+};
+
+const MaskElement = (element, mask) => {
+  const m = new Inputmask(maskDefaults[mask]);
+  m.mask(element);
 };
 
 const MaskElementByClass = (selector, mask) => {
@@ -52,4 +67,4 @@ const MakeDateRangePicker = (selector) => {
   });
 };
 
-export { MaskElementByClass, MakeDateRangePicker };
+export { MaskElement, MaskElementByClass, MakeDateRangePicker };

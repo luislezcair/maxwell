@@ -1,0 +1,65 @@
+<div id="alert-message">
+  <% if flash[:alert] %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+</div>
+
+<table class="table table-responsive-sm table-striped table-hover table-sm table-maxwell-data">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th><%= sort_link(@q, :name, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :address, {}, remote: true) %></th>
+      <th><%= sort_link(@q, :organization_name, {}, remote: true) %></th>
+      <th class="align-right"><%= sort_link(@q, :document_number_s, {}, remote: true) %></th>
+      <th class="action-column"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clients.each_with_index do |c, index| %>
+      <tr>
+        <td class="align-right"><%= @clients.offset_value + index + 1 %></td>
+        <td><%= c.name %></td>
+        <td><%= c.address %></td>
+        <td><%= c.organization&.name || '-' %></td>
+        <td class="numeric"><%= cuit_dni(c) %></td>
+
+        <td class="action-buttons">
+          <%= link_to client_path(c), class: 'btn btn-sm btn-outline-success', data: { toggle: 'tooltip', title: t('.tooltip.show') } do %>
+            <i class="fa fa-eye"></i>
+          <% end %>
+
+          <% if can? :update, c %>
+            <%= link_to edit_client_path(c), class: 'btn btn-sm btn-outline-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+              <i class="fa fa-pencil"></i>
+            <% end %>
+          <% end %>
+
+          <% if can? :manage, c %>
+            <%= link_to path_with_parameters(:client_path, c), remote: true, method: :delete, class: 'btn btn-sm btn-outline-danger', data: { toggle: 'tooltip', trigger: 'hover', title: t('.tooltip.delete'), confirm: t('.delete_confirm') } do %>
+              <i class="fa fa-trash"></i>
+            <% end %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td class="page-entries-info" colspan="8"><%= page_entries_info @clients %></td>
+    </tr>
+
+    <% if @clients.total_pages > 1 %>
+      <tr>
+        <td colspan="8">
+          <%= paginate @clients, remote: true %>
+        </td>
+      </tr>
+    <% end %>
+  </tfoot>
+</table>
+

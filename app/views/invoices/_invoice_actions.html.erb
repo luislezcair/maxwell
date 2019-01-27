@@ -1,11 +1,11 @@
 <% if @invoice.ucrm_id.present? %>
-  <%= link_to ucrm_link(@invoice), class: 'btn btn-sm btn-outline-primary', target: '_blank', data: { toggle: 'tooltip', title: t('.tooltip.ucrm'), trigger: 'hover' } do %>
+  <%= link_to ucrm_invoice_link(@invoice.ucrm_id), class: 'btn btn-sm btn-outline-primary', target: '_blank', data: { toggle: 'tooltip', title: t('.tooltip.ucrm'), trigger: 'hover' } do %>
     <i class="fa fa-file-text-o"></i>
   <% end %>
 <% end %>
 
 <% if @invoice.contabilium_id.present? %>
-  <%= link_to contabilium_link(@invoice), class: 'btn btn-sm btn-outline-warning', target: '_blank', data: { toggle: 'tooltip', title: t('.tooltip.contabilium'), trigger: 'hover' } do %>
+  <%= link_to contabilium_invoice_link(@invoice.contabilium_id), class: 'btn btn-sm btn-outline-warning', target: '_blank', data: { toggle: 'tooltip', title: t('.tooltip.contabilium'), trigger: 'hover' } do %>
     <i class="fa fa-file-text-o"></i>
   <% end %>
 <% end %>

@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :ground_wire_setup_type do
-    name { 'Sin cable a tierra' }
+    sequence(:name) { |n| "Sin cable a tierra #{n}" }
   end
 end

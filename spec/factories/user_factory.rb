@@ -10,4 +10,14 @@ FactoryBot.define do
 
     group
   end
+
+  factory :foreign_user, parent: :user do
+    username { 'marandu' }
+    firstname { 'Marandú' }
+    lastname { 'Marando' }
+    email { 'marandu@marandu.com.ar' }
+    password { 'marandu-123' }
+
+    association :group, factory: :foreign_group
+  end
 end

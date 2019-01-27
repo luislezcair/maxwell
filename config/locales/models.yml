@@ -10,9 +10,28 @@ es-AR:
       city:
         name: 'Ciudad'
       client:
-        document_number: 'DNI / CUIT'
+        address: 'Domicilio'
+        city: 'Ciudad'
+        client_type: 'Tipo de cliente'
+        company_name: 'Razón Social'
+        country: 'País'
+        document_number: 'Número de documento'
+        document_number_s: 'DNI / CUIT'
+        document_type: 'Tipo de documento'
+        email: 'Correo electrónico'
+        firstname: 'Nombre'
+        floor_dept: 'Piso / Depto'
+        iva_condition: 'Condición de IVA'
+        lastname: 'Apellido'
         name: 'Cliente'
-        number: 'Número'
+        notes: 'Observaciones'
+        number: 'Código de cliente'
+        number_short: 'Código'
+        organization: 'Organización'
+        postal_code: 'Código Postal'
+        phone: 'Teléfono'
+        province: 'Provincia'
+        technical_services: 'Servicios Técnicos'
       corporate_cellphone:
         phone: 'Teléfono'
         technical_service_corporate_cellphones: 'Servicios Técnicos'
@@ -41,6 +60,9 @@ es-AR:
         iva_amount: 'IVA'
         net_amount: 'Neto'
         quantity: 'Cantidad'
+
+      organization:
+        name: 'Organización'
       plan_service:
         name: 'Servicio'
       technical_service:
@@ -115,6 +137,18 @@ es-AR:
               amount_zero: 'No se pueden facturar servicios técnicos cuyo monto sea $0'
               billed: 'Hay servicios técnicos que ya fueron facturados o están cerrados'
               empty: 'Debe seleccionar al menos un servicio técnico'
+        client:
+          attributes:
+            company_name:
+              client_type_company: 'es requerido cuando el cliente es una empresa u organización'
+            document_type:
+              client_type_company: 'debe ser CUIT para empresas u organizaciones'
+            firstname:
+              client_type_person: 'es requerido cuando el cliente es una persona'
+            lastname:
+              client_type_person: 'es requerido cuando el cliente es una persona'
+          delete_error: 'No se pudo eliminar este cliente'
+          delete_success: 'Se ha eliminado el cliente'
         corporate_cellphone:
           delete_error: 'No se puede eliminar este teléfono'
           delete_success: 'Se ha eliminado el teléfono'

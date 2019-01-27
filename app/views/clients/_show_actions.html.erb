@@ -1,0 +1,25 @@
+<% unless current_user.group.organization %>
+  <% if @client.ucrm_id.present? %>
+    <%= link_to ucrm_client_link(@client.ucrm_id), class: 'btn btn-sm btn-outline-primary', target: '_blank', data: { toggle: 'tooltip', title: t('.tooltip.ucrm'), trigger: 'hover' } do %>
+      <i class="fa fa-user"></i>
+    <% end %>
+  <% end %>
+
+  <% if @client.contabilium_id.present? %>
+    <%= link_to contabilium_client_link(@client.contabilium_id), class: 'btn btn-sm btn-outline-warning', target: '_blank', data: { toggle: 'tooltip', title: t('.tooltip.contabilium'), trigger: 'hover' } do %>
+      <i class="fa fa-user"></i>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div class="action-separator"></div>
+
+<%= link_to back_link_for(clients_url), class: 'btn btn-sm btn-secondary', data: { toggle: 'tooltip', title: t('.tooltip.index') } do %>
+  <i class="fa fa-list"></i>
+<% end %>
+
+<% if can? :update, @client %>
+  <%= link_to edit_client_path(@client), class: 'btn btn-sm btn-primary', data: { toggle: 'tooltip', title: t('.tooltip.edit') } do %>
+    <i class="fa fa-pencil"></i>
+  <% end %>
+<% end %>

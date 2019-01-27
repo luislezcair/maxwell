@@ -2,10 +2,10 @@ Metrics/BlockLength:
   Enabled: false
 
 Metrics/AbcSize:
-  Max: 25
+  Enabled: false
 
 Metrics/MethodLength:
-  Max: 15
+  Enabled: false
 
 Style/AsciiComments:
   Enabled: false

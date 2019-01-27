@@ -35,5 +35,6 @@ feature 'User login' do
     end
 
     expect(page).to have_content 'Inicio'
+    expect(page).to have_content user.firstname
   end
 end

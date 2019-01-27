@@ -1,5 +1,34 @@
 es-AR:
   clients:
+    clients_table:
+      delete_confirm: '¿Está seguro que desea eliminar este cliente?'
+      tooltip:
+        delete: 'Eliminar usuario'
+        edit: 'Editar cliente'
+        show: 'Ver detalles'
+    edit:
+      form:
+        edit_header: 'Editar cliente'
+    index:
+      header: 'Clientes'
+      search_form:
+        client: 'Cliente'
+        client_placeholder: 'Ingrese parte del nombre, CUIT o número de cliente...'
+        organization: 'Organización'
+        tooltip:
+          submit: 'Buscar'
+      tooltip:
+        new: 'Nuevo cliente'
+    form:
+      cancel: 'Cancelar'
+      section: &form_sections
+        basic: 'Información básica'
+        billing: 'Facturación'
+        contact: 'Información de contacto'
+      submit: 'Guardar'
+    new:
+      form:
+        new_header: 'Nuevo cliente'
     search:
       find_client: 'Buscar'
       modal:
@@ -8,3 +37,12 @@ es-AR:
       placeholder: 'Nombre, número de cliente o DNI...'
       tooltip:
         select: 'Seleccionar'
+    show:
+      header: 'Cliente'
+      section: *form_sections
+    show_actions:
+      tooltip:
+        contabilium: 'Ver en Contabilium'
+        edit: 'Editar'
+        index: 'Volver'
+        ucrm: 'Ver en UCRM'

@@ -24,6 +24,14 @@ main {
   }
 }
 
+h3 {
+  color: $color-gray-700;
+}
+
+h6 {
+  color: $color-gray-600;
+}
+
 @media(min-width: 576px) {
   .col-sm-2-5 {
     flex: 0 0 20%;
@@ -67,6 +75,10 @@ main {
 
 .left-margin {
   margin-left: 10px;
+}
+
+.right-margin {
+  margin-right: 8px;
 }
 
 input.mask-time {
@@ -143,12 +155,16 @@ table {
       text-align: right;
     }
 
-    th.action-column {
-      width: 10%;
-    }
+    th {
+      white-space: nowrap;
 
-    th.number-column {
-      width: 5%;
+      &.number-column {
+        width: 5%;
+      }
+
+      &.action-column {
+        width: 10%;
+      }
     }
 
     td.numeric {
@@ -218,6 +234,10 @@ table {
 
 .align-right {
   text-align: right;
+}
+
+.align-bottom-flex {
+  align-self: end;
 }
 
 .table-details {
@@ -324,4 +344,8 @@ input[readonly].form-control.normal {
   max-height: 250px;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.small-text {
+  font-size: 0.9em;
 }

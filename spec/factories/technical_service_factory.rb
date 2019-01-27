@@ -41,5 +41,11 @@ FactoryBot.define do
       service.technicians << build_list(:technician_with_sequence,
                                         evaluator.technicians_count)
     end
+
+    factory :foreign_technical_service do
+      work_order_number { 777 }
+      association :organization, factory: :foreign_organization
+      association :client, factory: :foreign_client
+    end
   end
 end

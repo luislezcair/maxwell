@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :province do
-    name { 'Corrientes' }
+    sequence(:name) { |n| "Corrientes #{n}" }
     country
   end
 end

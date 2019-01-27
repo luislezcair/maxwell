@@ -40,8 +40,8 @@ class InvoiceExporter
         i.net_amount,
         i.iva_amount,
         i.total_amount,
-        ucrm_link(i),
-        contabilium_link(i),
+        ucrm_invoice_link(i.ucrm_id),
+        contabilium_invoice_link(i.contabilium_id),
         i.notes
       ]
     end
