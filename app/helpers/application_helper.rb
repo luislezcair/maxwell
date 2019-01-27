@@ -29,6 +29,7 @@ module ApplicationHelper
   def display_label_for(object)
     return object.to_label if object.respond_to?(:to_label)
     return object.name if object.respond_to?(:name)
+
     object.to_s
   end
 
@@ -66,6 +67,7 @@ module ApplicationHelper
   #
   def default_on_blank(attribute, options = { default: '-' })
     return options[:default] if attribute.blank?
+
     attribute
   end
 
@@ -73,6 +75,7 @@ module ApplicationHelper
   #
   def boolean_display(value)
     return I18n.t('boolean.byes') if value
+
     I18n.t('boolean.bno')
   end
 
@@ -113,6 +116,11 @@ module ApplicationHelper
   # index sin ningún parámetro.
   #
   def back_link_for(helper_url)
-    request.referer&.starts_with?(helper_url) ? request.referer : helper_url
+    if !request.referer&.starts_with?(helper_url) ||
+       request.referer.match(%r{\/[0-9]+\/edit$|\/new$})
+      helper_url
+    else
+      request.referer
+    end
   end
 end
