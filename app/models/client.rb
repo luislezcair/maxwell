@@ -12,6 +12,7 @@ class Client < ApplicationRecord
   belongs_to :province
 
   belongs_to :city, optional: true
+  belongs_to :plan_service, optional: true
 
   has_many :technical_services, dependent: :restrict_with_error
 

@@ -10,7 +10,7 @@ import 'jquery-ui/themes/base/autocomplete.css';
 import 'jquery-ui/ui/widgets/autocomplete';
 
 export default class extends Controller {
-  static targets = ['valueInput', 'idInput'];
+  static targets = ['valueInput', 'idInput', 'citySelect', 'planServiceSelect'];
 
   connect() {
     const element = $(this.valueInputTarget);
@@ -22,6 +22,16 @@ export default class extends Controller {
       minLength: 1,
       select: (_event, ui) => {
         this.idInputTarget.value = ui.item.id;
+
+        // Cuando se usa el campo cliente en los formularios de búsqueda, estos
+        // targets pueden no existir
+        if (this.hasCitySelectTarget) {
+          this.citySelectTarget.value = ui.item.city_id;
+        }
+
+        if (this.hasPlanServiceSelectTarget) {
+          this.planServiceSelectTarget.value = ui.item.plan_service_id;
+        }
       },
     });
 

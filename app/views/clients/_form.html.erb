@@ -80,6 +80,8 @@
         <%= f.input :number, input_html: { class: 'align-right' }, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
       </div>
 
+      <%= f.association :plan_service, collection: sorted_plan_services %>
+
       <%= f.input :notes %>
     </div>
 

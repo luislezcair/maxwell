@@ -14,6 +14,33 @@ feature 'Technical services' do
     @client = @ts.client
   end
 
+  scenario 'User selects a client in the form' do
+    my_client = create(:client_with_service)
+
+    visit new_technical_service_path
+    expect(page).to have_content t_string_ts('new.form.new_header')
+
+    fill_in('technical_service_client', with: 'kane')
+
+    # Click en la primera sugerencia de la lista de clientes
+    find('.ui-autocomplete > .ui-menu-item:first-child').click
+
+    client_input = find('#technical_service_client')
+    expect(client_input.value).to eq(client_label(my_client))
+
+    form = find('form')
+
+    expect(form).to have_select(
+      'technical_service_city_id',
+      selected: my_client.city.name
+    )
+
+    expect(form).to have_select(
+      'technical_service_plan_service_id',
+      selected: my_client.plan_service.name
+    )
+  end
+
   scenario 'User creates a new Technical Service' do
     visit new_technical_service_path
     expect(page).to have_content t_string_ts('new.form.new_header')

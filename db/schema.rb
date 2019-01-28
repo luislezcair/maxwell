@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_27_230814) do
+ActiveRecord::Schema.define(version: 2019_01_28_010254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 2019_01_27_230814) do
     t.string "postal_code"
     t.integer "organization_id"
     t.date "date_of_birth"
+    t.integer "plan_service_id"
     t.index ["ucrm_id"], name: "index_clients_on_ucrm_id", unique: true
   end
 

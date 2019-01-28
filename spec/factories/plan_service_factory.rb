@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :plan_service do
-    name { 'Simétrico 100 Gbps' }
+    sequence(:name) { |n| "Simétrico #{n + 100} Gbps" }
   end
 end

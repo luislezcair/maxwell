@@ -25,5 +25,12 @@ FactoryBot.define do
       lastname { 'Stark' }
       association :organization, factory: :foreign_organization
     end
+
+    factory :client_with_service do
+      firstname { 'Citizen' }
+      lastname { 'Kane' }
+      city
+      plan_service
+    end
   end
 end

@@ -29,6 +29,7 @@ es-AR:
         number: 'Código de cliente'
         number_short: 'Código'
         organization: 'Organización'
+        plan_service: 'Servicio'
         postal_code: 'Código Postal'
         phone: 'Teléfono'
         province: 'Provincia'

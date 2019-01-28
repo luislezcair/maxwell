@@ -96,6 +96,11 @@
         </tr>
 
         <tr>
+          <th><%= t_model('plan_service') %></th>
+          <td><%= default_on_blank(@client.plan_service&.name) %></td>
+        </tr>
+
+        <tr>
           <th><%= t_model('notes') %></th>
           <td><%= default_on_blank(@client.notes) %></td>
         </tr>
