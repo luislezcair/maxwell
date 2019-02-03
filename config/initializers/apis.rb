@@ -12,8 +12,7 @@ if ENV['APIS_ENV'] == 'production'
 
   CONTABILIUM_ENV = :production
 else
-  # UCRM_URL = 'https://ucrm-testing.diezpositivo.com.ar'
-  UCRM_URL = 'https://ucrm-demo.ubnt.com'
+  UCRM_URL = 'https://ucrm-testing.diezpositivo.com.ar'
   UCRM_ENV = :development
 
   CONTABILIUM_ENV = :development

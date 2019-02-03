@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout' }
 
@@ -52,6 +54,13 @@ Rails.application.routes.draw do
   namespace :system do
     resources :groups, concerns: :paginatable
     resources :users, concerns: :paginatable
+
+    post 'ucrm_webhooks', to: 'ucrm_webhooks#incoming',
+                          defaults: { format: :json }
+  end
+
+  authenticate :user, ->(u) { u.group.admin? } do
+    mount Sidekiq::Web => '/system/sidekiq'
   end
 
   namespace :elements do

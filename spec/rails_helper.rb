@@ -12,6 +12,7 @@ abort('Rails is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'support/factory_bot'
+require 'vcr'
 
 if ENV['TRAVIS_ENV'] == '1'
   Capybara.register_driver :chrome_beta do |app|
@@ -27,6 +28,16 @@ else
 end
 
 Capybara.default_max_wait_time = 5
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/vcr_cassettes'
+  config.hook_into :webmock
+  config.ignore_localhost = true
+
+  config.filter_sensitive_data('<UCRM_APP_KEY>') do
+    Rails.application.credentials[:ucrm][UCRM_ENV][:api_key]
+  end
+end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

@@ -18,3 +18,7 @@ Bundler/OrderedGems:
 
 Metrics/MethodLength:
   Max: 15
+
+Metrics/BlockLength:
+  Exclude:
+    - config/routes.rb

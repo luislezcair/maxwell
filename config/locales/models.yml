@@ -176,6 +176,9 @@ es-AR:
         technician:
           delete_error: 'No se puede eliminar este técnico'
           delete_success: 'Se ha eliminado el técnico'
+        ucrm_webhook:
+          client:
+            edit_non_existant: 'Se recibió un evento de modificación pero el cliente no existe'
         user:
           delete_error: 'No se pudo eliminar este usuario'
           delete_success: 'Se ha eliminado el usuario'

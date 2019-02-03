@@ -77,6 +77,9 @@ group :test do
   gem 'chromedriver-helper'
 
   gem 'launchy'
+
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :production do

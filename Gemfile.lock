@@ -102,6 +102,8 @@ GEM
     coderay (1.1.2)
     concurrent-ruby (1.1.4)
     connection_pool (2.2.2)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     crass (1.0.4)
     database_cleaner (1.7.0)
     devise (4.5.0)
@@ -130,6 +132,7 @@ GEM
     ffi (1.10.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    hashdiff (0.3.8)
     her (1.0.3)
       activemodel (>= 4.2.1)
       faraday (>= 0.8, < 1.0)
@@ -280,6 +283,7 @@ GEM
     rspec-support (3.8.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
+    safe_yaml (1.0.4)
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
@@ -316,6 +320,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
+    vcr (4.0.0)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -323,6 +328,10 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webmock (3.5.1)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     webpacker (4.0.0.rc.2)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
@@ -379,7 +388,9 @@ DEPENDENCIES
   simple_oauth
   spring
   spring-watcher-listen (~> 2.0.0)
+  vcr
   web-console (>= 3.3.0)
+  webmock
   webpacker (>= 4.0.x)
   whenever
 

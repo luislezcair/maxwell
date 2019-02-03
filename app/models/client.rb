@@ -57,6 +57,13 @@ class Client < ApplicationRecord
     contabilium_id.present? && ucrm_id.present?
   end
 
+  # Devuelve un Hash con los atributos que coinciden entre UCRM y Maxwell para
+  # actualizar solamente estos sin afectar a los demás atributos.
+  #
+  def attributes_for_ucrm_update
+    attributes.except(*UCRM::Client::UNMATCHED_ATTRS)
+  end
+
   private
 
   # Validar que si un cliente es una persona física, tenga nombre y apellido.
