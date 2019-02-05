@@ -37,6 +37,17 @@ VCR.configure do |config|
   config.filter_sensitive_data('<UCRM_APP_KEY>') do
     Rails.application.credentials[:ucrm][UCRM_ENV][:api_key]
   end
+
+  config.filter_sensitive_data('<CONTABILIUM_CREDENTIALS>') do
+    credentials = Rails.application.credentials[:contabilium][CONTABILIUM_ENV]
+
+    client_id = credentials[:client_id]
+    client_secret = credentials[:client_secret]
+
+    { client_id: client_id,
+      client_secret: client_secret,
+      grant_type: 'client_credentials' }.to_query
+  end
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

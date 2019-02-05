@@ -50,6 +50,13 @@ FactoryBot.define do
       notes { 'Some observation' }
       association :country, factory: :country_england
       association :organization, factory: :foreign_organization
+
+      factory :contabilium_client_edit_old do
+        address { '221b baker street'.upcase }
+        document_number { 27_402_601_928 }
+        contabilium_id { 1_720_562 }
+        association :province, factory: :province_caba
+      end
     end
 
     # Este es el mismo cliente anterior (mismo ucrm_id) pero con los datos
@@ -60,7 +67,7 @@ FactoryBot.define do
       lastname { 'Watson' }
       number { 221 }
       document_type { 'cuit' }
-      document_number { 27_769_884_561 }
+      document_number { 27_347_188_811 }
       address { '221B Baker Street' }
       floor_dept { '2B' }
       ucrm_id { 3 }
@@ -75,6 +82,26 @@ FactoryBot.define do
       # cargado CUIT ni DNI
       factory :client_edit_ucrm_error do
         ucrm_id { 2 }
+      end
+
+      factory :contabilium_client_create do
+        contabilium_id { nil }
+      end
+
+      # Este cliente falla al crearse porque el CUIT no es válido
+      # (Contabilium comprueba los CUITs)
+      factory :contabilium_client_create_fail do
+        document_number { 27_769_884_561 }
+        contabilium_id { nil }
+      end
+
+      factory :contabilium_client_edit_new do
+        firstname { 'John'.upcase }
+        lastname { 'Watson'.upcase }
+        address { '221B Baker Street'.upcase }
+        document_number { 27_402_601_928 }
+        contabilium_id { 1_720_562 }
+        association :province, factory: :province_misiones
       end
     end
   end

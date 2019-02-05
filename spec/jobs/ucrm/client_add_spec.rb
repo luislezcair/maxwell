@@ -4,6 +4,7 @@ require 'rails_helper'
 
 context 'UCRM sends a notification event' do
   before do
+    create(:country_arg)
     create(:province_misiones)
     create(:organization)
   end

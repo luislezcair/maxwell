@@ -25,6 +25,9 @@ class Contab::Client < Contab::ContabBaseModel
     'J': :company
   }.freeze
 
+  UNMATCHED_ATTRS = %w[id created_at updated_at plan_service_id date_of_birth
+                       ucrm_id contabilium_id organization_id].freeze
+
   # Sobreescribe el método de Contab::ContabBaseModel para indicar que esta
   # colección se consulta por páginas.
   #
@@ -57,7 +60,8 @@ class Contab::Client < Contab::ContabBaseModel
       TipoDoc: DOC_TYPES.invert[client.document_type.to_sym].to_s,
       IdPais: client.country.contabilium_id,
       IdProvincia: client.province.contabilium_id,
-      IdCiudad: client.city&.contabilium_id }
+      IdCiudad: client.city&.contabilium_id,
+      Id: client.contabilium_id }
   end
 
   # Construye un Cliente de Contabilium con los datos de un cliente de Maxwell.
@@ -109,10 +113,14 @@ class Contab::Client < Contab::ContabBaseModel
   # Dividir la razón social en dos nombres cuando `personeria` es F (Física).
   #
   def names_from_social_reason
-    names = self.RazonSocial.strip.delete(',').split(' ', 2)
-    lastname = names.one? ? 'SIN APELLIDO' : names.second
-
-    { firstname: names.first, lastname: lastname }
+    if self.RazonSocial.include?(',')
+      names = self.RazonSocial.strip.match(/(?<lastname>.+)\, (?<firstname>.+)/)
+      { firstname: names[:firstname], lastname: names[:lastname] }
+    else
+      names = self.RazonSocial.strip.split(' ', 2)
+      lastname = names.one? ? 'SIN APELLIDO' : names.second
+      { firstname: names.first, lastname: lastname }
+    end
   end
 
   # Convertir la condición de IVA a los códigos usados por Maxwell.

@@ -1,0 +1,123 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rest.contabilium.com/api/clientes/search?filtro=27769884561&page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer AL4QicJmqHBiN2mV2aj2OhTSxlRcgF1ZJ03vwhEoOcyI67k6v3mk6fvIX_mClmaDGBw6AC5mP04kD8g_0uRMxr4dYcRZlU1PgccksoPk1g-0v3tGGajEcA970QMl3x-3dXVmsb1yVzST_iBGeOBhLl6CaLQmsRl7ataHymaIxKBjHEvnXZ4SR2o20uztPfP9NTUbmsEoqWDlPxxx6rrkPuYsFDeyU4AVN56kSKwBuKtIYHLxdx0HBzvJ8IBQP3Dr3GsYx7a5NlDXF8QWmbnJ8uefH_T9jTS0oZlfrQiwNDtHs13unXetR9igdIeMQEkjkcW6yME2ArTCR-__PZkcSrxhztOJfA-KDJ8qpX3N-MPFWGfwztB8wQqVD5nvnHUIoAZAKtoJF3LmFySMLlu-2JlJS_Prlc39g8o2y7ep-IGSVk0BZIsSC1sIJJW81wKQtC4LHuCMtRXF-LDnWqZGDQ
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Date:
+      - Tue, 05 Feb 2019 02:13:35 GMT
+      Content-Length:
+      - '41'
+    body:
+      encoding: UTF-8
+      string: '{"Items":[],"TotalPage":0,"TotalItems":0}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 02:17:06 GMT
+- request:
+    method: post
+    uri: https://rest.contabilium.com/api/clientes
+    body:
+      encoding: UTF-8
+      string: Codigo=221&CondicionIva=CF&Cp=W3402BKL&Domicilio=221B+Baker+Street&Email=j.watson%40sherlock.com&IdCiudad&IdPais=10&IdProvincia&NroDoc=27769884561&Observaciones=Alguna+observaci%C3%B3n&Personeria=F&PisoDepto=2B&RazonSocial=Watson%2C+John&Telefono=5493794298093&TipoDoc=CUIT
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - Bearer AL4QicJmqHBiN2mV2aj2OhTSxlRcgF1ZJ03vwhEoOcyI67k6v3mk6fvIX_mClmaDGBw6AC5mP04kD8g_0uRMxr4dYcRZlU1PgccksoPk1g-0v3tGGajEcA970QMl3x-3dXVmsb1yVzST_iBGeOBhLl6CaLQmsRl7ataHymaIxKBjHEvnXZ4SR2o20uztPfP9NTUbmsEoqWDlPxxx6rrkPuYsFDeyU4AVN56kSKwBuKtIYHLxdx0HBzvJ8IBQP3Dr3GsYx7a5NlDXF8QWmbnJ8uefH_T9jTS0oZlfrQiwNDtHs13unXetR9igdIeMQEkjkcW6yME2ArTCR-__PZkcSrxhztOJfA-KDJ8qpX3N-MPFWGfwztB8wQqVD5nvnHUIoAZAKtoJF3LmFySMLlu-2JlJS_Prlc39g8o2y7ep-IGSVk0BZIsSC1sIJJW81wKQtC4LHuCMtRXF-LDnWqZGDQ
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Cache-Control:
+      - private
+      Content-Length:
+      - '72'
+      Content-Type:
+      - text/plain; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      Set-Cookie:
+      - ASP.NET_SessionId=vsza4uhkb5aokqpvd250u13e; path=/; HttpOnly
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Date:
+      - Tue, 05 Feb 2019 02:13:36 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        RXJyb3IgYWwgaW50ZW50YXIgZ3VhcmRhciBlbCBjbGllbnRlIFdhdHNvbiwgSm9objogRWwgQ1VJVCBlcyBpbnbDoWxpZG8u
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 02:17:06 GMT
+- request:
+    method: get
+    uri: https://rest.contabilium.com/api/clientes/search?filtro=27769884561&page=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer AL4QicJmqHBiN2mV2aj2OhTSxlRcgF1ZJ03vwhEoOcyI67k6v3mk6fvIX_mClmaDGBw6AC5mP04kD8g_0uRMxr4dYcRZlU1PgccksoPk1g-0v3tGGajEcA970QMl3x-3dXVmsb1yVzST_iBGeOBhLl6CaLQmsRl7ataHymaIxKBjHEvnXZ4SR2o20uztPfP9NTUbmsEoqWDlPxxx6rrkPuYsFDeyU4AVN56kSKwBuKtIYHLxdx0HBzvJ8IBQP3Dr3GsYx7a5NlDXF8QWmbnJ8uefH_T9jTS0oZlfrQiwNDtHs13unXetR9igdIeMQEkjkcW6yME2ArTCR-__PZkcSrxhztOJfA-KDJ8qpX3N-MPFWGfwztB8wQqVD5nvnHUIoAZAKtoJF3LmFySMLlu-2JlJS_Prlc39g8o2y7ep-IGSVk0BZIsSC1sIJJW81wKQtC4LHuCMtRXF-LDnWqZGDQ
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Date:
+      - Tue, 05 Feb 2019 02:13:36 GMT
+      Content-Length:
+      - '41'
+    body:
+      encoding: UTF-8
+      string: '{"Items":[],"TotalPage":0,"TotalItems":0}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 02:17:07 GMT
+recorded_with: VCR 4.0.0

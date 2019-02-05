@@ -1,0 +1,174 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://rest.contabilium.com/token
+    body:
+      encoding: UTF-8
+      string: "<CONTABILIUM_CREDENTIALS>"
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - application/json;charset=UTF-8
+      Expires:
+      - "-1"
+      Server:
+      - Microsoft-IIS/8.5
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Date:
+      - Tue, 05 Feb 2019 18:12:49 GMT
+      Content-Length:
+      - '530'
+    body:
+      encoding: UTF-8
+      string: '{"access_token":"oAqQWkkizWVS19S4d902fdeXL6_3iHc3J0IxzzQCYQQ_Bgj0IzBh51p10bg0znSip_NcgJAa6SC6ZEiMHSTEa9YtRXzq-gvM97b2V1itslNZ9qoYH5TvhtfNQC0nZ-vabO4xYAdG4El8o9dlF-XhLuG_KTtjfL3vlT3IWPgAljISiuReO4zvGTVv7gz23RpTuRJy9Crht1qB-OPgf50oMF_1o17S--XoNNISs0762XASU3mkJ2hDU0hgY8YI8tyHwtLXDtGGKW6HDhXPzcOBlhx_WYwrlY-wgczM8AMqZB1pcYRL-AlsnYABLirvU28dpsDpmi1pwyBfcJiscvFtBgiEKPlaqUfpqd-J_eFOQa2iWX_UE1bQ-Xfg6UqzYjFmMfuLfPxC3UQuwcWLHQS4_5BBAVZPOaacb29D3TgkU4df1rLvN3OblYB8cE-TsJeWanuT3itYtQAN5z7OBuiDrg","token_type":"bearer","expires_in":86399}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 18:12:51 GMT
+- request:
+    method: get
+    uri: https://rest.contabilium.com/api/clientes/1720562
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer oAqQWkkizWVS19S4d902fdeXL6_3iHc3J0IxzzQCYQQ_Bgj0IzBh51p10bg0znSip_NcgJAa6SC6ZEiMHSTEa9YtRXzq-gvM97b2V1itslNZ9qoYH5TvhtfNQC0nZ-vabO4xYAdG4El8o9dlF-XhLuG_KTtjfL3vlT3IWPgAljISiuReO4zvGTVv7gz23RpTuRJy9Crht1qB-OPgf50oMF_1o17S--XoNNISs0762XASU3mkJ2hDU0hgY8YI8tyHwtLXDtGGKW6HDhXPzcOBlhx_WYwrlY-wgczM8AMqZB1pcYRL-AlsnYABLirvU28dpsDpmi1pwyBfcJiscvFtBgiEKPlaqUfpqd-J_eFOQa2iWX_UE1bQ-Xfg6UqzYjFmMfuLfPxC3UQuwcWLHQS4_5BBAVZPOaacb29D3TgkU4df1rLvN3OblYB8cE-TsJeWanuT3itYtQAN5z7OBuiDrg
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Date:
+      - Tue, 05 Feb 2019 18:12:50 GMT
+      Content-Length:
+      - '439'
+    body:
+      encoding: UTF-8
+      string: '{"Id":1720562,"RazonSocial":"WASSON, JON","NombreFantasia":"","CondicionIva":"CF","TipoDoc":"DNI","NroDoc":"27402601928","Pais":"Reino
+        Unido","Provincia":"Ciudad de Buenos Aires","Ciudad":"SIN IDENTIFICAR","Domicilio":"221B
+        BAKER STREET","Telefono":"5493794298092","Email":"jwasson@sherlock.ocm","Codigo":"221","PisoDepto":"221C","Cp":"3000","Observaciones":"Some
+        observation","Personeria":"F","IdPais":130,"IdProvincia":2,"IdCiudad":5003}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 18:12:51 GMT
+- request:
+    method: put
+    uri: https://rest.contabilium.com/api/clientes/1720562
+    body:
+      encoding: UTF-8
+      string: Codigo=221&CondicionIva=CF&Cp=W3402BKL&Domicilio=221B+BAKER+STREET&Email=j.watson%40sherlock.com&Id=1720562&IdCiudad&IdPais=10&IdProvincia=14&NroDoc=27769884561&Observaciones=Alguna+observaci%C3%B3n&Personeria=F&PisoDepto=2B&RazonSocial=WATSON%2C+JOHN&Telefono=5493794298093&TipoDoc=CUIT
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Authorization:
+      - Bearer oAqQWkkizWVS19S4d902fdeXL6_3iHc3J0IxzzQCYQQ_Bgj0IzBh51p10bg0znSip_NcgJAa6SC6ZEiMHSTEa9YtRXzq-gvM97b2V1itslNZ9qoYH5TvhtfNQC0nZ-vabO4xYAdG4El8o9dlF-XhLuG_KTtjfL3vlT3IWPgAljISiuReO4zvGTVv7gz23RpTuRJy9Crht1qB-OPgf50oMF_1o17S--XoNNISs0762XASU3mkJ2hDU0hgY8YI8tyHwtLXDtGGKW6HDhXPzcOBlhx_WYwrlY-wgczM8AMqZB1pcYRL-AlsnYABLirvU28dpsDpmi1pwyBfcJiscvFtBgiEKPlaqUfpqd-J_eFOQa2iWX_UE1bQ-Xfg6UqzYjFmMfuLfPxC3UQuwcWLHQS4_5BBAVZPOaacb29D3TgkU4df1rLvN3OblYB8cE-TsJeWanuT3itYtQAN5z7OBuiDrg
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Cache-Control:
+      - private
+      Content-Length:
+      - '75'
+      Content-Type:
+      - text/plain; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      Set-Cookie:
+      - ASP.NET_SessionId=3l5bnkpqwp1tusqmldpak5un; path=/; HttpOnly
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Date:
+      - Tue, 05 Feb 2019 18:12:50 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        RXJyb3IgYWwgaW50ZW50YXIgYWN0dWFsaXphciBlbCBjbGllbnRlIFdBVFNPTiwgSk9ITjogRWwgQ1VJVCBlcyBpbnbDoWxpZG8u
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 18:12:51 GMT
+- request:
+    method: get
+    uri: https://rest.contabilium.com/api/clientes/1720562
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Authorization:
+      - Bearer oAqQWkkizWVS19S4d902fdeXL6_3iHc3J0IxzzQCYQQ_Bgj0IzBh51p10bg0znSip_NcgJAa6SC6ZEiMHSTEa9YtRXzq-gvM97b2V1itslNZ9qoYH5TvhtfNQC0nZ-vabO4xYAdG4El8o9dlF-XhLuG_KTtjfL3vlT3IWPgAljISiuReO4zvGTVv7gz23RpTuRJy9Crht1qB-OPgf50oMF_1o17S--XoNNISs0762XASU3mkJ2hDU0hgY8YI8tyHwtLXDtGGKW6HDhXPzcOBlhx_WYwrlY-wgczM8AMqZB1pcYRL-AlsnYABLirvU28dpsDpmi1pwyBfcJiscvFtBgiEKPlaqUfpqd-J_eFOQa2iWX_UE1bQ-Xfg6UqzYjFmMfuLfPxC3UQuwcWLHQS4_5BBAVZPOaacb29D3TgkU4df1rLvN3OblYB8cE-TsJeWanuT3itYtQAN5z7OBuiDrg
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.5
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE, OPTIONS
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Date:
+      - Tue, 05 Feb 2019 18:12:50 GMT
+      Content-Length:
+      - '439'
+    body:
+      encoding: UTF-8
+      string: '{"Id":1720562,"RazonSocial":"WASSON, JON","NombreFantasia":"","CondicionIva":"CF","TipoDoc":"DNI","NroDoc":"27402601928","Pais":"Reino
+        Unido","Provincia":"Ciudad de Buenos Aires","Ciudad":"SIN IDENTIFICAR","Domicilio":"221B
+        BAKER STREET","Telefono":"5493794298092","Email":"jwasson@sherlock.ocm","Codigo":"221","PisoDepto":"221C","Cp":"3000","Observaciones":"Some
+        observation","Personeria":"F","IdPais":130,"IdProvincia":2,"IdCiudad":5003}'
+    http_version: 
+  recorded_at: Tue, 05 Feb 2019 18:12:51 GMT
+recorded_with: VCR 4.0.0

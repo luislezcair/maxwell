@@ -64,6 +64,13 @@ class Client < ApplicationRecord
     attributes.except(*UCRM::Client::UNMATCHED_ATTRS)
   end
 
+  # Devuelve un Hash con los atributos que coinciden entre Contabilium y Maxwell
+  # para actualizar solamente estos sin afectar a los demás atributos.
+  #
+  def attributes_for_contabilium_update
+    attributes.except(*Contab::Client::UNMATCHED_ATTRS)
+  end
+
   private
 
   # Validar que si un cliente es una persona física, tenga nombre y apellido.

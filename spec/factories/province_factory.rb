@@ -7,7 +7,12 @@ FactoryBot.define do
 
     factory :province_misiones do
       name { 'Misiones' }
-      association :country, factory: :country_arg
+      contabilium_id { 14 }
+    end
+
+    factory :province_caba do
+      name { 'Ciudad de Buenos Aires' }
+      contabilium_id { 2 }
     end
   end
 end
