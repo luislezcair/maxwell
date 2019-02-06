@@ -8,9 +8,60 @@ class UCRM::Client < UCRM::UCRMBaseModel
     '2': :company
   }.freeze
 
+  # IDs definidos en UCRM para los "custom attributes" de clientes
+  ATTRIBUTE_ID_DNI = 1
+  ATTRIBUTE_ID_CUIT = 2
+
+  # Atributos que están en Maxwell pero no tienen correspondencia en UCRM
   UNMATCHED_ATTRS = %w[id city_id created_at updated_at plan_service_id city_id
                        province_id iva_condition date_of_birth ucrm_id
                        contabilium_id].freeze
+
+  # Mapeo de los atributos de un cliente de Maxwell a un cliente de UCRM
+  # @param client [Client] cliente de Maxwell
+  # @return [Hash] atributos con el formato como lo espera UCRM
+  #
+  def self.ucrm_attributes(client)
+    {
+      id: client.ucrm_id,
+      userIdent: client.number.to_s,
+      organizationId: client.organization&.ucrm_id,
+      countryId: client.country&.ucrm_id,
+      zipCode: client.postal_code,
+      street1: client.address,
+      street2: client.floor_dept,
+      note: client.notes,
+      contacts: [{
+        email: client.email,
+        phone: client.phone
+      }],
+      custom_attributes: [{
+        customAttributeId: client.dni? ? ATTRIBUTE_ID_DNI : ATTRIBUTE_ID_CUIT,
+        value: client.document_number.to_s
+      }]
+    }.merge(client_type_attributes(client))
+  end
+
+  # Devuelve un Hash con los atributos correspondientes (firstName y lastName)
+  # si el cliente es una persona o si es una empresa (companyName).
+  # @param client [Client]
+  # @return [Hash]
+  #
+  def self.client_type_attributes(client)
+    if client.person?
+      { firstName: client.firstname, lastName: client.lastname, clientType: 1 }
+    else
+      { companyName: client.company_name, clientType: 2 }
+    end
+  end
+
+  # Construye un cliente de UCRM a partir de un cliente de Maxwell
+  # @param client [Client]
+  # @return [UCRM::Client]
+  #
+  def self.from_model(client)
+    new(ucrm_attributes(client))
+  end
 
   def initialize(args)
     super(args)
@@ -58,10 +109,10 @@ class UCRM::Client < UCRM::UCRMBaseModel
   # guardamos solamente uno así que preferimos primero el CUIT.
   #
   def document_information
-    cuit = parse_custom_attribute_number(2)
+    cuit = parse_custom_attribute_number(ATTRIBUTE_ID_CUIT)
     return { document_number: cuit, document_type: 'cuit' } if cuit
 
-    dni = parse_custom_attribute_number(1)
+    dni = parse_custom_attribute_number(ATTRIBUTE_ID_DNI)
     return { document_number: dni, document_type: 'dni' } if dni
 
     {}

@@ -40,6 +40,7 @@ class Permission < ApplicationRecord
   #
   def special_actions
     return {} unless custom_actions
-    MultiJson.load(custom_actions, symbolize_keys: true)
+
+    JSON.parse(custom_actions, symbolize_names: true)
   end
 end

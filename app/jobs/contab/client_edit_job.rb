@@ -11,7 +11,7 @@ class Contab::ClientEditJob
 
     contab_client = Contab::Client.from_model(client)
 
-    return if contab_client.save
+    return if contab_client.save || !Rails.env.production?
 
     logger.error("Client ID #{client.id} could not be updated in Contabilium."\
                  " Response was: '#{contab_client.response_errors.join(';')}'")

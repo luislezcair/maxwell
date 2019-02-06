@@ -8,9 +8,8 @@
 #
 class UcrmResponseParser < Faraday::Response::Middleware
   def on_complete(env)
-    errors = []
-    json = MultiJson.load(env[:body], symbolize_keys: true)
-    errors << json[:message] if env[:status] > 200
+    json = env.body.blank? ? {} : JSON.parse(env.body, symbolize_names: true)
+    errors = env.status > 201 ? json : []
 
     # La respuesta es un arreglo cuando se devuelven más de un elemento. Si es
     # un solo elemento la respuesta es directamente un Hash.
@@ -25,10 +24,6 @@ class UcrmResponseParser < Faraday::Response::Middleware
     end
 
     # Devolvemos el body en el formato que espera Her.
-    env[:body] = {
-      data: json,
-      errors: errors,
-      metadata: {}
-    }
+    env.body = { data: json, errors: errors, metadata: { status: env.status } }
   end
 end

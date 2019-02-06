@@ -26,6 +26,11 @@ class UcrmRequestBuilder < Faraday::Middleware
 
   def call(env)
     env.body&.delete_if { |key, _| IGNORE_ATTRS.include?(key) }
+
+    if env.body&.key?(:custom_attributes)
+      env.body[:attributes] = env.body.delete(:custom_attributes)
+    end
+
     @app.call(env)
   end
 end

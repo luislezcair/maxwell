@@ -1,0 +1,99 @@
+---
+http_interactions:
+- request:
+    method: patch
+    uri: https://ucrm-testing.diezpositivo.com.ar/api/v1.0/clients/3
+    body:
+      encoding: UTF-8
+      string: '{"userIdent":"221","organizationId":2,"countryId":93,"zipCode":"3000","street1":"221b
+        baker street","street2":"221C","note":"Some observation","firstName":"JON","lastName":"WASSON","clientType":1,"attributes":[{"customAttributeId":1,"value":"76988455"}]}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/json
+      X-Auth-App-Key:
+      - "<UCRM_APP_KEY>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      X-Clacks-Overhead:
+      - GNU Terry Pratchett
+      Cache-Control:
+      - max-age=0, must-revalidate, private
+      Date:
+      - Wed, 06 Feb 2019 16:17:30 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":3,"userIdent":"221","previousIsp":null,"isLead":false,"clientType":1,"companyName":null,"companyRegistrationNumber":null,"companyTaxId":null,"companyWebsite":null,"street1":"221b
+        baker street","street2":"221C","city":"London","countryId":93,"stateId":null,"zipCode":"3000","invoiceStreet1":null,"invoiceStreet2":null,"invoiceCity":null,"invoiceStateId":null,"invoiceCountryId":null,"invoiceZipCode":null,"invoiceAddressSameAsContact":true,"note":"Some
+        observation","sendInvoiceByPost":null,"invoiceMaturityDays":null,"stopServiceDue":null,"stopServiceDueDays":null,"organizationId":2,"tax1Id":null,"tax2Id":null,"tax3Id":null,"registrationDate":"2019-02-02T00:00:00-0300","companyContactFirstName":null,"companyContactLastName":null,"isActive":false,"firstName":"JON","lastName":"WASSON","username":"j.watson@sherlock.com","contacts":[{"id":3,"clientId":3,"email":"j.watson@sherlock.com","phone":"5493794298093","name":"John
+        Watson","isBilling":true,"isContact":true,"types":[{"id":1,"name":"Billing"},{"id":2,"name":"General"}]},{"id":19,"clientId":3,"email":"j.watson@sherlock.com","phone":"5493794298093","name":"John
+        Watson","isBilling":true,"isContact":true,"types":[{"id":1,"name":"Billing"},{"id":2,"name":"General"}]}],"attributes":[{"id":3,"clientId":3,"customAttributeId":1,"name":"DNI","key":"dni","value":"76988455"},{"id":4,"clientId":3,"customAttributeId":2,"name":"CUIT","key":"cuit","value":"27347188811"}],"accountBalance":0,"accountCredit":0,"accountOutstanding":0,"currencyCode":"ARS","organizationName":"Marand\u00fa","bankAccounts":[],"tags":[],"invitationEmailSentDate":null,"avatarColor":"#ff9800","addressGpsLat":null,"addressGpsLon":null,"isArchived":false}'
+    http_version: 
+  recorded_at: Wed, 06 Feb 2019 16:17:30 GMT
+- request:
+    method: patch
+    uri: https://ucrm-testing.diezpositivo.com.ar/api/v1.0/clients/3
+    body:
+      encoding: UTF-8
+      string: '{"userIdent":"221","organizationId":1,"countryId":26,"zipCode":"W3402BKL","street1":"221B
+        Baker Street","street2":"2B","note":"Alguna observación","firstName":"John","lastName":"Watson","clientType":1,"attributes":[{"customAttributeId":2,"value":"27347188811"}]}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/json
+      X-Auth-App-Key:
+      - "<UCRM_APP_KEY>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      X-Clacks-Overhead:
+      - GNU Terry Pratchett
+      Cache-Control:
+      - max-age=0, must-revalidate, private
+      Date:
+      - Wed, 06 Feb 2019 16:17:32 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":3,"userIdent":"221","previousIsp":null,"isLead":false,"clientType":1,"companyName":null,"companyRegistrationNumber":null,"companyTaxId":null,"companyWebsite":null,"street1":"221B
+        Baker Street","street2":"2B","city":"London","countryId":26,"stateId":null,"zipCode":"W3402BKL","invoiceStreet1":null,"invoiceStreet2":null,"invoiceCity":null,"invoiceStateId":null,"invoiceCountryId":null,"invoiceZipCode":null,"invoiceAddressSameAsContact":true,"note":"Alguna
+        observaci\u00f3n","sendInvoiceByPost":null,"invoiceMaturityDays":null,"stopServiceDue":null,"stopServiceDueDays":null,"organizationId":1,"tax1Id":null,"tax2Id":null,"tax3Id":null,"registrationDate":"2019-02-02T00:00:00-0300","companyContactFirstName":null,"companyContactLastName":null,"isActive":false,"firstName":"John","lastName":"Watson","username":"j.watson@sherlock.com","contacts":[{"id":3,"clientId":3,"email":"j.watson@sherlock.com","phone":"5493794298093","name":"John
+        Watson","isBilling":true,"isContact":true,"types":[{"id":1,"name":"Billing"},{"id":2,"name":"General"}]},{"id":19,"clientId":3,"email":"j.watson@sherlock.com","phone":"5493794298093","name":"John
+        Watson","isBilling":true,"isContact":true,"types":[{"id":1,"name":"Billing"},{"id":2,"name":"General"}]}],"attributes":[{"id":3,"clientId":3,"customAttributeId":1,"name":"DNI","key":"dni","value":"76988455"},{"id":4,"clientId":3,"customAttributeId":2,"name":"CUIT","key":"cuit","value":"27347188811"}],"accountBalance":0,"accountCredit":0,"accountOutstanding":0,"currencyCode":"ARS","organizationName":"Ksys","bankAccounts":[],"tags":[],"invitationEmailSentDate":null,"avatarColor":"#ff9800","addressGpsLat":null,"addressGpsLon":null,"isArchived":false}'
+    http_version: 
+  recorded_at: Wed, 06 Feb 2019 16:17:32 GMT
+recorded_with: VCR 4.0.0

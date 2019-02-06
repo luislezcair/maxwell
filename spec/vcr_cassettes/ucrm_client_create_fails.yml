@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://ucrm-testing.diezpositivo.com.ar/api/v1.0/clients
+    body:
+      encoding: UTF-8
+      string: '{"userIdent":"221","organizationId":1,"countryId":26,"zipCode":"W3402BKL","street1":"221B
+        Baker Street","street2":"2B","note":"Alguna observación","contacts":[{"email":"j.watson@sherlock.com","phone":"5493794298093"}],"firstName":"John","lastName":"Watson","clientType":1,"attributes":[{"customAttributeId":2,"value":"27347188811"}]}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/json
+      X-Auth-App-Key:
+      - "<UCRM_APP_KEY>"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Server:
+      - nginx
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Clacks-Overhead:
+      - GNU Terry Pratchett
+      Cache-Control:
+      - max-age=0, must-revalidate, private
+      Date:
+      - Wed, 06 Feb 2019 03:20:08 GMT
+    body:
+      encoding: UTF-8
+      string: '{"code":422,"message":"Validation failed.","errors":{"userIdent":["Este
+        ID de cliente ya existe en nuestro sistema."]}}'
+    http_version: 
+  recorded_at: Wed, 06 Feb 2019 03:20:08 GMT
+recorded_with: VCR 4.0.0

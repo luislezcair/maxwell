@@ -24,10 +24,10 @@ class ContabResponseParser < Faraday::Response::Middleware
     errors = []
 
     # Si hubo un error la respuesta es un string con el mensaje de error y
-    # MultiJson genera un error al leer.
+    # JSON genera un error al leer.
     begin
-      json = MultiJson.load(env[:body], symbolize_keys: true)
-    rescue MultiJson::LoadError
+      json = JSON.parse(env[:body], symbolize_names: true)
+    rescue JSON::ParserError
       errors = [env[:body]] if env[:status] >= 500
     end
 

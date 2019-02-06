@@ -44,6 +44,8 @@ class Contab::Client < Contab::ContabBaseModel
   end
 
   # Mapeo inverso de los atributos de un Client a un Contab::Client.
+  # @param client [Client] cliente de Maxwell
+  # @return [Hash] atributos con los nombres de Contabilium
   #
   def self.contab_attributes(client)
     { RazonSocial: client.name,

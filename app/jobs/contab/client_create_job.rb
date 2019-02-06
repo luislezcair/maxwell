@@ -14,7 +14,7 @@ class Contab::ClientCreateJob
     if contab_client.save
       client.contabilium_id = contab_client.response_id
       client.save
-    else
+    elsif Rails.env.production?
       logger.error("Client ID #{client.id} could not be created in Contabilium")
     end
   end
