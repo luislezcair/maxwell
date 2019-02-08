@@ -28,6 +28,8 @@ context 'UCRM sends a notification event' do
     new_attrs = client_new.attributes_for_ucrm_update
 
     expect(old_attrs).to eq(new_attrs)
+
+    expect(Contab::ClientEditJob).to have_enqueued_sidekiq_job(client_old.id)
   end
 
   example 'client edit hook fails with error' do
@@ -50,6 +52,8 @@ context 'UCRM sends a notification event' do
     expect(old_attrs).to eq(new_attrs)
 
     expect(webhook.error_msg).to_not be_blank
+
+    expect(Contab::ClientEditJob).to_not have_enqueued_sidekiq_job
   end
 
   example 'the edited client does not exist in maxwell' do
@@ -66,5 +70,7 @@ context 'UCRM sends a notification event' do
 
     expect(webhook.error_msg).to_not be_blank
     expect(Client.find_by(ucrm_id: webhook.entity_id)).to be_nil
+
+    expect(Contab::ClientEditJob).to_not have_enqueued_sidekiq_job
   end
 end

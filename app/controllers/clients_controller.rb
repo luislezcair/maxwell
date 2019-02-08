@@ -38,10 +38,19 @@ class ClientsController < ApplicationController
   end
 
   # POST /clients
+  #
+  # NOTE: Solamente cuando creamos clientes a través de la interfaz web del
+  # sistema lanzamos la sincronización con Contabilium y UCRM.
+  #
   def create
     @client = Client.new(client_params)
 
     if @client.save
+      if Rails.env.production? || Rails.env.test?
+        UCRM::ClientCreateJob.perform_async(@client.id)
+        Contab::ClientCreateJob.perform_async(@client.id)
+      end
+
       redirect_to @client
     else
       render :new, alert: :error
@@ -49,8 +58,17 @@ class ClientsController < ApplicationController
   end
 
   # PUT/PATCH /clients/1
+  #
+  # NOTE: Solamente cuando actualizamos clientes a través de la interfaz web del
+  # sistema lanzamos la sincronización con Contabilium y UCRM.
+  #
   def update
     if @client.update(client_params)
+      if Rails.env.production? || Rails.env.test?
+        UCRM::ClientEditRemoteJob.perform_async(@client.id)
+        Contab::ClientEditJob.perform_async(@client.id)
+      end
+
       redirect_to @client
     else
       render :edit, alert: :error

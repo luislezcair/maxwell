@@ -1,16 +1,19 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'sidekiq/testing'
 
 feature 'Client management' do
   before do
     login_as(create(:user))
 
+    Sidekiq::Testing.fake!
+
     @client = build(:client)
     @company_client = build(:company_client, organization: @client.organization)
 
-    create(:country, name: 'Argentina')
-    create(:province, name: 'Misiones')
+    create(:province_misiones)
+    create(:country_arg)
   end
 
   scenario 'User selects client type person / company' do
@@ -42,6 +45,40 @@ feature 'Client management' do
 
     fill_in_form_for(@company_client)
     check_expectations_for(@company_client)
+  end
+
+  scenario 'User edits a client' do
+    client = create(:client)
+
+    visit edit_client_path(client)
+
+    within('form') do
+      fill_in('client_postal_code', with: 'W3402BKL')
+      fill_in('client_date_of_birth', with: '15111990')
+      fill_in('client_floor_dept', with: '9no B')
+      fill_in('client_phone', with: '1234123456')
+      fill_in('client_email', with: 'client@example.com')
+      fill_in('client_notes', with: 'This client is a little silly')
+
+      click_button(t_string_c('form.submit'))
+    end
+
+    expect(page).to have_content(t_string_c('show.header').upcase)
+    client.reload
+
+    within '.card-body' do
+      expect(page).to have_content(client.postal_code)
+      expect(page).to have_content(client.floor_dept)
+      expect(page).to have_content('(1234) 123 456')
+      expect(page).to have_content(client.email)
+      expect(page).to have_content(client.notes)
+
+      date = I18n.l(client.date_of_birth, format: :short_date, default: '-')
+      expect(page).to have_content(date)
+    end
+
+    expect(UCRM::ClientEditRemoteJob).to have_enqueued_sidekiq_job(client.id)
+    expect(Contab::ClientEditJob).to have_enqueued_sidekiq_job(client.id)
   end
 end
 
@@ -129,8 +166,8 @@ end
 def check_expectations_for(client)
   expect(page).to have_content(t_string_c('show.header').upcase)
 
-  last_client_path = client_path(Client.last)
-  expect(page).to have_current_path(last_client_path)
+  last_id = Client.last.id
+  expect(page).to have_current_path(client_path(last_id))
 
   within '.card-body' do
     expect(page).to have_content(client.name)
@@ -140,6 +177,9 @@ def check_expectations_for(client)
     expect(page).to have_content(cuit_dni(client))
     expect(page).to have_content(client.number)
   end
+
+  expect(UCRM::ClientCreateJob).to have_enqueued_sidekiq_job(last_id)
+  expect(Contab::ClientCreateJob).to have_enqueued_sidekiq_job(last_id)
 end
 
 def t_string_c(scope)

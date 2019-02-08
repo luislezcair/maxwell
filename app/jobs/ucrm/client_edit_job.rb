@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 # Job que se encarga de obtener los datos de un cliente mediante una llamada a
-# la API de UCRM y de crearlo localmente. Este job se dispara en respuesta a
-# una notificación desde UCRM con el evento "client.add".
+# la API de UCRM y de modificar el cliente correspondiente local. Este job se
+# dispara en respuesta a una notificación desde UCRM con el evento "client.add".
+#
+# También encola un Contab::ClientEditJob para modificar el cliente en
+# Contabilium.
 #
 class UCRM::ClientEditJob
   include Sidekiq::Worker
@@ -22,6 +25,7 @@ class UCRM::ClientEditJob
 
     if local.update(client.to_maxwell_model.attributes_for_ucrm_update)
       webhook.completed!
+      Contab::ClientEditJob.perform_async(local.id)
     else
       webhook.error!(local.errors.messages.to_json)
     end

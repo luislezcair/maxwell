@@ -4,6 +4,9 @@
 # la API de UCRM y de crearlo localmente. Este job se dispara en respuesta a
 # una notificación desde UCRM con el evento "client.add".
 #
+# También encola un Contab::ClientCreateJob para crear el cliente en
+# Contabilium.
+#
 class UCRM::ClientAddJob
   include Sidekiq::Worker
 
@@ -20,6 +23,7 @@ class UCRM::ClientAddJob
 
     if c.save
       webhook.completed!
+      Contab::ClientCreateJob.perform_async(c.id)
     else
       webhook.error!(c.errors.messages.to_json)
     end

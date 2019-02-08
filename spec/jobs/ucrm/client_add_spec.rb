@@ -1,12 +1,15 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'sidekiq/testing'
 
 context 'UCRM sends a notification event' do
   before do
     create(:country_arg)
     create(:province_misiones)
     create(:organization)
+
+    Sidekiq::Testing.fake!
   end
 
   example 'client add hook' do
@@ -21,7 +24,10 @@ context 'UCRM sends a notification event' do
       end.to(change(webhook, :status).from('pending').to('completed'))
     end
 
-    expect(Client.find_by(ucrm_id: webhook.entity_id)).to_not be_nil
+    new_client = Client.find_by(ucrm_id: webhook.entity_id)
+    expect(new_client).to_not be_nil
+
+    expect(Contab::ClientCreateJob).to have_enqueued_sidekiq_job(new_client.id)
   end
 
   example 'client add hook fails with error' do
@@ -38,5 +44,7 @@ context 'UCRM sends a notification event' do
 
     expect(Client.find_by(ucrm_id: webhook.entity_id)).to be_nil
     expect(webhook.error_msg).to_not be_blank
+
+    expect(Contab::ClientCreateJob).to_not have_enqueued_sidekiq_job
   end
 end
