@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# Representa una provincia.
+#
 class Province < ApplicationRecord
   belongs_to :country
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = false
@@ -31,8 +33,10 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
-  # Store uploaded files on the local file system (see config/storage.yml for options)
-  # config.active_storage.service = :local
+  # En Heroku definimos la variable de entorno para utilizar S3.
+  # En producción en DigitalOcean utilizamos almacenamiento local
+  config.active_storage.service =
+    ENV['STORAGE_BACKEND'] == 'aws-s3' ? :amazon : :local
 
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil

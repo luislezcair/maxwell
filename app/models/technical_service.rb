@@ -34,6 +34,8 @@ class TechnicalService < ApplicationRecord
   has_many :technical_service_work_types, dependent: :destroy
   has_many :work_types, through: :technical_service_work_types
 
+  has_many_attached :pictures
+
   attribute :datetime, :datetime, default: -> { Time.current }
 
   validates :arrival_time, :datetime, :departure_time, :work_order_number,
@@ -41,6 +43,8 @@ class TechnicalService < ApplicationRecord
 
   validates :work_order_number, :plug_adapter_quantity,
             numericality: { less_than: 2**30 }
+
+  validates :pictures, content_type: %w[image/png image/jpg image/jpeg]
 
   validate :at_least_one_corporate_cellphone?
   validate :at_least_one_technician?

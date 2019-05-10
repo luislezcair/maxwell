@@ -55,6 +55,7 @@ class Ability
 
   def custom_attributes(perm, group_org)
     return {} unless perm.organization_filter && group_org
+
     { organization_id: group_org.id }
   end
 end

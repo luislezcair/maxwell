@@ -84,6 +84,7 @@ es-AR:
         labour_cost: 'Costo de mano de obra'
         observations: 'Observaciones'
         organization: 'Organización'
+        pictures: 'Fotos'
         plan_service: 'Servicio'
         plug_adapter_quantity: 'Cantidad de fichas'
         router_model: 'Modelo de router'
@@ -167,6 +168,8 @@ es-AR:
               not_synced: 'no se encuentra sincronizado con UCRM o Contabilium'
             corporate_cellphones:
               empty_corporate_cellphones: 'no puede estar vacío'
+            pictures:
+              content_type_invalid: 'debe ser del tipo imagen .png o .jpg'
             technicians:
               empty_technicians: 'no puede estar vacío'
             work_types:
@@ -216,7 +219,7 @@ es-AR:
         other: 'Tipos de trabajo'
 
   invoicing:
-    ucrm_admin_note: 'Creado por sistema 10+ el %{date}'
+    ucrm_admin_note: 'Creado por Maxwell el %{date}'
     technical_service:
       one: 'Servicio técnico'
       other: 'Servicios técnicos'

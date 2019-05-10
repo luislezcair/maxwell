@@ -155,6 +155,8 @@
         <%= f.association :ground_wire_setup_type, collection: sorted_ground_wire_setup_types, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
         <%= f.association :surge_protector_setup_type, collection: sorted_surge_protector_setup_types, wrapper: false, grid_wrapper_html: { class: 'col-sm-3' } %>
       </div>
+
+      <%= f.input :pictures, wrapper: :horizontal_file, grid_wrapper_html: { class: '' }, input_html: { multiple: true } %>
     </div>
 
     <div class="card-footer">

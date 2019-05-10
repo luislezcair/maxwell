@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddRelationshipsToTechnicalService < ActiveRecord::Migration[5.2]
   def change
     change_table :technical_services do |t|

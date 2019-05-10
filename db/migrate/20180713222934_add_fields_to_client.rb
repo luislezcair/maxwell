@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddFieldsToClient < ActiveRecord::Migration[5.2]
   def change
     change_table :clients do |t|

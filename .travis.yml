@@ -21,7 +21,7 @@ before_script:
 deploy:
   provider: heroku
 
-  app: diezpositivo-s
+  app: maxwell-s
 
   run:
     - bundle exec rake db:migrate

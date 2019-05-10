@@ -8,4 +8,4 @@ import '@coreui/coreui/scss/coreui.scss';
 
 import '../stylesheets/landing.scss';
 
-import '../images/brand/10_full.jpg';
+import '../images/brand/brand_full.jpg';

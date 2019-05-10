@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# Controlador para CRUD de Technicians.
+#
 class Elements::TechniciansController < ApplicationController
   before_action :authenticate_user!
   before_action :set_technician, only: [:edit, :update, :destroy]

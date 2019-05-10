@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: patch
-    uri: https://ucrm-testing.diezpositivo.com.ar/api/v1.0/clients/3
+    uri: https://ucrm-testing.ksys.com.ar/api/v1.0/clients/3
     body:
       encoding: UTF-8
       string: '{"userIdent":"221","organizationId":2,"countryId":93,"zipCode":"3000","street1":"221b
@@ -46,11 +46,11 @@ http_interactions:
         observation","sendInvoiceByPost":null,"invoiceMaturityDays":null,"stopServiceDue":null,"stopServiceDueDays":null,"organizationId":2,"tax1Id":null,"tax2Id":null,"tax3Id":null,"registrationDate":"2019-02-02T00:00:00-0300","companyContactFirstName":null,"companyContactLastName":null,"isActive":false,"firstName":"JON","lastName":"WASSON","username":"j.watson@sherlock.com","contacts":[{"id":3,"clientId":3,"email":"j.watson@sherlock.com","phone":"5493794298093","name":"John
         Watson","isBilling":true,"isContact":true,"types":[{"id":1,"name":"Billing"},{"id":2,"name":"General"}]},{"id":19,"clientId":3,"email":"j.watson@sherlock.com","phone":"5493794298093","name":"John
         Watson","isBilling":true,"isContact":true,"types":[{"id":1,"name":"Billing"},{"id":2,"name":"General"}]}],"attributes":[{"id":3,"clientId":3,"customAttributeId":1,"name":"DNI","key":"dni","value":"76988455"},{"id":4,"clientId":3,"customAttributeId":2,"name":"CUIT","key":"cuit","value":"27347188811"}],"accountBalance":0,"accountCredit":0,"accountOutstanding":0,"currencyCode":"ARS","organizationName":"Marand\u00fa","bankAccounts":[],"tags":[],"invitationEmailSentDate":null,"avatarColor":"#ff9800","addressGpsLat":null,"addressGpsLon":null,"isArchived":false}'
-    http_version: 
+    http_version:
   recorded_at: Wed, 06 Feb 2019 16:17:30 GMT
 - request:
     method: patch
-    uri: https://ucrm-testing.diezpositivo.com.ar/api/v1.0/clients/3
+    uri: https://ucrm-testing.ksys.com.ar/api/v1.0/clients/3
     body:
       encoding: UTF-8
       string: '{"userIdent":"221","organizationId":1,"countryId":26,"zipCode":"W3402BKL","street1":"221B
@@ -94,6 +94,6 @@ http_interactions:
         observaci\u00f3n","sendInvoiceByPost":null,"invoiceMaturityDays":null,"stopServiceDue":null,"stopServiceDueDays":null,"organizationId":1,"tax1Id":null,"tax2Id":null,"tax3Id":null,"registrationDate":"2019-02-02T00:00:00-0300","companyContactFirstName":null,"companyContactLastName":null,"isActive":false,"firstName":"John","lastName":"Watson","username":"j.watson@sherlock.com","contacts":[{"id":3,"clientId":3,"email":"j.watson@sherlock.com","phone":"5493794298093","name":"John
         Watson","isBilling":true,"isContact":true,"types":[{"id":1,"name":"Billing"},{"id":2,"name":"General"}]},{"id":19,"clientId":3,"email":"j.watson@sherlock.com","phone":"5493794298093","name":"John
         Watson","isBilling":true,"isContact":true,"types":[{"id":1,"name":"Billing"},{"id":2,"name":"General"}]}],"attributes":[{"id":3,"clientId":3,"customAttributeId":1,"name":"DNI","key":"dni","value":"76988455"},{"id":4,"clientId":3,"customAttributeId":2,"name":"CUIT","key":"cuit","value":"27347188811"}],"accountBalance":0,"accountCredit":0,"accountOutstanding":0,"currencyCode":"ARS","organizationName":"Ksys","bankAccounts":[],"tags":[],"invitationEmailSentDate":null,"avatarColor":"#ff9800","addressGpsLat":null,"addressGpsLon":null,"isArchived":false}'
-    http_version: 
+    http_version:
   recorded_at: Wed, 06 Feb 2019 16:17:32 GMT
 recorded_with: VCR 4.0.0

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: patch
-    uri: https://ucrm-testing.diezpositivo.com.ar/api/v1.0/clients/3
+    uri: https://ucrm-testing.ksys.com.ar/api/v1.0/clients/3
     body:
       encoding: UTF-8
       string: '{"userIdent":"888","organizationId":2,"countryId":93,"zipCode":"3000","street1":"221b
@@ -41,6 +41,6 @@ http_interactions:
       encoding: UTF-8
       string: '{"code":422,"message":"Validation failed.","errors":{"userIdent":["Este
         ID de cliente ya existe en nuestro sistema."]}}'
-    http_version: 
+    http_version:
   recorded_at: Wed, 06 Feb 2019 16:23:32 GMT
 recorded_with: VCR 4.0.0

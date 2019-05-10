@@ -22,3 +22,11 @@ Metrics/MethodLength:
 Metrics/BlockLength:
   Exclude:
     - config/routes.rb
+
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'vendor/bundle/**/*'
+    - 'bin/*'
+    - 'config/**/*'
+

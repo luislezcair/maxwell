@@ -73,6 +73,7 @@ class BillingExport < ApplicationRecord
 
   def at_least_one_technical_service?
     return unless technical_services.empty?
+
     errors.add(:technical_services, :empty)
   end
 
@@ -82,6 +83,7 @@ class BillingExport < ApplicationRecord
   #
   def billed_technical_services?
     return if technical_services.all? { |ts| ts.invoice.blank? }
+
     errors.add(:technical_services, :billed)
   end
 
@@ -90,6 +92,7 @@ class BillingExport < ApplicationRecord
   #
   def technical_service_valid_amount?
     return if technical_services.all? { |ts| ts.total_cost.positive? }
+
     errors.add(:technical_services, :amount_zero)
   end
 end

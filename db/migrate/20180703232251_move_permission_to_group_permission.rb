@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MovePermissionToGroupPermission < ActiveRecord::Migration[5.2]
   def change
     remove_column :permissions, :permission, :integer, null: false, default: 0

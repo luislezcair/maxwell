@@ -5,7 +5,7 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server 'app.diezpositivo.com.ar', user: 'deploy', roles: %w[app db web]
+server 'app.ksys.com.ar', user: 'deploy', roles: %w[app db web]
 
 # role-based syntax
 # ==================

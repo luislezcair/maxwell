@@ -3,9 +3,9 @@
 def create_corporate_cellphones
   print 'Creating corporate cellphones... '
 
-  CorporateCellphone.find_or_create_by(phone: '375 5243733')
-  CorporateCellphone.find_or_create_by(phone: '375 5291199')
-  CorporateCellphone.find_or_create_by(phone: '375 5243846')
+  CorporateCellphone.find_or_create_by(phone: '379 1234567')
+  CorporateCellphone.find_or_create_by(phone: '379 2345678')
+  CorporateCellphone.find_or_create_by(phone: '379 3456789')
 
   puts 'Done.'
 end
@@ -23,15 +23,13 @@ end
 def create_technicians
   print 'Creating technicians... '
 
-  Technician.find_or_create_by(firstname: 'Eduardo', lastname: 'Ferreira')
-  Technician.find_or_create_by(firstname: 'Cristian', lastname: 'Centurión')
-  Technician.find_or_create_by(firstname: 'Claudio', lastname: 'Furstenau')
-  Technician.find_or_create_by(firstname: 'Javier Orlando', lastname: 'Kuz')
-  Technician.find_or_create_by(firstname: 'Franco Enrique', lastname: 'Gómez')
-  Technician.find_or_create_by(firstname: 'Alejandro', lastname: 'González')
-  Technician.find_or_create_by(firstname: 'Oscar', lastname: 'Machado')
-  Technician.find_or_create_by(firstname: 'Adrián', lastname: 'Tempchuk')
-  Technician.find_or_create_by(firstname: 'Karina', lastname: 'Paciello')
+  Technician.find_or_create_by(firstname: 'Arya', lastname: 'Stark')
+  Technician.find_or_create_by(firstname: 'Sansa', lastname: 'Stark')
+  Technician.find_or_create_by(firstname: 'Eddard', lastname: 'Stark')
+  Technician.find_or_create_by(firstname: 'Catelyn', lastname: 'Stark')
+  Technician.find_or_create_by(firstname: 'Robb', lastname: 'Stark')
+  Technician.find_or_create_by(firstname: 'Brandon', lastname: 'Stark')
+  Technician.find_or_create_by(firstname: 'Rickon', lastname: 'Stark')
 
   puts 'Done.'
 end
@@ -75,7 +73,7 @@ def create_ground_wire_setup_types
   print 'Creating ground wire setup types... '
 
   types = ['Tiene cable a tierra de la casa',
-           'Tiene cable a tierra instalado por 10+ independiente de la casa',
+           'Tiene cable a tierra instalado por MApp independiente de la casa',
            'No tiene cable a tierra',
            'No se instala por falta de materiales'].sort
   types.each { |t| GroundWireSetupType.find_or_create_by(name: t) }
@@ -88,7 +86,7 @@ def create_surge_protector_setup_types
 
   types = ['No tiene',
            'Tiene',
-           'Tiene instalado por 10+',
+           'Tiene instalado por MApp',
            'No se entrega por falta de stock'].sort
   types.each { |t| SurgeProtectorSetupType.find_or_create_by(name: t) }
 

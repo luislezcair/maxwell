@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://ucrm-testing.diezpositivo.com.ar/api/v1.0/clients
+    uri: https://ucrm-testing.ksys.com.ar/api/v1.0/clients
     body:
       encoding: UTF-8
       string: '{"userIdent":"36025","organizationId":2,"countryId":93,"zipCode":"3000","street1":"221b
@@ -38,17 +38,17 @@ http_interactions:
       Date:
       - Wed, 06 Feb 2019 03:09:33 GMT
       Location:
-      - https://ucrm-testing.diezpositivo.com.ar/api/v1.0/clients/15
+      - https://ucrm-testing.ksys.com.ar/api/v1.0/clients/15
     body:
       encoding: UTF-8
       string: '{"id":15,"userIdent":"36025","previousIsp":null,"isLead":false,"clientType":1,"companyName":null,"companyRegistrationNumber":null,"companyTaxId":null,"companyWebsite":null,"street1":"221b
         baker street","street2":"221C","city":null,"countryId":93,"stateId":null,"zipCode":"3000","invoiceStreet1":null,"invoiceStreet2":null,"invoiceCity":null,"invoiceStateId":null,"invoiceCountryId":null,"invoiceZipCode":null,"invoiceAddressSameAsContact":true,"note":"Some
         observation","sendInvoiceByPost":null,"invoiceMaturityDays":null,"stopServiceDue":null,"stopServiceDueDays":null,"organizationId":2,"tax1Id":null,"tax2Id":null,"tax3Id":null,"registrationDate":"2019-02-06T00:09:32-0300","companyContactFirstName":null,"companyContactLastName":null,"isActive":false,"firstName":"JON","lastName":"WASSON","username":null,"contacts":[{"id":15,"clientId":15,"email":"jwasson@sherlock.ocm","phone":"5493794298092","name":null,"isBilling":false,"isContact":false,"types":[]}],"attributes":[{"id":16,"clientId":15,"customAttributeId":1,"name":"DNI","key":"dni","value":"76988455"}],"accountBalance":0,"accountCredit":0,"accountOutstanding":0,"currencyCode":"ARS","organizationName":"Marand\u00fa","bankAccounts":[],"tags":[],"invitationEmailSentDate":null,"avatarColor":"#ff5722","addressGpsLat":null,"addressGpsLon":null,"isArchived":false}'
-    http_version: 
+    http_version:
   recorded_at: Wed, 06 Feb 2019 03:09:33 GMT
 - request:
     method: delete
-    uri: https://ucrm-testing.diezpositivo.com.ar/api/v1.0/clients/15
+    uri: https://ucrm-testing.ksys.com.ar/api/v1.0/clients/15
     body:
       encoding: UTF-8
       string: "{}"
@@ -87,6 +87,6 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: ''
-    http_version: 
+    http_version:
   recorded_at: Wed, 06 Feb 2019 03:09:34 GMT
 recorded_with: VCR 4.0.0

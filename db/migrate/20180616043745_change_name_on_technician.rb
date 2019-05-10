@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeNameOnTechnician < ActiveRecord::Migration[5.2]
   def change
     remove_index :technicians, :name

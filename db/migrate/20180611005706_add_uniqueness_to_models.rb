@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddUniquenessToModels < ActiveRecord::Migration[5.2]
   def change
     add_index :balancers, :name, unique: true

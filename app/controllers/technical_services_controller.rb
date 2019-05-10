@@ -117,8 +117,10 @@ class TechnicalServicesController < ApplicationController
              :cable_length, :plug_adapter_quantity, :google_maps_url,
              :labour_cost, :equipment_cost, :observations, :city_id,
              :ground_wire_setup_type_id, :surge_protector_setup_type_id,
-             :support_type_id, :balancer_id,
-             work_type_ids: [], corporate_cellphone_ids: [], technician_ids: []]
+             :support_type_id, :balancer_id, pictures: [],
+                                             work_type_ids: [],
+                                             corporate_cellphone_ids: [],
+                                             technician_ids: []]
 
     # Permitir modificar la fecha solamente si tiene permisio de edición
     attrs << :datetime if can? :edit, TechnicalService

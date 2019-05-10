@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# Controlador para CRUD de CorporateCellphones
+#
 class Elements::CorporateCellphonesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_corporate_cellphone, only: [:edit, :update, :destroy]

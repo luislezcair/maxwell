@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateBackgroundJob < ActiveRecord::Migration[5.2]
   def change
     create_table :background_jobs do |t|

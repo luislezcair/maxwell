@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateTechnicalServiceCorporateCellphones < ActiveRecord::Migration[5.2]
   def change
     create_table :technical_service_corporate_cellphones do |t|

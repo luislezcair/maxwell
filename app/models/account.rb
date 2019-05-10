@@ -40,6 +40,7 @@ class Account < ApplicationRecord
   #
   def parent_not_imputable
     return unless parent&.imputable
+
     errors.add(:parent_id, :imputable)
   end
 
@@ -48,6 +49,7 @@ class Account < ApplicationRecord
   #
   def imputable_with_children
     return unless imputable && children?
+
     errors.add(:imputable, :children)
   end
 end

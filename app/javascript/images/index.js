@@ -7,7 +7,7 @@ import './avatars/6.jpg';
 import './avatars/7.jpg';
 import './avatars/8.jpg';
 
-import './brand/10.png';
+import './brand/brand.png';
 
 import './favicon/android-chrome-192x192.png';
 import './favicon/android-chrome-512x512.png';

@@ -2,6 +2,8 @@
 
 require 'rails_helper'
 
+FIXTURES_PATH = 'spec/fixtures/pictures'
+
 describe TechnicalService do
   it 'has a valid factory' do
     b = build(:technical_service)
@@ -62,4 +64,37 @@ describe TechnicalService do
     ts = build(:technical_service, technicians_count: 0)
     expect(ts).to_not be_valid
   end
+
+  it 'has attachements' do
+    ts = create(:technical_service)
+
+    expect { ts.pictures.attach(beastie_file) }.to(
+      change(ts.pictures, :size).from(0).to(1)
+    )
+
+    expect { ts.pictures.attach(tux_file) }.to(
+      change(ts.pictures, :size).from(1).to(2)
+    )
+
+    expect(ts.pictures).to be_attached
+
+    ts.pictures.attach(invalid_attachment)
+    expect(ts).to_not be_valid
+
+    ts.pictures.purge
+  end
+end
+
+def beastie_file
+  { io: File.open("#{FIXTURES_PATH}/beastie.png"), filename: 'beastie.png' }
+end
+
+def tux_file
+  { io: File.open("#{FIXTURES_PATH}/tux.png"), filename: 'tux.png' }
+end
+
+def invalid_attachment
+  { io: File.open("#{FIXTURES_PATH}/document.pdf"),
+    filename: 'document.pdf',
+    content_type: 'application/pdf' }
 end

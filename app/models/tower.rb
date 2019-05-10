@@ -1,3 +1,8 @@
+# frozen_string_literal: true
+
+# Representa el dispositivo que se encuentra instalado en una Torre, que recibe
+# las conexiones de los clientes.
+#
 class Tower < ApplicationRecord
   has_many :technical_services, dependent: :restrict_with_error
 

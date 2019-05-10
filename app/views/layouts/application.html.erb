@@ -13,7 +13,7 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <title>10+ Diez Positivo</title>
+    <title>Maxwell App</title>
   </head>
 
   <body class="app sidebar-lg-show" data-controller="<%= controller_name %>" data-action="<%= action_name.gsub(/^create$/, 'new').gsub(/^update$/, 'edit') %>">
@@ -23,8 +23,8 @@
       </button>
 
       <a class="navbar-brand" href="#">
-        <img class="navbar-brand-full" src="<%= asset_pack_path 'images/brand/10.png' %>" width="40" height="40" alt="10+ Logo Full">
-        <img class="navbar-brand-minimized" src="<%= asset_pack_path 'images/brand/10.png' %>" width="40" height="40" alt="10+ Logo Small">
+        <img class="navbar-brand-full" src="<%= asset_pack_path 'media/images/brand/brand.png' %>" width="40" height="40" alt="MApp Logo Full">
+        <img class="navbar-brand-minimized" src="<%= asset_pack_path 'media/images/brand/brand.png' %>" width="40" height="40" alt="MApp Logo Small">
       </a>
 
       <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
@@ -62,7 +62,7 @@
         <%# </li> %>
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/7.jpg' %>" alt="<%= current_user.firstname %>">
+            <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/7.jpg' %>" alt="<%= current_user.firstname %>">
             <span><%= current_user.firstname %></span>
           </a>
 
@@ -273,7 +273,7 @@
 
       <%#         <div class="list-group-item list-group-item-accent-warning list-group-item-divider"> %>
       <%#           <div class="avatar float-right"> %>
-      <%#             <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/7.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#             <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/7.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#           </div> %>
       <%#           <div>Meeting with %>
       <%#             <strong>Lucas</strong> %>
@@ -286,7 +286,7 @@
 
       <%#         <div class="list-group-item list-group-item-accent-info"> %>
       <%#           <div class="avatar float-right"> %>
-      <%#             <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/4.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#             <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/4.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#           </div> %>
       <%#           <div>Skype with %>
       <%#             <strong>Megan</strong> %>
@@ -309,19 +309,19 @@
       <%#             <i class="icon-home"></i>  creativeLabs HQ</small> %>
       <%#           <div class="avatars-stack mt-2"> %>
       <%#             <div class="avatar avatar-xs"> %>
-      <%#               <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/2.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#               <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/2.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#             </div> %>
       <%#             <div class="avatar avatar-xs"> %>
-      <%#               <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/3.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#               <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/3.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#             </div> %>
       <%#             <div class="avatar avatar-xs"> %>
-      <%#               <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/4.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#               <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/4.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#             </div> %>
       <%#             <div class="avatar avatar-xs"> %>
-      <%#               <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/5.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#               <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/5.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#             </div> %>
       <%#             <div class="avatar avatar-xs"> %>
-      <%#               <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/6.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#               <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/6.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#             </div> %>
       <%#           </div> %>
       <%#         </div> %>
@@ -345,25 +345,25 @@
       <%#             <i class="icon-home"></i>  creativeLabs HQ</small> %>
       <%#           <div class="avatars-stack mt-2"> %>
       <%#             <div class="avatar avatar-xs"> %>
-      <%#               <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/2.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#               <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/2.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#             </div> %>
       <%#             <div class="avatar avatar-xs"> %>
-      <%#               <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/3.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#               <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/3.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#             </div> %>
       <%#             <div class="avatar avatar-xs"> %>
-      <%#               <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/4.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#               <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/4.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#             </div> %>
       <%#             <div class="avatar avatar-xs"> %>
-      <%#               <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/5.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#               <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/5.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#             </div> %>
       <%#             <div class="avatar avatar-xs"> %>
-      <%#               <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/6.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#               <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/6.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#             </div> %>
       <%#             <div class="avatar avatar-xs"> %>
-      <%#               <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/7.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#               <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/7.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#             </div> %>
       <%#             <div class="avatar avatar-xs"> %>
-      <%#               <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/8.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#               <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/8.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#             </div> %>
       <%#           </div> %>
       <%#         </div> %>
@@ -374,7 +374,7 @@
       <%#       <div class="message"> %>
       <%#         <div class="py-3 pb-5 mr-3 float-left"> %>
       <%#           <div class="avatar"> %>
-      <%#             <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/7.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#             <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/7.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#             <span class="avatar-status badge-success"></span> %>
       <%#           </div> %>
       <%#         </div> %>
@@ -389,7 +389,7 @@
       <%#       <div class="message"> %>
       <%#         <div class="py-3 pb-5 mr-3 float-left"> %>
       <%#           <div class="avatar"> %>
-      <%#             <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/7.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#             <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/7.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#             <span class="avatar-status badge-success"></span> %>
       <%#           </div> %>
       <%#         </div> %>
@@ -404,7 +404,7 @@
       <%#       <div class="message"> %>
       <%#         <div class="py-3 pb-5 mr-3 float-left"> %>
       <%#           <div class="avatar"> %>
-      <%#             <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/7.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#             <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/7.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#             <span class="avatar-status badge-success"></span> %>
       <%#           </div> %>
       <%#         </div> %>
@@ -419,7 +419,7 @@
       <%#       <div class="message"> %>
       <%#         <div class="py-3 pb-5 mr-3 float-left"> %>
       <%#           <div class="avatar"> %>
-      <%#             <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/7.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#             <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/7.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#             <span class="avatar-status badge-success"></span> %>
       <%#           </div> %>
       <%#         </div> %>
@@ -434,7 +434,7 @@
       <%#       <div class="message"> %>
       <%#         <div class="py-3 pb-5 mr-3 float-left"> %>
       <%#           <div class="avatar"> %>
-      <%#             <img class="img-avatar" src="<%= asset_pack_path 'images/avatars/7.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
+      <%#             <img class="img-avatar" src="<%= asset_pack_path 'media/images/avatars/7.jpg' %1>" alt="admin@bootstrapmaster.com"> %>
       <%#             <span class="avatar-status badge-success"></span> %>
       <%#           </div> %>
       <%#         </div> %>
@@ -544,8 +544,8 @@
 
     <footer class="app-footer">
       <div class="ml-auto">
-        <span>&copy; 2018. </span>
-        <a href="https://diezpositivo.com.ar">Diez Positivo</a>
+        <span>&copy; 2019. </span>
+        <a href="https://github.com/luislezcair/maxwell">Maxwell App</a>
       </div>
     </footer>
   </body>

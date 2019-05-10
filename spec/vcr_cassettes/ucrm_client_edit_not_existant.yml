@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://ucrm-testing.diezpositivo.com.ar/api/v1.0/clients/1
+    uri: https://ucrm-testing.ksys.com.ar/api/v1.0/clients/1
     body:
       encoding: US-ASCII
       string: ''
@@ -40,6 +40,6 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"id":1,"userIdent":"666","previousIsp":"DialUp Networks Inc.","isLead":false,"clientType":1,"companyName":null,"companyRegistrationNumber":null,"companyTaxId":null,"companyWebsite":null,"street1":"Av.
         Siempre Viva 742","street2":null,"city":"Corrientes","countryId":26,"stateId":null,"zipCode":"W3402BKL","invoiceStreet1":null,"invoiceStreet2":null,"invoiceCity":null,"invoiceStateId":null,"invoiceCountryId":null,"invoiceZipCode":null,"invoiceAddressSameAsContact":true,"note":null,"sendInvoiceByPost":null,"invoiceMaturityDays":null,"stopServiceDue":null,"stopServiceDueDays":null,"organizationId":1,"tax1Id":null,"tax2Id":null,"tax3Id":null,"registrationDate":"2019-02-01T00:00:00-0300","companyContactFirstName":null,"companyContactLastName":null,"isActive":false,"firstName":"Tincho","lastName":"Ra\u00fal","username":"luislezcair@gmail.com","contacts":[{"id":1,"clientId":1,"email":"luislezcair@gmail.com","phone":"3794298093","name":"Luis","isBilling":true,"isContact":true,"types":[{"id":1,"name":"Billing"},{"id":2,"name":"General"}]}],"attributes":[{"id":1,"clientId":1,"customAttributeId":1,"name":"DNI","key":"dni","value":"35025649"},{"id":2,"clientId":1,"customAttributeId":2,"name":"CUIT","key":"cuit","value":"23350256499"}],"accountBalance":0,"accountCredit":0,"accountOutstanding":0,"currencyCode":"ARS","organizationName":"Ksys","bankAccounts":[],"tags":[],"invitationEmailSentDate":null,"avatarColor":"#5e35b1","addressGpsLat":null,"addressGpsLon":null,"isArchived":false}'
-    http_version: 
+    http_version:
   recorded_at: Sun, 03 Feb 2019 18:54:43 GMT
 recorded_with: VCR 4.0.0
