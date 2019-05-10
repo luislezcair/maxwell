@@ -14,17 +14,15 @@ require 'capybara/rspec'
 require 'support/factory_bot'
 require 'vcr'
 
-if ENV['TRAVIS_ENV'] == '1'
-  Capybara.register_driver :chrome_beta do |app|
-    options = ::Selenium::WebDriver::Chrome::Options.new
-    options.binary = '/usr/bin/google-chrome-beta'
-    options.headless!
+CHROMIUM_PATH = '/usr/bin/chromium'
 
-    Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
-  end
-  Capybara.default_driver = :chrome_beta
+if ENV['TRAVIS_ENV'] == '1'
+  Capybara.default_driver = :selenium_chrome_headless
 else
   Capybara.default_driver = :selenium_chrome
+
+  Selenium::WebDriver::Chrome.path = CHROMIUM_PATH if File.exist?(CHROMIUM_PATH)
+  Webdrivers.cache_time = 86_400
 end
 
 Capybara.default_max_wait_time = 5
@@ -48,6 +46,9 @@ VCR.configure do |config|
       client_secret: client_secret,
       grant_type: 'client_credentials' }.to_query
   end
+
+  # Permitir que webdrivers instale el driver de chrome durante los tests
+  config.ignore_hosts 'chromedriver.storage.googleapis.com'
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
