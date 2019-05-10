@@ -6,12 +6,13 @@ feature 'Technical services' do
   before do
     login_as(create(:user))
 
-    @ts = build(:technical_service)
+    city = create(:city)
+    @client = create(:client)
+    @ts = build(:technical_service, client: @client, city: city)
 
     @techs = create_list(:technician_with_sequence, 2)
     @wss = create_list(:work_type_with_sequence, 2)
     @ccs = create_list(:cellphone_with_sequence, 2)
-    @client = @ts.client
   end
 
   scenario 'User selects a client in the form' do

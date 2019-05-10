@@ -9,7 +9,7 @@ feature 'Client management' do
 
     Sidekiq::Testing.fake!
 
-    @client = build(:client)
+    @client = build(:client, organization: create(:organization))
     @company_client = build(:company_client, organization: @client.organization)
 
     create(:province_misiones)

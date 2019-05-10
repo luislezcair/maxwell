@@ -78,9 +78,6 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails'
 
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
-
   gem 'launchy'
 
   gem 'vcr'

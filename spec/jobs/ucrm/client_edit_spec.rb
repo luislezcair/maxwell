@@ -7,14 +7,9 @@ context 'UCRM sends a notification event' do
     webhook = create(:webhook_client_edit)
 
     client_old = create(:client_edit_ucrm_old)
-    client_new = build(:client_edit_ucrm_new)
-
-    # HACK: `client_old.attributes` devuelve `document_type: 'cuit'` y
-    # `client_new.attributes` devuelve `document_type: 0`.
-    # Esto hace fallar la expectation del final y eso no debería suceder así que
-    # acá forzamos a `client_new` a que devuelva 'cuit' y no el valor numérico
-    attrs = client_new.attributes.merge(Hash['document_type', 'cuit'])
-    allow(client_new).to receive(:attributes) { attrs }
+    client_new = build(:client_edit_ucrm_new,
+                       organization: create(:organization),
+                       country: create(:country_arg))
 
     VCR.use_cassette('ucrm_client_edit') do
       expect do
