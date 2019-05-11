@@ -8,6 +8,8 @@ Se integra con [UCRM](https://ucrm.ui.com) de Ubiquiti para consumir datos de cl
 
 ## Demo
 
+Deploy en un click a Heroku. Usuario y contraseña por defecto `admin` y `admin-123`.
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/luislezcair/maxwell)
 
 ## Instalación
@@ -27,7 +29,7 @@ $ bundle exec rails db:migrate
 $ bundle exec seeds:initial_data
 ```
 
-Crear el usuario administrador. Por defecto usuario "admin" y contraseña "admin-123"
+Crear el usuario administrador. Por defecto usuario `admin` y contraseña `admin-123`
 
 ```
 $ bundle exec seeds:admin_user
