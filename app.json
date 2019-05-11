@@ -1,0 +1,17 @@
+{
+  "name": "Maxwell",
+  "description": "Maxwell es un sistema orientado a ISPs para el registro y facturación de servicios técnicos realizados por personal de la empresa en el domicilio de clientes.",
+  "repository": "https://github.com/luislezcair/maxwell",
+  "keywords": ["ucrm", "contabilium", "isp", "ubiquiti"],
+
+  "scripts": {
+    "postdeploy": "bundle exec rails db:migrate && bundle exec rails seeds:initial_data && bundle exec rails seeds:admin_user"
+  },
+
+  "env": {
+    "RAILS_MASTER_KEY": {
+      "description": "Clave secreta para leer el archivo de credenciales de Rails",
+      "value": "1f5e323def0d64b96eec455c26c57b2a"
+    }
+  }
+}
