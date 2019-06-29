@@ -123,4 +123,16 @@ module ApplicationHelper
       request.referer
     end
   end
+
+  def app_name
+    SystemConfiguration.get('application.name', DEFAULT_APP_NAME)
+  end
+
+  def app_description
+    SystemConfiguration.get('application.description', DEFAULT_APP_DESCRIPTION)
+  end
+
+  def app_website_url
+    SystemConfiguration.get('application.website', DEFAULT_APP_WEBSITE)
+  end
 end

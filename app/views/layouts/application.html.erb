@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="es">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width initial-scale=1.0 shrink-to-fit=no">
-    <meta name="turbolinks-cache-control" content="no-preview">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="<%= app_description %>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <%= render 'application/favicon' %>
 
@@ -13,7 +15,7 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <title>Maxwell App</title>
+    <title><%= app_name %></title>
   </head>
 
   <body class="app sidebar-lg-show" data-controller="<%= controller_name %>" data-action="<%= action_name.gsub(/^create$/, 'new').gsub(/^update$/, 'edit') %>">
@@ -23,8 +25,8 @@
       </button>
 
       <a class="navbar-brand" href="#">
-        <img class="navbar-brand-full" src="<%= asset_pack_path 'media/images/brand/brand.png' %>" width="40" height="40" alt="MApp Logo Full">
-        <img class="navbar-brand-minimized" src="<%= asset_pack_path 'media/images/brand/brand.png' %>" width="40" height="40" alt="MApp Logo Small">
+        <img class="navbar-brand-full" src="<%= asset_pack_path 'media/images/brand/brand.png' %>" width="40" height="40" alt="Logo Full">
+        <img class="navbar-brand-minimized" src="<%= asset_pack_path 'media/images/brand/brand.png' %>" width="40" height="40" alt="Logo Small">
       </a>
 
       <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
@@ -545,7 +547,7 @@
     <footer class="app-footer">
       <div class="ml-auto">
         <span>&copy; 2019. </span>
-        <a href="https://github.com/luislezcair/maxwell">Maxwell App</a>
+        <a href="<%= app_website_url %>"><%= app_name %></a>
       </div>
     </footer>
   </body>

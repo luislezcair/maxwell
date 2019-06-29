@@ -9,8 +9,10 @@ class SystemConfiguration < ApplicationRecord
   # acuerdo al entorno RAILS donde estemos actualmente. El entorno puede
   # sobreescribirse especificando el parámetro `env`
   #
-  def self.get(name, env = ENV['RAILS_ENV'])
-    r = find_by!(name: name)
+  def self.get(name, default = '', env = ENV['RAILS_ENV'])
+    r = find_by(name: name)
+
+    return default unless r
 
     if env && env.to_sym == :production
       r.production_value
